@@ -1,0 +1,816 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 92.43     40.80    40.80                             RunTimer
+  4.17     42.64     1.84      413     0.00     0.00  SDL_WaitEventTimeout
+  2.38     43.69     1.05        1     1.05     1.05  SDL_PushEvent
+  0.25     43.80     0.11      115     0.00     0.00  GLES_RenderCopy
+  0.25     43.91     0.11      115     0.00     0.00  GLES_UpdateTexture
+  0.18     43.99     0.08      111     0.00     0.00  SDL_ANDROID_CallJavaSwapBuffers
+  0.07     44.02     0.03        1     0.03     0.03  SDL_CreateThread
+  0.07     44.05     0.03                             SDL_RenderCopy
+  0.05     44.07     0.02       15     0.00     0.00  SDL_SoftBlit
+  0.05     44.09     0.02                             SDL_DestroyTexture
+  0.02     44.10     0.01     1671     0.00     0.00  SDL_PeepEvents
+  0.02     44.11     0.01        4     0.00     0.00  GLES_RenderFillRects
+  0.02     44.12     0.01        1     0.01     1.06  SDL_SendQuit
+  0.02     44.13     0.01        1     0.01     0.01  close_audio_device
+  0.02     44.14     0.01                             mem_close
+  0.00     44.14     0.00    28854     0.00     0.00  SDL_Delay
+  0.00     44.14     0.00     1703     0.00     0.00  SDL_mutexP
+  0.00     44.14     0.00     1703     0.00     0.00  SDL_mutexV
+  0.00     44.14     0.00     1267     0.00     0.00  ANDROID_PumpEvents
+  0.00     44.14     0.00     1267     0.00     0.00  SDL_GetVideoDevice
+  0.00     44.14     0.00     1267     0.00     0.00  SDL_PumpEvents
+  0.00     44.14     0.00      410     0.00     0.00  SDL_CutEvent
+  0.00     44.14     0.00      404     0.00     0.00  SDL_CompatEventFilter
+  0.00     44.14     0.00      404     0.00     0.00  SDL_GestureProcessEvent
+  0.00     44.14     0.00      264     0.00     0.00  SDL_GetCurrentRenderer
+  0.00     44.14     0.00      130     0.00     0.00  SDL_IntersectRect
+  0.00     44.14     0.00      129     0.00     0.00  SDL_InvalidateMap
+  0.00     44.14     0.00      119     0.00     0.00  GLES_SetBlendMode
+  0.00     44.14     0.00      115     0.00     0.00  SetupTextureUpdate
+  0.00     44.14     0.00      111     0.00     0.00  ANDROID_GL_SwapBuffers
+  0.00     44.14     0.00      111     0.00     0.00  GLES_RenderPresent
+  0.00     44.14     0.00      111     0.00     0.00  SDL_ANDROID_drawTouchscreenKeyboard
+  0.00     44.14     0.00      111     0.00     0.00  SDL_ANDROID_processAndroidTrackballDampening
+  0.00     44.14     0.00      111     0.00     0.00  SDL_GL_SwapWindow
+  0.00     44.14     0.00       48     0.00     0.00  SDL_SetClipRect
+  0.00     44.14     0.00       45     0.00     0.00  SDL_InitFormat
+  0.00     44.14     0.00       40     0.00     0.00  SDL_SetSurfacePalette
+  0.00     44.14     0.00       33     0.00     0.00  SDL_SetSurfaceBlendMode
+  0.00     44.14     0.00       30     0.00     0.00  SDL_AllocBlitMap
+  0.00     44.14     0.00       30     0.00     0.00  SDL_AllocFormat
+  0.00     44.14     0.00       30     0.00     0.00  SDL_CalculatePitch
+  0.00     44.14     0.00       30     0.00     0.00  SDL_FormatChanged
+  0.00     44.14     0.00       29     0.00     0.00  SDL_FreeBlitMap
+  0.00     44.14     0.00       29     0.00     0.00  SDL_FreeFormat
+  0.00     44.14     0.00       27     0.00     0.00  __fixunssfsi
+  0.00     44.14     0.00       24     0.00     0.00  ANDROIDAUD_GetAudioBuf
+  0.00     44.14     0.00       24     0.00     0.00  ANDROIDAUD_PlayAudio
+  0.00     44.14     0.00       24     0.00     0.00  ANDROIDAUD_WaitAudio
+  0.00     44.14     0.00       24     0.00     0.00  SDL_MasksToPixelFormatEnum
+  0.00     44.14     0.00       22     0.00     0.00  SDL_FreePalette
+  0.00     44.14     0.00       22     0.00     0.00  SDL_SetColorKey
+  0.00     44.14     0.00       18     0.00     0.00  SDL_CreateRGBSurface
+  0.00     44.14     0.00       15     0.00     0.00  GLES_CreateTexture
+  0.00     44.14     0.00       15     0.00     0.00  GLES_DestroyTexture
+  0.00     44.14     0.00       15     0.00     0.00  GLES_SetTextureAlphaMod
+  0.00     44.14     0.00       15     0.00     0.00  GLES_SetTextureBlendMode
+  0.00     44.14     0.00       15     0.00     0.00  GLES_SetTextureColorMod
+  0.00     44.14     0.00       15     0.00     0.00  GLES_SetTextureScaleMode
+  0.00     44.14     0.00       15     0.00     0.00  SDL_CalculateBlit
+  0.00     44.14     0.00       15     0.00     0.00  SDL_ConvertSurface
+  0.00     44.14     0.00       15     0.00     0.00  SDL_CreateTexture
+  0.00     44.14     0.00       15     0.00     0.00  SDL_FreeDirtyRects
+  0.00     44.14     0.00       15     0.00     0.00  SDL_FreeSurface
+  0.00     44.14     0.00       15     0.00     0.00  SDL_GetSurfaceAlphaMod
+  0.00     44.14     0.00       15     0.00     0.00  SDL_GetSurfaceBlendMode
+  0.00     44.14     0.00       15     0.00     0.00  SDL_GetSurfaceColorMod
+  0.00     44.14     0.00       15     0.00     0.00  SDL_GetSurfaceScaleMode
+  0.00     44.14     0.00       15     0.00     0.00  SDL_LowerBlit
+  0.00     44.14     0.00       15     0.00     0.00  SDL_MapSurface
+  0.00     44.14     0.00       15     0.00     0.00  SDL_PixelFormatEnumToMasks
+  0.00     44.14     0.00       15     0.00     0.00  SDL_SetTextureAlphaMod
+  0.00     44.14     0.00       15     0.00     0.00  SDL_SetTextureBlendMode
+  0.00     44.14     0.00       15     0.00     0.00  SDL_SetTextureColorMod
+  0.00     44.14     0.00       15     0.00     0.00  SDL_SetTextureScaleMode
+  0.00     44.14     0.00       15     0.00     0.01  SDL_UpdateTexture
+  0.00     44.14     0.00       11     0.00     0.00  Blit1to2
+  0.00     44.14     0.00       11     0.00     0.00  SDL_AddPaletteWatch
+  0.00     44.14     0.00       11     0.00     0.00  SDL_AllocPalette
+  0.00     44.14     0.00       11     0.00     0.00  SDL_CalculateBlit1
+  0.00     44.14     0.00       11     0.00     0.00  SDL_DelPaletteWatch
+  0.00     44.14     0.00       11     0.00     0.00  SDL_GetRGBA
+  0.00     44.14     0.00       11     0.00     0.00  SDL_LockSurface
+  0.00     44.14     0.00       11     0.00     0.00  SDL_MapRGBA
+  0.00     44.14     0.00       11     0.00     0.00  SDL_UnlockSurface
+  0.00     44.14     0.00        6     0.00     0.00  mem_read
+  0.00     44.14     0.00        5     0.00     0.00  SDL_ThreadID
+  0.00     44.14     0.00        4     0.00     0.00  BlitNtoN
+  0.00     44.14     0.00        4     0.00     0.00  SDL_CalculateAudioSpec
+  0.00     44.14     0.00        4     0.00     0.00  SDL_CalculateBlitN
+  0.00     44.14     0.00        4     0.00     0.00  SDL_CreateSemaphore
+  0.00     44.14     0.00        4     0.00     0.00  SDL_DelThread
+  0.00     44.14     0.00        4     0.00     0.00  SDL_DestroySemaphore
+  0.00     44.14     0.00        4     0.00     0.00  SDL_RESIZE_resizeRects
+  0.00     44.14     0.00        4     0.00     0.00  SDL_RenderFillRects
+  0.00     44.14     0.00        4     0.00     0.00  SDL_RunThread
+  0.00     44.14     0.00        4     0.00     0.00  SDL_SYS_CreateThread
+  0.00     44.14     0.00        4     0.00     0.00  SDL_SYS_SetupThread
+  0.00     44.14     0.00        4     0.00     0.00  SDL_SYS_WaitThread
+  0.00     44.14     0.00        4     0.00     0.00  SDL_SemPost
+  0.00     44.14     0.00        4     0.00     0.00  SDL_SemWait
+  0.00     44.14     0.00        2     0.00     0.00  SDL_WasInit
+  0.00     44.14     0.00        2     0.00     0.00  get_audio_device
+  0.00     44.14     0.00        1     0.00     0.00  ANDROIDAUD_CloseAudio
+  0.00     44.14     0.00        1     0.00     0.00  ANDROIDAUD_OpenAudio
+  0.00     44.14     0.00        1     0.00     0.00  ANDROIDAUD_ThreadDeinit
+  0.00     44.14     0.00        1     0.00     0.00  ANDROIDAUD_ThreadInit
+  0.00     44.14     0.00        1     0.00     0.00  SDL_AllocRW
+  0.00     44.14     0.00        1     0.00     0.01  SDL_CloseAudioDevice
+  0.00     44.14     0.00        1     0.00     0.00  SDL_CreateMutex
+  0.00     44.14     0.00        1     0.00     0.00  SDL_DestroyMutex
+  0.00     44.14     0.00        1     0.00     0.00  SDL_EventState
+  0.00     44.14     0.00        1     0.00     0.00  SDL_FreeRW
+  0.00     44.14     0.00        1     0.00     0.00  SDL_PauseAudioDevice
+  0.00     44.14     0.00        1     0.00     0.00  SDL_RunAudio
+  0.00     44.14     0.00        1     0.00     0.00  SDL_WaitThread
+  0.00     44.14     0.00        1     0.00     0.03  open_audio_device
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 44.14 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     92.4   40.80    0.00                 RunTimer [1]
+                0.00    0.00   27997/28854       SDL_Delay [32]
+-----------------------------------------------
+                1.84    0.01     413/413         SDL_WaitEvent [3]
+[2]      4.2    1.84    0.01     413         SDL_WaitEventTimeout [2]
+                0.01    0.00    1267/1671        SDL_PeepEvents [24]
+                0.00    0.00    1267/1267        SDL_PumpEvents [37]
+                0.00    0.00     857/28854       SDL_Delay [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      4.2    0.00    1.85                 SDL_WaitEvent [3]
+                1.84    0.01     413/413         SDL_WaitEventTimeout [2]
+-----------------------------------------------
+                0.01    1.05       1/1           Java_com_broov_player_DemoRenderer_nativeDone [5]
+[4]      2.4    0.01    1.05       1         SDL_SendQuit [4]
+                1.05    0.00       1/1           SDL_PushEvent [6]
+                0.00    0.00       1/1           SDL_EventState [118]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      2.4    0.00    1.06                 Java_com_broov_player_DemoRenderer_nativeDone [5]
+                0.01    1.05       1/1           SDL_SendQuit [4]
+-----------------------------------------------
+                1.05    0.00       1/1           SDL_SendQuit [4]
+[6]      2.4    1.05    0.00       1         SDL_PushEvent [6]
+                0.00    0.00     404/1671        SDL_PeepEvents [24]
+                0.00    0.00     404/404         SDL_CompatEventFilter [39]
+                0.00    0.00     404/404         SDL_GestureProcessEvent [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      0.3    0.03    0.11                 SDL_RenderCopy [7]
+                0.11    0.00     115/115         GLES_RenderCopy [9]
+                0.00    0.00     115/264         SDL_GetCurrentRenderer [41]
+                0.00    0.00     115/130         SDL_IntersectRect [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      0.3    0.00    0.13                 SDL_CreateTextureFromSurface [8]
+                0.00    0.11      15/15          SDL_UpdateTexture [11]
+                0.00    0.02      15/15          SDL_ConvertSurface [20]
+                0.00    0.00      24/24          SDL_MasksToPixelFormatEnum [61]
+                0.00    0.00      15/264         SDL_GetCurrentRenderer [41]
+                0.00    0.00      15/15          SDL_CreateTexture [72]
+                0.00    0.00      15/45          SDL_InitFormat [49]
+                0.00    0.00      15/15          SDL_FreeSurface [74]
+                0.00    0.00      15/15          SDL_GetSurfaceColorMod [77]
+                0.00    0.00      15/15          SDL_SetTextureColorMod [83]
+                0.00    0.00      15/15          SDL_GetSurfaceAlphaMod [75]
+                0.00    0.00      15/15          SDL_SetTextureAlphaMod [81]
+                0.00    0.00      15/15          SDL_GetSurfaceBlendMode [76]
+                0.00    0.00      15/15          SDL_SetTextureBlendMode [82]
+                0.00    0.00      15/15          SDL_GetSurfaceScaleMode [78]
+                0.00    0.00      15/15          SDL_SetTextureScaleMode [84]
+                0.00    0.00      15/15          SDL_PixelFormatEnumToMasks [80]
+-----------------------------------------------
+                0.11    0.00     115/115         SDL_RenderCopy [7]
+[9]      0.2    0.11    0.00     115         GLES_RenderCopy [9]
+                0.00    0.00     115/119         GLES_SetBlendMode [44]
+-----------------------------------------------
+                0.11    0.00     115/115         SDL_UpdateTexture [11]
+[10]     0.2    0.11    0.00     115         GLES_UpdateTexture [10]
+                0.00    0.00     115/115         SetupTextureUpdate [45]
+-----------------------------------------------
+                0.00    0.11      15/15          SDL_CreateTextureFromSurface [8]
+[11]     0.2    0.00    0.11      15         SDL_UpdateTexture [11]
+                0.11    0.00     115/115         GLES_UpdateTexture [10]
+-----------------------------------------------
+                0.00    0.08     111/111         SDL_GL_SwapWindow [15]
+[12]     0.2    0.00    0.08     111         ANDROID_GL_SwapBuffers [12]
+                0.08    0.00     111/111         SDL_ANDROID_CallJavaSwapBuffers [14]
+-----------------------------------------------
+                0.00    0.08     111/111         SDL_RenderPresent [16]
+[13]     0.2    0.00    0.08     111         GLES_RenderPresent [13]
+                0.00    0.08     111/111         SDL_GL_SwapWindow [15]
+-----------------------------------------------
+                0.08    0.00     111/111         ANDROID_GL_SwapBuffers [12]
+[14]     0.2    0.08    0.00     111         SDL_ANDROID_CallJavaSwapBuffers [14]
+                0.00    0.00     111/111         SDL_ANDROID_drawTouchscreenKeyboard [46]
+                0.00    0.00     111/111         SDL_ANDROID_processAndroidTrackballDampening [47]
+-----------------------------------------------
+                0.00    0.08     111/111         GLES_RenderPresent [13]
+[15]     0.2    0.00    0.08     111         SDL_GL_SwapWindow [15]
+                0.00    0.08     111/111         ANDROID_GL_SwapBuffers [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     0.2    0.00    0.08                 SDL_RenderPresent [16]
+                0.00    0.08     111/111         GLES_RenderPresent [13]
+                0.00    0.00     111/264         SDL_GetCurrentRenderer [41]
+-----------------------------------------------
+                0.03    0.00       1/1           open_audio_device [18]
+[17]     0.1    0.03    0.00       1         SDL_CreateThread [17]
+                0.00    0.00       4/4           SDL_CreateSemaphore [99]
+                0.00    0.00       4/1703        SDL_mutexP [33]
+                0.00    0.00       4/1703        SDL_mutexV [34]
+                0.00    0.00       4/4           SDL_SYS_CreateThread [104]
+                0.00    0.00       4/4           SDL_SemWait [108]
+                0.00    0.00       4/4           SDL_DestroySemaphore [101]
+-----------------------------------------------
+                0.00    0.03       1/1           SDL_OpenAudio [19]
+[18]     0.1    0.00    0.03       1         open_audio_device [18]
+                0.03    0.00       1/1           SDL_CreateThread [17]
+                0.00    0.00       2/4           SDL_CalculateAudioSpec [97]
+                0.00    0.00       1/2           SDL_WasInit [109]
+                0.00    0.00       1/1           SDL_CreateMutex [116]
+                0.00    0.00       1/1           ANDROIDAUD_OpenAudio [112]
+-----------------------------------------------
+                                                 <spontaneous>
+[19]     0.1    0.00    0.03                 SDL_OpenAudio [19]
+                0.00    0.03       1/1           open_audio_device [18]
+                0.00    0.00       1/2           SDL_WasInit [109]
+-----------------------------------------------
+                0.00    0.02      15/15          SDL_CreateTextureFromSurface [8]
+[20]     0.0    0.00    0.02      15         SDL_ConvertSurface [20]
+                0.00    0.02      15/15          SDL_LowerBlit [21]
+                0.00    0.00      22/33          SDL_SetSurfaceBlendMode [51]
+                0.00    0.00      22/22          SDL_SetColorKey [63]
+                0.00    0.00      15/18          SDL_CreateRGBSurface [64]
+                0.00    0.00      15/48          SDL_SetClipRect [48]
+                0.00    0.00      11/11          SDL_GetRGBA [90]
+                0.00    0.00      11/11          SDL_MapRGBA [92]
+                0.00    0.00      11/11          SDL_LockSurface [91]
+                0.00    0.00      11/11          SDL_UnlockSurface [93]
+-----------------------------------------------
+                0.00    0.02      15/15          SDL_ConvertSurface [20]
+[21]     0.0    0.00    0.02      15         SDL_LowerBlit [21]
+                0.02    0.00      15/15          SDL_SoftBlit [22]
+                0.00    0.00      15/15          SDL_MapSurface [79]
+-----------------------------------------------
+                0.02    0.00      15/15          SDL_LowerBlit [21]
+[22]     0.0    0.02    0.00      15         SDL_SoftBlit [22]
+                0.00    0.00      11/11          Blit1to2 [85]
+                0.00    0.00       4/4           BlitNtoN [96]
+-----------------------------------------------
+                                                 <spontaneous>
+[23]     0.0    0.02    0.00                 SDL_DestroyTexture [23]
+                0.00    0.00      15/15          GLES_DestroyTexture [66]
+-----------------------------------------------
+                0.00    0.00     404/1671        SDL_PushEvent [6]
+                0.01    0.00    1267/1671        SDL_WaitEventTimeout [2]
+[24]     0.0    0.01    0.00    1671         SDL_PeepEvents [24]
+                0.00    0.00    1671/1703        SDL_mutexP [33]
+                0.00    0.00    1671/1703        SDL_mutexV [34]
+                0.00    0.00     410/410         SDL_CutEvent [38]
+-----------------------------------------------
+                0.01    0.00       4/4           SDL_RenderFillRects [26]
+[25]     0.0    0.01    0.00       4         GLES_RenderFillRects [25]
+                0.00    0.00       4/119         GLES_SetBlendMode [44]
+-----------------------------------------------
+                0.00    0.01       4/4           SDL_RenderFillRect [30]
+[26]     0.0    0.00    0.01       4         SDL_RenderFillRects [26]
+                0.01    0.00       4/4           GLES_RenderFillRects [25]
+                0.00    0.00       4/264         SDL_GetCurrentRenderer [41]
+                0.00    0.00       4/4           SDL_RESIZE_resizeRects [102]
+-----------------------------------------------
+                0.00    0.01       1/1           SDL_CloseAudio [29]
+[27]     0.0    0.00    0.01       1         SDL_CloseAudioDevice [27]
+                0.01    0.00       1/1           close_audio_device [28]
+                0.00    0.00       1/2           get_audio_device [110]
+-----------------------------------------------
+                0.01    0.00       1/1           SDL_CloseAudioDevice [27]
+[28]     0.0    0.01    0.00       1         close_audio_device [28]
+                0.00    0.00       1/1           SDL_WaitThread [122]
+                0.00    0.00       1/1           SDL_DestroyMutex [117]
+                0.00    0.00       1/1           ANDROIDAUD_CloseAudio [111]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     0.0    0.00    0.01                 SDL_CloseAudio [29]
+                0.00    0.01       1/1           SDL_CloseAudioDevice [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     0.0    0.00    0.01                 SDL_RenderFillRect [30]
+                0.00    0.01       4/4           SDL_RenderFillRects [26]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.0    0.01    0.00                 mem_close [31]
+                0.00    0.00       1/1           SDL_FreeRW [119]
+-----------------------------------------------
+                0.00    0.00     857/28854       SDL_WaitEventTimeout [2]
+                0.00    0.00   27997/28854       RunTimer [1]
+[32]     0.0    0.00    0.00   28854         SDL_Delay [32]
+-----------------------------------------------
+                0.00    0.00       4/1703        SDL_DelThread [100]
+                0.00    0.00       4/1703        SDL_CreateThread [17]
+                0.00    0.00      24/1703        SDL_RunAudio [121]
+                0.00    0.00    1671/1703        SDL_PeepEvents [24]
+[33]     0.0    0.00    0.00    1703         SDL_mutexP [33]
+-----------------------------------------------
+                0.00    0.00       4/1703        SDL_DelThread [100]
+                0.00    0.00       4/1703        SDL_CreateThread [17]
+                0.00    0.00      24/1703        SDL_RunAudio [121]
+                0.00    0.00    1671/1703        SDL_PeepEvents [24]
+[34]     0.0    0.00    0.00    1703         SDL_mutexV [34]
+-----------------------------------------------
+                0.00    0.00    1267/1267        SDL_PumpEvents [37]
+[35]     0.0    0.00    0.00    1267         ANDROID_PumpEvents [35]
+-----------------------------------------------
+                0.00    0.00    1267/1267        SDL_PumpEvents [37]
+[36]     0.0    0.00    0.00    1267         SDL_GetVideoDevice [36]
+-----------------------------------------------
+                0.00    0.00    1267/1267        SDL_WaitEventTimeout [2]
+[37]     0.0    0.00    0.00    1267         SDL_PumpEvents [37]
+                0.00    0.00    1267/1267        SDL_GetVideoDevice [36]
+                0.00    0.00    1267/1267        ANDROID_PumpEvents [35]
+-----------------------------------------------
+                0.00    0.00     410/410         SDL_PeepEvents [24]
+[38]     0.0    0.00    0.00     410         SDL_CutEvent [38]
+-----------------------------------------------
+                0.00    0.00     404/404         SDL_PushEvent [6]
+[39]     0.0    0.00    0.00     404         SDL_CompatEventFilter [39]
+-----------------------------------------------
+                0.00    0.00     404/404         SDL_PushEvent [6]
+[40]     0.0    0.00    0.00     404         SDL_GestureProcessEvent [40]
+-----------------------------------------------
+                0.00    0.00       4/264         SDL_RenderFillRects [26]
+                0.00    0.00       4/264         SDL_SetRenderDrawColor [1118]
+                0.00    0.00      15/264         SDL_CreateTexture [72]
+                0.00    0.00      15/264         SDL_CreateTextureFromSurface [8]
+                0.00    0.00     111/264         SDL_RenderPresent [16]
+                0.00    0.00     115/264         SDL_RenderCopy [7]
+[41]     0.0    0.00    0.00     264         SDL_GetCurrentRenderer [41]
+-----------------------------------------------
+                0.00    0.00      15/130         SDL_SetClipRect [48]
+                0.00    0.00     115/130         SDL_RenderCopy [7]
+[42]     0.0    0.00    0.00     130         SDL_IntersectRect [42]
+-----------------------------------------------
+                0.00    0.00      15/129         SDL_MapSurface [79]
+                0.00    0.00      22/129         SDL_SetSurfaceBlendMode [51]
+                0.00    0.00      29/129         SDL_FreeBlitMap [56]
+                0.00    0.00      30/129         SDL_FormatChanged [55]
+                0.00    0.00      33/129         SDL_SetColorKey [63]
+[43]     0.0    0.00    0.00     129         SDL_InvalidateMap [43]
+-----------------------------------------------
+                0.00    0.00       4/119         GLES_RenderFillRects [25]
+                0.00    0.00     115/119         GLES_RenderCopy [9]
+[44]     0.0    0.00    0.00     119         GLES_SetBlendMode [44]
+-----------------------------------------------
+                0.00    0.00     115/115         GLES_UpdateTexture [10]
+[45]     0.0    0.00    0.00     115         SetupTextureUpdate [45]
+-----------------------------------------------
+                0.00    0.00     111/111         SDL_ANDROID_CallJavaSwapBuffers [14]
+[46]     0.0    0.00    0.00     111         SDL_ANDROID_drawTouchscreenKeyboard [46]
+-----------------------------------------------
+                0.00    0.00     111/111         SDL_ANDROID_CallJavaSwapBuffers [14]
+[47]     0.0    0.00    0.00     111         SDL_ANDROID_processAndroidTrackballDampening [47]
+-----------------------------------------------
+                0.00    0.00       3/48          SDL_CreateRGBSurfaceFrom [584]
+                0.00    0.00      15/48          SDL_ConvertSurface [20]
+                0.00    0.00      30/48          SDL_CreateRGBSurface [64]
+[48]     0.0    0.00    0.00      48         SDL_SetClipRect [48]
+                0.00    0.00      15/130         SDL_IntersectRect [42]
+-----------------------------------------------
+                0.00    0.00      15/45          SDL_CreateTextureFromSurface [8]
+                0.00    0.00      30/45          SDL_AllocFormat [53]
+[49]     0.0    0.00    0.00      45         SDL_InitFormat [49]
+-----------------------------------------------
+                0.00    0.00      11/40          SDL_CreateRGBSurface [64]
+                0.00    0.00      29/40          SDL_FreeSurface [74]
+[50]     0.0    0.00    0.00      40         SDL_SetSurfacePalette [50]
+                0.00    0.00      11/11          SDL_DelPaletteWatch [89]
+                0.00    0.00      11/11          SDL_AddPaletteWatch [86]
+-----------------------------------------------
+                0.00    0.00      11/33          SDL_CreateRGBSurface [64]
+                0.00    0.00      22/33          SDL_ConvertSurface [20]
+[51]     0.0    0.00    0.00      33         SDL_SetSurfaceBlendMode [51]
+                0.00    0.00      22/129         SDL_InvalidateMap [43]
+-----------------------------------------------
+                0.00    0.00      30/30          SDL_CreateRGBSurface [64]
+[52]     0.0    0.00    0.00      30         SDL_AllocBlitMap [52]
+-----------------------------------------------
+                0.00    0.00      30/30          SDL_CreateRGBSurface [64]
+[53]     0.0    0.00    0.00      30         SDL_AllocFormat [53]
+                0.00    0.00      30/45          SDL_InitFormat [49]
+-----------------------------------------------
+                0.00    0.00      30/30          SDL_CreateRGBSurface [64]
+[54]     0.0    0.00    0.00      30         SDL_CalculatePitch [54]
+-----------------------------------------------
+                0.00    0.00      30/30          SDL_CreateRGBSurface [64]
+[55]     0.0    0.00    0.00      30         SDL_FormatChanged [55]
+                0.00    0.00      30/129         SDL_InvalidateMap [43]
+-----------------------------------------------
+                0.00    0.00      29/29          SDL_FreeSurface [74]
+[56]     0.0    0.00    0.00      29         SDL_FreeBlitMap [56]
+                0.00    0.00      29/129         SDL_InvalidateMap [43]
+-----------------------------------------------
+                0.00    0.00      29/29          SDL_FreeSurface [74]
+[57]     0.0    0.00    0.00      29         SDL_FreeFormat [57]
+-----------------------------------------------
+                0.00    0.00      24/24          SDL_RunAudio [121]
+[58]     0.0    0.00    0.00      24         ANDROIDAUD_GetAudioBuf [58]
+-----------------------------------------------
+                0.00    0.00      24/24          SDL_RunAudio [121]
+[59]     0.0    0.00    0.00      24         ANDROIDAUD_PlayAudio [59]
+-----------------------------------------------
+                0.00    0.00      24/24          SDL_RunAudio [121]
+[60]     0.0    0.00    0.00      24         ANDROIDAUD_WaitAudio [60]
+-----------------------------------------------
+                0.00    0.00      24/24          SDL_CreateTextureFromSurface [8]
+[61]     0.0    0.00    0.00      24         SDL_MasksToPixelFormatEnum [61]
+-----------------------------------------------
+                0.00    0.00      11/22          SDL_DelPaletteWatch [89]
+                0.00    0.00      11/22          SDL_CreateRGBSurface [64]
+[62]     0.0    0.00    0.00      22         SDL_FreePalette [62]
+-----------------------------------------------
+                0.00    0.00      22/22          SDL_ConvertSurface [20]
+[63]     0.0    0.00    0.00      22         SDL_SetColorKey [63]
+                0.00    0.00      33/129         SDL_InvalidateMap [43]
+-----------------------------------------------
+                0.00    0.00       3/18          SDL_CreateRGBSurfaceFrom [584]
+                0.00    0.00      15/18          SDL_ConvertSurface [20]
+[64]     0.0    0.00    0.00      18         SDL_CreateRGBSurface [64]
+                0.00    0.00      30/30          SDL_AllocFormat [53]
+                0.00    0.00      30/30          SDL_CalculatePitch [54]
+                0.00    0.00      30/48          SDL_SetClipRect [48]
+                0.00    0.00      30/30          SDL_AllocBlitMap [52]
+                0.00    0.00      30/30          SDL_FormatChanged [55]
+                0.00    0.00      11/11          SDL_AllocPalette [87]
+                0.00    0.00      11/40          SDL_SetSurfacePalette [50]
+                0.00    0.00      11/22          SDL_FreePalette [62]
+                0.00    0.00      11/33          SDL_SetSurfaceBlendMode [51]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTexture [72]
+[65]     0.0    0.00    0.00      15         GLES_CreateTexture [65]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_DestroyTexture [23]
+[66]     0.0    0.00    0.00      15         GLES_DestroyTexture [66]
+                0.00    0.00      15/15          SDL_FreeDirtyRects [73]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_SetTextureAlphaMod [81]
+[67]     0.0    0.00    0.00      15         GLES_SetTextureAlphaMod [67]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_SetTextureBlendMode [82]
+[68]     0.0    0.00    0.00      15         GLES_SetTextureBlendMode [68]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_SetTextureColorMod [83]
+[69]     0.0    0.00    0.00      15         GLES_SetTextureColorMod [69]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_SetTextureScaleMode [84]
+[70]     0.0    0.00    0.00      15         GLES_SetTextureScaleMode [70]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_MapSurface [79]
+[71]     0.0    0.00    0.00      15         SDL_CalculateBlit [71]
+                0.00    0.00      11/11          SDL_CalculateBlit1 [88]
+                0.00    0.00       4/4           SDL_CalculateBlitN [98]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[72]     0.0    0.00    0.00      15         SDL_CreateTexture [72]
+                0.00    0.00      15/264         SDL_GetCurrentRenderer [41]
+                0.00    0.00      15/15          GLES_CreateTexture [65]
+-----------------------------------------------
+                0.00    0.00      15/15          GLES_DestroyTexture [66]
+[73]     0.0    0.00    0.00      15         SDL_FreeDirtyRects [73]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[74]     0.0    0.00    0.00      15         SDL_FreeSurface [74]
+                0.00    0.00      29/40          SDL_SetSurfacePalette [50]
+                0.00    0.00      29/29          SDL_FreeFormat [57]
+                0.00    0.00      29/29          SDL_FreeBlitMap [56]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[75]     0.0    0.00    0.00      15         SDL_GetSurfaceAlphaMod [75]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[76]     0.0    0.00    0.00      15         SDL_GetSurfaceBlendMode [76]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[77]     0.0    0.00    0.00      15         SDL_GetSurfaceColorMod [77]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[78]     0.0    0.00    0.00      15         SDL_GetSurfaceScaleMode [78]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_LowerBlit [21]
+[79]     0.0    0.00    0.00      15         SDL_MapSurface [79]
+                0.00    0.00      15/129         SDL_InvalidateMap [43]
+                0.00    0.00      15/15          SDL_CalculateBlit [71]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[80]     0.0    0.00    0.00      15         SDL_PixelFormatEnumToMasks [80]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[81]     0.0    0.00    0.00      15         SDL_SetTextureAlphaMod [81]
+                0.00    0.00      15/15          GLES_SetTextureAlphaMod [67]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[82]     0.0    0.00    0.00      15         SDL_SetTextureBlendMode [82]
+                0.00    0.00      15/15          GLES_SetTextureBlendMode [68]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[83]     0.0    0.00    0.00      15         SDL_SetTextureColorMod [83]
+                0.00    0.00      15/15          GLES_SetTextureColorMod [69]
+-----------------------------------------------
+                0.00    0.00      15/15          SDL_CreateTextureFromSurface [8]
+[84]     0.0    0.00    0.00      15         SDL_SetTextureScaleMode [84]
+                0.00    0.00      15/15          GLES_SetTextureScaleMode [70]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_SoftBlit [22]
+[85]     0.0    0.00    0.00      11         Blit1to2 [85]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_SetSurfacePalette [50]
+[86]     0.0    0.00    0.00      11         SDL_AddPaletteWatch [86]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_CreateRGBSurface [64]
+[87]     0.0    0.00    0.00      11         SDL_AllocPalette [87]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_CalculateBlit [71]
+[88]     0.0    0.00    0.00      11         SDL_CalculateBlit1 [88]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_SetSurfacePalette [50]
+[89]     0.0    0.00    0.00      11         SDL_DelPaletteWatch [89]
+                0.00    0.00      11/22          SDL_FreePalette [62]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_ConvertSurface [20]
+[90]     0.0    0.00    0.00      11         SDL_GetRGBA [90]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_ConvertSurface [20]
+[91]     0.0    0.00    0.00      11         SDL_LockSurface [91]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_ConvertSurface [20]
+[92]     0.0    0.00    0.00      11         SDL_MapRGBA [92]
+-----------------------------------------------
+                0.00    0.00      11/11          SDL_ConvertSurface [20]
+[93]     0.0    0.00    0.00      11         SDL_UnlockSurface [93]
+-----------------------------------------------
+                0.00    0.00       6/6           SDL_ReadLE16 [1015]
+[94]     0.0    0.00    0.00       6         mem_read [94]
+-----------------------------------------------
+                0.00    0.00       1/5           SDL_RunAudio [121]
+                0.00    0.00       4/5           SDL_RunThread [103]
+[95]     0.0    0.00    0.00       5         SDL_ThreadID [95]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_SoftBlit [22]
+[96]     0.0    0.00    0.00       4         BlitNtoN [96]
+-----------------------------------------------
+                0.00    0.00       2/4           open_audio_device [18]
+                0.00    0.00       2/4           ANDROIDAUD_OpenAudio [112]
+[97]     0.0    0.00    0.00       4         SDL_CalculateAudioSpec [97]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_CalculateBlit [71]
+[98]     0.0    0.00    0.00       4         SDL_CalculateBlitN [98]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_CreateThread [17]
+[99]     0.0    0.00    0.00       4         SDL_CreateSemaphore [99]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_WaitThread [122]
+[100]    0.0    0.00    0.00       4         SDL_DelThread [100]
+                0.00    0.00       4/1703        SDL_mutexP [33]
+                0.00    0.00       4/1703        SDL_mutexV [34]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_CreateThread [17]
+[101]    0.0    0.00    0.00       4         SDL_DestroySemaphore [101]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_RenderFillRects [26]
+[102]    0.0    0.00    0.00       4         SDL_RESIZE_resizeRects [102]
+-----------------------------------------------
+                0.00    0.00       4/4           RunThread [249]
+[103]    0.0    0.00    0.00       4         SDL_RunThread [103]
+                0.00    0.00       4/4           SDL_SYS_SetupThread [105]
+                0.00    0.00       4/5           SDL_ThreadID [95]
+                0.00    0.00       4/4           SDL_SemPost [107]
+                0.00    0.00       3/27          __fixunssfsi [1414]
+                0.00    0.00       1/1           SDL_RunAudio [121]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_CreateThread [17]
+[104]    0.0    0.00    0.00       4         SDL_SYS_CreateThread [104]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_RunThread [103]
+[105]    0.0    0.00    0.00       4         SDL_SYS_SetupThread [105]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_WaitThread [122]
+[106]    0.0    0.00    0.00       4         SDL_SYS_WaitThread [106]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_RunThread [103]
+[107]    0.0    0.00    0.00       4         SDL_SemPost [107]
+-----------------------------------------------
+                0.00    0.00       4/4           SDL_CreateThread [17]
+[108]    0.0    0.00    0.00       4         SDL_SemWait [108]
+-----------------------------------------------
+                0.00    0.00       1/2           open_audio_device [18]
+                0.00    0.00       1/2           SDL_OpenAudio [19]
+[109]    0.0    0.00    0.00       2         SDL_WasInit [109]
+-----------------------------------------------
+                0.00    0.00       1/2           SDL_PauseAudioDevice [120]
+                0.00    0.00       1/2           SDL_CloseAudioDevice [27]
+[110]    0.0    0.00    0.00       2         get_audio_device [110]
+-----------------------------------------------
+                0.00    0.00       1/1           close_audio_device [28]
+[111]    0.0    0.00    0.00       1         ANDROIDAUD_CloseAudio [111]
+-----------------------------------------------
+                0.00    0.00       1/1           open_audio_device [18]
+[112]    0.0    0.00    0.00       1         ANDROIDAUD_OpenAudio [112]
+                0.00    0.00       2/4           SDL_CalculateAudioSpec [97]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_RunAudio [121]
+[113]    0.0    0.00    0.00       1         ANDROIDAUD_ThreadDeinit [113]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_RunAudio [121]
+[114]    0.0    0.00    0.00       1         ANDROIDAUD_ThreadInit [114]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_RWFromMem [1010]
+[115]    0.0    0.00    0.00       1         SDL_AllocRW [115]
+-----------------------------------------------
+                0.00    0.00       1/1           open_audio_device [18]
+[116]    0.0    0.00    0.00       1         SDL_CreateMutex [116]
+-----------------------------------------------
+                0.00    0.00       1/1           close_audio_device [28]
+[117]    0.0    0.00    0.00       1         SDL_DestroyMutex [117]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_SendQuit [4]
+[118]    0.0    0.00    0.00       1         SDL_EventState [118]
+-----------------------------------------------
+                0.00    0.00       1/1           mem_close [31]
+[119]    0.0    0.00    0.00       1         SDL_FreeRW [119]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_PauseAudio [985]
+[120]    0.0    0.00    0.00       1         SDL_PauseAudioDevice [120]
+                0.00    0.00       1/2           get_audio_device [110]
+-----------------------------------------------
+                0.00    0.00       1/1           SDL_RunThread [103]
+[121]    0.0    0.00    0.00       1         SDL_RunAudio [121]
+                0.00    0.00      24/1703        SDL_mutexP [33]
+                0.00    0.00      24/27          __fixunssfsi [1414]
+                0.00    0.00      24/1703        SDL_mutexV [34]
+                0.00    0.00      24/24          ANDROIDAUD_PlayAudio [59]
+                0.00    0.00      24/24          ANDROIDAUD_WaitAudio [60]
+                0.00    0.00      24/24          ANDROIDAUD_GetAudioBuf [58]
+                0.00    0.00       1/5           SDL_ThreadID [95]
+                0.00    0.00       1/1           ANDROIDAUD_ThreadInit [114]
+                0.00    0.00       1/1           ANDROIDAUD_ThreadDeinit [113]
+-----------------------------------------------
+                0.00    0.00       1/1           close_audio_device [28]
+[122]    0.0    0.00    0.00       1         SDL_WaitThread [122]
+                0.00    0.00       4/4           SDL_SYS_WaitThread [106]
+                0.00    0.00       4/4           SDL_DelThread [100]
+-----------------------------------------------
+                0.00    0.00       3/27          SDL_RunThread [103]
+                0.00    0.00      24/27          SDL_RunAudio [121]
+[1414]   0.0    0.00    0.00      27         __fixunssfsi [1414]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+ [111] ANDROIDAUD_CloseAudio (SDL_androidaudio.c) [116] SDL_CreateMutex [80] SDL_PixelFormatEnumToMasks
+  [58] ANDROIDAUD_GetAudioBuf (SDL_androidaudio.c) [64] SDL_CreateRGBSurface [37] SDL_PumpEvents
+ [112] ANDROIDAUD_OpenAudio (SDL_androidaudio.c) [99] SDL_CreateSemaphore [6] SDL_PushEvent
+  [59] ANDROIDAUD_PlayAudio (SDL_androidaudio.c) [72] SDL_CreateTexture [102] SDL_RESIZE_resizeRects (SDL_video.c)
+ [113] ANDROIDAUD_ThreadDeinit (SDL_androidaudio.c) [17] SDL_CreateThread [7] SDL_RenderCopy
+ [114] ANDROIDAUD_ThreadInit (SDL_androidaudio.c) [38] SDL_CutEvent (SDL_events.c) [26] SDL_RenderFillRects
+  [60] ANDROIDAUD_WaitAudio (SDL_androidaudio.c) [89] SDL_DelPaletteWatch [121] SDL_RunAudio
+  [12] ANDROID_GL_SwapBuffers (SDL_androidvideo-1.3.c) [100] SDL_DelThread (SDL_thread.c) [103] SDL_RunThread
+  [35] ANDROID_PumpEvents (SDL_androidvideo-1.3.c) [32] SDL_Delay [104] SDL_SYS_CreateThread
+  [85] Blit1to2 (SDL_blit_1.c) [117] SDL_DestroyMutex    [105] SDL_SYS_SetupThread
+  [96] BlitNtoN (SDL_blit_N.c) [101] SDL_DestroySemaphore [106] SDL_SYS_WaitThread
+  [65] GLES_CreateTexture (SDL_renderer_gles.c) [23] SDL_DestroyTexture [107] SDL_SemPost
+  [66] GLES_DestroyTexture (SDL_renderer_gles.c) [118] SDL_EventState [108] SDL_SemWait
+   [9] GLES_RenderCopy (SDL_renderer_gles.c) [55] SDL_FormatChanged [4] SDL_SendQuit
+  [25] GLES_RenderFillRects (SDL_renderer_gles.c) [56] SDL_FreeBlitMap [48] SDL_SetClipRect
+  [13] GLES_RenderPresent (SDL_renderer_gles.c) [73] SDL_FreeDirtyRects [63] SDL_SetColorKey
+  [44] GLES_SetBlendMode (SDL_renderer_gles.c) [57] SDL_FreeFormat [51] SDL_SetSurfaceBlendMode
+  [67] GLES_SetTextureAlphaMod (SDL_renderer_gles.c) [62] SDL_FreePalette [50] SDL_SetSurfacePalette
+  [68] GLES_SetTextureBlendMode (SDL_renderer_gles.c) [119] SDL_FreeRW [81] SDL_SetTextureAlphaMod
+  [69] GLES_SetTextureColorMod (SDL_renderer_gles.c) [74] SDL_FreeSurface [82] SDL_SetTextureBlendMode
+  [70] GLES_SetTextureScaleMode (SDL_renderer_gles.c) [15] SDL_GL_SwapWindow [83] SDL_SetTextureColorMod
+  [10] GLES_UpdateTexture (SDL_renderer_gles.c) [40] SDL_GestureProcessEvent [84] SDL_SetTextureScaleMode
+   [1] RunTimer (SDL_systimer.c) [41] SDL_GetCurrentRenderer (SDL_video.c) [22] SDL_SoftBlit (SDL_blit.c)
+  [14] SDL_ANDROID_CallJavaSwapBuffers [90] SDL_GetRGBA   [95] SDL_ThreadID
+  [46] SDL_ANDROID_drawTouchscreenKeyboard [75] SDL_GetSurfaceAlphaMod [93] SDL_UnlockSurface
+  [47] SDL_ANDROID_processAndroidTrackballDampening [76] SDL_GetSurfaceBlendMode [11] SDL_UpdateTexture
+  [86] SDL_AddPaletteWatch    [77] SDL_GetSurfaceColorMod  [2] SDL_WaitEventTimeout
+  [52] SDL_AllocBlitMap       [78] SDL_GetSurfaceScaleMode [122] SDL_WaitThread
+  [53] SDL_AllocFormat        [36] SDL_GetVideoDevice    [109] SDL_WasInit
+  [87] SDL_AllocPalette       [49] SDL_InitFormat         [33] SDL_mutexP
+ [115] SDL_AllocRW            [42] SDL_IntersectRect      [34] SDL_mutexV
+  [97] SDL_CalculateAudioSpec [43] SDL_InvalidateMap      [45] SetupTextureUpdate (SDL_renderer_gles.c)
+  [71] SDL_CalculateBlit      [91] SDL_LockSurface      [1414] __fixunssfsi
+  [88] SDL_CalculateBlit1     [21] SDL_LowerBlit          [28] close_audio_device (SDL_audio.c)
+  [98] SDL_CalculateBlitN     [92] SDL_MapRGBA           [110] get_audio_device (SDL_audio.c)
+  [54] SDL_CalculatePitch     [79] SDL_MapSurface         [31] mem_close (SDL_rwops.c)
+  [27] SDL_CloseAudioDevice   [61] SDL_MasksToPixelFormatEnum [94] mem_read (SDL_rwops.c)
+  [39] SDL_CompatEventFilter (SDL_compat.c) [120] SDL_PauseAudioDevice [18] open_audio_device (SDL_audio.c)
+  [20] SDL_ConvertSurface     [24] SDL_PeepEvents

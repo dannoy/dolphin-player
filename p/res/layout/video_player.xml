@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <merge xmlns:android="http://schemas.android.com/apk/res/android" >
+    <com.broov.player.GLSurfaceView_SDL android:id="@+id/glsurfaceview" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"></com.broov.player.GLSurfaceView_SDL>
+            <FrameLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="@color/transparent" android:id="@+id/hidecontainer">
+    	
+    	    <TableLayout android:background="@color/transparent" android:layout_gravity="bottom" android:stretchColumns="1" android:layout_height="wrap_content" android:id="@+id/controlPanel" android:layout_width="wrap_content" android:orientation="vertical" >                				
+                <TableRow android:baselineAligned="true" android:paddingLeft="5dip" android:paddingRight="5dip" android:layout_height="wrap_content" android:layout_width="wrap_content">
+                    <TextView android:textSize="16dip" android:gravity="bottom|center" android:layout_width="wrap_content" android:id="@+id/currenttime" android:textColor="#CCCCCC" android:layout_height="wrap_content" android:text="00:00"></TextView>
+                    <SeekBar android:paddingLeft="16dip" android:paddingRight="16dip" style="?android:attr/progressBarStyleHorizontal"  android:progress="0" android:layout_weight="1.0" android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/progressbar" android:max="1000"  android:minHeight="7dip" 
+android:maxHeight="8dip" android:thumb="@drawable/seekbar_thumb" android:thumbOffset="35dip" ></SeekBar>
+                    <TextView android:textSize="16dip" android:gravity="bottom|center" android:layout_width="wrap_content" android:id="@+id/totaltime" android:textColor="#CCCCCC" android:layout_height="wrap_content" android:text="00:00"></TextView>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow2" android:paddingTop="5dip" android:layout_height="wrap_content" android:layout_width="wrap_content" >
+                     <ImageView android:paddingLeft="20dip" android:src="@drawable/fs_shadow_4_3" android:layout_height="wrap_content" android:id="@+id/fs_shadow" android:layout_width="wrap_content" android:layout_weight="0.0" android:layout_gravity="bottom|left"> </ImageView>
+                     <LinearLayout android:layout_height="wrap_content"             			
+            			android:layout_width="wrap_content"
+            			android:layout_weight="1.0" 
+            			android:layout_gravity="bottom|center"
+            			android:paddingLeft="10dip"
+            			android:paddingRight="10dip">
+                     
+                     <ImageView android:layout_gravity="left" android:id="@+id/img_vp_backward" android:src="@drawable/vp_backward" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
+                     <ImageView android:paddingLeft="20dip" android:paddingRight="20dip" android:layout_gravity="center" android:id="@+id/img_vp_play" android:src="@drawable/vp_pause_shadow" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
+                     <ImageView android:layout_gravity="right" android:id="@+id/img_vp_forward" android:src="@drawable/vp_forward" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
+                     </LinearLayout>
+                     
+                </TableRow>
+            </TableLayout>
+            </FrameLayout>
+     	
+ </merge>

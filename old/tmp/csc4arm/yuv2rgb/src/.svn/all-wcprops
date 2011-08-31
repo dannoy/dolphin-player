@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/53/trunk/libcsc-armv5te/src
+END
+__RGB888toYUV422.S
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__RGB888toYUV422.S
+END
+__BGR888toYUV422.S
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__BGR888toYUV422.S
+END
+__UYVYtoBGR888.S
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__UYVYtoBGR888.S
+END
+yuv_to_rgb_constants.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/yuv_to_rgb_constants.h
+END
+rgb_to_yuv_constants.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/rgb_to_yuv_constants.h
+END
+__BGR888toYUV422_C.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/32/trunk/libcsc-armv5te/src/__BGR888toYUV422_C.c
+END
+__ARGB8888toYUV422.S
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__ARGB8888toYUV422.S
+END
+__RGBA8888toYUV422.S
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__RGBA8888toYUV422.S
+END
+yuvplanar_to_rgb_template.S
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/53/trunk/libcsc-armv5te/src/yuvplanar_to_rgb_template.S
+END
+__ABGR8888toYUV422.S
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/26/trunk/libcsc-armv5te/src/__ABGR8888toYUV422.S
+END
+rgb_to_yuv_template.S
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/49/trunk/libcsc-armv5te/src/rgb_to_yuv_template.S
+END
+yuv_to_rgb_template.S
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/49/trunk/libcsc-armv5te/src/yuv_to_rgb_template.S
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50/trunk/libcsc-armv5te/src/Makefile
+END
+__YUV420PtoBGR888.S
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/50/trunk/libcsc-armv5te/src/__YUV420PtoBGR888.S
+END

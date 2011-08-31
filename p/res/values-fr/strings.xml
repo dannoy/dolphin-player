@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Dolphin Player</string>
+    <string name="feedback">Commentaires</string>
+
+    <string name="mailid">ID E-mail (facultatif)</string>
+    <string name="submit">Soumettre</string>
+    <string name="description">Description de</string>
+    <string name="category">Catégorie</string>
+    <string name="cancel">Annuler</string>
+    <string name="ok">Sur OK</string>
+    <string name="about">A propos</string>
+    <string name="search">Rechercher</string>
+    <string name="quit">Quitter</string>
+    <string name="display">Affichage</string>
+    <string name="setting">Paramètres</string>
+    <string name="searchforafile">Rechercher un fichier</string>
+    <string name="pressbackagaintoquit">Appuyez à nouveau pour quitter.</string>
+    <string name="cantreadfolderduetopermissions">Impossible d\'t dossier en lecture en raison d\'autorisations</string>
+    <string name="searching">Recherche</string>
+    <string name="searchingcurrentfilesystem">Recherche système de fichiers</string>
+    <string name ="changeto">Changer pour </string>
+    <string name ="changetextcolor">Changer la couleur du texte</string>
+    <string name ="sortby">Trier par ...</string>
+    <string name ="loop">Boucle ...</string>
+    <string name ="pleaseenteryourthoughtsindescription">S\'il vous plaît Inscrivez vos pensées dans Description de</string>
+    <string name="unabletoconnecttoserverpleasetryaftersometime">Impossible de se connecter au serveur. S\'il vous plaît essayer après un certain temps</string>
+    <string name="calculatinginformation">Calcul de l\'information.</string>
+    <string name="pathis">Path est</string>
+    <string name="textcolor">Couleur du texte</string>
+    <string name="changethetextcolorpreference">Changer la couleur du texte de préférence</string>
+    <string name="showhiddenfilesfolders">Afficher les fichiers / dossiers cachés</string>
+    <string name="displayhiddenfilesandfolders">Afficher les fichiers et dossiers cachés</string>
+    <string name="subtitle">Sous-titres</string>
+    <string name="hidesubtitles">Masquer les sous-titres</string>
+    <string name="donotshowsubtitlesevenifexists">Ne pas afficher les sous-titres même si les fichiers sous-titres existe</string>
+    <string name="audio">Audio de</string>
+    <string name="loopaudio">Lire Audio</string>
+    <string name="video">Vidéo</string>
+    <string name="loopvideo">Lire Vidéo</string>
+    <string name="choosehowtoloopplayaudiofiles">Choisissez le mode de fichiers audio en boucle dans un dossier</string>
+    <string name="choosehowtoloopplayvideofiles">Choisissez le mode de fichiers vidéo en boucle dans un dossier</string>
+    <string name="sortingtype">Tri type</string>
+    <string name="choosehowtosortfilesandfolders">Choisissez la façon de trier les fichiers et dossiers</string>
+    <string name ="language">Langue</string>
+    <string name ="chooselanguageforapplication">Choisissez la langue pour l\'application</string>
+    <string name="help">Aide</string>
+    <string name="subtitlesize">La taille de sous-titres</string>
+    <string name="displaysizeofsubtitle">Taille de l\'écran de sous-titres</string>
+    <string name="showsubtitles">Afficher les sous-titres</string>
+  	<string name="showsubtitlesifexists">Afficher les sous-titres si le fichier sous-titres disponibles</string>
+  	<string name="found">Trouver</string>
+  	<string name="files">fichier (s)</string>
+    
+</resources>
