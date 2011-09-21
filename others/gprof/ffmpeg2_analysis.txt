@@ -1,0 +1,2153 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 22.61     22.64    22.64  1564225     0.00     0.00  mpeg4_decode_mb
+ 17.45     40.11    17.47  1564223     0.00     0.00  MPV_decode_mb
+ 13.28     53.41    13.30  5244910     0.00     0.00  mpeg4_decode_block
+ 12.93     66.36    12.95     1778     0.01     0.05  decode_slice
+ 12.28     78.65    12.29  1384157     0.00     0.00  put_dct
+  8.65     87.31     8.66   885293     0.00     0.00  MPV_motion
+  6.74     94.06     6.75     2890     0.00     0.00  mp_decode_frame
+  2.63     96.69     2.63                             sws_scale
+  1.11     97.80     1.11     1777     0.00     0.00  MPV_frame_end
+  0.35     98.15     0.35     9241     0.00     0.00  av_destruct_packet
+  0.24     98.39     0.24    97907     0.00     0.00  get_le16
+  0.19     98.58     0.19     3436     0.00     0.00  decode_vop_header
+  0.19     98.77     0.19        1     0.19     0.54  avi_load_index
+  0.17     98.94     0.17     4536     0.00     0.00  avi_read_packet
+  0.17     99.11     0.17     1778     0.00     0.05  ff_h263_decode_frame
+  0.12     99.23     0.12       56     0.00     0.00  av_dup_packet
+  0.08     99.31     0.08    48947     0.00     0.00  get_le32
+  0.07     99.38     0.07     1658     0.00     0.00  mpeg4video_parse
+  0.06     99.44     0.06      100     0.00     0.00  url_read
+  0.06     99.50     0.06       56     0.00     0.02  av_read_frame_internal
+  0.05     99.55     0.05     4538     0.00     0.00  av_free_packet
+  0.05     99.60     0.05     4537     0.00     0.00  compute_pkt_fields
+  0.05     99.65     0.05     4535     0.00     0.00  av_new_packet
+  0.05     99.70     0.05     2410     0.00     0.00  av_freep
+  0.05     99.75     0.05                             avcodec_default_get_buffer
+  0.04     99.79     0.04                             avcodec_decode_video2
+  0.04     99.83     0.04                             sws_getCachedContext
+  0.03     99.86     0.03    18158     0.00     0.00  url_ftell
+  0.03     99.89     0.03     4538     0.00     0.00  av_parser_parse2
+  0.02     99.91     0.02    12214     0.00     0.00  av_add_index_entry
+  0.02     99.93     0.02     4535     0.00     0.00  av_get_packet
+  0.02     99.95     0.02     1778     0.00     0.00  MPV_frame_start
+  0.02     99.97     0.02      133     0.00     0.00  av_mallocz
+  0.02     99.99     0.02       64     0.00     0.00  av_rescale_q
+  0.02    100.01     0.02        4     0.01     0.01  av_opt_set_defaults2
+  0.02    100.03     0.02        2     0.01     0.01  av_probe_input_format2
+  0.01    100.04     0.01     4536     0.00     0.00  av_read_packet
+  0.01    100.05     0.01     2890     0.00     0.00  decode_frame
+  0.01    100.06     0.01     2879     0.00     0.00  mpegaudio_parse
+  0.01    100.07     0.01     1778     0.00     0.00  ff_alloc_picture
+  0.01    100.08     0.01        2     0.01     0.01  ac3_eac3_probe
+  0.01    100.09     0.01        2     0.01     0.01  decode_init
+  0.01    100.10     0.01        1     0.01     0.01  av_close_input_stream
+  0.01    100.11     0.01        1     0.01     6.77  avcodec_decode_audio3
+  0.01    100.12     0.01        1     0.01     0.01  dsputil_init
+  0.00    100.12     0.00  5311757     0.00     0.00  add_dct
+  0.00    100.12     0.00  1564225     0.00     0.00  mpeg4_is_resync
+  0.00    100.12     0.00  1564224     0.00     0.00  ff_h263_update_motion_val
+  0.00    100.12     0.00  1384158     0.00     0.00  get_amv
+  0.00    100.12     0.00  1384158     0.00     0.00  mpeg4_decode_dc
+  0.00    100.12     0.00  1384158     0.00     0.00  mpeg4_pred_ac
+  0.00    100.12     0.00  1384157     0.00     0.00  dct_unquantize_h263_intra_armv5te
+  0.00    100.12     0.00  1286917     0.00     0.00  h263_decode_motion
+  0.00    100.12     0.00   970204     0.00     0.00  clear_blocks_c
+  0.00    100.12     0.00   885292     0.00     0.00  prefetch_motion
+  0.00    100.12     0.00   643458     0.00     0.00  h263_pred_motion
+  0.00    100.12     0.00   232916     0.00     0.00  get_byte
+  0.00    100.12     0.00   208385     0.00     0.00  ff_mpa_synth_filter
+  0.00    100.12     0.00   190585     0.00     0.00  ff_clean_intra_table_entries
+  0.00    100.12     0.00    72857     0.00     0.00  ff_put_no_rnd_pixels16_xy2_arm
+  0.00    100.12     0.00    53758     0.00     0.00  ff_emulated_edge_mc
+  0.00    100.12     0.00    51935     0.00     0.00  ff_put_pixels16_xy2_arm
+  0.00    100.12     0.00    49333     0.00     0.00  url_feof
+  0.00    100.12     0.00    44058     0.00     0.00  ff_put_no_rnd_pixels16_y2_arm
+  0.00    100.12     0.00    40111     0.00     0.00  ff_put_no_rnd_pixels16_x2_arm
+  0.00    100.12     0.00    39106     0.00     0.00  ff_init_block_index
+  0.00    100.12     0.00    39105     0.00     0.00  ff_draw_horiz_band
+  0.00    100.12     0.00    35029     0.00     0.00  ff_put_pixels16_y2_arm
+  0.00    100.12     0.00    31614     0.00     0.00  ff_put_pixels16_x2_arm
+  0.00    100.12     0.00    18173     0.00     0.00  url_fseek
+  0.00    100.12     0.00    13872     0.00     0.00  av_index_search_timestamp
+  0.00    100.12     0.00    13748     0.00     0.00  ff_init_scantable
+  0.00    100.12     0.00    13610     0.00     0.00  av_init_packet
+  0.00    100.12     0.00    13559     0.00     0.00  ff_mpa_decode_header
+  0.00    100.12     0.00    12214     0.00     0.00  av_fast_realloc
+  0.00    100.12     0.00    11768     0.00     0.00  av_free
+  0.00    100.12     0.00    10012     0.00     0.00  get_bits
+  0.00    100.12     0.00     9231     0.00     0.00  av_malloc
+  0.00    100.12     0.00     7483     0.00     0.00  av_rescale_rnd
+  0.00    100.12     0.00     6576     0.00     0.00  skip_bits_long
+  0.00    100.12     0.00     5770     0.00     0.00  ff_mpegaudio_decode_header
+  0.00    100.12     0.00     5333     0.00     0.00  ff_copy_picture
+  0.00    100.12     0.00     5331     0.00     0.00  draw_edges_c
+  0.00    100.12     0.00     4542     0.00     0.00  get_buffer
+  0.00    100.12     0.00     4539     0.00     0.00  compute_frame_duration
+  0.00    100.12     0.00     4539     0.00     0.00  update_initial_timestamps
+  0.00    100.12     0.00     4538     0.00     0.00  av_shrink_packet
+  0.00    100.12     0.00     4537     0.00     0.00  ff_fetch_timestamp
+  0.00    100.12     0.00     4097     0.00     0.00  init_get_bits
+  0.00    100.12     0.00     4096     0.00     0.00  ff_ac3_parse_header
+  0.00    100.12     0.00     3613     0.00     0.00  __aeabi_ulcmp
+  0.00    100.12     0.00     3568     0.00     0.00  avcodec_check_dimensions
+  0.00    100.12     0.00     3548     0.00     0.00  reset_ptr
+  0.00    100.12     0.00     3437     0.00     0.00  ff_mpeg4_decode_picture_header
+  0.00    100.12     0.00     3140     0.00     0.00  get_bits1
+  0.00    100.12     0.00     2890     0.00     0.00  ff_mpa_l2_select_table
+  0.00    100.12     0.00     2881     0.00     0.00  av_rescale
+  0.00    100.12     0.00     2881     0.00     0.00  get_audio_frame_size
+  0.00    100.12     0.00     2879     0.00     0.00  ff_combine_frame
+  0.00    100.12     0.00     1779     0.00     0.00  init_get_bits
+  0.00    100.12     0.00     1778     0.00     0.00  ff_er_frame_start
+  0.00    100.12     0.00     1778     0.00     0.00  ff_find_unused_picture
+  0.00    100.12     0.00     1778     0.00     0.00  ff_set_qscale
+  0.00    100.12     0.00     1778     0.00     0.00  free_frame_buffer
+  0.00    100.12     0.00     1777     0.00     0.00  ff_er_add_slice
+  0.00    100.12     0.00     1777     0.00     0.00  ff_er_frame_end
+  0.00    100.12     0.00     1776     0.00     0.00  ff_hardcodedcpuflags
+  0.00    100.12     0.00     1775     0.00     0.00  ff_print_debug_info
+  0.00    100.12     0.00     1775     0.00     0.00  get_consumed_bytes
+  0.00    100.12     0.00     1774     0.00     0.00  yuv2rgb_c_24_rgb
+  0.00    100.12     0.00     1658     0.00     0.00  init_get_bits
+  0.00    100.12     0.00      766     0.00     0.00  av_next_option
+  0.00    100.12     0.00      367     0.00     0.00  av_find_opt
+  0.00    100.12     0.00      367     0.00     0.00  av_set_number2
+  0.00    100.12     0.00      315     0.00     0.00  av_set_int
+  0.00    100.12     0.00      297     0.00     0.00  decode_user_data
+  0.00    100.12     0.00      180     0.00     0.00  av_realloc
+  0.00    100.12     0.00      116     0.00     0.00  has_codec_parameters
+  0.00    100.12     0.00      100     0.00     0.00  file_read
+  0.00    100.12     0.00      100     0.00     0.00  fill_buffer
+  0.00    100.12     0.00       60     0.00     0.00  av_gcd
+  0.00    100.12     0.00       56     0.00     0.00  add_to_pktbuf
+  0.00    100.12     0.00       48     0.00     0.00  av_set_double
+  0.00    100.12     0.00       36     0.00     0.00  avcodec_get_frame_defaults
+  0.00    100.12     0.00       32     0.00     0.00  build_table
+  0.00    100.12     0.00       32     0.00     0.00  init_vlc_sparse
+  0.00    100.12     0.00       19     0.00     0.00  av_match_ext
+  0.00    100.12     0.00       12     0.00     0.00  av_reduce
+  0.00    100.12     0.00        8     0.00     0.00  ff_fill_linesize
+  0.00    100.12     0.00        8     0.00     0.00  file_seek
+  0.00    100.12     0.00        8     0.00     0.00  url_fskip
+  0.00    100.12     0.00        8     0.00     0.00  url_seek
+  0.00    100.12     0.00        6     0.00     0.00  avcodec_default_free_buffers
+  0.00    100.12     0.00        6     0.00     0.00  ff_is_hwaccel_pix_fmt
+  0.00    100.12     0.00        5     0.00     0.00  av_log
+  0.00    100.12     0.00        5     0.00     0.00  av_log_default_callback
+  0.00    100.12     0.00        5     0.00     0.00  av_vlog
+  0.00    100.12     0.00        5     0.00     0.00  ff_fill_pointer
+  0.00    100.12     0.00        5     0.00     0.00  ff_id3v2_match
+  0.00    100.12     0.00        5     0.00     0.00  init_rl
+  0.00    100.12     0.00        5     0.00     0.00  init_vlc_rl
+  0.00    100.12     0.00        4     0.00     0.00  av_d2q
+  0.00    100.12     0.00        4     0.00     0.00  av_get_bits_per_pixel
+  0.00    100.12     0.00        4     0.00     0.00  av_set_pts_info
+  0.00    100.12     0.00        4     0.00     0.00  av_set_q
+  0.00    100.12     0.00        3     0.00     0.00  av_metadata_free
+  0.00    100.12     0.00        3     0.00     0.00  avcodec_get_chroma_sub_sample
+  0.00    100.12     0.00        3     0.00     0.00  avpicture_fill
+  0.00    100.12     0.00        3     0.00     0.00  pat_cb
+  0.00    100.12     0.00        2     0.00     0.00  MPV_common_defaults
+  0.00    100.12     0.00        2     0.00     0.01  MPV_common_end
+  0.00    100.12     0.00        2     0.00     0.00  MPV_decode_defaults
+  0.00    100.12     0.00        2     0.00     0.00  av_get_bits_per_sample
+  0.00    100.12     0.00        2     0.00     0.00  av_hwaccel_next
+  0.00    100.12     0.00        2     0.00     0.01  av_new_stream
+  0.00    100.12     0.00        2     0.00     0.00  av_opt_set_defaults
+  0.00    100.12     0.00        2     0.00     0.00  av_parser_close
+  0.00    100.12     0.00        2     0.00     0.00  av_parser_init
+  0.00    100.12     0.00        2     0.00     0.00  av_update_stream_timings
+  0.00    100.12     0.00        2     0.00     0.00  avcodec_align_dimensions2
+  0.00    100.12     0.00        2     0.00     0.00  avcodec_alloc_context
+  0.00    100.12     0.00        2     0.00     0.01  avcodec_alloc_context2
+  0.00    100.12     0.00        2     0.00     0.01  avcodec_close
+  0.00    100.12     0.00        2     0.00     0.00  avcodec_default_get_format
+  0.00    100.12     0.00        2     0.00     0.00  avcodec_find_decoder
+  0.00    100.12     0.00        2     0.00     0.01  avcodec_get_context_defaults2
+  0.00    100.12     0.00        2     0.00     0.01  avcodec_open
+  0.00    100.12     0.00        2     0.00     0.00  avcodec_set_dimensions
+  0.00    100.12     0.00        2     0.00     0.00  decode_init
+  0.00    100.12     0.00        2     0.00     0.00  ff_codec_get_id
+  0.00    100.12     0.00        2     0.00     0.00  ff_find_hwaccel
+  0.00    100.12     0.00        2     0.00     0.01  ff_h263_decode_end
+  0.00    100.12     0.00        2     0.00     0.00  ff_h263_decode_init
+  0.00    100.12     0.00        2     0.00     0.00  ff_mpeg4_get_video_packet_prefix_length
+  0.00    100.12     0.00        2     0.00     0.00  h263_decode_init_vlc
+  0.00    100.12     0.00        2     0.00     0.00  skip_bits
+  0.00    100.12     0.00        2     0.00     0.00  sws_format_name
+  0.00    100.12     0.00        2     0.00     0.00  url_fsize
+  0.00    100.12     0.00        1     0.00     0.01  MPV_common_init
+  0.00    100.12     0.00        1     0.00     0.00  MPV_common_init_arm
+  0.00    100.12     0.00        1     0.00     0.00  MPV_common_init_armv5te
+  0.00    100.12     0.00        1     0.00     0.00  ac3_probe
+  0.00    100.12     0.00        1     0.00     0.00  adts_aac_probe
+  0.00    100.12     0.00        1     0.00     0.00  aea_read_probe
+  0.00    100.12     0.00        1     0.00     0.00  aiff_probe
+  0.00    100.12     0.00        1     0.00     0.00  amr_probe
+  0.00    100.12     0.00        1     0.00     0.00  apc_probe
+  0.00    100.12     0.00        1     0.00     0.00  ape_probe
+  0.00    100.12     0.00        1     0.00     0.00  asf_probe
+  0.00    100.12     0.00        1     0.00     0.00  au_probe
+  0.00    100.12     0.00        1     0.00     0.00  av_div_q
+  0.00    100.12     0.00        1     0.00     0.00  av_metadata_get
+  0.00    100.12     0.00        1     0.00     0.00  av_metadata_set2
+  0.00    100.12     0.00        1     0.00     0.00  av_mul_q
+  0.00    100.12     0.00        1     0.00     0.55  av_open_input_stream
+  0.00    100.12     0.00        1     0.00     0.01  av_probe_input_format
+  0.00    100.12     0.00        1     0.00     0.00  av_strdup
+  0.00    100.12     0.00        1     0.00     0.00  av_strlcpy
+  0.00    100.12     0.00        1     0.00     0.00  av_strstart
+  0.00    100.12     0.00        1     0.00     0.01  avformat_alloc_context
+  0.00    100.12     0.00        1     0.00     0.00  avi_probe
+  0.00    100.12     0.00        1     0.00     0.00  avi_read_close
+  0.00    100.12     0.00        1     0.00     0.55  avi_read_header
+  0.00    100.12     0.00        1     0.00     0.00  avi_read_tag
+  0.00    100.12     0.00        1     0.00     0.00  avs_probe
+  0.00    100.12     0.00        1     0.00     0.00  bfi_probe
+  0.00    100.12     0.00        1     0.00     0.00  cavsvideo_probe
+  0.00    100.12     0.00        1     0.00     0.00  cdata_probe
+  0.00    100.12     0.00        1     0.00     0.00  cin_probe
+  0.00    100.12     0.00        1     0.00     0.00  dirac_probe
+  0.00    100.12     0.00        1     0.00     0.00  dnxhd_probe
+  0.00    100.12     0.00        1     0.00     0.00  dsputil_init_arm
+  0.00    100.12     0.00        1     0.00     0.00  dts_probe
+  0.00    100.12     0.00        1     0.00     0.00  dv_probe
+  0.00    100.12     0.00        1     0.00     0.00  dxa_probe
+  0.00    100.12     0.00        1     0.00     0.00  ea_probe
+  0.00    100.12     0.00        1     0.00     0.00  eac3_probe
+  0.00    100.12     0.00        1     0.00     0.00  ff_cavsdsp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_check_alignment
+  0.00    100.12     0.00        1     0.00     0.00  ff_dct_common_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_dsputil_init_armv5te
+  0.00    100.12     0.00        1     0.00     0.00  ff_dsputil_init_dwt
+  0.00    100.12     0.00        1     0.00     0.00  ff_get_unscaled_swscale
+  0.00    100.12     0.00        1     0.00     0.00  ff_get_wav_header
+  0.00    100.12     0.00        1     0.00     0.00  ff_intrax8dsp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_metadata_demux_compat
+  0.00    100.12     0.00        1     0.00     0.00  ff_mlp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_mpa_synth_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_mpeg4video_split
+  0.00    100.12     0.00        1     0.00     0.00  ff_mpeg_flush
+  0.00    100.12     0.00        1     0.00     0.00  ff_parse1_close
+  0.00    100.12     0.00        1     0.00     0.00  ff_parse_close
+  0.00    100.12     0.00        1     0.00     0.02  ff_probe_input_buffer
+  0.00    100.12     0.00        1     0.00     0.00  ff_rewind_with_probe_data
+  0.00    100.12     0.00        1     0.00     0.00  ff_rv30dsp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_rv40dsp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_vc1dsp_init
+  0.00    100.12     0.00        1     0.00     0.00  ff_wav_codec_get_id
+  0.00    100.12     0.00        1     0.00     0.00  ff_yuv2rgb_c_init_tables
+  0.00    100.12     0.00        1     0.00     0.00  ff_yuv2rgb_get_func_ptr
+  0.00    100.12     0.00        1     0.00     0.00  ffm_probe
+  0.00    100.12     0.00        1     0.00     0.00  file_close
+  0.00    100.12     0.00        1     0.00     0.00  file_open
+  0.00    100.12     0.00        1     0.00     0.00  fill_all_stream_timings
+  0.00    100.12     0.00        1     0.00     0.00  film_probe
+  0.00    100.12     0.00        1     0.00     0.00  flac_probe
+  0.00    100.12     0.00        1     0.00     0.00  flic_probe
+  0.00    100.12     0.00        1     0.00     0.00  flush
+  0.00    100.12     0.00        1     0.00     0.00  flush_packet_queue
+  0.00    100.12     0.00        1     0.00     0.00  flv_probe
+  0.00    100.12     0.00        1     0.00     0.00  fourxm_probe
+  0.00    100.12     0.00        1     0.00     0.00  guidcmp
+  0.00    100.12     0.00        1     0.00     0.00  gxf_probe
+  0.00    100.12     0.00        1     0.00     0.00  h261_probe
+  0.00    100.12     0.00        1     0.00     0.00  h263_probe
+  0.00    100.12     0.00        1     0.00     0.00  h264_probe
+  0.00    100.12     0.00        1     0.00     0.00  idcin_probe
+  0.00    100.12     0.00        1     0.00     0.00  iff_probe
+  0.00    100.12     0.00        1     0.00     0.00  image_probe
+  0.00    100.12     0.00        1     0.00     0.00  img_read_packet
+  0.00    100.12     0.00        1     0.00     0.00  init_put_byte
+  0.00    100.12     0.00        1     0.00     0.00  ipmovie_probe
+  0.00    100.12     0.00        1     0.00     0.00  iss_probe
+  0.00    100.12     0.00        1     0.00     0.00  lmlm4_probe
+  0.00    100.12     0.00        1     0.00     0.00  matroska_probe
+  0.00    100.12     0.00        1     0.00     0.00  mmf_probe
+  0.00    100.12     0.00        1     0.00     0.00  mov_probe
+  0.00    100.12     0.00        1     0.00     0.00  mp3_read_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpc8_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpc_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpeg4video_parse_init
+  0.00    100.12     0.00        1     0.00     0.00  mpeg4video_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpegps_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpegts_probe
+  0.00    100.12     0.00        1     0.00     0.00  mpegvideo_probe
+  0.00    100.12     0.00        1     0.00     0.00  msnwc_tcp_probe
+  0.00    100.12     0.00        1     0.00     0.00  mtv_probe
+  0.00    100.12     0.00        1     0.00     0.00  mxf_probe
+  0.00    100.12     0.00        1     0.00     0.00  nc_probe
+  0.00    100.12     0.00        1     0.00     0.00  nsv_probe
+  0.00    100.12     0.00        1     0.00     0.00  nut_probe
+  0.00    100.12     0.00        1     0.00     0.00  nuv_probe
+  0.00    100.12     0.00        1     0.00     0.00  ogg_probe
+  0.00    100.12     0.00        1     0.00     0.00  oma_read_probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  probe
+  0.00    100.12     0.00        1     0.00     0.00  pva_probe
+  0.00    100.12     0.00        1     0.00     0.00  qcp_probe
+  0.00    100.12     0.00        1     0.00     0.00  r3d_probe
+  0.00    100.12     0.00        1     0.00     0.00  rl2_probe
+  0.00    100.12     0.00        1     0.00     0.00  rm_probe
+  0.00    100.12     0.00        1     0.00     0.00  roq_probe
+  0.00    100.12     0.00        1     0.00     0.00  rpl_probe
+  0.00    100.12     0.00        1     0.00     0.00  seq_probe
+  0.00    100.12     0.00        1     0.00     0.00  siff_probe
+  0.00    100.12     0.00        1     0.00     0.00  smacker_probe
+  0.00    100.12     0.00        1     0.00     0.00  sol_probe
+  0.00    100.12     0.00        1     0.00     0.00  sox_probe
+  0.00    100.12     0.00        1     0.00     0.00  str_probe
+  0.00    100.12     0.00        1     0.00     0.00  swf_probe
+  0.00    100.12     0.00        1     0.00     0.01  sws_alloc_context
+  0.00    100.12     0.00        1     0.00     0.00  sws_context_to_name
+  0.00    100.12     0.00        1     0.00     0.00  sws_init_context
+  0.00    100.12     0.00        1     0.00     0.00  sws_rgb2rgb_init
+  0.00    100.12     0.00        1     0.00     0.00  sws_setColorspaceDetails
+  0.00    100.12     0.00        1     0.00     0.00  thp_probe
+  0.00    100.12     0.00        1     0.00     0.00  tmv_probe
+  0.00    100.12     0.00        1     0.00     0.00  tta_probe
+  0.00    100.12     0.00        1     0.00     0.00  txd_probe
+  0.00    100.12     0.00        1     0.00     0.00  url_fdopen
+  0.00    100.12     0.00        1     0.00     0.00  url_fopen
+  0.00    100.12     0.00        1     0.00     0.00  url_get_max_packet_size
+  0.00    100.12     0.00        1     0.00     0.00  url_open
+  0.00    100.12     0.00        1     0.00     0.00  url_open_protocol
+  0.00    100.12     0.00        1     0.00     0.00  url_resetbuf
+  0.00    100.12     0.00        1     0.00     0.00  vc1t_probe
+  0.00    100.12     0.00        1     0.00     0.00  vid_probe
+  0.00    100.12     0.00        1     0.00     0.00  vmd_probe
+  0.00    100.12     0.00        1     0.00     0.00  voc_probe
+  0.00    100.12     0.00        1     0.00     0.00  vqf_probe
+  0.00    100.12     0.00        1     0.00     0.00  w64_probe
+  0.00    100.12     0.00        1     0.00     0.00  wav_probe
+  0.00    100.12     0.00        1     0.00     0.00  wc3_probe
+  0.00    100.12     0.00        1     0.00     0.00  wsaud_probe
+  0.00    100.12     0.00        1     0.00     0.00  wsvqa_probe
+  0.00    100.12     0.00        1     0.00     0.00  wv_probe
+  0.00    100.12     0.00        1     0.00     0.00  xa_probe
+  0.00    100.12     0.00        1     0.00     0.00  yuv4_probe
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.01% of 100.12 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     88.7    0.04   88.77                 avcodec_decode_video2 [1]
+                0.17   88.60    1778/1778        ff_h263_decode_frame [2]
+                0.00    0.00    1778/3568        avcodec_check_dimensions [123]
+-----------------------------------------------
+                0.17   88.60    1778/1778        avcodec_decode_video2 [1]
+[2]     88.7    0.17   88.60    1778         ff_h263_decode_frame [2]
+               12.95   74.36    1778/1778        decode_slice [3]
+                1.11    0.00    1777/1777        MPV_frame_end [14]
+                0.10    0.00    1778/3436        decode_vop_header [27]
+                0.02    0.05    1778/1778        MPV_frame_start [31]
+                0.00    0.01       1/1           MPV_common_init [48]
+                0.00    0.00    1779/3437        ff_mpeg4_decode_picture_header [125]
+                0.00    0.00    1779/1779        init_get_bits [131]
+                0.00    0.00    1778/1778        ff_find_unused_picture [133]
+                0.00    0.00    1778/1778        ff_er_frame_start [132]
+                0.00    0.00    1777/1777        ff_er_frame_end [137]
+                0.00    0.00    1775/1775        get_consumed_bytes [140]
+                0.00    0.00    1775/1775        ff_print_debug_info [139]
+-----------------------------------------------
+               12.95   74.36    1778/1778        ff_h263_decode_frame [2]
+[3]     87.2   12.95   74.36    1778         decode_slice [3]
+               17.47   20.95 1564223/1564223     MPV_decode_mb [4]
+               22.64   13.30 1564225/1564225     mpeg4_decode_mb [5]
+                0.00    0.00 1564224/1564224     ff_h263_update_motion_val [82]
+                0.00    0.00   39106/39106       ff_init_block_index [99]
+                0.00    0.00   39105/39105       ff_draw_horiz_band [100]
+                0.00    0.00    1778/1778        ff_set_qscale [134]
+                0.00    0.00    1777/1777        ff_er_add_slice [136]
+-----------------------------------------------
+               17.47   20.95 1564223/1564223     decode_slice [3]
+[4]     38.4   17.47   20.95 1564223         MPV_decode_mb [4]
+               12.29    0.00 1384157/1384157     put_dct [7]
+                8.66    0.00  885293/885293      MPV_motion [8]
+                0.00    0.00 5311757/5311757     add_dct [80]
+                0.00    0.00  190585/190585      ff_clean_intra_table_entries [92]
+-----------------------------------------------
+               22.64   13.30 1564225/1564225     decode_slice [3]
+[5]     35.9   22.64   13.30 1564225         mpeg4_decode_mb [5]
+               13.30    0.00 5244910/5244910     mpeg4_decode_block [6]
+                0.00    0.00 1564225/1564225     mpeg4_is_resync [81]
+                0.00    0.00 1286917/1286917     h263_decode_motion [87]
+                0.00    0.00  970204/970204      clear_blocks_c [88]
+                0.00    0.00  643458/643458      h263_pred_motion [90]
+-----------------------------------------------
+               13.30    0.00 5244910/5244910     mpeg4_decode_mb [5]
+[6]     13.3   13.30    0.00 5244910         mpeg4_decode_block [6]
+                0.00    0.00 1384158/1384158     mpeg4_pred_ac [85]
+                0.00    0.00 1384158/1384158     get_amv [83]
+                0.00    0.00 1384158/1384158     mpeg4_decode_dc [84]
+-----------------------------------------------
+               12.29    0.00 1384157/1384157     MPV_decode_mb [4]
+[7]     12.3   12.29    0.00 1384157         put_dct [7]
+                0.00    0.00 1384157/1384157     dct_unquantize_h263_intra_armv5te [86]
+-----------------------------------------------
+                8.66    0.00  885293/885293      MPV_decode_mb [4]
+[8]      8.6    8.66    0.00  885293         MPV_motion [8]
+                0.00    0.00  885292/885292      prefetch_motion [89]
+                0.00    0.00   72857/72857       ff_put_no_rnd_pixels16_xy2_arm [93]
+                0.00    0.00   53758/53758       ff_emulated_edge_mc [94]
+                0.00    0.00   51935/51935       ff_put_pixels16_xy2_arm [95]
+                0.00    0.00   44058/44058       ff_put_no_rnd_pixels16_y2_arm [97]
+                0.00    0.00   40111/40111       ff_put_no_rnd_pixels16_x2_arm [98]
+                0.00    0.00   35029/35029       ff_put_pixels16_y2_arm [101]
+                0.00    0.00   31614/31614       ff_put_pixels16_x2_arm [102]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      8.0    0.00    7.99                 av_find_stream_info [9]
+                0.01    6.76       1/1           avcodec_decode_audio3 [10]
+                0.06    0.99      56/56          av_read_frame_internal [15]
+                0.12    0.00      56/56          av_dup_packet [30]
+                0.02    0.00      52/64          av_rescale_q [44]
+                0.00    0.01       2/2           avcodec_close [50]
+                0.00    0.01       2/2           avcodec_open [52]
+                0.00    0.01      56/56          add_to_pktbuf [63]
+                0.00    0.00       1/1           fill_all_stream_timings [69]
+                0.00    0.00       1/2           av_update_stream_timings [67]
+                0.00    0.00       2/2           av_parser_init [70]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/18158       url_ftell [40]
+                0.00    0.00     116/116         has_codec_parameters [149]
+                0.00    0.00      57/3613        __aeabi_ulcmp [3714]
+                0.00    0.00      48/60          av_gcd [151]
+                0.00    0.00       3/12          av_reduce [157]
+                0.00    0.00       2/2           avcodec_find_decoder [186]
+                0.00    0.00       2/11768       av_free [109]
+                0.00    0.00       2/9231        av_malloc [111]
+                0.00    0.00       1/2           av_get_bits_per_sample [180]
+                0.00    0.00       1/5           av_log [163]
+                0.00    0.00       1/1           ff_mpeg4video_split [239]
+                0.00    0.00       1/2           url_fsize [196]
+-----------------------------------------------
+                0.01    6.76       1/1           av_find_stream_info [9]
+[10]     6.8    0.01    6.76       1         avcodec_decode_audio3 [10]
+                0.01    6.75    2890/2890        decode_frame [11]
+-----------------------------------------------
+                0.01    6.75    2890/2890        avcodec_decode_audio3 [10]
+[11]     6.8    0.01    6.75    2890         decode_frame [11]
+                6.75    0.00    2890/2890        mp_decode_frame [12]
+                0.00    0.00    2890/5770        ff_mpegaudio_decode_header [114]
+-----------------------------------------------
+                6.75    0.00    2890/2890        decode_frame [11]
+[12]     6.7    6.75    0.00    2890         mp_decode_frame [12]
+                0.00    0.00  208385/208385      ff_mpa_synth_filter [91]
+                0.00    0.00    2890/2890        ff_mpa_l2_select_table [127]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     2.6    2.63    0.00                 sws_scale [13]
+                0.00    0.00    3548/3548        reset_ptr [124]
+                0.00    0.00    1774/1774        yuv2rgb_c_24_rgb [141]
+-----------------------------------------------
+                1.11    0.00    1777/1777        ff_h263_decode_frame [2]
+[14]     1.1    1.11    0.00    1777         MPV_frame_end [14]
+                0.00    0.00    5331/5331        draw_edges_c [116]
+-----------------------------------------------
+                0.06    0.99      56/56          av_find_stream_info [9]
+[15]     1.0    0.06    0.99      56         av_read_frame_internal [15]
+                0.05    0.35    4536/4538        av_free_packet [20]
+                0.01    0.32    4536/4536        av_read_packet [22]
+                0.03    0.17    4538/4538        av_parser_parse2 [26]
+                0.05    0.00    4537/4537        compute_pkt_fields [36]
+                0.00    0.00    4537/13610       av_init_packet [106]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     0.6    0.00    0.58                 av_open_input_file [16]
+                0.00    0.55       1/1           av_open_input_stream [17]
+                0.00    0.02       1/1           ff_probe_input_buffer [46]
+                0.00    0.01       1/1           av_probe_input_format [47]
+                0.00    0.00       1/1           url_fopen [71]
+-----------------------------------------------
+                0.00    0.55       1/1           av_open_input_file [16]
+[17]     0.6    0.00    0.55       1         av_open_input_stream [17]
+                0.00    0.55       1/1           avi_read_header [18]
+                0.00    0.01       1/1           avformat_alloc_context [66]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/18158       url_ftell [40]
+                0.00    0.00       1/1           av_strlcpy [212]
+                0.00    0.00       1/1           ff_metadata_demux_compat [236]
+-----------------------------------------------
+                0.00    0.55       1/1           av_open_input_stream [17]
+[18]     0.5    0.00    0.55       1         avi_read_header [18]
+                0.19    0.35       1/1           avi_load_index [19]
+                0.00    0.01       2/2           av_new_stream [55]
+                0.00    0.00      87/48947       get_le32 [23]
+                0.00    0.00       2/133         av_mallocz [42]
+                0.00    0.00       1/1           ff_get_wav_header [72]
+                0.00    0.00       1/1           avi_read_tag [73]
+                0.00    0.00       2/4542        get_buffer [34]
+                0.00    0.00       8/97907       get_le16 [25]
+                0.00    0.00      12/18158       url_ftell [40]
+                0.00    0.00      15/49333       url_feof [96]
+                0.00    0.00       8/8           url_fskip [160]
+                0.00    0.00       4/18173       url_fseek [103]
+                0.00    0.00       2/4           av_set_pts_info [172]
+                0.00    0.00       1/2           url_fsize [196]
+                0.00    0.00       1/2           ff_codec_get_id [189]
+                0.00    0.00       1/1           av_div_q [208]
+-----------------------------------------------
+                0.19    0.35       1/1           avi_read_header [18]
+[19]     0.5    0.19    0.35       1         avi_load_index [19]
+                0.08    0.25   48858/48947       get_le32 [23]
+                0.02    0.00   12214/12214       av_add_index_entry [43]
+                0.00    0.00       1/18158       url_ftell [40]
+                0.00    0.00   12215/49333       url_feof [96]
+                0.00    0.00       2/18173       url_fseek [103]
+-----------------------------------------------
+                0.00    0.00       2/4538        av_close_input_stream [53]
+                0.05    0.35    4536/4538        av_read_frame_internal [15]
+[20]     0.4    0.05    0.35    4538         av_free_packet [20]
+                0.35    0.00    9241/9241        av_destruct_packet [21]
+-----------------------------------------------
+                0.35    0.00    9241/9241        av_free_packet [20]
+[21]     0.3    0.35    0.00    9241         av_destruct_packet [21]
+                0.00    0.00    9241/11768       av_free [109]
+-----------------------------------------------
+                0.01    0.32    4536/4536        av_read_frame_internal [15]
+[22]     0.3    0.01    0.32    4536         av_read_packet [22]
+                0.17    0.15    4536/4536        avi_read_packet [24]
+                0.00    0.00    4536/13610       av_init_packet [106]
+-----------------------------------------------
+                0.00    0.00       2/48947       ff_get_wav_header [72]
+                0.00    0.00      87/48947       avi_read_header [18]
+                0.08    0.25   48858/48947       avi_load_index [19]
+[23]     0.3    0.08    0.25   48947         get_le32 [23]
+                0.24    0.01   97894/97907       get_le16 [25]
+-----------------------------------------------
+                0.17    0.15    4536/4536        av_read_packet [22]
+[24]     0.3    0.17    0.15    4536         avi_read_packet [24]
+                0.02    0.11    4535/4535        av_get_packet [29]
+                0.02    0.00   13606/18158       url_ftell [40]
+                0.00    0.00   37102/232916      get_byte [64]
+                0.00    0.00   37103/49333       url_feof [96]
+                0.00    0.00    1658/13872       av_index_search_timestamp [104]
+-----------------------------------------------
+                0.00    0.00       5/97907       ff_get_wav_header [72]
+                0.00    0.00       8/97907       avi_read_header [18]
+                0.24    0.01   97894/97907       get_le32 [23]
+[25]     0.2    0.24    0.01   97907         get_le16 [25]
+                0.00    0.01  195814/232916      get_byte [64]
+-----------------------------------------------
+                0.03    0.17    4538/4538        av_read_frame_internal [15]
+[26]     0.2    0.03    0.17    4538         av_parser_parse2 [26]
+                0.07    0.09    1658/1658        mpeg4video_parse [28]
+                0.01    0.00    2879/2879        mpegaudio_parse [57]
+                0.00    0.00    4537/4537        ff_fetch_timestamp [120]
+-----------------------------------------------
+                0.09    0.00    1658/3436        mpeg4video_parse [28]
+                0.10    0.00    1778/3436        ff_h263_decode_frame [2]
+[27]     0.2    0.19    0.00    3436         decode_vop_header [27]
+                0.00    0.00   13744/13748       ff_init_scantable [105]
+                0.00    0.00   10012/10012       get_bits [110]
+                0.00    0.00    6576/6576        skip_bits_long [113]
+                0.00    0.00    3140/3140        get_bits1 [126]
+-----------------------------------------------
+                0.07    0.09    1658/1658        av_parser_parse2 [26]
+[28]     0.2    0.07    0.09    1658         mpeg4video_parse [28]
+                0.09    0.00    1658/3436        decode_vop_header [27]
+                0.00    0.00    1658/1658        init_get_bits [142]
+                0.00    0.00    1658/3437        ff_mpeg4_decode_picture_header [125]
+-----------------------------------------------
+                0.02    0.11    4535/4535        avi_read_packet [24]
+[29]     0.1    0.02    0.11    4535         av_get_packet [29]
+                0.00    0.05    4537/4542        get_buffer [34]
+                0.05    0.00    4535/4535        av_new_packet [37]
+                0.01    0.00    4537/18158       url_ftell [40]
+                0.00    0.00    4538/4538        av_shrink_packet [119]
+-----------------------------------------------
+                0.12    0.00      56/56          av_find_stream_info [9]
+[30]     0.1    0.12    0.00      56         av_dup_packet [30]
+                0.00    0.00    4539/9231        av_malloc [111]
+-----------------------------------------------
+                0.02    0.05    1778/1778        ff_h263_decode_frame [2]
+[31]     0.1    0.02    0.05    1778         MPV_frame_start [31]
+                0.04    0.00    1776/2410        av_freep [38]
+                0.01    0.00    1778/1778        ff_alloc_picture [49]
+                0.00    0.00    5333/5333        ff_copy_picture [115]
+                0.00    0.00    1776/1778        free_frame_buffer [135]
+-----------------------------------------------
+                0.00    0.01      12/100         get_byte [64]
+                0.00    0.05      88/100         get_buffer [34]
+[32]     0.1    0.00    0.06     100         fill_buffer [32]
+                0.06    0.00     100/100         url_read [33]
+-----------------------------------------------
+                0.06    0.00     100/100         fill_buffer [32]
+[33]     0.1    0.06    0.00     100         url_read [33]
+                0.00    0.00     100/100         file_read [150]
+-----------------------------------------------
+                0.00    0.00       1/4542        avi_read_tag [73]
+                0.00    0.00       1/4542        ff_get_wav_header [72]
+                0.00    0.00       1/4542        ff_probe_input_buffer [46]
+                0.00    0.00       2/4542        avi_read_header [18]
+                0.00    0.05    4537/4542        av_get_packet [29]
+[34]     0.1    0.00    0.05    4542         get_buffer [34]
+                0.00    0.05      88/100         fill_buffer [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.1    0.05    0.00                 avcodec_default_get_buffer [35]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00    1778/3568        avcodec_check_dimensions [123]
+                0.00    0.00       6/9231        av_malloc [111]
+                0.00    0.00       2/3           avcodec_get_chroma_sub_sample [175]
+                0.00    0.00       2/2           avcodec_align_dimensions2 [183]
+                0.00    0.00       2/8           ff_fill_linesize [158]
+                0.00    0.00       2/5           ff_fill_pointer [166]
+-----------------------------------------------
+                0.05    0.00    4537/4537        av_read_frame_internal [15]
+[36]     0.0    0.05    0.00    4537         compute_pkt_fields [36]
+                0.00    0.00    4539/4539        update_initial_timestamps [118]
+                0.00    0.00    4539/4539        compute_frame_duration [117]
+                0.00    0.00    4539/7483        av_rescale_rnd [112]
+                0.00    0.00    2881/2881        av_rescale [128]
+-----------------------------------------------
+                0.05    0.00    4535/4535        av_get_packet [29]
+[37]     0.0    0.05    0.00    4535         av_new_packet [37]
+                0.00    0.00    4537/13610       av_init_packet [106]
+                0.00    0.00    4535/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.00       1/2410        av_parser_close [79]
+                0.00    0.00       4/2410        avcodec_close [50]
+                0.00    0.00       6/2410        av_close_input_stream [53]
+                0.00    0.00     129/2410        avcodec_default_free_buffers [68]
+                0.01    0.00     494/2410        MPV_common_end [56]
+                0.04    0.00    1776/2410        MPV_frame_start [31]
+[38]     0.0    0.05    0.00    2410         av_freep [38]
+                0.00    0.00    2440/11768       av_free [109]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.0    0.04    0.01                 sws_getCachedContext [39]
+                0.00    0.01       1/1           sws_alloc_context [65]
+                0.00    0.00    1774/1776        ff_hardcodedcpuflags [138]
+                0.00    0.00       1/1           sws_setColorspaceDetails [316]
+                0.00    0.00       1/1           sws_init_context [314]
+-----------------------------------------------
+                0.00    0.00       1/18158       avi_load_index [19]
+                0.00    0.00       1/18158       av_open_input_stream [17]
+                0.00    0.00       1/18158       av_find_stream_info [9]
+                0.00    0.00      12/18158       avi_read_header [18]
+                0.01    0.00    4537/18158       av_get_packet [29]
+                0.02    0.00   13606/18158       avi_read_packet [24]
+[40]     0.0    0.03    0.00   18158         url_ftell [40]
+                0.00    0.00   18159/18173       url_fseek [103]
+-----------------------------------------------
+                0.01    0.01       1/2           ff_probe_input_buffer [46]
+                0.01    0.01       1/2           av_probe_input_format [47]
+[41]     0.0    0.02    0.01       2         av_probe_input_format2 [41]
+                0.01    0.00       2/2           ac3_eac3_probe [58]
+                0.00    0.00      18/19          av_match_ext [156]
+                0.00    0.00       1/1           yuv4_probe [335]
+                0.00    0.00       1/1           xa_probe [334]
+                0.00    0.00       1/1           wv_probe [333]
+                0.00    0.00       1/1           wsvqa_probe [332]
+                0.00    0.00       1/1           wsaud_probe [331]
+                0.00    0.00       1/1           wc3_probe [330]
+                0.00    0.00       1/1           wav_probe [329]
+                0.00    0.00       1/1           w64_probe [328]
+                0.00    0.00       1/1           vqf_probe [327]
+                0.00    0.00       1/1           voc_probe [326]
+                0.00    0.00       1/1           vmd_probe [325]
+                0.00    0.00       1/1           vc1t_probe [323]
+                0.00    0.00       1/1           txd_probe [320]
+                0.00    0.00       1/1           tta_probe [319]
+                0.00    0.00       1/1           tmv_probe [318]
+                0.00    0.00       1/1           seq_probe [306]
+                0.00    0.00       1/1           thp_probe [317]
+                0.00    0.00       1/1           swf_probe [312]
+                0.00    0.00       1/1           str_probe [311]
+                0.00    0.00       1/1           sox_probe [310]
+                0.00    0.00       1/1           sol_probe [309]
+                0.00    0.00       1/1           smacker_probe [308]
+                0.00    0.00       1/1           siff_probe [307]
+                0.00    0.00       1/1           film_probe [253]
+                0.00    0.00       1/1           rpl_probe [305]
+                0.00    0.00       1/1           roq_probe [304]
+                0.00    0.00       1/1           rm_probe [303]
+                0.00    0.00       1/1           rl2_probe [302]
+                0.00    0.00       1/1           r3d_probe [301]
+                0.00    0.00       1/1           qcp_probe [300]
+                0.00    0.00       1/1           pva_probe [299]
+                0.00    0.00       1/1           oma_read_probe [291]
+                0.00    0.00       1/1           ogg_probe [290]
+                0.00    0.00       1/1           nuv_probe [289]
+                0.00    0.00       1/1           nut_probe [288]
+                0.00    0.00       1/1           nsv_probe [287]
+                0.00    0.00       1/1           nc_probe [286]
+                0.00    0.00       1/1           mxf_probe [285]
+                0.00    0.00       1/1           mtv_probe [284]
+                0.00    0.00       1/1           msnwc_tcp_probe [283]
+                0.00    0.00       1/1           mpegvideo_probe [282]
+                0.00    0.00       1/1           mpegts_probe [281]
+                0.00    0.00       1/1           mpegps_probe [280]
+                0.00    0.00       1/1           mpc8_probe [277]
+                0.00    0.00       1/1           mpc_probe [278]
+                0.00    0.00       1/1           mp3_read_probe [276]
+                0.00    0.00       1/1           mov_probe [275]
+                0.00    0.00       1/1           mmf_probe [274]
+                0.00    0.00       1/1           probe [297]
+                0.00    0.00       1/1           matroska_probe [273]
+                0.00    0.00       1/1           mpeg4video_probe [279]
+                0.00    0.00       1/1           lmlm4_probe [272]
+                0.00    0.00       1/1           probe [295]
+                0.00    0.00       1/1           iss_probe [271]
+                0.00    0.00       1/1           ipmovie_probe [270]
+                0.00    0.00       1/1           iff_probe [266]
+                0.00    0.00       1/1           idcin_probe [265]
+                0.00    0.00       1/1           h264_probe [264]
+                0.00    0.00       1/1           h263_probe [263]
+                0.00    0.00       1/1           h261_probe [262]
+                0.00    0.00       1/1           gxf_probe [261]
+                0.00    0.00       1/1           fourxm_probe [259]
+                0.00    0.00       1/1           flv_probe [258]
+                0.00    0.00       1/1           flic_probe [255]
+                0.00    0.00       1/1           flac_probe [254]
+                0.00    0.00       1/1           ffm_probe [250]
+                0.00    0.00       1/1           eac3_probe [228]
+                0.00    0.00       1/1           cdata_probe [219]
+                0.00    0.00       1/1           ea_probe [227]
+                0.00    0.00       1/1           dxa_probe [226]
+                0.00    0.00       1/1           dv_probe [225]
+                0.00    0.00       1/1           dts_probe [224]
+                0.00    0.00       1/1           cin_probe [220]
+                0.00    0.00       1/1           dnxhd_probe [222]
+                0.00    0.00       1/1           dirac_probe [221]
+                0.00    0.00       1/1           cavsvideo_probe [218]
+                0.00    0.00       1/1           probe [296]
+                0.00    0.00       1/1           probe [294]
+                0.00    0.00       1/1           probe [298]
+                0.00    0.00       1/1           bfi_probe [217]
+                0.00    0.00       1/1           vid_probe [324]
+                0.00    0.00       1/1           avs_probe [216]
+                0.00    0.00       1/1           avi_probe [214]
+                0.00    0.00       1/1           au_probe [207]
+                0.00    0.00       1/1           probe [293]
+                0.00    0.00       1/1           asf_probe [206]
+                0.00    0.00       1/1           ape_probe [205]
+                0.00    0.00       1/1           apc_probe [204]
+                0.00    0.00       1/1           probe [292]
+                0.00    0.00       1/1           amr_probe [203]
+                0.00    0.00       1/1           aiff_probe [202]
+                0.00    0.00       1/1           aea_read_probe [201]
+                0.00    0.00       1/1           ac3_probe [199]
+                0.00    0.00       1/1           adts_aac_probe [200]
+                0.00    0.00       1/1           image_probe [267]
+-----------------------------------------------
+                0.00    0.00       1/133         url_open_protocol [78]
+                0.00    0.00       1/133         url_fdopen [76]
+                0.00    0.00       1/133         av_metadata_set2 [74]
+                0.00    0.00       1/133         ff_get_wav_header [72]
+                0.00    0.00       1/133         av_open_input_stream [17]
+                0.00    0.00       1/133         av_find_stream_info [9]
+                0.00    0.00       1/133         mpeg4video_parse_init [75]
+                0.00    0.00       1/133         avcodec_default_get_buffer [35]
+                0.00    0.00       1/133         sws_alloc_context [65]
+                0.00    0.00       2/133         avi_read_header [18]
+                0.00    0.00       2/133         av_new_stream [55]
+                0.00    0.00       4/133         av_parser_init [70]
+                0.00    0.00       4/133         avcodec_open [52]
+                0.00    0.00      24/133         ff_alloc_picture [49]
+                0.00    0.00      32/133         MPV_common_init [48]
+                0.01    0.00      56/133         add_to_pktbuf [63]
+[42]     0.0    0.02    0.00     133         av_mallocz [42]
+                0.00    0.00     134/9231        av_malloc [111]
+-----------------------------------------------
+                0.02    0.00   12214/12214       avi_load_index [19]
+[43]     0.0    0.02    0.00   12214         av_add_index_entry [43]
+                0.00    0.00   12214/12214       av_fast_realloc [108]
+                0.00    0.00   12214/13872       av_index_search_timestamp [104]
+-----------------------------------------------
+                0.00    0.00      12/64          av_update_stream_timings [67]
+                0.02    0.00      52/64          av_find_stream_info [9]
+[44]     0.0    0.02    0.00      64         av_rescale_q [44]
+                0.00    0.00      64/7483        av_rescale_rnd [112]
+-----------------------------------------------
+                0.01    0.00       1/4           avformat_alloc_context [66]
+                0.01    0.00       1/4           sws_alloc_context [65]
+                0.01    0.00       2/4           avcodec_get_context_defaults2 [60]
+[45]     0.0    0.02    0.00       4         av_opt_set_defaults2 [45]
+                0.00    0.00     766/766         av_next_option [143]
+                0.00    0.00     315/315         av_set_int [146]
+                0.00    0.00      48/48          av_set_double [152]
+                0.00    0.00       4/4           av_d2q [170]
+                0.00    0.00       4/4           av_set_q [173]
+                0.00    0.00       2/5           av_log [163]
+-----------------------------------------------
+                0.00    0.02       1/1           av_open_input_file [16]
+[46]     0.0    0.00    0.02       1         ff_probe_input_buffer [46]
+                0.01    0.01       1/2           av_probe_input_format2 [41]
+                0.00    0.00       1/4542        get_buffer [34]
+                0.00    0.00       1/9231        av_malloc [111]
+                0.00    0.00       1/180         av_realloc [148]
+                0.00    0.00       1/1           ff_rewind_with_probe_data [243]
+                0.00    0.00       1/5           av_log [163]
+-----------------------------------------------
+                0.00    0.01       1/1           av_open_input_file [16]
+[47]     0.0    0.00    0.01       1         av_probe_input_format [47]
+                0.01    0.01       1/2           av_probe_input_format2 [41]
+-----------------------------------------------
+                0.00    0.01       1/1           ff_h263_decode_frame [2]
+[48]     0.0    0.00    0.01       1         MPV_common_init [48]
+                0.01    0.00       1/1           dsputil_init [62]
+                0.00    0.00      32/133         av_mallocz [42]
+                0.00    0.00      32/36          avcodec_get_frame_defaults [153]
+                0.00    0.00       1/3568        avcodec_check_dimensions [123]
+                0.00    0.00       1/1           ff_dct_common_init [231]
+                0.00    0.00       1/3           avcodec_get_chroma_sub_sample [175]
+-----------------------------------------------
+                0.01    0.00    1778/1778        MPV_frame_start [31]
+[49]     0.0    0.01    0.00    1778         ff_alloc_picture [49]
+                0.00    0.00      24/133         av_mallocz [42]
+                0.00    0.00    1778/3613        __aeabi_ulcmp [3714]
+-----------------------------------------------
+                0.00    0.01       2/2           av_find_stream_info [9]
+[50]     0.0    0.00    0.01       2         avcodec_close [50]
+                0.00    0.01       2/2           ff_h263_decode_end [51]
+                0.00    0.00       4/6           avcodec_default_free_buffers [68]
+                0.00    0.00       4/2410        av_freep [38]
+-----------------------------------------------
+                0.00    0.01       2/2           avcodec_close [50]
+[51]     0.0    0.00    0.01       2         ff_h263_decode_end [51]
+                0.00    0.01       2/2           MPV_common_end [56]
+                0.00    0.00       2/6           avcodec_default_free_buffers [68]
+-----------------------------------------------
+                0.00    0.01       2/2           av_find_stream_info [9]
+[52]     0.0    0.00    0.01       2         avcodec_open [52]
+                0.01    0.00       2/2           decode_init [61]
+                0.00    0.00       4/133         av_mallocz [42]
+                0.00    0.00       2/3568        avcodec_check_dimensions [123]
+                0.00    0.00       2/2           avcodec_set_dimensions [187]
+                0.00    0.00       2/2           decode_init [188]
+-----------------------------------------------
+                0.01    0.00       1/1           av_close_input_file [54]
+[53]     0.0    0.01    0.00       1         av_close_input_stream [53]
+                0.00    0.00       2/4538        av_free_packet [20]
+                0.00    0.00       6/2410        av_freep [38]
+                0.00    0.00       2/2           av_parser_close [79]
+                0.00    0.00      14/11768       av_free [109]
+                0.00    0.00       3/3           av_metadata_free [174]
+                0.00    0.00       1/1           avi_read_close [215]
+                0.00    0.00       1/1           flush_packet_queue [257]
+-----------------------------------------------
+                                                 <spontaneous>
+[54]     0.0    0.00    0.01                 av_close_input_file [54]
+                0.01    0.00       1/1           av_close_input_stream [53]
+                0.00    0.00       1/11768       av_free [109]
+-----------------------------------------------
+                0.00    0.01       2/2           avi_read_header [18]
+[55]     0.0    0.00    0.01       2         av_new_stream [55]
+                0.00    0.01       2/2           avcodec_alloc_context2 [59]
+                0.00    0.00       2/133         av_mallocz [42]
+                0.00    0.00       2/2           avcodec_alloc_context [184]
+                0.00    0.00       2/4           av_set_pts_info [172]
+-----------------------------------------------
+                0.00    0.01       2/2           ff_h263_decode_end [51]
+[56]     0.0    0.00    0.01       2         MPV_common_end [56]
+                0.01    0.00     494/2410        av_freep [38]
+                0.00    0.00       2/1778        free_frame_buffer [135]
+-----------------------------------------------
+                0.01    0.00    2879/2879        av_parser_parse2 [26]
+[57]     0.0    0.01    0.00    2879         mpegaudio_parse [57]
+                0.00    0.00   11515/13559       ff_mpa_decode_header [107]
+                0.00    0.00    2879/2879        ff_combine_frame [130]
+-----------------------------------------------
+                0.01    0.00       2/2           av_probe_input_format2 [41]
+[58]     0.0    0.01    0.00       2         ac3_eac3_probe [58]
+                0.00    0.00    4096/4097        init_get_bits [121]
+                0.00    0.00    4096/4096        ff_ac3_parse_header [122]
+-----------------------------------------------
+                0.00    0.01       2/2           av_new_stream [55]
+[59]     0.0    0.00    0.01       2         avcodec_alloc_context2 [59]
+                0.00    0.01       2/2           avcodec_get_context_defaults2 [60]
+                0.00    0.00       2/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.01       2/2           avcodec_alloc_context2 [59]
+[60]     0.0    0.00    0.01       2         avcodec_get_context_defaults2 [60]
+                0.01    0.00       2/4           av_opt_set_defaults2 [45]
+-----------------------------------------------
+                0.01    0.00       2/2           avcodec_open [52]
+[61]     0.0    0.01    0.00       2         decode_init [61]
+                0.00    0.00       7/32          init_vlc_sparse [155]
+                0.00    0.00       3/5           init_rl [168]
+                0.00    0.00       3/5           init_vlc_rl [169]
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+-----------------------------------------------
+                0.01    0.00       1/1           MPV_common_init [48]
+[62]     0.0    0.01    0.00       1         dsputil_init [62]
+                0.00    0.00       1/1           ff_check_alignment [230]
+                0.00    0.00       1/1           ff_cavsdsp_init [229]
+                0.00    0.00       1/1           ff_mlp_init [237]
+                0.00    0.00       1/1           ff_vc1dsp_init [246]
+                0.00    0.00       1/1           ff_intrax8dsp_init [235]
+                0.00    0.00       1/1           ff_rv30dsp_init [244]
+                0.00    0.00       1/1           ff_rv40dsp_init [245]
+                0.00    0.00       1/1           ff_dsputil_init_dwt [233]
+                0.00    0.00       1/1           ff_dsputil_init_armv5te [232]
+                0.00    0.00       1/1           dsputil_init_arm [223]
+-----------------------------------------------
+                0.00    0.01      56/56          av_find_stream_info [9]
+[63]     0.0    0.00    0.01      56         add_to_pktbuf [63]
+                0.01    0.00      56/133         av_mallocz [42]
+-----------------------------------------------
+                0.00    0.00   37102/232916      avi_read_packet [24]
+                0.00    0.01  195814/232916      get_le16 [25]
+[64]     0.0    0.00    0.01  232916         get_byte [64]
+                0.00    0.01      12/100         fill_buffer [32]
+-----------------------------------------------
+                0.00    0.01       1/1           sws_getCachedContext [39]
+[65]     0.0    0.00    0.01       1         sws_alloc_context [65]
+                0.01    0.00       1/4           av_opt_set_defaults2 [45]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/2           av_opt_set_defaults [182]
+-----------------------------------------------
+                0.00    0.01       1/1           av_open_input_stream [17]
+[66]     0.0    0.00    0.01       1         avformat_alloc_context [66]
+                0.01    0.00       1/4           av_opt_set_defaults2 [45]
+                0.00    0.00       1/9231        av_malloc [111]
+                0.00    0.00       1/2           av_opt_set_defaults [182]
+-----------------------------------------------
+                0.00    0.00       1/2           fill_all_stream_timings [69]
+                0.00    0.00       1/2           av_find_stream_info [9]
+[67]     0.0    0.00    0.00       2         av_update_stream_timings [67]
+                0.00    0.00      12/64          av_rescale_q [44]
+-----------------------------------------------
+                0.00    0.00       2/6           ff_h263_decode_end [51]
+                0.00    0.00       4/6           avcodec_close [50]
+[68]     0.0    0.00    0.00       6         avcodec_default_free_buffers [68]
+                0.00    0.00     129/2410        av_freep [38]
+-----------------------------------------------
+                0.00    0.00       1/1           av_find_stream_info [9]
+[69]     0.0    0.00    0.00       1         fill_all_stream_timings [69]
+                0.00    0.00       1/2           av_update_stream_timings [67]
+-----------------------------------------------
+                0.00    0.00       2/2           av_find_stream_info [9]
+[70]     0.0    0.00    0.00       2         av_parser_init [70]
+                0.00    0.00       4/133         av_mallocz [42]
+                0.00    0.00       1/1           mpeg4video_parse_init [75]
+-----------------------------------------------
+                0.00    0.00       1/1           av_open_input_file [16]
+[71]     0.0    0.00    0.00       1         url_fopen [71]
+                0.00    0.00       1/1           url_open [77]
+                0.00    0.00       1/1           url_fdopen [76]
+-----------------------------------------------
+                0.00    0.00       1/1           avi_read_header [18]
+[72]     0.0    0.00    0.00       1         ff_get_wav_header [72]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       2/48947       get_le32 [23]
+                0.00    0.00       5/97907       get_le16 [25]
+                0.00    0.00       1/4542        get_buffer [34]
+                0.00    0.00       1/1           ff_wav_codec_get_id [247]
+-----------------------------------------------
+                0.00    0.00       1/1           avi_read_header [18]
+[73]     0.0    0.00    0.00       1         avi_read_tag [73]
+                0.00    0.00       1/1           av_metadata_set2 [74]
+                0.00    0.00       1/4542        get_buffer [34]
+                0.00    0.00       1/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.00       1/1           avi_read_tag [73]
+[74]     0.0    0.00    0.00       1         av_metadata_set2 [74]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/1           av_metadata_get [209]
+                0.00    0.00       1/1           av_strdup [211]
+                0.00    0.00       1/9231        av_malloc [111]
+                0.00    0.00       1/180         av_realloc [148]
+-----------------------------------------------
+                0.00    0.00       1/1           av_parser_init [70]
+[75]     0.0    0.00    0.00       1         mpeg4video_parse_init [75]
+                0.00    0.00       1/133         av_mallocz [42]
+-----------------------------------------------
+                0.00    0.00       1/1           url_fopen [71]
+[76]     0.0    0.00    0.00       1         url_fdopen [76]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/1           url_get_max_packet_size [321]
+                0.00    0.00       1/9231        av_malloc [111]
+                0.00    0.00       1/1           init_put_byte [269]
+-----------------------------------------------
+                0.00    0.00       1/1           url_fopen [71]
+[77]     0.0    0.00    0.00       1         url_open [77]
+                0.00    0.00       1/1           url_open_protocol [78]
+-----------------------------------------------
+                0.00    0.00       1/1           url_open [77]
+[78]     0.0    0.00    0.00       1         url_open_protocol [78]
+                0.00    0.00       1/133         av_mallocz [42]
+                0.00    0.00       1/1           file_open [252]
+                0.00    0.00       1/8           url_seek [161]
+-----------------------------------------------
+                0.00    0.00       2/2           av_close_input_stream [53]
+[79]     0.0    0.00    0.00       2         av_parser_close [79]
+                0.00    0.00       1/2410        av_freep [38]
+                0.00    0.00       3/11768       av_free [109]
+                0.00    0.00       1/1           ff_parse_close [242]
+                0.00    0.00       1/1           ff_parse1_close [241]
+-----------------------------------------------
+                0.00    0.00 5311757/5311757     MPV_decode_mb [4]
+[80]     0.0    0.00    0.00 5311757         add_dct [80]
+-----------------------------------------------
+                0.00    0.00 1564225/1564225     mpeg4_decode_mb [5]
+[81]     0.0    0.00    0.00 1564225         mpeg4_is_resync [81]
+                0.00    0.00       2/2           skip_bits [194]
+                0.00    0.00       2/2           ff_mpeg4_get_video_packet_prefix_length [192]
+-----------------------------------------------
+                0.00    0.00 1564224/1564224     decode_slice [3]
+[82]     0.0    0.00    0.00 1564224         ff_h263_update_motion_val [82]
+-----------------------------------------------
+                0.00    0.00 1384158/1384158     mpeg4_decode_block [6]
+[83]     0.0    0.00    0.00 1384158         get_amv [83]
+-----------------------------------------------
+                0.00    0.00 1384158/1384158     mpeg4_decode_block [6]
+[84]     0.0    0.00    0.00 1384158         mpeg4_decode_dc [84]
+-----------------------------------------------
+                0.00    0.00 1384158/1384158     mpeg4_decode_block [6]
+[85]     0.0    0.00    0.00 1384158         mpeg4_pred_ac [85]
+-----------------------------------------------
+                0.00    0.00 1384157/1384157     put_dct [7]
+[86]     0.0    0.00    0.00 1384157         dct_unquantize_h263_intra_armv5te [86]
+-----------------------------------------------
+                0.00    0.00 1286917/1286917     mpeg4_decode_mb [5]
+[87]     0.0    0.00    0.00 1286917         h263_decode_motion [87]
+-----------------------------------------------
+                0.00    0.00  970204/970204      mpeg4_decode_mb [5]
+[88]     0.0    0.00    0.00  970204         clear_blocks_c [88]
+-----------------------------------------------
+                0.00    0.00  885292/885292      MPV_motion [8]
+[89]     0.0    0.00    0.00  885292         prefetch_motion [89]
+-----------------------------------------------
+                0.00    0.00  643458/643458      mpeg4_decode_mb [5]
+[90]     0.0    0.00    0.00  643458         h263_pred_motion [90]
+-----------------------------------------------
+                0.00    0.00  208385/208385      mp_decode_frame [12]
+[91]     0.0    0.00    0.00  208385         ff_mpa_synth_filter [91]
+-----------------------------------------------
+                0.00    0.00  190585/190585      MPV_decode_mb [4]
+[92]     0.0    0.00    0.00  190585         ff_clean_intra_table_entries [92]
+-----------------------------------------------
+                0.00    0.00   72857/72857       MPV_motion [8]
+[93]     0.0    0.00    0.00   72857         ff_put_no_rnd_pixels16_xy2_arm [93]
+-----------------------------------------------
+                0.00    0.00   53758/53758       MPV_motion [8]
+[94]     0.0    0.00    0.00   53758         ff_emulated_edge_mc [94]
+-----------------------------------------------
+                0.00    0.00   51935/51935       MPV_motion [8]
+[95]     0.0    0.00    0.00   51935         ff_put_pixels16_xy2_arm [95]
+-----------------------------------------------
+                0.00    0.00      15/49333       avi_read_header [18]
+                0.00    0.00   12215/49333       avi_load_index [19]
+                0.00    0.00   37103/49333       avi_read_packet [24]
+[96]     0.0    0.00    0.00   49333         url_feof [96]
+-----------------------------------------------
+                0.00    0.00   44058/44058       MPV_motion [8]
+[97]     0.0    0.00    0.00   44058         ff_put_no_rnd_pixels16_y2_arm [97]
+-----------------------------------------------
+                0.00    0.00   40111/40111       MPV_motion [8]
+[98]     0.0    0.00    0.00   40111         ff_put_no_rnd_pixels16_x2_arm [98]
+-----------------------------------------------
+                0.00    0.00   39106/39106       decode_slice [3]
+[99]     0.0    0.00    0.00   39106         ff_init_block_index [99]
+-----------------------------------------------
+                0.00    0.00   39105/39105       decode_slice [3]
+[100]    0.0    0.00    0.00   39105         ff_draw_horiz_band [100]
+-----------------------------------------------
+                0.00    0.00   35029/35029       MPV_motion [8]
+[101]    0.0    0.00    0.00   35029         ff_put_pixels16_y2_arm [101]
+-----------------------------------------------
+                0.00    0.00   31614/31614       MPV_motion [8]
+[102]    0.0    0.00    0.00   31614         ff_put_pixels16_x2_arm [102]
+-----------------------------------------------
+                0.00    0.00       2/18173       avi_load_index [19]
+                0.00    0.00       4/18173       avi_read_header [18]
+                0.00    0.00       8/18173       url_fskip [160]
+                0.00    0.00   18159/18173       url_ftell [40]
+[103]    0.0    0.00    0.00   18173         url_fseek [103]
+                0.00    0.00       5/8           url_seek [161]
+-----------------------------------------------
+                0.00    0.00    1658/13872       avi_read_packet [24]
+                0.00    0.00   12214/13872       av_add_index_entry [43]
+[104]    0.0    0.00    0.00   13872         av_index_search_timestamp [104]
+-----------------------------------------------
+                0.00    0.00       4/13748       ff_dct_common_init [231]
+                0.00    0.00   13744/13748       decode_vop_header [27]
+[105]    0.0    0.00    0.00   13748         ff_init_scantable [105]
+-----------------------------------------------
+                0.00    0.00    4536/13610       av_read_packet [22]
+                0.00    0.00    4537/13610       av_read_frame_internal [15]
+                0.00    0.00    4537/13610       av_new_packet [37]
+[106]    0.0    0.00    0.00   13610         av_init_packet [106]
+-----------------------------------------------
+                0.00    0.00    2044/13559       mp3_read_probe [276]
+                0.00    0.00   11515/13559       mpegaudio_parse [57]
+[107]    0.0    0.00    0.00   13559         ff_mpa_decode_header [107]
+                0.00    0.00    2880/5770        ff_mpegaudio_decode_header [114]
+-----------------------------------------------
+                0.00    0.00   12214/12214       av_add_index_entry [43]
+[108]    0.0    0.00    0.00   12214         av_fast_realloc [108]
+                0.00    0.00     177/180         av_realloc [148]
+                0.00    0.00       2/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.00       1/11768       url_close [3419]
+                0.00    0.00       1/11768       ff_rewind_with_probe_data [243]
+                0.00    0.00       1/11768       av_close_input_file [54]
+                0.00    0.00       1/11768       ff_parse1_close [241]
+                0.00    0.00       1/11768       ff_yuv2rgb_c_init_tables [248]
+                0.00    0.00       2/11768       avi_read_close [215]
+                0.00    0.00       2/11768       url_fclose [3421]
+                0.00    0.00       2/11768       av_find_stream_info [9]
+                0.00    0.00       3/11768       av_metadata_free [174]
+                0.00    0.00       3/11768       av_parser_close [79]
+                0.00    0.00      14/11768       av_close_input_stream [53]
+                0.00    0.00      56/11768       av_read_frame [563]
+                0.00    0.00    2440/11768       av_freep [38]
+                0.00    0.00    9241/11768       av_destruct_packet [21]
+[109]    0.0    0.00    0.00   11768         av_free [109]
+-----------------------------------------------
+                0.00    0.00   10012/10012       decode_vop_header [27]
+[110]    0.0    0.00    0.00   10012         get_bits [110]
+-----------------------------------------------
+                0.00    0.00       1/9231        av_strdup [211]
+                0.00    0.00       1/9231        avi_read_tag [73]
+                0.00    0.00       1/9231        url_fdopen [76]
+                0.00    0.00       1/9231        av_metadata_set2 [74]
+                0.00    0.00       1/9231        avformat_alloc_context [66]
+                0.00    0.00       1/9231        ff_probe_input_buffer [46]
+                0.00    0.00       1/9231        ff_yuv2rgb_c_init_tables [248]
+                0.00    0.00       2/9231        av_find_stream_info [9]
+                0.00    0.00       2/9231        avcodec_alloc_context2 [59]
+                0.00    0.00       2/9231        av_fast_realloc [108]
+                0.00    0.00       4/9231        avcodec_alloc_frame [613]
+                0.00    0.00       6/9231        avcodec_default_get_buffer [35]
+                0.00    0.00     134/9231        av_mallocz [42]
+                0.00    0.00    4535/9231        av_new_packet [37]
+                0.00    0.00    4539/9231        av_dup_packet [30]
+[111]    0.0    0.00    0.00    9231         av_malloc [111]
+-----------------------------------------------
+                0.00    0.00      64/7483        av_rescale_q [44]
+                0.00    0.00    2880/7483        av_rescale [128]
+                0.00    0.00    4539/7483        compute_pkt_fields [36]
+[112]    0.0    0.00    0.00    7483         av_rescale_rnd [112]
+-----------------------------------------------
+                0.00    0.00    6576/6576        decode_vop_header [27]
+[113]    0.0    0.00    0.00    6576         skip_bits_long [113]
+-----------------------------------------------
+                0.00    0.00    2880/5770        ff_mpa_decode_header [107]
+                0.00    0.00    2890/5770        decode_frame [11]
+[114]    0.0    0.00    0.00    5770         ff_mpegaudio_decode_header [114]
+-----------------------------------------------
+                0.00    0.00    5333/5333        MPV_frame_start [31]
+[115]    0.0    0.00    0.00    5333         ff_copy_picture [115]
+-----------------------------------------------
+                0.00    0.00    5331/5331        MPV_frame_end [14]
+[116]    0.0    0.00    0.00    5331         draw_edges_c [116]
+-----------------------------------------------
+                0.00    0.00    4539/4539        compute_pkt_fields [36]
+[117]    0.0    0.00    0.00    4539         compute_frame_duration [117]
+                0.00    0.00    2881/2881        get_audio_frame_size [129]
+-----------------------------------------------
+                0.00    0.00    4539/4539        compute_pkt_fields [36]
+[118]    0.0    0.00    0.00    4539         update_initial_timestamps [118]
+-----------------------------------------------
+                0.00    0.00    4538/4538        av_get_packet [29]
+[119]    0.0    0.00    0.00    4538         av_shrink_packet [119]
+-----------------------------------------------
+                0.00    0.00    4537/4537        av_parser_parse2 [26]
+[120]    0.0    0.00    0.00    4537         ff_fetch_timestamp [120]
+-----------------------------------------------
+                0.00    0.00       1/4097        h261_probe [262]
+                0.00    0.00    4096/4097        ac3_eac3_probe [58]
+[121]    0.0    0.00    0.00    4097         init_get_bits [121]
+-----------------------------------------------
+                0.00    0.00    4096/4096        ac3_eac3_probe [58]
+[122]    0.0    0.00    0.00    4096         ff_ac3_parse_header [122]
+-----------------------------------------------
+                0.00    0.00       1/3568        MPV_common_init [48]
+                0.00    0.00       2/3568        avcodec_open [52]
+                0.00    0.00       3/3568        avpicture_get_size [876]
+                0.00    0.00       6/3568        avpicture_fill [176]
+                0.00    0.00    1778/3568        avcodec_decode_video2 [1]
+                0.00    0.00    1778/3568        avcodec_default_get_buffer [35]
+[123]    0.0    0.00    0.00    3568         avcodec_check_dimensions [123]
+-----------------------------------------------
+                0.00    0.00    3548/3548        sws_scale [13]
+[124]    0.0    0.00    0.00    3548         reset_ptr [124]
+-----------------------------------------------
+                0.00    0.00    1658/3437        mpeg4video_parse [28]
+                0.00    0.00    1779/3437        ff_h263_decode_frame [2]
+[125]    0.0    0.00    0.00    3437         ff_mpeg4_decode_picture_header [125]
+                0.00    0.00     297/297         decode_user_data [147]
+-----------------------------------------------
+                0.00    0.00    3140/3140        decode_vop_header [27]
+[126]    0.0    0.00    0.00    3140         get_bits1 [126]
+-----------------------------------------------
+                0.00    0.00    2890/2890        mp_decode_frame [12]
+[127]    0.0    0.00    0.00    2890         ff_mpa_l2_select_table [127]
+-----------------------------------------------
+                0.00    0.00    2881/2881        compute_pkt_fields [36]
+[128]    0.0    0.00    0.00    2881         av_rescale [128]
+                0.00    0.00    2880/7483        av_rescale_rnd [112]
+-----------------------------------------------
+                0.00    0.00    2881/2881        compute_frame_duration [117]
+[129]    0.0    0.00    0.00    2881         get_audio_frame_size [129]
+                0.00    0.00       1/2           av_get_bits_per_sample [180]
+-----------------------------------------------
+                0.00    0.00    2879/2879        mpegaudio_parse [57]
+[130]    0.0    0.00    0.00    2879         ff_combine_frame [130]
+-----------------------------------------------
+                0.00    0.00    1779/1779        ff_h263_decode_frame [2]
+[131]    0.0    0.00    0.00    1779         init_get_bits [131]
+-----------------------------------------------
+                0.00    0.00    1778/1778        ff_h263_decode_frame [2]
+[132]    0.0    0.00    0.00    1778         ff_er_frame_start [132]
+-----------------------------------------------
+                0.00    0.00    1778/1778        ff_h263_decode_frame [2]
+[133]    0.0    0.00    0.00    1778         ff_find_unused_picture [133]
+-----------------------------------------------
+                0.00    0.00    1778/1778        decode_slice [3]
+[134]    0.0    0.00    0.00    1778         ff_set_qscale [134]
+-----------------------------------------------
+                0.00    0.00       2/1778        MPV_common_end [56]
+                0.00    0.00    1776/1778        MPV_frame_start [31]
+[135]    0.0    0.00    0.00    1778         free_frame_buffer [135]
+                0.00    0.00    1778/3613        __aeabi_ulcmp [3714]
+-----------------------------------------------
+                0.00    0.00    1777/1777        decode_slice [3]
+[136]    0.0    0.00    0.00    1777         ff_er_add_slice [136]
+-----------------------------------------------
+                0.00    0.00    1777/1777        ff_h263_decode_frame [2]
+[137]    0.0    0.00    0.00    1777         ff_er_frame_end [137]
+-----------------------------------------------
+                0.00    0.00       1/1776        sws_init_context [314]
+                0.00    0.00       1/1776        sws_setColorspaceDetails [316]
+                0.00    0.00    1774/1776        sws_getCachedContext [39]
+[138]    0.0    0.00    0.00    1776         ff_hardcodedcpuflags [138]
+-----------------------------------------------
+                0.00    0.00    1775/1775        ff_h263_decode_frame [2]
+[139]    0.0    0.00    0.00    1775         ff_print_debug_info [139]
+-----------------------------------------------
+                0.00    0.00    1775/1775        ff_h263_decode_frame [2]
+[140]    0.0    0.00    0.00    1775         get_consumed_bytes [140]
+-----------------------------------------------
+                0.00    0.00    1774/1774        sws_scale [13]
+[141]    0.0    0.00    0.00    1774         yuv2rgb_c_24_rgb [141]
+-----------------------------------------------
+                0.00    0.00    1658/1658        mpeg4video_parse [28]
+[142]    0.0    0.00    0.00    1658         init_get_bits [142]
+-----------------------------------------------
+                0.00    0.00     766/766         av_opt_set_defaults2 [45]
+[143]    0.0    0.00    0.00     766         av_next_option [143]
+-----------------------------------------------
+                0.00    0.00     367/367         av_set_number2 [145]
+[144]    0.0    0.00    0.00     367         av_find_opt [144]
+-----------------------------------------------
+                0.00    0.00       4/367         av_set_q [173]
+                0.00    0.00      48/367         av_set_double [152]
+                0.00    0.00     315/367         av_set_int [146]
+[145]    0.0    0.00    0.00     367         av_set_number2 [145]
+                0.00    0.00     367/367         av_find_opt [144]
+-----------------------------------------------
+                0.00    0.00     315/315         av_opt_set_defaults2 [45]
+[146]    0.0    0.00    0.00     315         av_set_int [146]
+                0.00    0.00     315/367         av_set_number2 [145]
+-----------------------------------------------
+                0.00    0.00     297/297         ff_mpeg4_decode_picture_header [125]
+[147]    0.0    0.00    0.00     297         decode_user_data [147]
+-----------------------------------------------
+                0.00    0.00       1/180         ff_rewind_with_probe_data [243]
+                0.00    0.00       1/180         av_metadata_set2 [74]
+                0.00    0.00       1/180         ff_probe_input_buffer [46]
+                0.00    0.00     177/180         av_fast_realloc [108]
+[148]    0.0    0.00    0.00     180         av_realloc [148]
+-----------------------------------------------
+                0.00    0.00     116/116         av_find_stream_info [9]
+[149]    0.0    0.00    0.00     116         has_codec_parameters [149]
+-----------------------------------------------
+                0.00    0.00     100/100         url_read [33]
+[150]    0.0    0.00    0.00     100         file_read [150]
+-----------------------------------------------
+                0.00    0.00      12/60          av_reduce [157]
+                0.00    0.00      48/60          av_find_stream_info [9]
+[151]    0.0    0.00    0.00      60         av_gcd [151]
+-----------------------------------------------
+                0.00    0.00      48/48          av_opt_set_defaults2 [45]
+[152]    0.0    0.00    0.00      48         av_set_double [152]
+                0.00    0.00      48/367         av_set_number2 [145]
+-----------------------------------------------
+                0.00    0.00       4/36          avcodec_alloc_frame [613]
+                0.00    0.00      32/36          MPV_common_init [48]
+[153]    0.0    0.00    0.00      36         avcodec_get_frame_defaults [153]
+-----------------------------------------------
+                                 288             build_table [154]
+                0.00    0.00      32/32          init_vlc_sparse [155]
+[154]    0.0    0.00    0.00      32+288     build_table [154]
+                                 288             build_table [154]
+-----------------------------------------------
+                0.00    0.00       7/32          decode_init [61]
+                0.00    0.00       8/32          h263_decode_init_vlc [193]
+                0.00    0.00      17/32          decode_init [188]
+[155]    0.0    0.00    0.00      32         init_vlc_sparse [155]
+                0.00    0.00      32/32          build_table [154]
+-----------------------------------------------
+                0.00    0.00       1/19          nsv_probe [287]
+                0.00    0.00      18/19          av_probe_input_format2 [41]
+[156]    0.0    0.00    0.00      19         av_match_ext [156]
+-----------------------------------------------
+                0.00    0.00       1/12          av_mul_q [210]
+                0.00    0.00       3/12          av_find_stream_info [9]
+                0.00    0.00       4/12          av_d2q [170]
+                0.00    0.00       4/12          av_set_pts_info [172]
+[157]    0.0    0.00    0.00      12         av_reduce [157]
+                0.00    0.00      12/60          av_gcd [151]
+-----------------------------------------------
+                0.00    0.00       2/8           avcodec_default_get_buffer [35]
+                0.00    0.00       6/8           avpicture_fill [176]
+[158]    0.0    0.00    0.00       8         ff_fill_linesize [158]
+-----------------------------------------------
+                0.00    0.00       8/8           url_seek [161]
+[159]    0.0    0.00    0.00       8         file_seek [159]
+-----------------------------------------------
+                0.00    0.00       8/8           avi_read_header [18]
+[160]    0.0    0.00    0.00       8         url_fskip [160]
+                0.00    0.00       8/18173       url_fseek [103]
+-----------------------------------------------
+                0.00    0.00       1/8           url_open_protocol [78]
+                0.00    0.00       2/8           url_fsize [196]
+                0.00    0.00       5/8           url_fseek [103]
+[161]    0.0    0.00    0.00       8         url_seek [161]
+                0.00    0.00       8/8           file_seek [159]
+-----------------------------------------------
+                0.00    0.00       6/6           avcodec_default_get_format [185]
+[162]    0.0    0.00    0.00       6         ff_is_hwaccel_pix_fmt [162]
+-----------------------------------------------
+                0.00    0.00       1/5           av_find_stream_info [9]
+                0.00    0.00       1/5           ff_probe_input_buffer [46]
+                0.00    0.00       1/5           ff_yuv2rgb_get_func_ptr [249]
+                0.00    0.00       2/5           av_opt_set_defaults2 [45]
+[163]    0.0    0.00    0.00       5         av_log [163]
+                0.00    0.00       5/5           av_vlog [165]
+-----------------------------------------------
+                0.00    0.00       5/5           av_vlog [165]
+[164]    0.0    0.00    0.00       5         av_log_default_callback [164]
+                0.00    0.00       1/1           sws_context_to_name [313]
+-----------------------------------------------
+                0.00    0.00       5/5           av_log [163]
+[165]    0.0    0.00    0.00       5         av_vlog [165]
+                0.00    0.00       5/5           av_log_default_callback [164]
+-----------------------------------------------
+                0.00    0.00       2/5           avcodec_default_get_buffer [35]
+                0.00    0.00       3/5           avpicture_get_size [876]
+[166]    0.0    0.00    0.00       5         ff_fill_pointer [166]
+-----------------------------------------------
+                0.00    0.00       1/5           flac_probe [254]
+                0.00    0.00       1/5           mp3_read_probe [276]
+                0.00    0.00       1/5           mpc_probe [278]
+                0.00    0.00       1/5           adts_aac_probe [200]
+                0.00    0.00       1/5           tta_probe [319]
+[167]    0.0    0.00    0.00       5         ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       2/5           h263_decode_init_vlc [193]
+                0.00    0.00       3/5           decode_init [61]
+[168]    0.0    0.00    0.00       5         init_rl [168]
+-----------------------------------------------
+                0.00    0.00       2/5           h263_decode_init_vlc [193]
+                0.00    0.00       3/5           decode_init [61]
+[169]    0.0    0.00    0.00       5         init_vlc_rl [169]
+-----------------------------------------------
+                0.00    0.00       4/4           av_opt_set_defaults2 [45]
+[170]    0.0    0.00    0.00       4         av_d2q [170]
+                0.00    0.00       4/12          av_reduce [157]
+-----------------------------------------------
+                0.00    0.00       2/4           sws_init_context [314]
+                0.00    0.00       2/4           sws_setColorspaceDetails [316]
+[171]    0.0    0.00    0.00       4         av_get_bits_per_pixel [171]
+-----------------------------------------------
+                0.00    0.00       2/4           avi_read_header [18]
+                0.00    0.00       2/4           av_new_stream [55]
+[172]    0.0    0.00    0.00       4         av_set_pts_info [172]
+                0.00    0.00       4/12          av_reduce [157]
+-----------------------------------------------
+                0.00    0.00       4/4           av_opt_set_defaults2 [45]
+[173]    0.0    0.00    0.00       4         av_set_q [173]
+                0.00    0.00       4/367         av_set_number2 [145]
+-----------------------------------------------
+                0.00    0.00       3/3           av_close_input_stream [53]
+[174]    0.0    0.00    0.00       3         av_metadata_free [174]
+                0.00    0.00       3/11768       av_free [109]
+-----------------------------------------------
+                0.00    0.00       1/3           MPV_common_init [48]
+                0.00    0.00       2/3           avcodec_default_get_buffer [35]
+[175]    0.0    0.00    0.00       3         avcodec_get_chroma_sub_sample [175]
+-----------------------------------------------
+                0.00    0.00       3/3           avpicture_get_size [876]
+[176]    0.0    0.00    0.00       3         avpicture_fill [176]
+                0.00    0.00       6/3568        avcodec_check_dimensions [123]
+                0.00    0.00       6/8           ff_fill_linesize [158]
+-----------------------------------------------
+                0.00    0.00       3/3           mpegts_probe [281]
+[177]    0.0    0.00    0.00       3         pat_cb [177]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+[178]    0.0    0.00    0.00       2         MPV_common_defaults [178]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+[179]    0.0    0.00    0.00       2         MPV_decode_defaults [179]
+-----------------------------------------------
+                0.00    0.00       1/2           get_audio_frame_size [129]
+                0.00    0.00       1/2           av_find_stream_info [9]
+[180]    0.0    0.00    0.00       2         av_get_bits_per_sample [180]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_find_hwaccel [190]
+[181]    0.0    0.00    0.00       2         av_hwaccel_next [181]
+-----------------------------------------------
+                0.00    0.00       1/2           avformat_alloc_context [66]
+                0.00    0.00       1/2           sws_alloc_context [65]
+[182]    0.0    0.00    0.00       2         av_opt_set_defaults [182]
+-----------------------------------------------
+                0.00    0.00       2/2           avcodec_default_get_buffer [35]
+[183]    0.0    0.00    0.00       2         avcodec_align_dimensions2 [183]
+-----------------------------------------------
+                0.00    0.00       2/2           av_new_stream [55]
+[184]    0.0    0.00    0.00       2         avcodec_alloc_context [184]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+[185]    0.0    0.00    0.00       2         avcodec_default_get_format [185]
+                0.00    0.00       6/6           ff_is_hwaccel_pix_fmt [162]
+-----------------------------------------------
+                0.00    0.00       2/2           av_find_stream_info [9]
+[186]    0.0    0.00    0.00       2         avcodec_find_decoder [186]
+-----------------------------------------------
+                0.00    0.00       2/2           avcodec_open [52]
+[187]    0.0    0.00    0.00       2         avcodec_set_dimensions [187]
+-----------------------------------------------
+                0.00    0.00       2/2           avcodec_open [52]
+[188]    0.0    0.00    0.00       2         decode_init [188]
+                0.00    0.00      17/32          init_vlc_sparse [155]
+                0.00    0.00       1/1           ff_mpa_synth_init [238]
+-----------------------------------------------
+                0.00    0.00       1/2           avi_read_header [18]
+                0.00    0.00       1/2           ff_wav_codec_get_id [247]
+[189]    0.0    0.00    0.00       2         ff_codec_get_id [189]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+[190]    0.0    0.00    0.00       2         ff_find_hwaccel [190]
+                0.00    0.00       2/2           av_hwaccel_next [181]
+-----------------------------------------------
+                0.00    0.00       2/2           decode_init [61]
+[191]    0.0    0.00    0.00       2         ff_h263_decode_init [191]
+                0.00    0.00       2/2           MPV_common_defaults [178]
+                0.00    0.00       2/2           MPV_decode_defaults [179]
+                0.00    0.00       2/2           avcodec_default_get_format [185]
+                0.00    0.00       2/2           ff_find_hwaccel [190]
+                0.00    0.00       2/2           h263_decode_init_vlc [193]
+-----------------------------------------------
+                0.00    0.00       2/2           mpeg4_is_resync [81]
+[192]    0.0    0.00    0.00       2         ff_mpeg4_get_video_packet_prefix_length [192]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_h263_decode_init [191]
+[193]    0.0    0.00    0.00       2         h263_decode_init_vlc [193]
+                0.00    0.00       8/32          init_vlc_sparse [155]
+                0.00    0.00       2/5           init_rl [168]
+                0.00    0.00       2/5           init_vlc_rl [169]
+-----------------------------------------------
+                0.00    0.00       2/2           mpeg4_is_resync [81]
+[194]    0.0    0.00    0.00       2         skip_bits [194]
+-----------------------------------------------
+                0.00    0.00       2/2           ff_yuv2rgb_get_func_ptr [249]
+[195]    0.0    0.00    0.00       2         sws_format_name [195]
+-----------------------------------------------
+                0.00    0.00       1/2           avi_read_header [18]
+                0.00    0.00       1/2           av_find_stream_info [9]
+[196]    0.0    0.00    0.00       2         url_fsize [196]
+                0.00    0.00       2/8           url_seek [161]
+-----------------------------------------------
+                0.00    0.00       1/1           ff_dct_common_init [231]
+[197]    0.0    0.00    0.00       1         MPV_common_init_arm [197]
+-----------------------------------------------
+                0.00    0.00       1/1           ff_dct_common_init [231]
+[198]    0.0    0.00    0.00       1         MPV_common_init_armv5te [198]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[199]    0.0    0.00    0.00       1         ac3_probe [199]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[200]    0.0    0.00    0.00       1         adts_aac_probe [200]
+                0.00    0.00       1/5           ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[201]    0.0    0.00    0.00       1         aea_read_probe [201]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[202]    0.0    0.00    0.00       1         aiff_probe [202]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[203]    0.0    0.00    0.00       1         amr_probe [203]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[204]    0.0    0.00    0.00       1         apc_probe [204]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[205]    0.0    0.00    0.00       1         ape_probe [205]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[206]    0.0    0.00    0.00       1         asf_probe [206]
+                0.00    0.00       1/1           guidcmp [260]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[207]    0.0    0.00    0.00       1         au_probe [207]
+-----------------------------------------------
+                0.00    0.00       1/1           avi_read_header [18]
+[208]    0.0    0.00    0.00       1         av_div_q [208]
+                0.00    0.00       1/1           av_mul_q [210]
+-----------------------------------------------
+                0.00    0.00       1/1           av_metadata_set2 [74]
+[209]    0.0    0.00    0.00       1         av_metadata_get [209]
+-----------------------------------------------
+                0.00    0.00       1/1           av_div_q [208]
+[210]    0.0    0.00    0.00       1         av_mul_q [210]
+                0.00    0.00       1/12          av_reduce [157]
+-----------------------------------------------
+                0.00    0.00       1/1           av_metadata_set2 [74]
+[211]    0.0    0.00    0.00       1         av_strdup [211]
+                0.00    0.00       1/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.00       1/1           av_open_input_stream [17]
+[212]    0.0    0.00    0.00       1         av_strlcpy [212]
+-----------------------------------------------
+                0.00    0.00       1/1           file_open [252]
+[213]    0.0    0.00    0.00       1         av_strstart [213]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[214]    0.0    0.00    0.00       1         avi_probe [214]
+-----------------------------------------------
+                0.00    0.00       1/1           av_close_input_stream [53]
+[215]    0.0    0.00    0.00       1         avi_read_close [215]
+                0.00    0.00       2/11768       av_free [109]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[216]    0.0    0.00    0.00       1         avs_probe [216]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[217]    0.0    0.00    0.00       1         bfi_probe [217]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[218]    0.0    0.00    0.00       1         cavsvideo_probe [218]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[219]    0.0    0.00    0.00       1         cdata_probe [219]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[220]    0.0    0.00    0.00       1         cin_probe [220]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[221]    0.0    0.00    0.00       1         dirac_probe [221]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[222]    0.0    0.00    0.00       1         dnxhd_probe [222]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[223]    0.0    0.00    0.00       1         dsputil_init_arm [223]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[224]    0.0    0.00    0.00       1         dts_probe [224]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[225]    0.0    0.00    0.00       1         dv_probe [225]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[226]    0.0    0.00    0.00       1         dxa_probe [226]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[227]    0.0    0.00    0.00       1         ea_probe [227]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[228]    0.0    0.00    0.00       1         eac3_probe [228]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[229]    0.0    0.00    0.00       1         ff_cavsdsp_init [229]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[230]    0.0    0.00    0.00       1         ff_check_alignment [230]
+-----------------------------------------------
+                0.00    0.00       1/1           MPV_common_init [48]
+[231]    0.0    0.00    0.00       1         ff_dct_common_init [231]
+                0.00    0.00       4/13748       ff_init_scantable [105]
+                0.00    0.00       1/1           MPV_common_init_armv5te [198]
+                0.00    0.00       1/1           MPV_common_init_arm [197]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[232]    0.0    0.00    0.00       1         ff_dsputil_init_armv5te [232]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[233]    0.0    0.00    0.00       1         ff_dsputil_init_dwt [233]
+-----------------------------------------------
+                0.00    0.00       1/1           sws_init_context [314]
+[234]    0.0    0.00    0.00       1         ff_get_unscaled_swscale [234]
+                0.00    0.00       1/1           ff_yuv2rgb_get_func_ptr [249]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[235]    0.0    0.00    0.00       1         ff_intrax8dsp_init [235]
+-----------------------------------------------
+                0.00    0.00       1/1           av_open_input_stream [17]
+[236]    0.0    0.00    0.00       1         ff_metadata_demux_compat [236]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[237]    0.0    0.00    0.00       1         ff_mlp_init [237]
+-----------------------------------------------
+                0.00    0.00       1/1           decode_init [188]
+[238]    0.0    0.00    0.00       1         ff_mpa_synth_init [238]
+-----------------------------------------------
+                0.00    0.00       1/1           av_find_stream_info [9]
+[239]    0.0    0.00    0.00       1         ff_mpeg4video_split [239]
+-----------------------------------------------
+                0.00    0.00       1/1           avcodec_flush_buffers [632]
+[240]    0.0    0.00    0.00       1         ff_mpeg_flush [240]
+-----------------------------------------------
+                0.00    0.00       1/1           av_parser_close [79]
+[241]    0.0    0.00    0.00       1         ff_parse1_close [241]
+                0.00    0.00       1/11768       av_free [109]
+-----------------------------------------------
+                0.00    0.00       1/1           av_parser_close [79]
+[242]    0.0    0.00    0.00       1         ff_parse_close [242]
+-----------------------------------------------
+                0.00    0.00       1/1           ff_probe_input_buffer [46]
+[243]    0.0    0.00    0.00       1         ff_rewind_with_probe_data [243]
+                0.00    0.00       1/11768       av_free [109]
+                0.00    0.00       1/180         av_realloc [148]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[244]    0.0    0.00    0.00       1         ff_rv30dsp_init [244]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[245]    0.0    0.00    0.00       1         ff_rv40dsp_init [245]
+-----------------------------------------------
+                0.00    0.00       1/1           dsputil_init [62]
+[246]    0.0    0.00    0.00       1         ff_vc1dsp_init [246]
+-----------------------------------------------
+                0.00    0.00       1/1           ff_get_wav_header [72]
+[247]    0.0    0.00    0.00       1         ff_wav_codec_get_id [247]
+                0.00    0.00       1/2           ff_codec_get_id [189]
+-----------------------------------------------
+                0.00    0.00       1/1           sws_setColorspaceDetails [316]
+[248]    0.0    0.00    0.00       1         ff_yuv2rgb_c_init_tables [248]
+                0.00    0.00       1/11768       av_free [109]
+                0.00    0.00       1/9231        av_malloc [111]
+-----------------------------------------------
+                0.00    0.00       1/1           ff_get_unscaled_swscale [234]
+[249]    0.0    0.00    0.00       1         ff_yuv2rgb_get_func_ptr [249]
+                0.00    0.00       2/2           sws_format_name [195]
+                0.00    0.00       1/5           av_log [163]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[250]    0.0    0.00    0.00       1         ffm_probe [250]
+-----------------------------------------------
+                0.00    0.00       1/1           url_close [3419]
+[251]    0.0    0.00    0.00       1         file_close [251]
+-----------------------------------------------
+                0.00    0.00       1/1           url_open_protocol [78]
+[252]    0.0    0.00    0.00       1         file_open [252]
+                0.00    0.00       1/1           av_strstart [213]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[253]    0.0    0.00    0.00       1         film_probe [253]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[254]    0.0    0.00    0.00       1         flac_probe [254]
+                0.00    0.00       1/5           ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[255]    0.0    0.00    0.00       1         flic_probe [255]
+-----------------------------------------------
+                0.00    0.00       1/1           avcodec_flush_buffers [632]
+[256]    0.0    0.00    0.00       1         flush [256]
+-----------------------------------------------
+                0.00    0.00       1/1           av_close_input_stream [53]
+[257]    0.0    0.00    0.00       1         flush_packet_queue [257]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[258]    0.0    0.00    0.00       1         flv_probe [258]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[259]    0.0    0.00    0.00       1         fourxm_probe [259]
+-----------------------------------------------
+                0.00    0.00       1/1           asf_probe [206]
+[260]    0.0    0.00    0.00       1         guidcmp [260]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[261]    0.0    0.00    0.00       1         gxf_probe [261]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[262]    0.0    0.00    0.00       1         h261_probe [262]
+                0.00    0.00       1/4097        init_get_bits [121]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[263]    0.0    0.00    0.00       1         h263_probe [263]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[264]    0.0    0.00    0.00       1         h264_probe [264]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[265]    0.0    0.00    0.00       1         idcin_probe [265]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[266]    0.0    0.00    0.00       1         iff_probe [266]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[267]    0.0    0.00    0.00       1         image_probe [267]
+                0.00    0.00       1/1           img_read_packet [268]
+-----------------------------------------------
+                0.00    0.00       1/1           image_probe [267]
+[268]    0.0    0.00    0.00       1         img_read_packet [268]
+-----------------------------------------------
+                0.00    0.00       1/1           url_fdopen [76]
+[269]    0.0    0.00    0.00       1         init_put_byte [269]
+                0.00    0.00       1/1           url_resetbuf [322]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[270]    0.0    0.00    0.00       1         ipmovie_probe [270]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[271]    0.0    0.00    0.00       1         iss_probe [271]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[272]    0.0    0.00    0.00       1         lmlm4_probe [272]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[273]    0.0    0.00    0.00       1         matroska_probe [273]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[274]    0.0    0.00    0.00       1         mmf_probe [274]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[275]    0.0    0.00    0.00       1         mov_probe [275]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[276]    0.0    0.00    0.00       1         mp3_read_probe [276]
+                0.00    0.00    2044/13559       ff_mpa_decode_header [107]
+                0.00    0.00       1/5           ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[277]    0.0    0.00    0.00       1         mpc8_probe [277]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[278]    0.0    0.00    0.00       1         mpc_probe [278]
+                0.00    0.00       1/5           ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[279]    0.0    0.00    0.00       1         mpeg4video_probe [279]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[280]    0.0    0.00    0.00       1         mpegps_probe [280]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[281]    0.0    0.00    0.00       1         mpegts_probe [281]
+                0.00    0.00       3/3           pat_cb [177]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[282]    0.0    0.00    0.00       1         mpegvideo_probe [282]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[283]    0.0    0.00    0.00       1         msnwc_tcp_probe [283]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[284]    0.0    0.00    0.00       1         mtv_probe [284]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[285]    0.0    0.00    0.00       1         mxf_probe [285]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[286]    0.0    0.00    0.00       1         nc_probe [286]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[287]    0.0    0.00    0.00       1         nsv_probe [287]
+                0.00    0.00       1/19          av_match_ext [156]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[288]    0.0    0.00    0.00       1         nut_probe [288]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[289]    0.0    0.00    0.00       1         nuv_probe [289]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[290]    0.0    0.00    0.00       1         ogg_probe [290]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[291]    0.0    0.00    0.00       1         oma_read_probe [291]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[292]    0.0    0.00    0.00       1         probe [292]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[293]    0.0    0.00    0.00       1         probe [293]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[294]    0.0    0.00    0.00       1         probe [294]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[295]    0.0    0.00    0.00       1         probe [295]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[296]    0.0    0.00    0.00       1         probe [296]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[297]    0.0    0.00    0.00       1         probe [297]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[298]    0.0    0.00    0.00       1         probe [298]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[299]    0.0    0.00    0.00       1         pva_probe [299]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[300]    0.0    0.00    0.00       1         qcp_probe [300]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[301]    0.0    0.00    0.00       1         r3d_probe [301]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[302]    0.0    0.00    0.00       1         rl2_probe [302]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[303]    0.0    0.00    0.00       1         rm_probe [303]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[304]    0.0    0.00    0.00       1         roq_probe [304]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[305]    0.0    0.00    0.00       1         rpl_probe [305]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[306]    0.0    0.00    0.00       1         seq_probe [306]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[307]    0.0    0.00    0.00       1         siff_probe [307]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[308]    0.0    0.00    0.00       1         smacker_probe [308]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[309]    0.0    0.00    0.00       1         sol_probe [309]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[310]    0.0    0.00    0.00       1         sox_probe [310]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[311]    0.0    0.00    0.00       1         str_probe [311]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[312]    0.0    0.00    0.00       1         swf_probe [312]
+-----------------------------------------------
+                0.00    0.00       1/1           av_log_default_callback [164]
+[313]    0.0    0.00    0.00       1         sws_context_to_name [313]
+-----------------------------------------------
+                0.00    0.00       1/1           sws_getCachedContext [39]
+[314]    0.0    0.00    0.00       1         sws_init_context [314]
+                0.00    0.00       2/4           av_get_bits_per_pixel [171]
+                0.00    0.00       1/1776        ff_hardcodedcpuflags [138]
+                0.00    0.00       1/1           ff_get_unscaled_swscale [234]
+                0.00    0.00       1/1           sws_rgb2rgb_init [315]
+-----------------------------------------------
+                0.00    0.00       1/1           sws_init_context [314]
+[315]    0.0    0.00    0.00       1         sws_rgb2rgb_init [315]
+-----------------------------------------------
+                0.00    0.00       1/1           sws_getCachedContext [39]
+[316]    0.0    0.00    0.00       1         sws_setColorspaceDetails [316]
+                0.00    0.00       2/4           av_get_bits_per_pixel [171]
+                0.00    0.00       1/1776        ff_hardcodedcpuflags [138]
+                0.00    0.00       1/1           ff_yuv2rgb_c_init_tables [248]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[317]    0.0    0.00    0.00       1         thp_probe [317]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[318]    0.0    0.00    0.00       1         tmv_probe [318]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[319]    0.0    0.00    0.00       1         tta_probe [319]
+                0.00    0.00       1/5           ff_id3v2_match [167]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[320]    0.0    0.00    0.00       1         txd_probe [320]
+-----------------------------------------------
+                0.00    0.00       1/1           url_fdopen [76]
+[321]    0.0    0.00    0.00       1         url_get_max_packet_size [321]
+-----------------------------------------------
+                0.00    0.00       1/1           init_put_byte [269]
+[322]    0.0    0.00    0.00       1         url_resetbuf [322]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[323]    0.0    0.00    0.00       1         vc1t_probe [323]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[324]    0.0    0.00    0.00       1         vid_probe [324]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[325]    0.0    0.00    0.00       1         vmd_probe [325]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[326]    0.0    0.00    0.00       1         voc_probe [326]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[327]    0.0    0.00    0.00       1         vqf_probe [327]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[328]    0.0    0.00    0.00       1         w64_probe [328]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[329]    0.0    0.00    0.00       1         wav_probe [329]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[330]    0.0    0.00    0.00       1         wc3_probe [330]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[331]    0.0    0.00    0.00       1         wsaud_probe [331]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[332]    0.0    0.00    0.00       1         wsvqa_probe [332]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[333]    0.0    0.00    0.00       1         wv_probe [333]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[334]    0.0    0.00    0.00       1         xa_probe [334]
+-----------------------------------------------
+                0.00    0.00       1/1           av_probe_input_format2 [41]
+[335]    0.0    0.00    0.00       1         yuv4_probe [335]
+-----------------------------------------------
+                0.00    0.00      57/3613        av_find_stream_info [9]
+                0.00    0.00    1778/3613        free_frame_buffer [135]
+                0.00    0.00    1778/3613        ff_alloc_picture [49]
+[3714]   0.0    0.00    0.00    3613         __aeabi_ulcmp [3714]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+ [178] MPV_common_defaults    [36] compute_pkt_fields (utils.c) [264] h264_probe (raw.c)
+  [56] MPV_common_end         [86] dct_unquantize_h263_intra_armv5te (mpegvideo_armv5te.c) [149] has_codec_parameters (utils.c)
+  [48] MPV_common_init        [11] decode_frame (mpegaudiodec.c) [265] idcin_probe (idcin.c)
+ [197] MPV_common_init_arm    [61] decode_init (mpeg4videodec.c) [266] iff_probe (iff.c)
+ [198] MPV_common_init_armv5te [188] decode_init (mpegaudiodec.c) [267] image_probe (img2.c)
+ [179] MPV_decode_defaults     [3] decode_slice (h263dec.c) [268] img_read_packet (img2.c)
+   [4] MPV_decode_mb         [147] decode_user_data (mpeg4videodec.c) [131] init_get_bits (get_bits.h)
+  [14] MPV_frame_end          [27] decode_vop_header (mpeg4videodec.c) [142] init_get_bits (get_bits.h)
+  [31] MPV_frame_start       [221] dirac_probe (raw.c)   [121] init_get_bits (get_bits.h)
+   [8] MPV_motion (mpegvideo_common.h) [222] dnxhd_probe (raw.c) [269] init_put_byte
+ [3714] __aeabi_ulcmp        [116] draw_edges_c (dsputil.c) [168] init_rl
+  [58] ac3_eac3_probe (raw.c) [62] dsputil_init          [169] init_vlc_rl
+ [199] ac3_probe (raw.c)     [223] dsputil_init_arm      [155] init_vlc_sparse
+  [80] add_dct (mpegvideo.c) [224] dts_probe (raw.c)     [270] ipmovie_probe (ipmovie.c)
+  [63] add_to_pktbuf (utils.c) [225] dv_probe (dv.c)     [271] iss_probe (iss.c)
+ [200] adts_aac_probe (raw.c) [226] dxa_probe (dxa.c)    [272] lmlm4_probe (lmlm4.c)
+ [201] aea_read_probe (aea.c) [227] ea_probe (electronicarts.c) [273] matroska_probe (matroskadec.c)
+ [202] aiff_probe (aiffdec.c) [228] eac3_probe (raw.c)   [274] mmf_probe (mmf.c)
+ [203] amr_probe (amr.c)     [122] ff_ac3_parse_header   [275] mov_probe (mov.c)
+ [204] apc_probe (apc.c)      [49] ff_alloc_picture      [276] mp3_read_probe (mp3.c)
+ [205] ape_probe (ape.c)     [229] ff_cavsdsp_init        [12] mp_decode_frame (mpegaudiodec.c)
+ [206] asf_probe (asfdec.c)  [230] ff_check_alignment    [277] mpc8_probe (mpc8.c)
+ [207] au_probe (au.c)        [92] ff_clean_intra_table_entries [278] mpc_probe (mpc.c)
+  [43] av_add_index_entry    [189] ff_codec_get_id         [6] mpeg4_decode_block (mpeg4videodec.c)
+  [53] av_close_input_stream [130] ff_combine_frame       [84] mpeg4_decode_dc (mpeg4videodec.c)
+ [170] av_d2q                [115] ff_copy_picture         [5] mpeg4_decode_mb (mpeg4videodec.c)
+  [21] av_destruct_packet    [231] ff_dct_common_init     [81] mpeg4_is_resync (mpeg4videodec.c)
+ [208] av_div_q              [100] ff_draw_horiz_band     [85] mpeg4_pred_ac
+  [30] av_dup_packet         [232] ff_dsputil_init_armv5te [28] mpeg4video_parse (mpeg4video_parser.c)
+ [108] av_fast_realloc       [233] ff_dsputil_init_dwt    [75] mpeg4video_parse_init (mpeg4video_parser.c)
+ [144] av_find_opt            [94] ff_emulated_edge_mc   [279] mpeg4video_probe (raw.c)
+ [109] av_free               [136] ff_er_add_slice        [57] mpegaudio_parse (mpegaudio_parser.c)
+  [20] av_free_packet        [137] ff_er_frame_end       [280] mpegps_probe (mpeg.c)
+  [38] av_freep              [132] ff_er_frame_start     [281] mpegts_probe (mpegts.c)
+ [151] av_gcd                [120] ff_fetch_timestamp    [282] mpegvideo_probe (raw.c)
+ [171] av_get_bits_per_pixel [158] ff_fill_linesize      [283] msnwc_tcp_probe (msnwc_tcp.c)
+ [180] av_get_bits_per_sample [166] ff_fill_pointer      [284] mtv_probe (mtv.c)
+  [29] av_get_packet         [190] ff_find_hwaccel       [285] mxf_probe (mxfdec.c)
+ [181] av_hwaccel_next       [133] ff_find_unused_picture [286] nc_probe (ncdec.c)
+ [104] av_index_search_timestamp [234] ff_get_unscaled_swscale [287] nsv_probe (nsvdec.c)
+ [106] av_init_packet         [72] ff_get_wav_header     [288] nut_probe (nutdec.c)
+ [163] av_log                 [51] ff_h263_decode_end    [289] nuv_probe (nuv.c)
+ [164] av_log_default_callback [2] ff_h263_decode_frame  [290] ogg_probe (oggdec.c)
+ [111] av_malloc             [191] ff_h263_decode_init   [291] oma_read_probe (oma.c)
+  [42] av_mallocz             [82] ff_h263_update_motion_val [177] pat_cb (mpegts.c)
+ [156] av_match_ext          [138] ff_hardcodedcpuflags   [89] prefetch_motion (mpegvideo_common.h)
+ [174] av_metadata_free      [167] ff_id3v2_match        [297] probe (mm.c)
+ [209] av_metadata_get        [99] ff_init_block_index   [296] probe (cafdec.c)
+  [74] av_metadata_set2      [105] ff_init_scantable     [292] probe (anm.c)
+ [210] av_mul_q              [235] ff_intrax8dsp_init    [298] probe (bink.c)
+  [37] av_new_packet         [162] ff_is_hwaccel_pix_fmt [293] probe (assdec.c)
+  [55] av_new_stream         [236] ff_metadata_demux_compat [295] probe (iv8.c)
+ [143] av_next_option        [237] ff_mlp_init           [294] probe (c93.c)
+  [17] av_open_input_stream  [107] ff_mpa_decode_header    [7] put_dct (mpegvideo.c)
+ [182] av_opt_set_defaults   [127] ff_mpa_l2_select_table [299] pva_probe (pva.c)
+  [45] av_opt_set_defaults2   [91] ff_mpa_synth_filter   [300] qcp_probe (qcp.c)
+  [79] av_parser_close       [238] ff_mpa_synth_init     [301] r3d_probe (r3d.c)
+  [70] av_parser_init        [125] ff_mpeg4_decode_picture_header [124] reset_ptr (swscale.c)
+  [26] av_parser_parse2      [192] ff_mpeg4_get_video_packet_prefix_length [302] rl2_probe (rl2.c)
+  [47] av_probe_input_format [239] ff_mpeg4video_split   [303] rm_probe (rmdec.c)
+  [41] av_probe_input_format2 (utils.c) [240] ff_mpeg_flush [304] roq_probe (idroq.c)
+  [15] av_read_frame_internal (utils.c) [114] ff_mpegaudio_decode_header [305] rpl_probe (rpl.c)
+  [22] av_read_packet        [241] ff_parse1_close       [306] seq_probe (tiertexseq.c)
+ [148] av_realloc            [242] ff_parse_close        [307] siff_probe (siff.c)
+ [157] av_reduce             [139] ff_print_debug_info   [194] skip_bits (get_bits.h)
+ [128] av_rescale             [46] ff_probe_input_buffer [113] skip_bits_long (get_bits.h)
+  [44] av_rescale_q           [98] ff_put_no_rnd_pixels16_x2_arm (dsputil_init_arm.c) [308] smacker_probe (smacker.c)
+ [112] av_rescale_rnd         [93] ff_put_no_rnd_pixels16_xy2_arm (dsputil_init_arm.c) [309] sol_probe (sol.c)
+ [152] av_set_double          [97] ff_put_no_rnd_pixels16_y2_arm (dsputil_init_arm.c) [310] sox_probe (soxdec.c)
+ [146] av_set_int            [102] ff_put_pixels16_x2_arm (dsputil_init_arm.c) [311] str_probe (psxstr.c)
+ [145] av_set_number2 (opt.c) [95] ff_put_pixels16_xy2_arm (dsputil_init_arm.c) [312] swf_probe (swfdec.c)
+ [172] av_set_pts_info       [101] ff_put_pixels16_y2_arm (dsputil_init_arm.c) [65] sws_alloc_context
+ [173] av_set_q              [243] ff_rewind_with_probe_data [313] sws_context_to_name (options.c)
+ [119] av_shrink_packet      [244] ff_rv30dsp_init       [195] sws_format_name
+ [211] av_strdup             [245] ff_rv40dsp_init        [39] sws_getCachedContext
+ [212] av_strlcpy            [134] ff_set_qscale         [314] sws_init_context
+ [213] av_strstart           [246] ff_vc1dsp_init        [315] sws_rgb2rgb_init
+  [67] av_update_stream_timings (utils.c) [247] ff_wav_codec_get_id [13] sws_scale
+ [165] av_vlog               [248] ff_yuv2rgb_c_init_tables [316] sws_setColorspaceDetails
+ [183] avcodec_align_dimensions2 [249] ff_yuv2rgb_get_func_ptr [317] thp_probe (thp.c)
+ [184] avcodec_alloc_context [250] ffm_probe (ffmdec.c)  [318] tmv_probe (tmv.c)
+  [59] avcodec_alloc_context2 [251] file_close (file.c)  [319] tta_probe (tta.c)
+ [123] avcodec_check_dimensions [252] file_open (file.c) [320] txd_probe (txd.c)
+  [50] avcodec_close         [150] file_read (file.c)    [118] update_initial_timestamps (utils.c)
+  [10] avcodec_decode_audio3 [159] file_seek (file.c)     [76] url_fdopen
+   [1] avcodec_decode_video2  [69] fill_all_stream_timings (utils.c) [96] url_feof
+  [68] avcodec_default_free_buffers [32] fill_buffer (aviobuf.c) [71] url_fopen
+  [35] avcodec_default_get_buffer [253] film_probe (segafilm.c) [103] url_fseek
+ [185] avcodec_default_get_format [254] flac_probe (flacdec.c) [196] url_fsize
+ [186] avcodec_find_decoder  [255] flic_probe (flic.c)   [160] url_fskip
+ [175] avcodec_get_chroma_sub_sample [256] flush (mpegaudiodec.c) [40] url_ftell
+  [60] avcodec_get_context_defaults2 [257] flush_packet_queue (utils.c) [321] url_get_max_packet_size
+ [153] avcodec_get_frame_defaults [258] flv_probe (flvdec.c) [77] url_open
+  [52] avcodec_open          [259] fourxm_probe (4xm.c)   [78] url_open_protocol
+ [187] avcodec_set_dimensions [135] free_frame_buffer (mpegvideo.c) [33] url_read
+  [66] avformat_alloc_context [83] get_amv (mpeg4videodec.c) [322] url_resetbuf
+  [19] avi_load_index (avidec.c) [129] get_audio_frame_size (utils.c) [161] url_seek
+ [214] avi_probe (avidec.c)  [110] get_bits (get_bits.h) [323] vc1t_probe (vc1test.c)
+ [215] avi_read_close (avidec.c) [126] get_bits1 (get_bits.h) [324] vid_probe (bethsoftvid.c)
+  [18] avi_read_header (avidec.c) [34] get_buffer        [325] vmd_probe (sierravmd.c)
+  [24] avi_read_packet (avidec.c) [64] get_byte          [326] voc_probe (vocdec.c)
+  [73] avi_read_tag (avidec.c) [140] get_consumed_bytes (h263dec.c) [327] vqf_probe (vqf.c)
+ [176] avpicture_fill         [25] get_le16              [328] w64_probe (wav.c)
+ [216] avs_probe (avs.c)      [23] get_le32              [329] wav_probe (wav.c)
+ [217] bfi_probe (bfi.c)     [260] guidcmp (asfdec.c)    [330] wc3_probe (wc3movie.c)
+ [154] build_table (bitstream.c) [261] gxf_probe (gxf.c) [331] wsaud_probe (westwood.c)
+ [218] cavsvideo_probe (raw.c) [262] h261_probe (raw.c)  [332] wsvqa_probe (westwood.c)
+ [219] cdata_probe (eacdata.c) [193] h263_decode_init_vlc [333] wv_probe (wv.c)
+ [220] cin_probe (dsicin.c)   [87] h263_decode_motion    [334] xa_probe (xa.c)
+  [88] clear_blocks_c (dsputil.c) [90] h263_pred_motion  [141] yuv2rgb_c_24_rgb (yuv2rgb.c)
+ [117] compute_frame_duration (utils.c) [263] h263_probe (raw.c) [335] yuv4_probe (yuv4mpeg.c)
