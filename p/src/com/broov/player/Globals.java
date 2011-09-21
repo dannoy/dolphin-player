@@ -13,13 +13,21 @@ class Globals {
 	public static int AudioBufferConfig   = 2;
 	public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
-	public static String ApplicationName = "Dolphin Player";
-	public static String VersionName     = "beta 1.1";
+	//public static String ApplicationName = "Dolphin Player Universal";
+	public static String ApplicationName = "Dolphin Player ARM V7+Neon";
+	public static String VersionName     = "beta 1.2 Build 19092011-1800";
 	public static String defaultDir      = "/sdcard";
 	public static String defaultSubtitleFont      = "/sdcard/broov.ttf";
 	
 	public static void setFileName(String fName) {
 		fileName = fName;
+	}
+	
+	public static String getFileName() {
+		if (fileName == null) {
+			return "";
+		}
+		return fileName;
 	}
 
 	public static String supportedVideoFileFormats[] = 
@@ -312,7 +320,7 @@ class Globals {
 			System.loadLibrary("iconv");
 			System.loadLibrary("universalchardet");
 			
-			System.loadLibrary("yuv2rgb");
+			//System.loadLibrary("yuv2rgb");
 
 			System.loadLibrary("application");
 					

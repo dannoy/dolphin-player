@@ -1,0 +1,10 @@
+Changelog
+
+Dolphin Player 1.2 Build 10 SEP 11 0310PM IST 
+a) French translations patch from oubefrance updated in this release
+b) ffmpeg is built for x86 and tested in android froyo 2.2 live cd. audio & video are playing fine
+c) frame skipping logic is improved from the previous version. 
+d) Minimum buffer size and maximum buffer size are fine tuned to improve the quality of playing 
+   video file
+e) Video player controls alignment is improved in this version
+   

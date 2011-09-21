@@ -1,0 +1,398 @@
+builddir="`pwd`"; cd libcharset && make all && make install-lib libdir="$builddir/lib" includedir="$builddir/lib"
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/libcharset'
+cd lib && make all
+make[2]: Entering directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden  -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./localcharset.c
+libtool: compile:  gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./localcharset.c  -DDLL_EXPORT -DPIC -o .libs/localcharset.o
+libtool: compile:  gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./localcharset.c -o localcharset.o >/dev/null 2>&1
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden  -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./relocatable.c
+libtool: compile:  gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./relocatable.c  -DDLL_EXPORT -DPIC -o .libs/relocatable.o
+./relocatable.c: In function ‘DllMain’:
+./relocatable.c:337: warning: visibility attribute not supported in this configuration; ignored
+./relocatable.c: In function ‘libcharset_relocate’:
+./relocatable.c:491: warning: visibility attribute not supported in this configuration; ignored
+libtool: compile:  gcc -I. -I. -I.. -I./.. -I../include -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBCHARSET -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -c ./relocatable.c -o relocatable.o >/dev/null 2>&1
+/bin/sh ../libtool --mode=link gcc  -g -O2 -fvisibility=hidden -o libcharset.la -rpath /usr/local/lib -version-info 1:0:0 -no-undefined localcharset.lo relocatable.lo
+libtool: link: gcc -shared  .libs/localcharset.o .libs/relocatable.o      -o .libs/cygcharset-1.dll -Wl,--enable-auto-image-base -Xlinker --out-implib -Xlinker .libs/libcharset.dll.a
+Creating library file: .libs/libcharset.dll.a
+libtool: link: ar cru .libs/libcharset.a  localcharset.o relocatable.o
+libtool: link: ranlib .libs/libcharset.a
+libtool: link: ( cd ".libs" && rm -f "libcharset.la" && ln -s "../libcharset.la" "libcharset.la" )
+/bin/sh ./config.charset 'i686-pc-cygwin' > t-charset.alias
+mv t-charset.alias charset.alias
+sed -e '/^#/d' -e 's/@''PACKAGE''@//g' ./ref-add.sin > t-ref-add.sed
+mv t-ref-add.sed ref-add.sed
+sed -e '/^#/d' -e 's/@''PACKAGE''@//g' ./ref-del.sin > t-ref-del.sed
+mv t-ref-del.sed ref-del.sed
+make[2]: Leaving directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/libcharset'
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/libcharset'
+cd lib && make all
+make[2]: Entering directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+cd lib && make install-lib libdir='/home/Aatrala/libiconv-1.13.1/lib' includedir='/home/Aatrala/libiconv-1.13.1/lib'
+make[2]: Entering directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+/bin/sh ../build-aux/mkinstalldirs /home/Aatrala/libiconv-1.13.1/lib
+/bin/sh ../libtool --mode=install /usr/bin/install -c -m 644 libcharset.la /home/Aatrala/libiconv-1.13.1/lib/libcharset.la
+libtool: install: /usr/bin/install -c -m 644 .libs/libcharset.dll.a /home/Aatrala/libiconv-1.13.1/lib/libcharset.dll.a
+libtool: install: base_file=`basename libcharset.la`
+libtool: install:  dlpath=`/bin/sh 2>&1 -c '. .libs/'libcharset.la'i; echo cygcharset-1.dll'`
+libtool: install:  dldir=/home/Aatrala/libiconv-1.13.1/lib/`dirname ../bin/cygcharset-1.dll`
+libtool: install:  test -d /home/Aatrala/libiconv-1.13.1/lib/../bin || mkdir -p /home/Aatrala/libiconv-1.13.1/lib/../bin
+libtool: install:  /usr/bin/install -c -m 644 .libs/cygcharset-1.dll /home/Aatrala/libiconv-1.13.1/lib/../bin/cygcharset-1.dll
+libtool: install:  chmod a+x /home/Aatrala/libiconv-1.13.1/lib/../bin/cygcharset-1.dll
+libtool: install:  if test -n '' && test -n 'strip --strip-unneeded'; then eval 'strip --strip-unneeded /home/Aatrala/libiconv-1.13.1/lib/../bin/cygcharset-1.dll' || exit 0; fi
+libtool: install: /usr/bin/install -c -m 644 .libs/libcharset.lai /home/Aatrala/libiconv-1.13.1/lib/libcharset.la
+libtool: install: /usr/bin/install -c -m 644 .libs/libcharset.a /home/Aatrala/libiconv-1.13.1/lib/libcharset.a
+libtool: install: chmod 644 /home/Aatrala/libiconv-1.13.1/lib/libcharset.a
+libtool: install: ranlib /home/Aatrala/libiconv-1.13.1/lib/libcharset.a
+libtool: install: warning: remember to run `libtool --finish /usr/local/lib'
+test -f /home/Aatrala/libiconv-1.13.1/lib/charset.alias && orig=/home/Aatrala/libiconv-1.13.1/lib/charset.alias \
+	                                || orig=charset.alias; \
+	sed -f ref-add.sed $orig > /home/Aatrala/libiconv-1.13.1/lib/t-charset.alias; \
+	/usr/bin/install -c -m 644 /home/Aatrala/libiconv-1.13.1/lib/t-charset.alias /home/Aatrala/libiconv-1.13.1/lib/charset.alias; \
+	rm -f /home/Aatrala/libiconv-1.13.1/lib/t-charset.alias
+make[2]: Leaving directory `/home/Aatrala/libiconv-1.13.1/libcharset/lib'
+/bin/sh ./build-aux/mkinstalldirs /home/Aatrala/libiconv-1.13.1/lib
+/usr/bin/install -c -m 644 include/libcharset.h /home/Aatrala/libiconv-1.13.1/lib/libcharset.h
+/usr/bin/install -c -m 644 include/localcharset.h.inst /home/Aatrala/libiconv-1.13.1/lib/localcharset.h
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/libcharset'
+cd lib && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/lib'
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I../include -I./../include -I.. -I./..  -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./iconv.c
+libtool: compile:  gcc -I. -I. -I../include -I./../include -I.. -I./.. -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./iconv.c  -DDLL_EXPORT -DPIC -o .libs/iconv.o
+./iconv.c:576: warning: ‘_libiconv_version’ redeclared without dllimport attribute: previous dllimport ignored
+lib/aliases.gperf: In function ‘aliases_lookup’:
+lib/aliases.gperf:375: warning: visibility attribute not supported in this configuration; ignored
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I../include -I./../include -I.. -I./..  -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./../libcharset/lib/localcharset.c
+libtool: compile:  gcc -I. -I. -I../include -I./../include -I.. -I./.. -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./../libcharset/lib/localcharset.c  -DDLL_EXPORT -DPIC -o .libs/localcharset.o
+./../libcharset/lib/localcharset.c: In function ‘locale_charset’:
+./../libcharset/lib/localcharset.c:500: warning: visibility attribute not supported in this configuration; ignored
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I../include -I./../include -I.. -I./..  -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./relocatable.c
+libtool: compile:  gcc -I. -I. -I../include -I./../include -I.. -I./.. -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./relocatable.c  -DDLL_EXPORT -DPIC -o .libs/relocatable.o
+./relocatable.c: In function ‘DllMain’:
+./relocatable.c:328: warning: visibility attribute not supported in this configuration; ignored
+./relocatable.c: In function ‘libiconv_relocate’:
+./relocatable.c:466: warning: visibility attribute not supported in this configuration; ignored
+/bin/sh ../libtool --mode=compile gcc -I. -I. -I../include -I./../include -I.. -I./..  -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./../woe32dll/iconv-exports.c
+libtool: compile:  gcc -I. -I. -I../include -I./../include -I.. -I./.. -g -O2 -fvisibility=hidden -DLIBDIR=\"/usr/local/lib\" -DBUILDING_LIBICONV -DBUILDING_DLL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/usr/local/lib\" -DNO_XMALLOC -Dset_relocation_prefix=libiconv_set_relocation_prefix -Drelocate=libiconv_relocate -DHAVE_CONFIG_H -c ./../woe32dll/iconv-exports.c  -DDLL_EXPORT -DPIC -o .libs/iconv-exports.o
+./../woe32dll/iconv-exports.c:20: warning: visibility attribute not supported in this configuration; ignored
+/bin/sh ../libtool --mode=compile --tag=RC windres `/bin/sh ./../windows/windres-options --escape 1.13.1` -i ./../windows/libiconv.rc -o libiconv.res.lo --output-format=coff
+libtool: compile:  windres -DPACKAGE_VERSION_STRING=\\\"1.13.1\\\" -DPACKAGE_VERSION_MAJOR=1 -DPACKAGE_VERSION_MINOR=13 -DPACKAGE_VERSION_SUBMINOR=1 -i ./../windows/libiconv.rc --output-format=coff  -o .libs/libiconv.res.o
+/bin/sh ../libtool --mode=link gcc -Wl,--export-all-symbols -g -O2 -fvisibility=hidden -o libiconv.la -rpath /usr/local/lib -version-info 7:0:5 -no-undefined iconv.lo localcharset.lo relocatable.lo iconv-exports.lo libiconv.res.lo
+libtool: link: gcc -shared  .libs/iconv.o .libs/localcharset.o .libs/relocatable.o .libs/iconv-exports.o .libs/libiconv.res.o    -Wl,--export-all-symbols   -o .libs/cygiconv-2.dll -Wl,--enable-auto-image-base -Xlinker --out-implib -Xlinker .libs/libiconv.dll.a
+Creating library file: .libs/libiconv.dll.a
+libtool: link: ( cd ".libs" && rm -f "libiconv.la" && ln -s "../libiconv.la" "libiconv.la" )
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/lib'
+cd preload && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/preload'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/preload'
+cd srclib && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/srclib'
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  cat ./alloca.in.h; \
+	} > alloca.h-t
+mv -f alloca.h-t alloca.h
+rm -f signal.h-t signal.h
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''NEXT_SIGNAL_H''@|<signal.h>|g' \
+	      -e 's|@''GNULIB_SIGNAL_H_SIGPIPE''@|1|g' \
+	      -e 's|@''GNULIB_SIGPROCMASK''@|1|g' \
+	      -e 's|@''GNULIB_SIGACTION''@|0|g' \
+	      -e 's|@''HAVE_POSIX_SIGNALBLOCKING''@|1|g' \
+	      -e 's|@''HAVE_SIGSET_T''@|1|g' \
+	      -e 's|@''HAVE_SIGINFO_T''@|1|g' \
+	      -e 's|@''HAVE_SIGACTION''@|1|g' \
+	      -e 's|@''HAVE_STRUCT_SIGACTION_SA_SIGACTION''@|1|g' \
+	      -e 's|@''HAVE_TYPE_VOLATILE_SIG_ATOMIC_T''@|1|g' \
+	      -e '/definition of GL_LINK_WARNING/r ../build-aux/link-warning.h' \
+	      < ./signal.in.h; \
+	} > signal.h-t
+mv signal.h-t signal.h
+rm -f stdio.h-t stdio.h
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''NEXT_STDIO_H''@|<stdio.h>|g' \
+	      -e 's|@''GNULIB_FPRINTF''@|1|g' \
+	      -e 's|@''GNULIB_FPRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_PRINTF''@|1|g' \
+	      -e 's|@''GNULIB_PRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_SNPRINTF''@|0|g' \
+	      -e 's|@''GNULIB_SPRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_VFPRINTF''@|1|g' \
+	      -e 's|@''GNULIB_VFPRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_VPRINTF''@|1|g' \
+	      -e 's|@''GNULIB_VPRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_VSNPRINTF''@|0|g' \
+	      -e 's|@''GNULIB_VSPRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_DPRINTF''@|0|g' \
+	      -e 's|@''GNULIB_VDPRINTF''@|0|g' \
+	      -e 's|@''GNULIB_VASPRINTF''@|0|g' \
+	      -e 's|@''GNULIB_OBSTACK_PRINTF''@|0|g' \
+	      -e 's|@''GNULIB_OBSTACK_PRINTF_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_FOPEN''@|0|g' \
+	      -e 's|@''GNULIB_FREOPEN''@|0|g' \
+	      -e 's|@''GNULIB_FSEEK''@|0|g' \
+	      -e 's|@''GNULIB_FSEEKO''@|0|g' \
+	      -e 's|@''GNULIB_FTELL''@|0|g' \
+	      -e 's|@''GNULIB_FTELLO''@|0|g' \
+	      -e 's|@''GNULIB_FFLUSH''@|0|g' \
+	      -e 's|@''GNULIB_FPURGE''@|0|g' \
+	      -e 's|@''GNULIB_FCLOSE''@|0|g' \
+	      -e 's|@''GNULIB_FPUTC''@|1|g' \
+	      -e 's|@''GNULIB_PUTC''@|1|g' \
+	      -e 's|@''GNULIB_PUTCHAR''@|1|g' \
+	      -e 's|@''GNULIB_FPUTS''@|1|g' \
+	      -e 's|@''GNULIB_PUTS''@|1|g' \
+	      -e 's|@''GNULIB_FWRITE''@|1|g' \
+	      -e 's|@''GNULIB_GETDELIM''@|0|g' \
+	      -e 's|@''GNULIB_GETLINE''@|0|g' \
+	      -e 's|@''GNULIB_PERROR''@|0|g' \
+	      -e 's|@''GNULIB_STDIO_H_SIGPIPE''@|1|g' \
+	      -e 's|@''REPLACE_STDIO_WRITE_FUNCS''@|0|g' \
+	      -e 's|@''REPLACE_FPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VFPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_PRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_SNPRINTF''@|0|g' \
+	      -e 's|@''HAVE_DECL_SNPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_VSNPRINTF''@|0|g' \
+	      -e 's|@''HAVE_DECL_VSNPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_SPRINTF''@|0|g' \
+	      -e 's|@''REPLACE_VSPRINTF''@|0|g' \
+	      -e 's|@''HAVE_DPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_DPRINTF''@|0|g' \
+	      -e 's|@''HAVE_VDPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_VDPRINTF''@|0|g' \
+	      -e 's|@''HAVE_VASPRINTF''@|1|g' \
+	      -e 's|@''REPLACE_VASPRINTF''@|0|g' \
+	      -e 's|@''HAVE_DECL_OBSTACK_PRINTF''@|1|g' \
+	      -e 's|@''REPLACE_OBSTACK_PRINTF''@|0|g' \
+	      -e 's|@''REPLACE_FOPEN''@|0|g' \
+	      -e 's|@''REPLACE_FREOPEN''@|0|g' \
+	      -e 's|@''REPLACE_FSEEKO''@|0|g' \
+	      -e 's|@''REPLACE_FSEEK''@|0|g' \
+	      -e 's|@''REPLACE_FTELLO''@|0|g' \
+	      -e 's|@''REPLACE_FTELL''@|0|g' \
+	      -e 's|@''REPLACE_FFLUSH''@|0|g' \
+	      -e 's|@''REPLACE_FPURGE''@|0|g' \
+	      -e 's|@''HAVE_DECL_FPURGE''@|1|g' \
+	      -e 's|@''REPLACE_FCLOSE''@|0|g' \
+	      -e 's|@''HAVE_DECL_GETDELIM''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLINE''@|1|g' \
+	      -e 's|@''REPLACE_GETLINE''@|0|g' \
+	      -e 's|@''REPLACE_PERROR''@|0|g' \
+	      -e '/definition of GL_LINK_WARNING/r ../build-aux/link-warning.h' \
+	      < ./stdio.in.h; \
+	} > stdio.h-t
+mv stdio.h-t stdio.h
+rm -f stdlib.h-t stdlib.h
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''NEXT_STDLIB_H''@|<stdlib.h>|g' \
+	      -e 's|@''HAVE_RANDOM_H''@|0|g' \
+	      -e 's|@''GNULIB_MALLOC_POSIX''@|1|g' \
+	      -e 's|@''GNULIB_REALLOC_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_CALLOC_POSIX''@|0|g' \
+	      -e 's|@''GNULIB_ATOLL''@|0|g' \
+	      -e 's|@''GNULIB_GETLOADAVG''@|0|g' \
+	      -e 's|@''GNULIB_GETSUBOPT''@|0|g' \
+	      -e 's|@''GNULIB_MKDTEMP''@|0|g' \
+	      -e 's|@''GNULIB_MKSTEMP''@|0|g' \
+	      -e 's|@''GNULIB_PUTENV''@|0|g' \
+	      -e 's|@''GNULIB_RANDOM_R''@|0|g' \
+	      -e 's|@''GNULIB_RPMATCH''@|0|g' \
+	      -e 's|@''GNULIB_SETENV''@|0|g' \
+	      -e 's|@''GNULIB_STRTOD''@|0|g' \
+	      -e 's|@''GNULIB_STRTOLL''@|0|g' \
+	      -e 's|@''GNULIB_STRTOULL''@|0|g' \
+	      -e 's|@''GNULIB_UNSETENV''@|0|g' \
+	      -e 's|@''HAVE_ATOLL''@|1|g' \
+	      -e 's|@''HAVE_CALLOC_POSIX''@|1|g' \
+	      -e 's|@''HAVE_GETSUBOPT''@|1|g' \
+	      -e 's|@''HAVE_MALLOC_POSIX''@|1|g' \
+	      -e 's|@''HAVE_MKDTEMP''@|1|g' \
+	      -e 's|@''HAVE_REALLOC_POSIX''@|1|g' \
+	      -e 's|@''HAVE_RANDOM_R''@|1|g' \
+	      -e 's|@''HAVE_RPMATCH''@|1|g' \
+	      -e 's|@''HAVE_SETENV''@|1|g' \
+	      -e 's|@''HAVE_STRTOD''@|1|g' \
+	      -e 's|@''HAVE_STRTOLL''@|1|g' \
+	      -e 's|@''HAVE_STRTOULL''@|1|g' \
+	      -e 's|@''HAVE_STRUCT_RANDOM_DATA''@|0|g' \
+	      -e 's|@''HAVE_SYS_LOADAVG_H''@|0|g' \
+	      -e 's|@''HAVE_UNSETENV''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLOADAVG''@|1|g' \
+	      -e 's|@''REPLACE_MKSTEMP''@|0|g' \
+	      -e 's|@''REPLACE_PUTENV''@|0|g' \
+	      -e 's|@''REPLACE_STRTOD''@|0|g' \
+	      -e 's|@''VOID_UNSETENV''@|0|g' \
+	      -e '/definition of GL_LINK_WARNING/r ../build-aux/link-warning.h' \
+	      < ./stdlib.in.h; \
+	} > stdlib.h-t
+mv stdlib.h-t stdlib.h
+rm -f string.h-t string.h
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
+	  sed -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''NEXT_STRING_H''@|<string.h>|g' \
+	      -e 's|@''GNULIB_MBSLEN''@|0|g' \
+	      -e 's|@''GNULIB_MBSNLEN''@|0|g' \
+	      -e 's|@''GNULIB_MBSCHR''@|0|g' \
+	      -e 's|@''GNULIB_MBSRCHR''@|0|g' \
+	      -e 's|@''GNULIB_MBSSTR''@|0|g' \
+	      -e 's|@''GNULIB_MBSCASECMP''@|0|g' \
+	      -e 's|@''GNULIB_MBSNCASECMP''@|0|g' \
+	      -e 's|@''GNULIB_MBSPCASECMP''@|0|g' \
+	      -e 's|@''GNULIB_MBSCASESTR''@|0|g' \
+	      -e 's|@''GNULIB_MBSCSPN''@|0|g' \
+	      -e 's|@''GNULIB_MBSPBRK''@|0|g' \
+	      -e 's|@''GNULIB_MBSSPN''@|0|g' \
+	      -e 's|@''GNULIB_MBSSEP''@|0|g' \
+	      -e 's|@''GNULIB_MBSTOK_R''@|0|g' \
+	      -e 's|@''GNULIB_MEMCHR''@|0|g' \
+	      -e 's|@''GNULIB_MEMMEM''@|0|g' \
+	      -e 's|@''GNULIB_MEMPCPY''@|0|g' \
+	      -e 's|@''GNULIB_MEMRCHR''@|0|g' \
+	      -e 's|@''GNULIB_RAWMEMCHR''@|0|g' \
+	      -e 's|@''GNULIB_STPCPY''@|0|g' \
+	      -e 's|@''GNULIB_STPNCPY''@|0|g' \
+	      -e 's|@''GNULIB_STRCHRNUL''@|0|g' \
+	      -e 's|@''GNULIB_STRDUP''@|0|g' \
+	      -e 's|@''GNULIB_STRNDUP''@|0|g' \
+	      -e 's|@''GNULIB_STRNLEN''@|0|g' \
+	      -e 's|@''GNULIB_STRPBRK''@|0|g' \
+	      -e 's|@''GNULIB_STRSEP''@|0|g' \
+	      -e 's|@''GNULIB_STRSTR''@|0|g' \
+	      -e 's|@''GNULIB_STRCASESTR''@|0|g' \
+	      -e 's|@''GNULIB_STRTOK_R''@|0|g' \
+	      -e 's|@''GNULIB_STRERROR''@|1|g' \
+	      -e 's|@''GNULIB_STRSIGNAL''@|0|g' \
+	      -e 's|@''GNULIB_STRVERSCMP''@|0|g' \
+	      -e 's|@''HAVE_DECL_MEMMEM''@|1|g' \
+	      -e 's|@''HAVE_MEMPCPY''@|1|g' \
+	      -e 's|@''HAVE_DECL_MEMRCHR''@|1|g' \
+	      -e 's|@''HAVE_RAWMEMCHR''@|1|g' \
+	      -e 's|@''HAVE_STPCPY''@|1|g' \
+	      -e 's|@''HAVE_STPNCPY''@|1|g' \
+	      -e 's|@''HAVE_STRCHRNUL''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRDUP''@|1|g' \
+	      -e 's|@''HAVE_STRNDUP''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRNDUP''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRNLEN''@|1|g' \
+	      -e 's|@''HAVE_STRPBRK''@|1|g' \
+	      -e 's|@''HAVE_STRSEP''@|1|g' \
+	      -e 's|@''HAVE_STRCASESTR''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRTOK_R''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRERROR''@|1|g' \
+	      -e 's|@''HAVE_DECL_STRSIGNAL''@|1|g' \
+	      -e 's|@''HAVE_STRVERSCMP''@|1|g' \
+	      -e 's|@''REPLACE_MEMCHR''@|0|g' \
+	      -e 's|@''REPLACE_MEMMEM''@|0|g' \
+	      -e 's|@''REPLACE_STRCASESTR''@|0|g' \
+	      -e 's|@''REPLACE_STRDUP''@|0|g' \
+	      -e 's|@''REPLACE_STRSTR''@|0|g' \
+	      -e 's|@''REPLACE_STRERROR''@|0|g' \
+	      -e 's|@''REPLACE_STRSIGNAL''@|0|g' \
+	      -e '/definition of GL_LINK_WARNING/r ../build-aux/link-warning.h' \
+	      < ./string.in.h; \
+	} > string.h-t
+mv string.h-t string.h
+rm -f unistd.h-t unistd.h
+{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''HAVE_UNISTD_H''@|1|g' \
+	      -e 's|@''INCLUDE_NEXT''@|include_next|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|#pragma GCC system_header|g' \
+	      -e 's|@''NEXT_UNISTD_H''@|<unistd.h>|g' \
+	      -e 's|@''GNULIB_CHOWN''@|0|g' \
+	      -e 's|@''GNULIB_CLOSE''@|0|g' \
+	      -e 's|@''GNULIB_DUP2''@|0|g' \
+	      -e 's|@''GNULIB_ENVIRON''@|1|g' \
+	      -e 's|@''GNULIB_EUIDACCESS''@|0|g' \
+	      -e 's|@''GNULIB_FCHDIR''@|0|g' \
+	      -e 's|@''GNULIB_FSYNC''@|0|g' \
+	      -e 's|@''GNULIB_FTRUNCATE''@|0|g' \
+	      -e 's|@''GNULIB_GETCWD''@|0|g' \
+	      -e 's|@''GNULIB_GETDOMAINNAME''@|0|g' \
+	      -e 's|@''GNULIB_GETDTABLESIZE''@|0|g' \
+	      -e 's|@''GNULIB_GETHOSTNAME''@|0|g' \
+	      -e 's|@''GNULIB_GETLOGIN_R''@|0|g' \
+	      -e 's|@''GNULIB_GETPAGESIZE''@|0|g' \
+	      -e 's|@''GNULIB_GETUSERSHELL''@|0|g' \
+	      -e 's|@''GNULIB_LCHOWN''@|0|g' \
+	      -e 's|@''GNULIB_LINK''@|0|g' \
+	      -e 's|@''GNULIB_LSEEK''@|0|g' \
+	      -e 's|@''GNULIB_READLINK''@|1|g' \
+	      -e 's|@''GNULIB_SLEEP''@|0|g' \
+	      -e 's|@''GNULIB_UNISTD_H_SIGPIPE''@|1|g' \
+	      -e 's|@''GNULIB_WRITE''@|0|g' \
+	      -e 's|@''HAVE_DUP2''@|1|g' \
+	      -e 's|@''HAVE_EUIDACCESS''@|1|g' \
+	      -e 's|@''HAVE_FSYNC''@|1|g' \
+	      -e 's|@''HAVE_FTRUNCATE''@|1|g' \
+	      -e 's|@''HAVE_GETDOMAINNAME''@|1|g' \
+	      -e 's|@''HAVE_GETDTABLESIZE''@|1|g' \
+	      -e 's|@''HAVE_GETHOSTNAME''@|1|g' \
+	      -e 's|@''HAVE_GETPAGESIZE''@|1|g' \
+	      -e 's|@''HAVE_GETUSERSHELL''@|1|g' \
+	      -e 's|@''HAVE_LINK''@|1|g' \
+	      -e 's|@''HAVE_READLINK''@|1|g' \
+	      -e 's|@''HAVE_SLEEP''@|1|g' \
+	      -e 's|@''HAVE_DECL_ENVIRON''@|1|g' \
+	      -e 's|@''HAVE_DECL_GETLOGIN_R''@|1|g' \
+	      -e 's|@''HAVE_OS_H''@|0|g' \
+	      -e 's|@''HAVE_SYS_PARAM_H''@|0|g' \
+	      -e 's|@''REPLACE_CHOWN''@|0|g' \
+	      -e 's|@''REPLACE_CLOSE''@|0|g' \
+	      -e 's|@''REPLACE_FCHDIR''@|0|g' \
+	      -e 's|@''REPLACE_GETCWD''@|0|g' \
+	      -e 's|@''REPLACE_GETPAGESIZE''@|0|g' \
+	      -e 's|@''REPLACE_LCHOWN''@|0|g' \
+	      -e 's|@''REPLACE_LSEEK''@|0|g' \
+	      -e 's|@''REPLACE_WRITE''@|0|g' \
+	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H''@|0|g' \
+	      -e '/definition of GL_LINK_WARNING/r ../build-aux/link-warning.h' \
+	      < ./unistd.in.h; \
+	} > unistd.h-t
+mv unistd.h-t unistd.h
+make  all-am
+make[2]: Entering directory `/home/Aatrala/libiconv-1.13.1/srclib'
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c areadlink.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c malloca.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c progname.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c -o width.o `test -f 'uniwidth/width.c' || echo './'`uniwidth/width.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c xmalloc.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c xstrdup.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c xreadlink.c
+gcc -DHAVE_CONFIG_H -DEXEEXT=\".exe\" -I. -I.. -I../lib  -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1   -g -O2 -c error.c
+rm -f libicrt.a
+ar cru libicrt.a areadlink.o malloca.o progname.o width.o xmalloc.o xstrdup.o xreadlink.o error.o
+ranlib libicrt.a
+make[2]: Leaving directory `/home/Aatrala/libiconv-1.13.1/srclib'
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/srclib'
+cd src && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/src'
+gcc -c -I. -I. -I.. -I../include -I./../include -I../srclib -I./../srclib -I../lib -g -O2  -DINSTALLDIR=\"/usr/local/bin\" -DLOCALEDIR=\"/usr/local/share/locale\" ./iconv_no_i18n.c
+windres `/bin/sh ./../windows/windres-options --escape 1.13.1` -i ./../windows/iconv.rc -o iconv.res --output-format=coff
+/bin/sh ../libtool --mode=link gcc  -g -O2 iconv_no_i18n.o ../srclib/libicrt.a ../lib/libiconv.la iconv.res -o iconv_no_i18n
+libtool: link: gcc -g -O2 iconv_no_i18n.o iconv.res -o .libs/iconv_no_i18n  ../srclib/libicrt.a ../lib/.libs/libiconv.dll.a -L/usr/local/lib
+gcc -c -I. -I. -I.. -I../include -I./../include -I../srclib -I./../srclib -I../lib -g -O2  -DINSTALLDIR=\"/usr/local/bin\" -DLOCALEDIR=\"/usr/local/share/locale\" ./iconv.c
+test `ls -ld . | sed -e 's/^d\(.........\).*/\1/'` = rwxrwxrwx || chmod 777 .
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/src'
+cd po && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/po'
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/po'
+cd man && make all
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/man'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/man'
+if test -d tests; then cd tests && make all; fi
+make[1]: Entering directory `/home/Aatrala/libiconv-1.13.1/tests'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/Aatrala/libiconv-1.13.1/tests'

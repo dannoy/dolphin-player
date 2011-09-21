@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>一般的なフィードバック</item>  
+		<item>提案アプリケーション</item>
+		<item>提案機能</item>
+		<item>問題を報告</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>ホワイト</item>
+		<item>グレー</item>
+		<item>グリーン</item>
+		<item>レッド</item>
+		<item>ブルー</item>
+		<item>イエロー</item>
+		<item>マゼンタ</item>
+		<item>シアン</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>再生回</item>
+		<item>すべて再生</item>
+		<item>繰り返し一</item>
+		<item>すべてリピート</item>
+	</string-array>
+	
+	<string-array name="Sort">
+		<item>なし</item>
+		<item>アルファベット順の</item>
+		<item>タイプ</item>
+	</string-array>
+	
+	<string-array name="SubtitleSize">
+		<item>小</item>
+		<item>媒体</item>
+		<item>大規模</item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>英語</item>
+		<item>中国語</item>
+		<item>フランス</item>
+		<item> ドイツ</item>
+		<item>イタリア</item>
+		<item>日本</item>
+	</string-array>
+	
+
+
+</resources>

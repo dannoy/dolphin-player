@@ -308,17 +308,23 @@ public class AudioPlayer extends Activity  {
 		demoRenderer.exitApp();
 	}
 	
+	
+	
 	public void setAudioInfo() {
 		
 		if (Globals.fileName == null) return;
 		
 		try {
-				System.out.println("Setting filename to " + Globals.fileName);
+				//System.out.println("Setting filename to " + Globals.fileName);
 				getMp3Tags();
 				HashMap<String, String> mp3Info = getMp3Info();
 				artistname.setText(mp3Info.get("ARTIST"));
 				albumname.setText(mp3Info.get("ALBUM"));
 				songtitle.setText(mp3Info.get("TITLE"));
+				if (mp3Info.get("ARTIST").length() < 3) {
+					songtitle.setText(Globals.getFileName());
+				}
+				
 				String duration = mp3Info.get("DURATION");
 				long filesize = new File(Globals.fileName).length();
 				int durationInSeconds = Integer.parseInt(duration) / 1000;
@@ -336,7 +342,12 @@ public class AudioPlayer extends Activity  {
 				}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			try {
+				songtitle.setText(Globals.getFileName());
+			} catch(Exception e2) {
+				
+			}
 			// TODO: handle exception
 		}
 		//================
@@ -389,6 +400,11 @@ public class AudioPlayer extends Activity  {
 		seekBarUpdater = new Updater();
 		mHandler.postDelayed(seekBarUpdater, 100);
 	}
+	
+	//@Override
+	//protected void onPause() {
+	//	this.
+	//}
 
 	//@Override
 	//protected void onPause() {

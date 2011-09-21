@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_height="fill_parent" android:layout_width="fill_parent"
+   android:padding="0dip" android:orientation="vertical">
+
+<LinearLayout android:orientation="vertical"
+     android:layout_width="fill_parent"
+        android:layout_height="0dip" android:layout_weight="1"> 
+        
+
+<TextView
+android:id="@+id/widget144"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:text="@string/category"
+android:textSize="15sp"
+android:typeface="sans"
+android:textStyle="bold"
+>
+</TextView>
+
+<Spinner android:id="@+id/spinner1" 
+android:drawSelectorOnTop="true"
+android:prompt="@string/category"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content" 
+>
+</Spinner>
+
+<TextView
+android:id="@+id/widget129"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:padding="3dip"
+android:text="@string/description"
+android:textStyle="bold"
+>
+</TextView>
+
+<EditText
+android:id="@+id/feedback_description"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:maxLength="512"
+>
+</EditText>
+<TextView
+android:id="@+id/widget132"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:padding="3dip"
+android:text="@string/mailid"
+android:textStyle="bold"
+>
+</TextView>
+<EditText
+android:id="@+id/feedback_mailid"
+android:inputType="textEmailAddress"
+android:singleLine="true"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:maxLength="48"
+
+>
+</EditText>
+</LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+      android:background="#696969"
+      android:padding="0dip" android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+<Button
+android:id="@+id/submitbutton"
+android:layout_height="wrap_content"
+android:text="@string/submit"
+android:layout_weight="1"
+android:layout_width="0dip"
+android:singleLine="true">
+
+>
+</Button>
+
+<Button
+android:id="@+id/cancelbutton"
+android:layout_height="wrap_content"
+android:text="@string/cancel"
+android:layout_width="0dip"
+android:layout_weight="1"
+android:singleLine="true">
+>
+</Button>
+
+</LinearLayout>
+
+</LinearLayout>
+

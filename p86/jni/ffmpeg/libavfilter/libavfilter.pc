@@ -1,0 +1,14 @@
+prefix=./android/armv6_vfp
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavfilter
+Description: FFmpeg video filtering library
+Version: 1.77.1
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir} -lavfilter -lm -lz -lgcc
+Libs.private: 
+Cflags: -I${includedir}

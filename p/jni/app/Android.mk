@@ -19,7 +19,7 @@ LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
 				-I$(AVPLAYER_PATH)"/jni/iconv/include" \
 				-I$(AVPLAYER_PATH)"/jni/iconv/srclib" \
 				-I$(AVPLAYER_PATH)"/jni/universalchardet/include" \
-				-I$(AVPLAYER_PATH)"/jni/yuv2rgb/include" \
+#				-I$(AVPLAYER_PATH)"/jni/yuv2rgb/include" \
 
 LOCAL_CFLAGS += $(CC_OPTIMIZE_FLAG) 
 
@@ -37,7 +37,7 @@ LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wil
 
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet andprof yuv2rgb
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
-LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
+LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet
 
 LOCAL_STATIC_LIBRARIES := freetype
 
