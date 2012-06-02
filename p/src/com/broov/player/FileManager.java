@@ -3,6 +3,7 @@ package com.broov.player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Stack;
 import java.io.File;
 
@@ -445,26 +446,70 @@ public class FileManager {
 		return listOfFiles;
 	}
 
-	public static ArrayList<String> listofAudioFiles(String file){
+	public static ArrayList<String> listofAudioFiles(String file)
+	{
 		File inFile = new File(file);
+		String first_play_file=Globals.getFileName();
+		boolean list_true=false;
 		ArrayList<String> listOfFiles = new ArrayList<String>();
+		ArrayList<String> second_listOfFiles = new ArrayList<String>();
 		for (File files : inFile.listFiles()) {
 			String absolutePath = files.getAbsolutePath();
+			if(first_play_file.equalsIgnoreCase(absolutePath))
+			{
+				list_true=true;
+			}
 			if (files.isFile() && isAudioFile(absolutePath)){
-				listOfFiles.add(absolutePath);
+				if(list_true==true)
+				{
+					listOfFiles.add(absolutePath);
+				}
+				else
+				{
+					second_listOfFiles.add(absolutePath);	
+				}
 			}
 		}
+		String [] order_array = second_listOfFiles.toArray(new String[second_listOfFiles.size()]);
+		for(int i=0;i<order_array.length;i++)
+		{
+			String add_items=order_array[i];
+			listOfFiles.add(add_items);
+		}
+
 		return listOfFiles;
 	}
 
-	public static ArrayList<String> listofVideoFiles(String file){
+	public static ArrayList<String> listofVideoFiles(String file)
+	{
 		File inFile = new File(file);
+		String first_play_file=Globals.getFileName();
+		boolean list_true=false;
 		ArrayList<String> listOfFiles = new ArrayList<String>();
+		ArrayList<String> second_listOfFiles = new ArrayList<String>();
 		for (File files : inFile.listFiles()) {
 			String absolutePath = files.getAbsolutePath();
-			if (files.isFile() && isVideoFile(absolutePath)){
-				listOfFiles.add(absolutePath);
+			if(first_play_file.equalsIgnoreCase(absolutePath))
+			{
+				list_true=true;
 			}
+			if (files.isFile() && isVideoFile(absolutePath)){
+				if(list_true==true)
+				{
+					listOfFiles.add(absolutePath);
+				}
+				else
+				{
+					second_listOfFiles.add(absolutePath);	
+				}
+			}
+
+		}
+		String [] order_array = second_listOfFiles.toArray(new String[second_listOfFiles.size()]);
+		for(int i=0;i<order_array.length;i++)
+		{
+			String add_items=order_array[i];
+			listOfFiles.add(add_items);
 		}
 		return listOfFiles;
 	}

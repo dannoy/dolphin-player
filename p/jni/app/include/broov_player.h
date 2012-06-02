@@ -199,9 +199,11 @@ enum
 };
 
 //File playing sequence of methods
-int player_init(char *font_fname, int subtitle_show, int subtitle_font_size, int subtitle_encoding_type);
-int player_main(int argc, char *argv[],
-                int loop_after_play, int audio_file_type, int skip_frames);
+int player_init(char *font_fname, int subtitle_show, int subtitle_font_size, int subtitle_encoding_type, int rgb565);
+
+int player_main(int argc, char *argv[], 
+		int loop_after_play, int audio_file_type, int skip_frames, int rgb565, int yuv_rgb_asm,
+                int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, int audio_queue_size);
 int player_exit();
 
 //Player status and control methods
@@ -262,12 +264,12 @@ int player_set_aspect_ratio(int aspect_ratio_type);
 //#define MAX_AUDIOQ_SIZE (524288)
 
 //GENERIC values for Buffer sizes
-#define BROOV_VIDEO_MIN_BUFFER_SIZE  256000
-#define BROOV_VIDEO_MAX_BUFFER_SIZE  2048576 
-#define BROOV_TOTAL_MAX_BUFFER_SIZE  3048576
+//#define BROOV_VIDEO_MIN_BUFFER_SIZE  256000
+//#define BROOV_VIDEO_MAX_BUFFER_SIZE  2048576 
+//#define BROOV_TOTAL_MAX_BUFFER_SIZE  3048576
 #define MIN_TIME_TO_WAIT_FOR_SKIP    0.25
 
 //512 KB (512 * 1024)
-#define MAX_AUDIOQ_SIZE (524288)
+//#define MAX_AUDIOQ_SIZE (524288)
 
 #endif /* #ifndef BROOV_PLAYER_H */

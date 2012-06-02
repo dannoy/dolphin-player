@@ -16,6 +16,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -35,7 +37,7 @@ public class AudioPlayer extends Activity  {
 	private ArrayList<HashMap<String, String>> mp3List = new ArrayList<HashMap<String, String>>();
 	String openfileFromBrowser = "";
 	Intent i = getIntent();
-
+	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,7 +73,12 @@ public class AudioPlayer extends Activity  {
 			}
 		}
 		System.out.println("=======================Playing filename:" + Globals.fileName);
-		
+		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		System.out.println("TelephoneManager : "+mgr);
+		if(mgr != null) {
+			System.out.println("telephonemanager start");
+		    mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+		}
 		// Find the views whose visibility will change
         mSeekBar = (SeekBar) findViewById(R.id.progressbar);
 
@@ -125,7 +132,7 @@ public class AudioPlayer extends Activity  {
 					}
 					else {
 						demoRenderer.nativePlayerPlay();
-						seekBarUpdater.stopIt();						
+						//seekBarUpdater.stopIt();						
 						img.setImageResource(R.drawable.play_shadow);
 					}		        	
 					paused = !paused;
@@ -155,6 +162,12 @@ public class AudioPlayer extends Activity  {
 					totalDuration = 0;
 					System.out.println("Calling KeyCode_1");
 					demoRenderer.nativePlayerPrev();
+					if(paused==true)
+					{
+						demoRenderer.nativePlayerPlay();
+					}
+				
+					
 		        }
 				demoRenderer.fileInfoUpdated = false;				
 		        return true;
@@ -173,7 +186,13 @@ public class AudioPlayer extends Activity  {
 					totalDuration = 0;
 					System.out.println("Calling KeyCode_2");
 					demoRenderer.nativePlayerNext();
+					if(paused==true)
+					{
+						demoRenderer.nativePlayerPlay();
+					}
+
 		        }							
+
 				demoRenderer.fileInfoUpdated = false;
 		        return true;
 			}
@@ -440,6 +459,35 @@ public class AudioPlayer extends Activity  {
 		}
 		super.onStop();
 	}
+
+	PhoneStateListener phoneStateListener = new PhoneStateListener() {
+	    @Override
+	    public void onCallStateChanged(int state, String incomingNumber) {
+	        if (state == TelephonyManager.CALL_STATE_RINGING) {
+	            //Incoming call: Pause music
+	        	System.out.println("call state idle");
+	        	demoRenderer.nativePlayerPlay();
+	        	
+				//seekBarUpdater = new Updater();
+				//mHandler.postDelayed(seekBarUpdater, 500);
+	        } else if(state == TelephonyManager.CALL_STATE_IDLE) {
+	            //Not in call: Play music
+	        	demoRenderer.nativePlayerPause();
+	        	System.out.println("call sate ringing");
+				//seekBarUpdater.stopIt();
+	        } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+	            //A call is dialing, active or on hold
+	        	System.out.println("call state offhook");
+	        	demoRenderer.nativePlayerPlay();
+				//seekBarUpdater = new Updater();
+				//mHandler.postDelayed(seekBarUpdater, 500);
+	        }
+	        super.onCallStateChanged(state, incomingNumber);
+	    }
+	};
+	
+
+
 
 	/*
 	@Override

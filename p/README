@@ -1,10 +1,10 @@
 
-Steps to compile the source code:
+Steps to compile the source code: 
 
 1. Create a directory named "p" in C:\ path
 2. Place ndk r5b directory in C:\r5b\
 
-NDK Compilation (r5b or similar)
+NDK Compilation (r5b, r8 or similar)
 3. Goto C:\p\ directory 
 4. ndk-build -j2 V=1 (Clean the directory using ndk-build clean, if required)
 5. Copy the ffmpeg library based on the type of build

@@ -10,16 +10,16 @@ APP_SUBDIRS += $(patsubst $(LOCAL_PATH)/%, %, $(shell find $(LOCAL_PATH)/resourc
 # Add more subdirs here, like src/subdir1 src/subdir2
 
 LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
+				-D__STDC_CONSTANT_MACROS \
+				-I$(AVPLAYER_PATH)"/native/ffmpeg/ffmpeg-0.11" \
 				-I$(AVPLAYER_PATH)"/jni/sdl/include" \
 				-I$(AVPLAYER_PATH)"/jni/sdl_ttf" \
-				-I$(AVPLAYER_PATH)"/jni/ffmpeg" \
-				-D__STDC_CONSTANT_MACROS \
 				-I$(AVPLAYER_PATH)"/jni/sdl_image/include" \
-				-I$(AVPLAYER_PATH)"/jni/app/include" \
 				-I$(AVPLAYER_PATH)"/jni/iconv/include" \
 				-I$(AVPLAYER_PATH)"/jni/iconv/srclib" \
 				-I$(AVPLAYER_PATH)"/jni/universalchardet/include" \
-#				-I$(AVPLAYER_PATH)"/jni/yuv2rgb/include" \
+				-I$(AVPLAYER_PATH)"/jni/yuv2rgb/include" \
+				-I$(AVPLAYER_PATH)"/jni/app/include" 
 
 LOCAL_CFLAGS += $(CC_OPTIMIZE_FLAG) 
 
@@ -37,7 +37,7 @@ LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wil
 
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet andprof yuv2rgb
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
-LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet
+LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
 
 LOCAL_STATIC_LIBRARIES := freetype
 
@@ -66,6 +66,6 @@ endif
 
 
 LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog 
-LOCAL_LDLIBS += "c:/p/mylibs/libffmpeg.so"
+LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11/android/armv5/libffmpeg.so"
 
 include $(BUILD_SHARED_LIBRARY)

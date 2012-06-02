@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -47,6 +49,34 @@ public class VideoPlayer extends Activity  {
 
 		super.onStop();
 	}
+
+
+	PhoneStateListener phoneStateListener = new PhoneStateListener() {
+	    @Override
+	    public void onCallStateChanged(int state, String incomingNumber) {
+	        if (state == TelephonyManager.CALL_STATE_RINGING) {
+	            //Incoming call: Pause music
+	        	System.out.println("call state idle");
+	        	demoRenderer.nativePlayerPlay();
+	        	
+				//seekBarUpdater = new Updater();
+				//mHandler.postDelayed(seekBarUpdater, 500);
+	        } else if(state == TelephonyManager.CALL_STATE_IDLE) {
+	            //Not in call: Play music
+	        	demoRenderer.nativePlayerPause();
+	        	System.out.println("call sate ringing");
+				//seekBarUpdater.stopIt();
+	        } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+	            //A call is dialing, active or on hold
+	        	System.out.println("call state offhook");
+	        	demoRenderer.nativePlayerPlay();
+				//seekBarUpdater = new Updater();
+				//mHandler.postDelayed(seekBarUpdater, 500);
+	        }
+	        super.onCallStateChanged(state, incomingNumber);
+	    }
+	};
+
 
 
 
@@ -91,6 +121,13 @@ public class VideoPlayer extends Activity  {
 			}
 
 			System.out.println("=======================Playing filename:" + Globals.fileName);
+
+			TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+			System.out.println("TelephoneManager : "+mgr);
+			if(mgr != null) {
+				System.out.println("telephonemanager start");
+			    mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+			}
 
 			// Find the views whose visibility will change
 			mSeekBar = (SeekBar) findViewById(R.id.progressbar);

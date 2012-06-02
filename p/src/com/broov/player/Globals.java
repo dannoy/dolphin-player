@@ -14,8 +14,8 @@ class Globals {
 	public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
 	//public static String ApplicationName = "Dolphin Player Universal";
-	public static String ApplicationName = "Dolphin Player ARM V7+Neon";
-	public static String VersionName     = "beta 1.2 Build 19092011-1800";
+	public static String ApplicationName = "Dolphin Player ARM V5";
+	public static String VersionName     = "1.5 Build 01June2012";
 	public static String defaultDir      = "/sdcard";
 	public static String defaultSubtitleFont      = "/sdcard/broov.ttf";
 	
@@ -34,15 +34,15 @@ class Globals {
 	{   "mp4","wmv","avi","mkv","dv",
 		"rm","mpg","mpeg","flv","divx",
 		"swf","dat","h264","h263","h261",
-		"3gp","3gpp","asf","mov","m4v",
-		"vob"
+		"3gp","3gpp","asf","mov","m4v", "ogv",
+		"vob", "vstream", "ts"
 		//"ttf"
 	};
 
 	public static String supportedAudioFileFormats[] = 
 	{   "mp3","wma","ogg","mp2","flac",
 		"aac","ac3","amr","pcm","wav",
-		"au","aiff","3g2","m4a"
+		"au","aiff","3g2","m4a", "astream"
 	};
 	
 	public static String supportedFontFileType[] = 
@@ -114,10 +114,10 @@ class Globals {
 		"Our thanks to opensource community members of FFmpeg, SDL, freetype, SDL_image, SDL_ttf, libpng, libjpeg, Theorarm, universalchardet, iconv, andprof, Pelya for SDL porting to Android, KMP"+
 		"</p>" +
 		"<P ALIGN=JUSTIFY>"+
-		"This is an open source media player for Android. Source can be availed at http;//code.google.com. Contributions are welcome from open source community members." +
+		"This is an open source media player for Android. Source can be availed at http://code.google.com. Contributions are welcome from open source community members." +
 		"</p>"+
 		"<P ALIGN=JUSTIFY>"+
-		"Users of Dolphin Player Premium Edition, can avail one licensed copy of Bulls Hit Converter 2.2 Ultimate Edition. HD Videos can be converted for optimal viewing in mobiles using this software" +
+		"Users of Dolphin Player Premium Edition, can avail one licensed copy of Bulls Hit Converter 3.0 Ultimate Edition. HD Videos can be converted for optimal viewing in mobiles using this software" +
 		"<br>"+
 		"(Supports conversion for most of the Audio and Video files)"+
 		"</p>" +
@@ -127,7 +127,8 @@ class Globals {
 		"</p>" +
 		"<P ALIGN=CENTER>"+
 		"<b>Developers</b>" +
-		"<br>  Aatral Arasu <br>  Nareshprasad " +
+		"<br>  Aatral Arasu <br>  Nareshprasad <br> Ganesan Narayanan" +
+		
 		"</p>" +
 		"</p>" +
 		"<P ALIGN=CENTER>"+
@@ -220,7 +221,7 @@ class Globals {
 	public static String  dbDefaultHome	 = getSdcardPath();
 	public static String  dbSubtitleFont = getSdcardPath()+"/broov.ttf";
 	public static String  dbLastOpenDir  = getSdcardPath(); 
-	public static boolean dbSkipframes     = false;  // Skip frames
+	public static boolean dbSkipframes     = true;  // Skip frames
 	/**
 	 * This will determine if hidden files and folders will be visible to the
 	 * user.
@@ -320,7 +321,7 @@ class Globals {
 			System.loadLibrary("iconv");
 			System.loadLibrary("universalchardet");
 			
-			//System.loadLibrary("yuv2rgb");
+			System.loadLibrary("yuv2rgb");
 
 			System.loadLibrary("application");
 					

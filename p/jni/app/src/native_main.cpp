@@ -11,7 +11,7 @@
 #endif
 
 extern C_LINKAGE int
-Java_com_broov_player_DemoRenderer_nativePlayerInit(JNIEnv* env, jobject obj, jstring jfileName, jint subtitleShow, jint subtitleFontSize, jint subtitleEncodingType)
+Java_com_broov_player_DemoRenderer_nativePlayerInit(JNIEnv* env, jobject obj, jstring jfileName, jint subtitleShow, jint subtitleFontSize, jint subtitleEncodingType, jint rgb565)
 {
         jboolean isCopy;
         char     lclFileName[FILE_NAME_SIZE];
@@ -19,6 +19,7 @@ Java_com_broov_player_DemoRenderer_nativePlayerInit(JNIEnv* env, jobject obj, js
         int my_subtitle_show;
         int my_subtitle_font_size;
         int my_subtitle_encoding_type;
+        int my_rgb565;
 
 #ifdef BROOV_C
         const char *fileString = (*env)->GetStringUTFChars(env, jfileName, &isCopy);
@@ -36,9 +37,10 @@ Java_com_broov_player_DemoRenderer_nativePlayerInit(JNIEnv* env, jobject obj, js
         my_subtitle_show = subtitleShow;
         my_subtitle_font_size = subtitleFontSize;
         my_subtitle_encoding_type = subtitleEncodingType;
+        my_rgb565 = rgb565;
         
         __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Starting Player init: subtitle_show:%d subtitle_font_size:%d", my_subtitle_show, my_subtitle_font_size);
-        return player_init(lclFileName, my_subtitle_show, my_subtitle_font_size, my_subtitle_encoding_type);
+        return player_init(lclFileName, my_subtitle_show, my_subtitle_font_size, my_subtitle_encoding_type, my_rgb565);
 
 };
 
@@ -54,7 +56,14 @@ Java_com_broov_player_DemoRenderer_nativePlayerMain(JNIEnv* env, jobject obj,
            jstring jfileName, 
            jint loopAfterPlay, 
            jint audioFileType,
-           jint skipFrames)
+           jint skipFrames,
+           jint rgb565,
+           jint yuvRgbAsm,
+           jint skipBidirFrames,
+           jint queueSizeMin,
+           jint queueSizeMax,
+           jint totalQueueSize,
+           jint audioQueueSize)
 {
         jboolean isCopy;
 
@@ -63,6 +72,13 @@ Java_com_broov_player_DemoRenderer_nativePlayerMain(JNIEnv* env, jobject obj,
         int my_loop_after_play;
         int my_audio_file_type;
         int my_skip_frames;
+        int my_rgb_565;
+        int my_yuv_rgb_asm;
+        int my_skip_bidir_frames;
+        int my_queue_size_min;
+        int my_queue_size_max;
+        int my_total_queue_size;
+        int my_audio_queue_size;
 
 #ifdef BROOV_C
         const char *fileString = (*env)->GetStringUTFChars(env, jfileName, &isCopy);
@@ -89,12 +105,22 @@ Java_com_broov_player_DemoRenderer_nativePlayerMain(JNIEnv* env, jobject obj,
         my_loop_after_play = loopAfterPlay;
         my_audio_file_type = audioFileType;
         my_skip_frames = skipFrames;
+        my_rgb_565 = rgb565;
+        my_yuv_rgb_asm = yuvRgbAsm;
+        my_skip_bidir_frames = skipBidirFrames;
+        my_queue_size_min = queueSizeMin;
+        my_queue_size_max = queueSizeMax;
+        my_total_queue_size= totalQueueSize;
+        my_audio_queue_size= audioQueueSize;
 
-        return player_main(argc, argv, my_loop_after_play, my_audio_file_type, my_skip_frames);
+        return player_main(argc, argv, my_loop_after_play, my_audio_file_type, 
+                           my_skip_frames, my_rgb_565, my_yuv_rgb_asm, 
+                           my_skip_bidir_frames, my_queue_size_min, my_queue_size_max, my_total_queue_size, my_audio_queue_size);
+
         //return test_main(argc, argv);
         //return t8_main(argc, argv);
 
-};
+}
 
 #if 0
 int test_main(int argc, char** argv );

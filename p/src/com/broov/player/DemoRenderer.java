@@ -13,8 +13,15 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	public boolean fileInfoUpdated			 = false;
 	private int    loopselected              = 0;
 	private int    skipFrames                = 0;
-
-	public DemoRenderer(Activity _context)
+	private int    rgb565                    = 0;
+    private int    yuvRgbAsm                 = 0;  
+    private int    skipBidirFrames           = 1;
+    private int    queueSizeMin              = (1024 * 1024);
+    private int    queueSizeMax              = (5000 * 1024);
+    private int    queueSizeTotal            = (6000 * 1024);
+    private int    queueSizeAudio            = (512 * 1024);
+    
+    DemoRenderer(Activity _context)
 	{
 		System.out.println("DemoRenderer instance created:");
 		context = _context;
@@ -45,7 +52,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		System.out.println("Show subtitle:"+FileManager.getshow_subtitle());
 		System.out.println("Subtitle size:"+FileManager.getSubTitleSize());
 
-		nativePlayerInit(Globals.dbSubtitleFont, FileManager.getshow_subtitle(), FileManager.getSubTitleSize(), Globals.dbSubtitleEncoding);
+		nativePlayerInit(Globals.dbSubtitleFont, FileManager.getshow_subtitle(), FileManager.getSubTitleSize(), Globals.dbSubtitleEncoding, rgb565);
 
 		System.out.println("Player Filename:"+Globals.fileName);
 
@@ -87,7 +94,9 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			skipFrames = 0;
 		}
 
-		int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames);
+		//int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames);
+		int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+		
 		//Initializing the arraylist
 		//clear the array of already played items 
 		FileManager.alreadyPlayed.clear();
@@ -122,7 +131,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 				skipFrames = 0;
 			}
 		
-			retValue = nativePlayerMain(nextFile, loopselected, audioFileType, skipFrames);
+			retValue = nativePlayerMain(nextFile, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
 
 			System.out.println("Returned from NativePlayerMainValue:"+ retValue);
 		}
@@ -167,7 +176,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	 * Valid values are 9, 11, 13 as of now
 	 * @return
 	 */
-	private native int nativePlayerInit(String fileName, int subtitleShow, int subtitleFontSize, int subtitleEncodingType);
+	private native int nativePlayerInit(String fileName, int subtitleShow, int subtitleFontSize, int subtitleEncodingType, int rgb565);
 
 	/**
 	 * 
@@ -194,7 +203,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	 * string describing the size of the file 
 	 * @return
 	 */
-	private native int nativePlayerMain(String fileName, int loop,int audioFileType, int skipFrames);
+	private native int nativePlayerMain(String fileName, int loop,int audioFileType, int skipFrames, int rgb565, int yuvRgbAsm, int skipBidirFrames, int queueSizeMin, int queueSizeMax, int queueSizeTotal, int queueSizeAudio);
 
 	private native int nativePlayerExit();
 

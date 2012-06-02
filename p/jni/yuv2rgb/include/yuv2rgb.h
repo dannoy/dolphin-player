@@ -146,6 +146,7 @@ void yuv444_2_rgb8888(uint8_t  *dst_ptr,
                 const uint32_t *tables,
                       int32_t   dither);
 
+
 #ifdef __cplusplus
 }
 #endif
