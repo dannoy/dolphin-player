@@ -1,0 +1,16 @@
+diff --git a/libavformat/file.c b/libavformat/file.c
+index 64f8782..9f5afaf 100644
+--- a/libavformat/file.c
++++ b/libavformat/file.c
+@@ -70,6 +70,11 @@ static int file_open(URLContext *h, const char *filename, int flags)
+ #ifdef O_BINARY
+     access |= O_BINARY;
+ #endif
++
++#ifdef __ANDROID__
++    access |= O_LARGEFILE;
++#endif // __ANDROID__
++
+     fd = open(filename, access, 0666);
+     if (fd == -1)
+         return AVERROR(errno);
