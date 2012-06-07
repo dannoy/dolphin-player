@@ -1,5 +1,8 @@
 package com.broov.player;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -104,6 +107,19 @@ public class VideoPlayer extends Activity  {
 				Uri uri = i.getData();
 				if (uri!= null) {
 					openfileFromBrowser = uri.getEncodedPath();	
+					
+					//Change from 1.6
+					String decodedOpenFileFromBrowser = null;
+					try {
+						decodedOpenFileFromBrowser = URLDecoder.decode(openfileFromBrowser,"UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						//e.printStackTrace();
+					}
+					if (decodedOpenFileFromBrowser != null)
+					{
+						openfileFromBrowser = decodedOpenFileFromBrowser; 
+					}
 				}	
 			}
 			if(FileManager.isVideoFile(openfileFromBrowser)){

@@ -15,7 +15,7 @@ class Globals {
 
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName = "Dolphin Player ARM V5";
-	public static String VersionName     = "1.5 Build 01June2012";
+	public static String VersionName     = "1.6 Build 07June2012";
 	public static String defaultDir      = "/sdcard";
 	public static String defaultSubtitleFont      = "/sdcard/broov.ttf";
 	
@@ -35,7 +35,7 @@ class Globals {
 		"rm","mpg","mpeg","flv","divx",
 		"swf","dat","h264","h263","h261",
 		"3gp","3gpp","asf","mov","m4v", "ogv",
-		"vob", "vstream", "ts"
+		"vob", "vstream", "ts", "webm"
 		//"ttf"
 	};
 
@@ -43,7 +43,7 @@ class Globals {
 	{   "mp3","wma","ogg","mp2","flac",
 		"aac","ac3","amr","pcm","wav",
 		"au","aiff","3g2","m4a", "astream"
-	};
+	};		
 	
 	public static String supportedFontFileType[] = 
 	{   "ttf"
@@ -52,6 +52,16 @@ class Globals {
 	public static String supportedImageFileFormats[] = 
 	{
 		"gif","bmp","png","jpg"
+	};
+	
+	public static String supportedAudioStreamFileFormats[] = 
+	{
+			"astream"
+	};
+	
+	public static String supportedVideoStreamFileFormats[] = 
+	{
+			"vstream"
 	};
 	
 	public static String supportedFileFormats[] =concat(supportedAudioFileFormats, supportedVideoFileFormats, supportedFontFileType);

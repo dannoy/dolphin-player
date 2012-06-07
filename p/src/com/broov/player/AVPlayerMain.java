@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -365,8 +366,9 @@ public final class AVPlayerMain extends ListActivity  {
 
 			WebView contentTextHelp =(WebView) layouthelp.findViewById(R.id.webviewcustom);
 			contentTextHelp.loadData(Globals.helpContent, "text/html", "utf-8");
-			contentTextHelp.setBackgroundColor(0);
-
+			//contentTextHelp.setBackgroundColor(Color.GRAY);
+			contentTextHelp.setBackgroundColor(Color.TRANSPARENT);
+			
 			builder = new AlertDialog.Builder(mContext);
 			builder.setView(layouthelp);
 			alertDialog = builder.create();

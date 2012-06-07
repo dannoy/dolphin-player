@@ -1,10 +1,15 @@
 package com.broov.player;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -59,6 +64,18 @@ public class AudioPlayer extends Activity  {
 			Uri uri = i.getData();
 			if (uri!= null) {
 				openfileFromBrowser = uri.getEncodedPath();	
+				//Change from 1.6
+				String decodedOpenFileFromBrowser = null;
+				try {
+					decodedOpenFileFromBrowser = URLDecoder.decode(openfileFromBrowser,"UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				if (decodedOpenFileFromBrowser != null)
+				{
+					openfileFromBrowser = decodedOpenFileFromBrowser; 
+				}
 			}	
 		}
 		if (FileManager.isAudioFile(openfileFromBrowser)) {
@@ -420,6 +437,18 @@ public class AudioPlayer extends Activity  {
 		mHandler.postDelayed(seekBarUpdater, 100);
 	}
 	
+	public boolean isServiceRunning() { 
+
+		ActivityManager activityManager = (ActivityManager)AudioPlayer.this.getSystemService (Context.ACTIVITY_SERVICE); 
+		    List<RunningTaskInfo> services = activityManager.getRunningTasks(Integer.MAX_VALUE); 
+		   
+		    for (int i = 0; i < services.size(); i++) { 
+		        if (services.get(i).topActivity.toString().equalsIgnoreCase("ComponentInfo{com.broov.player/com.broov.player.AudioPlayer}")) {
+		            return true;
+		        }
+		    } 
+		    return false; 
+	} 
 	//@Override
 	//protected void onPause() {
 	//	this.

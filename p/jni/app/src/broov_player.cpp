@@ -1155,8 +1155,8 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VT RQP ICB");
 
 		if (vp->pix_fmt == PIX_FMT_YUV420P) {
-			g_asm_yuv2rgb = 0;
-			//g_asm_yuv2rgb = 1;
+			//g_asm_yuv2rgb = 0;
+			g_asm_yuv2rgb = 1;
 			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "ASM YUV2RGB");
 		} else {
 			g_asm_yuv2rgb = 0;

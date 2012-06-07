@@ -5,7 +5,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Stack;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 public class FileManager {
 	private static final int SORT_NONE = 	0;
@@ -335,6 +342,47 @@ public class FileManager {
 			return true; 
 		}
 		return false;
+	}
+	
+	public static Boolean isAudioStream(String file){
+		String ext = file.toString();
+		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
+		if (Arrays.asList(Globals.supportedAudioStreamFileFormats).contains(sub_ext.toLowerCase())){
+			return true; 
+		}
+		return false;
+	}
+	
+	public static Boolean isVideoStream(String file){
+		String ext = file.toString();
+		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
+		if (Arrays.asList(Globals.supportedVideoStreamFileFormats).contains(sub_ext.toLowerCase())){
+			return true; 
+		}
+		return false;
+	}
+	
+	public static String ReadFirstLine(String file) {
+		InputStream fis;
+		BufferedReader br;
+		String line = null;
+		
+		try {
+			fis = new FileInputStream(file);
+			br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
+			line = br.readLine();
+				
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		if (line==null) {
+			line = file;
+		}
+		return line;
 	}
 	
 

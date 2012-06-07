@@ -12,13 +12,17 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	String         nextFile 				 = Globals.fileName;
 	public boolean fileInfoUpdated			 = false;
 	private int    loopselected              = 0;
-	private int    skipFrames                = 0;
-	private int    rgb565                    = 0;
-    private int    yuvRgbAsm                 = 0;  
-    private int    skipBidirFrames           = 1;
-    private int    queueSizeMin              = (1024 * 1024);
-    private int    queueSizeMax              = (5000 * 1024);
+	private int    skipFrames                = 1;
+	private int    rgb565                    = 1;
+    private int    yuvRgbAsm                 = 1;  
+    private int    skipBidirFrames           = 0;
+    //private int    queueSizeMin              = (1024 * 1024);
+    private int    queueSizeMin              = (10*1024);
+    private int    queueSizeMax              = (500 * 1024);
+    //private int    queueSizeMax              = (5000 * 1024);
     private int    queueSizeTotal            = (6000 * 1024);
+    
+    //private int    queueSizeAudio            = (512 * 1024);
     private int    queueSizeAudio            = (512 * 1024);
     
     DemoRenderer(Activity _context)
@@ -93,10 +97,21 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		} else {
 			skipFrames = 0;
 		}
-
-		//int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames);
-		int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
 		
+		int retValue;
+		if ((audioFileType == 1) && FileManager.isAudioStream(Globals.fileName)){
+			String stream = FileManager.ReadFirstLine(Globals.fileName);
+			retValue = nativePlayerMain(stream, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+			
+		} else if((audioFileType==0) && FileManager.isVideoStream(Globals.fileName)) {
+
+			String stream = FileManager.ReadFirstLine(Globals.fileName);			
+			retValue = nativePlayerMain(stream, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+		} else {
+
+			//int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames);
+			retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+		}
 		//Initializing the arraylist
 		//clear the array of already played items 
 		FileManager.alreadyPlayed.clear();
@@ -130,9 +145,18 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			} else {
 				skipFrames = 0;
 			}
-		
-			retValue = nativePlayerMain(nextFile, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
-
+			
+			if ((audioFileType == 1) && FileManager.isAudioStream(nextFile)){
+				String stream = FileManager.ReadFirstLine(nextFile);
+				retValue = nativePlayerMain(stream, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+				
+			} else if((audioFileType==0) && FileManager.isVideoStream(nextFile)) {
+				String stream = FileManager.ReadFirstLine(nextFile);			
+				retValue = nativePlayerMain(stream, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+			} else {
+				retValue = nativePlayerMain(nextFile, loopselected, audioFileType, skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio);
+			}
+			
 			System.out.println("Returned from NativePlayerMainValue:"+ retValue);
 		}
 
@@ -143,7 +167,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	}
 
 	public int swapBuffers() // Called from native code, returns 1 on success, 0 when GL context lost (user put app to background)
-	{
+	{		
 		return super.SwapBuffers() ? 1 : 0;
 	}
 
