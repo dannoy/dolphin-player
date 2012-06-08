@@ -24,7 +24,7 @@ public class FileManager {
 	private static final int GB = MB * KB;
 
 	public static int subtitleFontSize = Globals.SUBTITLE_FONT_MEDIUM ;
-    
+
 	private double dir_size = 0;
 	public Stack<String> path_stack;
 	private ArrayList<String> dir_content;
@@ -75,14 +75,14 @@ public class FileManager {
 		//This will eventually be placed as a settings item
 		path_stack.clear();
 		path_stack.push("/");
-		
+
 		System.out.println("getLastOpenedDir lastopendir:"+Globals.dbLastOpenDir);
-		
+
 		//path_stack.push(path_stack.peek() + "/");
-		
+
 		try{
 			ArrayList<String> subpathsForStack =PathtoSubPaths(Globals.dbLastOpenDir);
-		//	System.out.println("getLastOpenedDir() subpathsForStack:"+subpathsForStack);
+			//	System.out.println("getLastOpenedDir() subpathsForStack:"+subpathsForStack);
 			int subPathsStackSize = subpathsForStack.size();
 			for(int i=1;i< subPathsStackSize;i++){
 				path_stack.push(subpathsForStack.get(i));
@@ -301,7 +301,7 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isSubtitleFontFile(String file){
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
@@ -334,7 +334,7 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isImageFile(String file){
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
@@ -343,8 +343,9 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isAudioStream(String file){
+		if (file==null) return false;
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
 		if (Arrays.asList(Globals.supportedAudioStreamFileFormats).contains(sub_ext.toLowerCase())){
@@ -352,26 +353,30 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isVideoStream(String file){
+		if (file ==null) return false;
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
 		if (Arrays.asList(Globals.supportedVideoStreamFileFormats).contains(sub_ext.toLowerCase())){
 			return true; 
 		}
+
 		return false;
 	}
-	
+
 	public static String ReadFirstLine(String file) {
+		if (file==null) return file;
+
 		InputStream fis;
 		BufferedReader br;
 		String line = null;
-		
+
 		try {
 			fis = new FileInputStream(file);
 			br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
 			line = br.readLine();
-				
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
@@ -384,7 +389,7 @@ public class FileManager {
 		}
 		return line;
 	}
-	
+
 
 	public static String getPrevFileInDirectory(String filename){
 		String prevFile="";
@@ -429,7 +434,7 @@ public class FileManager {
 				}
 			}
 		}
-		
+
 		//alreadyPlayed.clear();
 		return "";
 	}
@@ -454,7 +459,7 @@ public class FileManager {
 				nextFile = listOfAudioFiles.get(i);
 				if (!(alreadyPlayed.contains(nextFile))){
 					if (alreadyPlayed.size() ==(audioFilesSize-1) && 
-						Globals.dbAudioLoop==Globals.REPEAT_ALL){
+							Globals.dbAudioLoop==Globals.REPEAT_ALL){
 						alreadyPlayed.clear();
 						System.out.println("Already played items are cleared");
 					}
@@ -469,7 +474,7 @@ public class FileManager {
 				nextFile = listOfVideoFiles.get(i);
 				if (!(alreadyPlayed.contains(nextFile))) {
 					if (alreadyPlayed.size() ==(videoFilesSize -1) && 
-					    Globals.dbVideoLoop==Globals.REPEAT_ALL) {
+							Globals.dbVideoLoop==Globals.REPEAT_ALL) {
 						alreadyPlayed.clear();
 						System.out.println("Already played items are cleared");
 					}
@@ -484,7 +489,7 @@ public class FileManager {
 	public ArrayList<String> getFilesAlone(String file){
 		File inFile = new File(file);
 		ArrayList<String> listOfFiles = new ArrayList<String>();
-		
+
 		for (File files : inFile.listFiles()) {
 			String absolutePath = files.getAbsolutePath();
 			if (files.isFile() && supportedFile(absolutePath)){
@@ -561,7 +566,7 @@ public class FileManager {
 		}
 		return listOfFiles;
 	}
-	
+
 	public static ArrayList<String> listofImageFiles(String file){
 		File inFile = new File(file);
 		ArrayList<String> listOfFiles = new ArrayList<String>();
@@ -621,19 +626,19 @@ public class FileManager {
 
 			/* sort the arraylist that was made from above for loop */
 			switch(Globals.dbSort) {
-				case SORT_NONE:
-					//no sorting needed
-					break;
+			case SORT_NONE:
+				//no sorting needed
+				break;
 
-				case SORT_ALPHA:
-					Object[] tt = dir_content.toArray();
-					dir_content.clear();
+			case SORT_ALPHA:
+				Object[] tt = dir_content.toArray();
+				dir_content.clear();
 
-					Arrays.sort(tt, alph);
+				Arrays.sort(tt, alph);
 
-					for (Object a : tt){
-						dir_content.add((String)a);
-					}
+				for (Object a : tt){
+					dir_content.add((String)a);
+				}
 				break;
 
 			case SORT_TYPE:

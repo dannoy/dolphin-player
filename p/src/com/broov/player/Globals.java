@@ -14,10 +14,10 @@ class Globals {
 	public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
 	//public static String ApplicationName = "Dolphin Player Universal";
-	public static String ApplicationName = "Dolphin Player ARM V5";
-	public static String VersionName     = "1.6 Build 07June2012";
-	public static String defaultDir      = "/sdcard";
-	public static String defaultSubtitleFont      = "/sdcard/broov.ttf";
+	public static String ApplicationName 	 = "Dolphin Player ARM V5";
+	public static String VersionName     	 = "1.7 Build 09June2012";
+	public static String defaultDir      	 = "/sdcard";
+	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 	
 	public static void setFileName(String fName) {
 		fileName = fName;
@@ -124,10 +124,10 @@ class Globals {
 		"Our thanks to opensource community members of FFmpeg, SDL, freetype, SDL_image, SDL_ttf, libpng, libjpeg, Theorarm, universalchardet, iconv, andprof, Pelya for SDL porting to Android, KMP"+
 		"</p>" +
 		"<P ALIGN=JUSTIFY>"+
-		"This is an open source media player for Android. Source can be availed at http://code.google.com. Contributions are welcome from open source community members." +
+		"This is an open source media player for Android. Source can be availed at http://code.google.com/p/dolphin-player. Contributions are welcome from open source community members." +
 		"</p>"+
 		"<P ALIGN=JUSTIFY>"+
-		"Users of Dolphin Player Premium Edition, can avail one licensed copy of Bulls Hit Converter 3.0 Ultimate Edition. HD Videos can be converted for optimal viewing in mobiles using this software" +
+		"Users of Dolphin Player Premium Edition, can avail one licensed copy of BullsHit Converter 3.0 Ultimate Edition. HD Videos can be converted for optimal viewing in mobiles using this software" +
 		"<br>"+
 		"(Supports conversion for most of the Audio and Video files)"+
 		"</p>" +

@@ -15,15 +15,17 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	private int    skipFrames                = 1;
 	private int    rgb565                    = 1;
     private int    yuvRgbAsm                 = 1;  
-    private int    skipBidirFrames           = 0;
-    //private int    queueSizeMin              = (1024 * 1024);
-    private int    queueSizeMin              = (10*1024);
-    private int    queueSizeMax              = (500 * 1024);
-    //private int    queueSizeMax              = (5000 * 1024);
-    private int    queueSizeTotal            = (6000 * 1024);
+    private int    skipBidirFrames           = 1;
     
-    //private int    queueSizeAudio            = (512 * 1024);
+    private int    queueSizeMin              = (50 * 1024);
+    private int    queueSizeMax              = (15000 * 1024);
+    private int    queueSizeTotal            = (20000 * 1024);
     private int    queueSizeAudio            = (512 * 1024);
+    
+    //private int    queueSizeMin              = (50*1024);
+    //private int    queueSizeMax              = (15000 * 1024);
+    //private int    queueSizeTotal            = (15000 * 1024);    
+    //private int    queueSizeAudio            = (512 * 1024);
     
     DemoRenderer(Activity _context)
 	{
@@ -82,12 +84,8 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		}
 
 		int audioFileType;
-		if (FileManager.isAudioFile(Globals.fileName)) {
-			audioFileType = 1; 
-		} else {
-			audioFileType = 0;
-		}
-
+		if (FileManager.isAudioFile(Globals.fileName)) { audioFileType = 1; } 
+		else {audioFileType = 0; }
 
 		System.out.println("nativePlayerMain(NewPlayer.fileName:"+Globals.fileName+", loopselected:"+loopselected+", audioFileType: "+audioFileType+");");
 		////101 - Next button  100 - Previous button  0 - Song played finished
@@ -136,6 +134,10 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			System.out.println("nextFile before:"+nextFile);
 			if (FileManager.isAudioFile(nextFile)) {
 				audioFileType = 1; 
+				skipFrames = 0;
+				rgb565 = 0;
+			    yuvRgbAsm = 0;  
+			    skipBidirFrames = 0;
 			} else {
 				audioFileType = 0;
 			}

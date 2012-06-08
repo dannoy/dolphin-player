@@ -683,6 +683,8 @@ static void broov_set_current_duration(ULONG secs)
 {
 	static int reset_counter=0;
 
+	//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "inside broov_set_current_duration:%ld ", secs);
+
 	//If the current duration is > 99 hrs then error in computation somewhere
 	if (secs >= 356400) {
 		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Unexpected CurrentDuration:%ld ", secs);
@@ -916,6 +918,7 @@ static void rgb_video_image_display(VideoState *is)
 
 	{
 		ULONG dur = (ULONG)get_master_clock(is);
+		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "RGBVideoImageDisplay Duration:%ld", dur);
 		// update the value, only if a value change happens
 		if (dur != g_current_duration) {
 			broov_set_current_duration(dur);
@@ -944,7 +947,7 @@ static void video_refresh_rgb_timer(void *userdata)
 
 	if (is->video_st) {
 
-		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VRT");
+		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VideoStream");
 
 		if (is->pictq_size == 0) {
 			//nothing to do, no picture to display in the queue
@@ -1003,6 +1006,7 @@ static void video_refresh_rgb_timer(void *userdata)
 		//}
 		{
 			ULONG dur = (ULONG)get_master_clock(is);
+	                //__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Duration:%ld", dur);
 			// update the value, only if a value change happens
 			if (dur != g_current_duration) {
 				broov_set_current_duration(dur);
@@ -2956,10 +2960,10 @@ int player_main(int argc, char *argv[],
 
 		if (is->paused) { SDL_Delay(10); continue; }
 
-		if (is->video_st && is->pictq_size) {
+		if (is->video_st && is->pictq_size && audio_file_type==0) {
 			video_refresh_rgb_timer(is);
 		}
-		else if (is->video_st) {
+		else if (is->video_st && audio_file_type==0) {
 			SDL_Delay(10); //Sleep for 10 ms
 		}
 		else { 

@@ -55,127 +55,133 @@ public class VideoPlayer extends Activity  {
 
 
 	PhoneStateListener phoneStateListener = new PhoneStateListener() {
-	    @Override
-	    public void onCallStateChanged(int state, String incomingNumber) {
-	        if (state == TelephonyManager.CALL_STATE_RINGING) {
-	            //Incoming call: Pause music
-	        	System.out.println("call state idle");
-	        	demoRenderer.nativePlayerPlay();
-	        	
+		@Override
+		public void onCallStateChanged(int state, String incomingNumber) {
+			if (state == TelephonyManager.CALL_STATE_RINGING) {
+				//Incoming call: Pause music
+				//System.out.println("call state idle");
+				demoRenderer.nativePlayerPlay();
+
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
-	        } else if(state == TelephonyManager.CALL_STATE_IDLE) {
-	            //Not in call: Play music
-	        	demoRenderer.nativePlayerPause();
-	        	System.out.println("call sate ringing");
+			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
+				//Not in call: Play music
+				demoRenderer.nativePlayerPause();
+				//System.out.println("call sate ringing");
 				//seekBarUpdater.stopIt();
-	        } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
-	            //A call is dialing, active or on hold
-	        	System.out.println("call state offhook");
-	        	demoRenderer.nativePlayerPlay();
+			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+				//A call is dialing, active or on hold
+				//System.out.println("call state offhook");
+				demoRenderer.nativePlayerPlay();
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
-	        }
-	        super.onCallStateChanged(state, incomingNumber);
-	    }
+			}
+			super.onCallStateChanged(state, incomingNumber);
+		}
 	};
-
-
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
 
 
-			System.out.println("Inside VideoPlayer onCreate");
-			paused = false;
+		System.out.println("Inside VideoPlayer onCreate");
+		paused = false;
 
-			// fullscreen mode
-			requestWindowFeature(Window.FEATURE_NO_TITLE);		
+		// fullscreen mode
+		requestWindowFeature(Window.FEATURE_NO_TITLE);		
 
-			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-					WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-			setContentView(R.layout.video_player);
+		setContentView(R.layout.video_player);
 
-			i = getIntent();
+		//Utils.hideSystemUi(getWindow().getDecorView());
+		//Utils.hideSystemUi(this.findViewById(R.id.glsurfaceview).getRootView());
+		
+		i = getIntent();
 
-			if (i!= null) {
-				Uri uri = i.getData();
-				if (uri!= null) {
-					openfileFromBrowser = uri.getEncodedPath();	
-					
-					//Change from 1.6
-					String decodedOpenFileFromBrowser = null;
-					try {
-						decodedOpenFileFromBrowser = URLDecoder.decode(openfileFromBrowser,"UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						//e.printStackTrace();
-					}
-					if (decodedOpenFileFromBrowser != null)
-					{
-						openfileFromBrowser = decodedOpenFileFromBrowser; 
-					}
-				}	
-			}
-			if(FileManager.isVideoFile(openfileFromBrowser)){
-				Globals.setFileName(openfileFromBrowser);	
-				System.out.println("================openfileFromBrowser:"+openfileFromBrowser+"=============");			
+		if (i!= null) {
+			Uri uri = i.getData();
+			if (uri!= null) {
+				openfileFromBrowser = uri.getEncodedPath();	
 
+				//Change from 1.6
+				String decodedOpenFileFromBrowser = null;
+				try {
+					decodedOpenFileFromBrowser = URLDecoder.decode(openfileFromBrowser,"UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				if (decodedOpenFileFromBrowser != null)
+				{
+					openfileFromBrowser = decodedOpenFileFromBrowser; 
+				}
 			}	
-			else {
-				Bundle extras = i.getExtras();
+		}
+		System.out.println("openfileFromBrowser:"+openfileFromBrowser);
+
+		if(FileManager.isVideoFile(openfileFromBrowser)){
+			Globals.setFileName(openfileFromBrowser);	
+			System.out.println("================openfileFromBrowser:"+openfileFromBrowser+"=============");			
+
+		}	
+		else {
+			Bundle extras = i.getExtras();
+			if (extras != null) {
 				String tmpFileName = extras.getString("videofilename");
+
 				if (FileManager.isVideoFile(tmpFileName)) {
 					Globals.setFileName(tmpFileName);
 					System.out.println("================extras.getString videofilename:"+tmpFileName+"============");
 				}
 			}
+		}
 
-			System.out.println("=======================Playing filename:" + Globals.fileName);
+		System.out.println("=======================Playing filename:" + Globals.fileName);
 
-			TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-			System.out.println("TelephoneManager : "+mgr);
-			if(mgr != null) {
-				System.out.println("telephonemanager start");
-			    mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-			}
+		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		System.out.println("TelephoneManager : "+mgr);
+		if(mgr != null) {
+			System.out.println("telephonemanager start");
+			mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+		}
 
-			// Find the views whose visibility will change
-			mSeekBar = (SeekBar) findViewById(R.id.progressbar);
+		// Find the views whose visibility will change
+		mSeekBar = (SeekBar) findViewById(R.id.progressbar);
 
-			currentTime = (TextView) findViewById(R.id.currenttime);     
-			totalTime = (TextView) findViewById(R.id.totaltime);        
-			controlPanel = (TableLayout) findViewById(R.id.controlPanel);
-			controlPanel.getBackground().setAlpha(85);
+		currentTime = (TextView) findViewById(R.id.currenttime);     
+		totalTime = (TextView) findViewById(R.id.totaltime);        
+		controlPanel = (TableLayout) findViewById(R.id.controlPanel);
+		controlPanel.getBackground().setAlpha(85);
 
-			imgPlay = findViewById(R.id.img_vp_play);
-			imgForward = findViewById(R.id.img_vp_forward);
-			imgBackward = findViewById(R.id.img_vp_backward);
-			imgAspectRatio = findViewById(R.id.fs_shadow);
+		imgPlay = findViewById(R.id.img_vp_play);
+		imgForward = findViewById(R.id.img_vp_forward);
+		imgBackward = findViewById(R.id.img_vp_backward);
+		imgAspectRatio = findViewById(R.id.fs_shadow);
 
-			//trScrolledTime = findViewById(R.id.trscrolledtime);
-			//scrolledtime = (TextView) findViewById(R.id.scrolledtime);
+		//trScrolledTime = findViewById(R.id.trscrolledtime);
+		//scrolledtime = (TextView) findViewById(R.id.scrolledtime);
 
-			//trScrolledTime.setVisibility(View.INVISIBLE);
-			//trScrolledTime.setVisibility(View.GONE);
-			mHideContainer = findViewById(R.id.hidecontainer);
-			mHideContainer.setOnClickListener(mVisibleListener);
-			imgAspectRatio.setOnTouchListener(imgAspectRatioTouchListener);
-			imgPlay.setOnTouchListener(imgPlayTouchListener);
-			imgForward.setOnTouchListener(imgForwardTouchListener);
-			imgBackward.setOnTouchListener(imgBackwardTouchListener);
-			mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
+		//trScrolledTime.setVisibility(View.INVISIBLE);
+		//trScrolledTime.setVisibility(View.GONE);
+		mHideContainer = findViewById(R.id.hidecontainer);
+		mHideContainer.setOnClickListener(mVisibleListener);
+		imgAspectRatio.setOnTouchListener(imgAspectRatioTouchListener);
+		imgPlay.setOnTouchListener(imgPlayTouchListener);
+		imgForward.setOnTouchListener(imgForwardTouchListener);
+		imgBackward.setOnTouchListener(imgBackwardTouchListener);
+		mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
 
-			//System.out.println("Start - InitSDL()");
+		//System.out.println("Start - InitSDL()");
 
-			initSDL();
+		initSDL();
 	}
-	
+
 	public void initSDL()
 	{
 		//Wake lock code
@@ -264,8 +270,8 @@ public class VideoPlayer extends Activity  {
 		}
 	}
 
-	
-	
+
+
 	OnClickListener mGoneListener = new OnClickListener() 
 	{
 		public void onClick(View v) 
@@ -283,7 +289,7 @@ public class VideoPlayer extends Activity  {
 			}
 		}
 	};
-	
+
 
 
 	OnClickListener mVisibleListener = new OnClickListener() 
@@ -291,7 +297,7 @@ public class VideoPlayer extends Activity  {
 		public void onClick(View v) 
 		{
 			if ((mHideContainer.getVisibility() == View.GONE) ||
-				(mHideContainer.getVisibility() == View.INVISIBLE)) 
+					(mHideContainer.getVisibility() == View.INVISIBLE)) 
 			{
 				mHideContainer.setVisibility(View.VISIBLE);
 				restartUpdater();
@@ -302,7 +308,7 @@ public class VideoPlayer extends Activity  {
 			}
 		}
 	};
-	
+
 	OnTouchListener imgAspectRatioTouchListener = new OnTouchListener() {			
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
@@ -323,7 +329,7 @@ public class VideoPlayer extends Activity  {
 					img.setImageResource(R.drawable.fs_shadow_16_9);
 					demoRenderer.nativePlayerSetAspectRatio(2);
 					current_aspect_ratio_type = 3;
-					
+
 				}
 			}						
 			//resetAutoHider();
@@ -437,7 +443,6 @@ public class VideoPlayer extends Activity  {
 		}
 	};
 
-
 	View mHideContainer;
 
 	View imgPlay; 
@@ -454,7 +459,7 @@ public class VideoPlayer extends Activity  {
 	private AudioThread 		  mAudioThread = null;
 	private PowerManager.WakeLock wakeLock     = null;
 	private Handler mHandler = new Handler();
-	
+
 	private Updater seekBarUpdater = new Updater();
 	private static int current_aspect_ratio_type=1; //Default Aspect Ratio of the file
 	private static boolean paused;
