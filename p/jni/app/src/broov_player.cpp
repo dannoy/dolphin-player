@@ -20,11 +20,11 @@
 // Width and height will result in performance hit
 // Performance Hit is observed when destination w, h is 
 // modified from source
+
 #define BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-
 #define BROOV_VIDEO_SKIP
-
 #define BROOV_VIDEO_THREAD
+
 //#define BROOV_FFMPEG_OLD
 //#define BROOV_WITHOUT_AUDIO
 //#define BROOV_ONLY_AUDIO
@@ -37,6 +37,8 @@
 
 //#define BROOV_FRAME_RATE
 //#define BROOV_X86_RELEASE
+
+//#define BROOV_PIXEL_FORMAT_888
 
 #include "broov_player.h"
 #include "subreader.h"
@@ -543,11 +545,14 @@ static int audio_decode_frame(VideoState *is, double *pts_ptr)
 
 static inline int compute_mod(int a, int b)
 {
-	a = a % b;
-	if (a >= 0)
-		return a;
-	else
-		return a + b;
+        //Same logic, written much simpler
+	//a = a % b;
+	//if (a >= 0)
+	//	return a;
+	//else
+	//	return a + b;
+
+        return a < 0 ? a%b + b : a%b;
 }
 
 static void audio_callback(void *userdata, Uint8 *stream, int len) 
@@ -747,21 +752,20 @@ static int try_to_set_best_video_mode(int w, int h, int rgb565)
 		SDL_RESIZABLE | SDL_FULLSCREEN;
 	int bpp;
 
-        if (rgb565) { bpp = 16; } else { bpp=24; }
+        if (rgb565) { bpp = 16; } else { bpp=32; }
 	screen = SDL_SetVideoMode(w, h, bpp, flags);
 
 	if (!screen) {
-		bpp=32;
+		bpp=24;
 		screen = SDL_SetVideoMode(w, h, bpp, flags);
 
 		if (!screen) {
-                        if (rgb565) { bpp = 16; } else { bpp=24; }
+                        if (rgb565) { bpp = 16; } else { bpp=32; }
 			flags = SDL_SWSURFACE;
 			screen = SDL_SetVideoMode(w, h, bpp, flags);
 			if (!screen) {
-				bpp = 32;
+				bpp = 24;
 				screen = SDL_SetVideoMode(w, h, bpp, flags);
-
 			}
 		}
 	}
@@ -773,14 +777,15 @@ static int try_to_set_best_video_mode(int w, int h, int rgb565)
 	return 0;
 } /* End of try_to_set_best_video_mode method */
 
+//Expected format to be fed to SDL ->RGBA
 static void ConvertDataToReverse(uint8_t *buffer, int w, int h)
 {
 	int i;
 	int len;
-	uint8_t swap;
+	uint8_t swap0, swap1, swap2, swap3;
 
 	len = (w*4) * h;
-
+#if 0
 	for (i=0; i<len; i+=4) {
 		// 0 1 2 3 to  3 2 1 0
 
@@ -795,6 +800,34 @@ static void ConvertDataToReverse(uint8_t *buffer, int w, int h)
 		buffer[i+2] = swap;
 
 	}
+#else
+	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Inside bgra to rgba");
+	for (i=0; i<len; i+=4) {
+#if 0
+                //GBRA to RGBA //GBRA 0 1 2 3 //RGBA 2 0 1 3
+                swap0 = buffer[i];
+                swap1 = buffer[i+1];
+                swap2 = buffer[i+2];
+                swap3 = buffer[i+3];
+
+                buffer[i] = swap2;
+                buffer[i+1] = swap0;
+                buffer[i+2] = swap1;
+#endif
+                // ABGR -> RGBA
+                // 0123 -> 3210
+                swap0 = buffer[i];
+                swap1 = buffer[i+1];
+                swap2 = buffer[i+2];
+                swap3 = buffer[i+3];
+
+                buffer[i] = swap3;
+                buffer[i+1] = swap2;
+                buffer[i+2] = swap1;
+                buffer[i+3] = swap0;
+	}
+
+#endif
 
 }
 
@@ -865,20 +898,30 @@ static void rgb_video_image_display(VideoState *is)
 		}
 	}
 
-        //if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
-        //     if (g_asm_yuv2rgb == 1) {
-        //         //ConvertDataToReverse(vp->buffer, vp->width, vp->height);
-        //         ConvertDataFromRGBAToARGB(vp->buffer, vp->width, vp->height);
-        //     }
-        //}
+#ifdef BROOV_TESTING_CODE
+        if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+             if (g_asm_yuv2rgb == 1) {
+                 //ConvertDataToReverse(vp->buffer, vp->width, vp->height);
+                 //ConvertDataFromRGBAToARGB(vp->buffer, vp->width, vp->height);
+             }
+        }
+#endif
 
 	if (!vp->display_rgb_text) {
                 if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
+#ifdef BROOV_PIXEL_FORMAT_888
+			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STATIC, vp->width, vp->height);
+#else
 			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, vp->width, vp->height);
+#endif
+#else
+#ifdef BROOV_PIXEL_FORMAT_888
+			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STATIC, vp->dst_width, vp->dst_height);
 #else
 			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, vp->dst_width, vp->dst_height);
+#endif
 #endif
 
 		} else {
@@ -1064,9 +1107,18 @@ static void alloc_rgb_picture(void *userdata)
         if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
+#ifdef BROOV_PIXEL_FORMAT_888
+	vp->numBytes = avpicture_get_size(PIX_FMT_RGB24, vp->width, vp->height); 
+#else
 	vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, vp->width, vp->height); 
+#endif
+
+#else
+#ifdef BROOV_PIXEL_FORMAT_888
+	vp->numBytes = avpicture_get_size(PIX_FMT_RGB24, width, height); 
 #else
 	vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, width, height); 
+#endif
 #endif
 
         } else {
@@ -1094,13 +1146,25 @@ static void alloc_rgb_picture(void *userdata)
                 if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
+#ifdef BROOV_PIXEL_FORMAT_888
 			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
-					PIX_FMT_RGBA,
+					PIX_FMT_RGB24,
 					vp->width, vp->height);
 #else
 			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
 					PIX_FMT_RGBA,
+					vp->width, vp->height);
+#endif
+#else
+#ifdef BROOV_PIXEL_FORMAT_888
+			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
+					PIX_FMT_RGB24,
 					width, height);
+#else
+			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
+					PIX_FMT_RGBA,
+					width, height);
+#endif
 #endif
 
 
@@ -1213,7 +1277,9 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 						yuv2rgb565_table, 
 						dither++);
 			} else {
-	                        yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
+
+#ifdef BROOV_PIXEL_FORMAT_888
+	                        yuv420_2_rgb888(vp->pFrameRGB->data[0], 
 						pFrame->data[0], 
 						pFrame->data[1], 
 						pFrame->data[2],
@@ -1221,9 +1287,23 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 						is->video_st->codec->height, 
 						pFrame->linesize[0],  // Y span
 						pFrame->linesize[1],  // UV span Width / 2 
+						(is->video_st->codec->width * 3),  //Dest width* bpp (width *3bytes)
+						yuv2rgb565_table, 
+						dither++);
+
+#else
+	                        yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
+						pFrame->data[0], 
+						pFrame->data[2], 
+						pFrame->data[1],
+						is->video_st->codec->width, 
+						is->video_st->codec->height, 
+						pFrame->linesize[0],  // Y span
+						pFrame->linesize[1],  // UV span Width / 2 
 						(is->video_st->codec->width * 4),  //Dest width* bpp (width *4bytes)
 						yuv2rgb565_table, 
 						dither++);
+#endif
 
                         }
                 } // g_video_yuv_rgb_asm is true
@@ -2847,8 +2927,18 @@ int player_main(int argc, char *argv[],
 	g_aspect_ratio_type = 0;
 	g_skip_frames = skip_frames;
 
-        if (rgb565 == 1) { g_video_output_rgb_type = VIDEO_OUTPUT_RGB565; } 
-        else { g_video_output_rgb_type = VIDEO_OUTPUT_RGB8888; }
+        if (rgb565 == 1) { 
+		g_video_output_rgb_type = VIDEO_OUTPUT_RGB565; 
+		dst_pix_fmt = PIX_FMT_RGB565;
+	} 
+        else { 
+		g_video_output_rgb_type = VIDEO_OUTPUT_RGB8888; 
+#ifdef BROOV_PIXEL_FORMAT_888
+                dst_pix_fmt = PIX_FMT_RGB24;
+#else
+                dst_pix_fmt = PIX_FMT_RGBA;
+#endif
+	}
 
         if (yuv_rgb_asm == 1) { g_video_yuv_rgb_asm = 1; } else { g_video_yuv_rgb_asm = 0; }
 

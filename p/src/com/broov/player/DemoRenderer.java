@@ -12,14 +12,15 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	String         nextFile 				 = Globals.fileName;
 	public boolean fileInfoUpdated			 = false;
 	private int    loopselected              = 0;
+	
 	private int    skipFrames                = 1;
 	private int    rgb565                    = 1;
     private int    yuvRgbAsm                 = 1;  
     private int    skipBidirFrames           = 1;
     
     private int    queueSizeMin              = (50 * 1024);
-    private int    queueSizeMax              = (15000 * 1024);
-    private int    queueSizeTotal            = (20000 * 1024);
+    private int    queueSizeMax              = (3000 * 1024);
+    private int    queueSizeTotal            = (5000 * 1024);
     private int    queueSizeAudio            = (512 * 1024);
     
     //private int    queueSizeMin              = (50*1024);
