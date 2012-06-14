@@ -1,4 +1,0 @@
-Compile thumb  : yuv2rgb <= yuv420rgb565.s
-jni/yuv2rgb/src/yuv420rgb565.s: Assembler messages:
-jni/yuv2rgb/src/yuv420rgb565.s:1060: Error: bad instruction `end'
-make: *** [obj/local/armeabi/objs/yuv2rgb/src/yuv420rgb565.o] Error 1

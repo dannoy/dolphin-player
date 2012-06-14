@@ -1,4 +1,0 @@
-This library implements several color space conversion functions. It will be 2 or more times faster than C function.
-But I do not test it enough.
-
-  Nozomi SATO  <joypeff@gmail.com>

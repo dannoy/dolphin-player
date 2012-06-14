@@ -1,6 +1,0 @@
-mb_YUV420_to_RGB32(320 << 16 | 240, 320, (char**)avpict.data, (char*) dst);
-320 << 16 | 240, 320, (char**)avpict.data, (char*) dst);
-
-mb_YUV420_to_RGB32( ( (codecCtx->width << 16) | (codecCtx->height)),
-                      frame->linesize[0], (char**)frame->data, (char*) aBuffer);
-
