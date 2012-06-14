@@ -46,6 +46,8 @@ public class AudioPlayer extends Activity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Globals.setNativeVideoPlayer(false);
 		//paused = false;
 		System.out.println("Inside New Player onCreate");
 

@@ -5,3 +5,5 @@ c) frame skipping logic is improved from the previous version.
 d) Minimum buffer size and maximum buffer size are fine tuned to improve the quality of playing video file
 e) Video player controls alignment is improved in this version
 
+13/June/2012
+Please see git commit logs for the various changes done in different versions

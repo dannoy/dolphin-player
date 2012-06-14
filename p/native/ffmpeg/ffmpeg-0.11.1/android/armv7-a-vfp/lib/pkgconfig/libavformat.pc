@@ -1,0 +1,14 @@
+prefix=./android/armv7-a-vfp
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 54.6.100
+Requires: libavcodec = 54.23.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir} -lavformat -lm -lbz2 -lz -lgcc
+Libs.private: 
+Cflags: -I${includedir}

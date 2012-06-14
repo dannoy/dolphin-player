@@ -50,7 +50,10 @@ public class FileManager {
 	 * @return the current directory
 	 */
 	public String getCurrentDir() {
-		System.out.println("FILE MANAGER getCurrentDir=" + path_stack.peek());
+		
+		//TODO: Why is this method called so many times. Why so many times, this is getting
+		// printed
+		//System.out.println("FILE MANAGER getCurrentDir=" + path_stack.peek());
 		return path_stack.peek();
 	}
 

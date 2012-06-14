@@ -14,8 +14,8 @@ class Globals {
 	public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
 	//public static String ApplicationName = "Dolphin Player Universal";
-	public static String ApplicationName 	 = "Dolphin Player ARM V5";
-	public static String VersionName     	 = "1.8 Build 12June2012";
+	public static String ApplicationName 	 = "Dolphin Player ";
+	public static String VersionName     	 = "1.9 Build 14June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 	
@@ -338,6 +338,24 @@ class Globals {
 			isNativeLibrariesLoaded = true;
 		}
 	}
+	
+	private static boolean nativeVideoPlayer=true;
+	private static boolean nativeVideoPlayerFeature=true;
+	
+	public static boolean isNativeVideoPlayerFeatureEnabled()
+	{
+		return nativeVideoPlayerFeature && (DemoRenderer.debugVideoMode==1);
+	}
+	
+    public static void setNativeVideoPlayer(boolean b)
+    {
+    	nativeVideoPlayer = b;
+    }
+    
+    public static boolean getNativeVideoPlayer()
+    {
+    	return nativeVideoPlayer;
+    }
 	
 //	static {
 //		System.loadLibrary("ffmpeg");

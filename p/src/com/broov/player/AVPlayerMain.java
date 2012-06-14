@@ -145,7 +145,12 @@ public final class AVPlayerMain extends ListActivity  {
 
 				} else {
 					String filename =   file.getPath();
-					Intent intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
+					Intent intent;
+					if (Globals.isNativeVideoPlayerFeatureEnabled()) {
+						intent = new Intent(AVPlayerMain.this, NativeVideoPlayer.class);
+					} else {
+						intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
+					}
 					intent.putExtra("videofilename", filename);
 					startActivity(intent);
 				}

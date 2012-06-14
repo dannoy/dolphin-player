@@ -1,21 +1,15 @@
-
 Steps to compile the source code: 
 
-1. Create a directory named "p" in C:\ path
-2. Place ndk r5b directory in C:\r5b\
+1. Clone the project from git
+2. Edit the AVPLAYER_PATH variable in jni/Android.mk
 
-NDK Compilation (r5b, r8 or similar)
-3. Goto C:\p\ directory 
-4. ndk-build -j2 V=1 (Clean the directory using ndk-build clean, if required)
-5. Copy the ffmpeg library based on the type of build
-   (V5, V6, V6VFP, V7Neon) to libs directory
-   > cp mylibs/v6vfp.so libs/armeabi/libffmpeg.so
-   or 
-   > cp mylibs/v5.so libs/armeabi/libffmpeg.so
+NDK Compilation (r8 or similar)
+3. Goto project directory (p directory)
+4. Run compile.sh (calls the following in order: ndk-build clean, ndk-build -j2 V=1 and copies the libffmpeg.so file)
 
 APK Compilation Steps
-6. Import the project in Eclipse 3.6 or latest with ADT Plugin support
-7. Start building the project and run it in Emulator or in Device
+5. Import the project in Eclipse 3.6 or latest with ADT Plugin support
+6. Start building the project and run it in Emulator or in Device
 
 
 If you have any queries or doubts, please feel free to send a mail to aatrala@broov.in or aatrala@gmail.com

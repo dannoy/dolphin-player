@@ -85,7 +85,7 @@ public class VideoPlayer extends Activity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
+        Globals.setNativeVideoPlayer(false);
 		System.out.println("Inside VideoPlayer onCreate");
 		paused = false;
 

@@ -11,7 +11,7 @@ APP_SUBDIRS += $(patsubst $(LOCAL_PATH)/%, %, $(shell find $(LOCAL_PATH)/resourc
 
 LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
 				-D__STDC_CONSTANT_MACROS \
-				-I$(AVPLAYER_PATH)"/native/ffmpeg/ffmpeg-0.11" \
+				-I$(AVPLAYER_PATH)"/native/ffmpeg/ffmpeg-0.11.1" \
 				-I$(AVPLAYER_PATH)"/jni/sdl/include" \
 				-I$(AVPLAYER_PATH)"/jni/sdl_ttf" \
 				-I$(AVPLAYER_PATH)"/jni/sdl_image/include" \
@@ -39,7 +39,7 @@ LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wil
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
 LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
 
-LOCAL_STATIC_LIBRARIES := freetype
+LOCAL_STATIC_LIBRARIES := freetype bz2
 
 LIBS_WITH_LONG_SYMBOLS := $(strip $(shell \
 	for f in $(LOCAL_PATH)/../../libs/armeabi/*.so ; do \
@@ -64,8 +64,12 @@ please make this library static to avoid problems. ) )
 $(error Detected libraries with too long symbol names. Remove all files under project/libs/armeabi, make these libs static, and recompile)
 endif
 
-
 LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog 
-LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11/android/armv5/libffmpeg.so"
+
+ifeq ($(TARGET_ARCH_ABI),x86)
+   LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/x86/libffmpeg.so"
+else
+   LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/armv5te/libffmpeg.so"
+endif
 
 include $(BUILD_SHARED_LIBRARY)

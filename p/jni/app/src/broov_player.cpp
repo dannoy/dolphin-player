@@ -38,8 +38,6 @@
 //#define BROOV_FRAME_RATE
 //#define BROOV_X86_RELEASE
 
-//#define BROOV_PIXEL_FORMAT_888
-
 #include "broov_player.h"
 #include "subreader.h"
 #include "broov_font.h"
@@ -52,7 +50,7 @@
 extern JavaVM *gBroovJniVM;
 
 const char program_name[]     = "Dolphin Player";
-const int  program_birth_year = 2011;
+const char copyright_year[]   = "2011-2012";
 
 // Variables used from Upper Layer
 // Begin
@@ -90,6 +88,7 @@ static int     g_show_subtitle            = 1;
 static int     g_autoexit                 = 0;
 static int     g_loop                     = 0;
 static int     g_debug                    = 0;
+static int     g_debug_mode               = 0;
 static int     g_audio_file_type          = 0;
 static int     g_asm_yuv2rgb              = 1;
 
@@ -545,14 +544,14 @@ static int audio_decode_frame(VideoState *is, double *pts_ptr)
 
 static inline int compute_mod(int a, int b)
 {
-        //Same logic, written much simpler
+	//Same logic, written much simpler
 	//a = a % b;
 	//if (a >= 0)
 	//	return a;
 	//else
 	//	return a + b;
 
-        return a < 0 ? a%b + b : a%b;
+	return a < 0 ? a%b + b : a%b;
 }
 
 static void audio_callback(void *userdata, Uint8 *stream, int len) 
@@ -575,14 +574,14 @@ static void audio_callback(void *userdata, Uint8 *stream, int len)
 #ifdef BROOV_VIDEO_THREAD
 			while (audio_size < 0) {
 				if (is->abort_request) break;
-				SDL_Delay(10);  
+				usleep(10000);
 				audio_size = audio_decode_frame(is, &pts);
 			}
 
 #else
 			while (audio_size < 0) {
 				if (is->abort_request) break;
-				SDL_Delay(10);  
+				usleep(10000);
 				audio_size = audio_decode_frame(is, &pts);
 			}
 #endif
@@ -752,7 +751,7 @@ static int try_to_set_best_video_mode(int w, int h, int rgb565)
 		SDL_RESIZABLE | SDL_FULLSCREEN;
 	int bpp;
 
-        if (rgb565) { bpp = 16; } else { bpp=32; }
+	if (rgb565) { bpp = 16; } else { bpp=32; }
 	screen = SDL_SetVideoMode(w, h, bpp, flags);
 
 	if (!screen) {
@@ -760,7 +759,7 @@ static int try_to_set_best_video_mode(int w, int h, int rgb565)
 		screen = SDL_SetVideoMode(w, h, bpp, flags);
 
 		if (!screen) {
-                        if (rgb565) { bpp = 16; } else { bpp=32; }
+			if (rgb565) { bpp = 16; } else { bpp=32; }
 			flags = SDL_SWSURFACE;
 			screen = SDL_SetVideoMode(w, h, bpp, flags);
 			if (!screen) {
@@ -804,27 +803,27 @@ static void ConvertDataToReverse(uint8_t *buffer, int w, int h)
 	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Inside bgra to rgba");
 	for (i=0; i<len; i+=4) {
 #if 0
-                //GBRA to RGBA //GBRA 0 1 2 3 //RGBA 2 0 1 3
-                swap0 = buffer[i];
-                swap1 = buffer[i+1];
-                swap2 = buffer[i+2];
-                swap3 = buffer[i+3];
+		//GBRA to RGBA //GBRA 0 1 2 3 //RGBA 2 0 1 3
+		swap0 = buffer[i];
+		swap1 = buffer[i+1];
+		swap2 = buffer[i+2];
+		swap3 = buffer[i+3];
 
-                buffer[i] = swap2;
-                buffer[i+1] = swap0;
-                buffer[i+2] = swap1;
+		buffer[i] = swap2;
+		buffer[i+1] = swap0;
+		buffer[i+2] = swap1;
 #endif
-                // ABGR -> RGBA
-                // 0123 -> 3210
-                swap0 = buffer[i];
-                swap1 = buffer[i+1];
-                swap2 = buffer[i+2];
-                swap3 = buffer[i+3];
+		// ABGR -> RGBA
+		// 0123 -> 3210
+		swap0 = buffer[i];
+		swap1 = buffer[i+1];
+		swap2 = buffer[i+2];
+		swap3 = buffer[i+3];
 
-                buffer[i] = swap3;
-                buffer[i+1] = swap2;
-                buffer[i+2] = swap1;
-                buffer[i+3] = swap0;
+		buffer[i] = swap3;
+		buffer[i+1] = swap2;
+		buffer[i+2] = swap1;
+		buffer[i+3] = swap0;
 	}
 
 #endif
@@ -844,15 +843,15 @@ static void ConvertDataFromRGBAToARGB(uint8_t *buffer, int w, int h)
 
 	for (i=0; i<len; i+=4) {
 		// 0 1 2 3 to  3 0 1 2
-                swap0 = buffer[i];
-                swap1 = buffer[i+1];
-                swap2 = buffer[i+2];
-                swap3 = buffer[i+3];
+		swap0 = buffer[i];
+		swap1 = buffer[i+1];
+		swap2 = buffer[i+2];
+		swap3 = buffer[i+3];
 
-                buffer[i]   = swap3;
-                buffer[i+1] = swap0;
-                buffer[i+2] = swap1;
-                buffer[i+3] = swap2;
+		buffer[i]   = swap3;
+		buffer[i+1] = swap0;
+		buffer[i+2] = swap1;
+		buffer[i+3] = swap2;
 	}
 
 }
@@ -876,7 +875,7 @@ static void rgb_video_image_display(VideoState *is)
 	if (!vp->pFrameRGB) return;
 
 	if ((vp->dst_width != g_aspect_ratio_w) ||
-	    (vp->dst_height != g_aspect_ratio_h)) {
+			(vp->dst_height != g_aspect_ratio_h)) {
 		//aspect ratio got changed
 		//do not print until the correct aspect ratio frame
 		//received
@@ -899,29 +898,21 @@ static void rgb_video_image_display(VideoState *is)
 	}
 
 #ifdef BROOV_TESTING_CODE
-        if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
-             if (g_asm_yuv2rgb == 1) {
-                 //ConvertDataToReverse(vp->buffer, vp->width, vp->height);
-                 //ConvertDataFromRGBAToARGB(vp->buffer, vp->width, vp->height);
-             }
-        }
+	if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+		if (g_asm_yuv2rgb == 1) {
+			//ConvertDataToReverse(vp->buffer, vp->width, vp->height);
+			//ConvertDataFromRGBAToARGB(vp->buffer, vp->width, vp->height);
+		}
+	}
 #endif
 
 	if (!vp->display_rgb_text) {
-                if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+		if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-#ifdef BROOV_PIXEL_FORMAT_888
-			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STATIC, vp->width, vp->height);
-#else
 			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, vp->width, vp->height);
-#endif
-#else
-#ifdef BROOV_PIXEL_FORMAT_888
-			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STATIC, vp->dst_width, vp->dst_height);
 #else
 			vp->display_rgb_text = SDL_CreateTexture(SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, vp->dst_width, vp->dst_height);
-#endif
 #endif
 
 		} else {
@@ -971,7 +962,7 @@ static void rgb_video_image_display(VideoState *is)
 #ifdef BROOV_PLAYER_DISPLAY_FPS
 	// Do not change this position, as we copy the
 	// FPS to be print on screen
-	calculate_frames_per_second();
+	if (g_debug_mode) { calculate_frames_per_second(); }
 #endif
 
 	SDL_RenderPresent();
@@ -1037,11 +1028,11 @@ static void video_refresh_rgb_timer(void *userdata)
 	}
 	else if (is->audio_st) {
 		if (!screen) {
-                        if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
-			    try_to_set_best_video_mode(fs_screen_width, fs_screen_height, 0);
-                        } else {
-			    try_to_set_best_video_mode(fs_screen_width, fs_screen_height, 1);
-                        }
+			if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+				try_to_set_best_video_mode(fs_screen_width, fs_screen_height, 0);
+			} else {
+				try_to_set_best_video_mode(fs_screen_width, fs_screen_height, 1);
+			}
 		}
 
 		//if (screen && g_audio_file_type) {
@@ -1049,7 +1040,7 @@ static void video_refresh_rgb_timer(void *userdata)
 		//}
 		{
 			ULONG dur = (ULONG)get_master_clock(is);
-	                //__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Duration:%ld", dur);
+			//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Duration:%ld", dur);
 			// update the value, only if a value change happens
 			if (dur != g_current_duration) {
 				broov_set_current_duration(dur);
@@ -1104,31 +1095,22 @@ static void alloc_rgb_picture(void *userdata)
 
 	// Allocate a place to put our YUV image on that screen
 	vp->pFrameRGB = avcodec_alloc_frame();
-        if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+	if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-#ifdef BROOV_PIXEL_FORMAT_888
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGB24, vp->width, vp->height); 
+		vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, vp->width, vp->height); 
 #else
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, vp->width, vp->height); 
+		vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, width, height); 
 #endif
 
-#else
-#ifdef BROOV_PIXEL_FORMAT_888
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGB24, width, height); 
-#else
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGBA, width, height); 
-#endif
-#endif
-
-        } else {
+	} else {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGB565, vp->width, vp->height); 
+		vp->numBytes = avpicture_get_size(PIX_FMT_RGB565, vp->width, vp->height); 
 #else
-	vp->numBytes = avpicture_get_size(PIX_FMT_RGB565, width, height); 
+		vp->numBytes = avpicture_get_size(PIX_FMT_RGB565, width, height); 
 #endif
-        }
+	}
 
 	vp->buffer = (uint8_t *) av_malloc(vp->numBytes*sizeof(uint8_t));
 
@@ -1143,28 +1125,16 @@ static void alloc_rgb_picture(void *userdata)
 
 	} else {
 
-                if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+		if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-#ifdef BROOV_PIXEL_FORMAT_888
 			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
-					PIX_FMT_RGB24,
+					PIX_FMT_RGBA,
 					vp->width, vp->height);
 #else
 			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
 					PIX_FMT_RGBA,
-					vp->width, vp->height);
-#endif
-#else
-#ifdef BROOV_PIXEL_FORMAT_888
-			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
-					PIX_FMT_RGB24,
 					width, height);
-#else
-			avpicture_fill( (AVPicture*)vp->pFrameRGB, vp->buffer, 
-					PIX_FMT_RGBA,
-					width, height);
-#endif
 #endif
 
 
@@ -1200,55 +1170,58 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 	vp = &is->pictq[is->pictq_windex];
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-        if (vp->dst_width  != g_aspect_ratio_w ||
-	    vp->dst_height != g_aspect_ratio_h) {
+	if (vp->dst_width  != g_aspect_ratio_w ||
+			vp->dst_height != g_aspect_ratio_h) {
 		vp->x = g_aspect_ratio_x;
 		vp->y = g_aspect_ratio_y;
 		vp->dst_width  = g_aspect_ratio_w;
 		vp->dst_height = g_aspect_ratio_h;
 	}
-
-	if (!vp->pFrameRGB) 
-        {
-#else
-	/* allocate or resize the buffer! */
-	if (!vp->pFrameRGB ||
-			vp->dst_width  != g_aspect_ratio_w ||
-			vp->dst_height != g_aspect_ratio_h) {
 #endif
-
-		vp->allocated = 0;
-		alloc_rgb_picture(is);
-
-		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VT RQP ICB");
-
-		if (vp->pix_fmt == PIX_FMT_YUV420P) {
-			//g_asm_yuv2rgb = 0;
-			g_asm_yuv2rgb = 1;
-			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "ASM YUV2RGB");
-		} else {
-			g_asm_yuv2rgb = 0;
-			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "FFmpeg YUV2RGB");
-		}
 
 #ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
-		is->img_convert_ctx = sws_getCachedContext(is->img_convert_ctx,
-				vp->width, vp->height, vp->pix_fmt, vp->width,
-				vp->height, dst_pix_fmt, sws_flags, 
-				NULL, NULL, NULL);
+
+	if (!vp->pFrameRGB) 
 #else
-		is->img_convert_ctx = sws_getCachedContext(is->img_convert_ctx,
-				vp->width, vp->height, vp->pix_fmt, vp->dst_width,
-				vp->dst_height, dst_pix_fmt, sws_flags, 
-				NULL, NULL, NULL);
+		/* allocate or resize the buffer! */
+		if (!vp->pFrameRGB ||
+				vp->dst_width  != g_aspect_ratio_w ||
+				vp->dst_height != g_aspect_ratio_h) 
+#endif
+		{
+
+			vp->allocated = 0;
+			alloc_rgb_picture(is);
+
+			//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VT RQP ICB");
+
+			if (vp->pix_fmt == PIX_FMT_YUV420P) {
+				//g_asm_yuv2rgb = 0;
+				g_asm_yuv2rgb = 1;
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "ASM YUV2RGB");
+			} else {
+				g_asm_yuv2rgb = 0;
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "FFmpeg YUV2RGB");
+			}
+
+#ifdef BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
+			is->img_convert_ctx = sws_getCachedContext(is->img_convert_ctx,
+					vp->width, vp->height, vp->pix_fmt, vp->width,
+					vp->height, dst_pix_fmt, sws_flags, 
+					NULL, NULL, NULL);
+#else
+			is->img_convert_ctx = sws_getCachedContext(is->img_convert_ctx,
+					vp->width, vp->height, vp->pix_fmt, vp->dst_width,
+					vp->dst_height, dst_pix_fmt, sws_flags, 
+					NULL, NULL, NULL);
 #endif
 
-		if (is->img_convert_ctx == NULL) {
-			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Unable to create a context");
-			return -1;
-		}
+			if (is->img_convert_ctx == NULL) {
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Unable to create a context");
+				return -1;
+			}
 
-	}
+		}
 
 	/* if the frame is not skipped, then display it */
 	if (vp->pFrameRGB) {
@@ -1259,54 +1232,39 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 					0, vp->height, vp->pFrameRGB->data, vp->pFrameRGB->linesize);
 
 #else
-                        if (g_video_yuv_rgb_asm == 0) {
-			     sws_scale(is->img_convert_ctx, pFrame->data, pFrame->linesize,
-					0, vp->height, vp->pFrameRGB->data, vp->pFrameRGB->linesize);
-                        } else {
-			if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB565)  {
-
-				yuv420_2_rgb565(vp->pFrameRGB->data[0], 
-						pFrame->data[0], 
-						pFrame->data[1], 
-						pFrame->data[2],
-						is->video_st->codec->width, 
-						is->video_st->codec->height, 
-						pFrame->linesize[0],  // Y span
-						pFrame->linesize[1],  // UV span Width / 2 
-						(is->video_st->codec->width<<1),  //Dest width* bpp (width *2bytes)
-						yuv2rgb565_table, 
-						dither++);
+			if (g_video_yuv_rgb_asm == 0) {
+				sws_scale(is->img_convert_ctx, pFrame->data, pFrame->linesize,
+						0, vp->height, vp->pFrameRGB->data, vp->pFrameRGB->linesize);
 			} else {
+				if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB565)  {
 
-#ifdef BROOV_PIXEL_FORMAT_888
-	                        yuv420_2_rgb888(vp->pFrameRGB->data[0], 
-						pFrame->data[0], 
-						pFrame->data[1], 
-						pFrame->data[2],
-						is->video_st->codec->width, 
-						is->video_st->codec->height, 
-						pFrame->linesize[0],  // Y span
-						pFrame->linesize[1],  // UV span Width / 2 
-						(is->video_st->codec->width * 3),  //Dest width* bpp (width *3bytes)
-						yuv2rgb565_table, 
-						dither++);
+					yuv420_2_rgb565(vp->pFrameRGB->data[0], 
+							pFrame->data[0], 
+							pFrame->data[1], 
+							pFrame->data[2],
+							is->video_st->codec->width, 
+							is->video_st->codec->height, 
+							pFrame->linesize[0],  // Y span
+							pFrame->linesize[1],  // UV span Width / 2 
+							(is->video_st->codec->width<<1),  //Dest width* bpp (width *2bytes)
+							yuv2rgb565_table, 
+							dither++);
+				} else {
 
-#else
-	                        yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
-						pFrame->data[0], 
-						pFrame->data[2], 
-						pFrame->data[1],
-						is->video_st->codec->width, 
-						is->video_st->codec->height, 
-						pFrame->linesize[0],  // Y span
-						pFrame->linesize[1],  // UV span Width / 2 
-						(is->video_st->codec->width * 4),  //Dest width* bpp (width *4bytes)
-						yuv2rgb565_table, 
-						dither++);
-#endif
+					yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
+							pFrame->data[0], 
+							pFrame->data[2], 
+							pFrame->data[1],
+							is->video_st->codec->width, 
+							is->video_st->codec->height, 
+							pFrame->linesize[0],  // Y span
+							pFrame->linesize[1],  // UV span Width / 2 
+							(is->video_st->codec->width * 4),  //Dest width* bpp (width *4bytes)
+							yuv2rgb565_table, 
+							dither++);
 
-                        }
-                } // g_video_yuv_rgb_asm is true
+				}
+			} // g_video_yuv_rgb_asm is true
 #endif
 		}
 
@@ -1381,11 +1339,7 @@ static int stream_component_open(VideoState *is, int stream_index)
 	codecCtx = pFormatCtx->streams[stream_index]->codec;
 
 	/* prepare audio output */
-#ifdef BROOV_FFMPEG_OLD
-	if (codecCtx->codec_type == CODEC_TYPE_AUDIO) {
-#else
 	if (codecCtx->codec_type == AVMEDIA_TYPE_AUDIO) {
-#endif
 		if (codecCtx->channels > 0) {
 			codecCtx->request_channels = FFMIN(2, codecCtx->channels);
 		} else {
@@ -1407,9 +1361,6 @@ static int stream_component_open(VideoState *is, int stream_index)
 	codecCtx->skip_frame= skip_frame;
 	codecCtx->skip_idct= skip_idct;
 	codecCtx->skip_loop_filter= skip_loop_filter;
-#ifdef BROOV_FFMPEG_OLD
-	codecCtx->error_recognition= error_recognition;
-#endif
 	codecCtx->error_concealment= error_concealment;
 	//avcodec_thread_init(codecCtx, thread_count);
 
@@ -1421,11 +1372,7 @@ static int stream_component_open(VideoState *is, int stream_index)
 	}
 
 	/* prepare audio output */
-#ifdef BROOV_FFMPEG_OLD
-	if(codecCtx->codec_type == CODEC_TYPE_AUDIO) {
-#else
 	if(codecCtx->codec_type == AVMEDIA_TYPE_AUDIO) {
-#endif
 
 		// Set audio settings from codec info
 		wanted_spec.freq = codecCtx->sample_rate;
@@ -1618,9 +1565,9 @@ static int decode_interrupt_cb(void)
 #else
 static int decode_interrupt_cb(void *ctx) 
 {
-    //VideoState *is = ctx;
-    //return is->abort_request;
-    return (global_video_state && global_video_state->abort_request);
+	//VideoState *is = ctx;
+	//return is->abort_request;
+	return (global_video_state && global_video_state->abort_request);
 }
 #endif
 
@@ -1646,21 +1593,12 @@ static int decode_module_init(void *arg)
 	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Inside decode_module_init");
 	global_video_state = is;
 
-#ifdef BROOV_FFMPEG_OLD
-	// will interrupt blocking functions if we quit!
-	url_set_interrupt_cb(decode_interrupt_cb);
-
-	// Open video file
-	err = av_open_input_file(&pFormatCtx, is->filename, NULL, 0, NULL);
-#else
 	pFormatCtx = avformat_alloc_context();
 	pFormatCtx->interrupt_callback.callback = decode_interrupt_cb;
 	pFormatCtx->interrupt_callback.opaque = is;
 
 	// Open video file
-        err = avformat_open_input(&pFormatCtx, is->filename, NULL, NULL);
-#endif
-
+	err = avformat_open_input(&pFormatCtx, is->filename, NULL, NULL);
 
 	if (err < 0) {
 		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "File open failed");
@@ -1714,15 +1652,12 @@ static int decode_module_init(void *arg)
 	calculate_duration(pFormatCtx);
 
 	// Find the first video stream
-	for (i=0; i<pFormatCtx->nb_streams; i++) {
+	for (i=0; i<pFormatCtx->nb_streams; i++) 
+	{
 
-#ifdef BROOV_FFMPEG_OLD
-		if (pFormatCtx->streams[i]->codec->codec_type==CODEC_TYPE_VIDEO &&
-				video_index < 0) {
-#else
 		if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO &&
-				video_index < 0) {
-#endif
+				video_index < 0) 
+		{
 			video_index=i;
 
 			/* init subtitle here to avoid latency */
@@ -1734,13 +1669,9 @@ static int decode_module_init(void *arg)
 			}
 		}
 
-#ifdef BROOV_FFMPEG_OLD
-		if(pFormatCtx->streams[i]->codec->codec_type==CODEC_TYPE_AUDIO &&
-				audio_index < 0) {
-#else
 		if(pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_AUDIO &&
-				audio_index < 0) {
-#endif
+				audio_index < 0) 
+		{
 			audio_index=i;
 		}
 
@@ -2130,7 +2061,7 @@ do_seek:
 			case SDL_VIDEORESIZE:
 				{
 					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "VideoResize event received W:%d, H:%d", event.resize.w, event.resize.h);
-                                        if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
+					if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
 						try_to_set_best_video_mode(event.resize.w, event.resize.h, 0);
 					} else {
 						try_to_set_best_video_mode(event.resize.w, event.resize.h, 1);
@@ -2365,7 +2296,7 @@ static int video_thread(void *arg)
 		if (is->abort_request) { break; }
 
 		if (is->paused && !is->videoq.abort_request) {
-			SDL_Delay(10);
+			usleep(10000);
 			continue;
 		}
 
@@ -2414,14 +2345,14 @@ static int video_thread(void *arg)
 			is->video_st->codec->reordered_opaque= packet->pts;
 			avcodec_decode_video2(is->video_st->codec, g_video_frame, &frameFinished, packet);
 
-                        if (g_last_skip_type == AVDISCARD_BIDIR) {
-                            g_alternate_skip_change= !g_alternate_skip_change;
-                            if (g_alternate_skip_change) {
-                                is->video_st->codec->skip_frame = AVDISCARD_BIDIR;
-                            } else {
-                                is->video_st->codec->skip_frame = AVDISCARD_DEFAULT;
-                            }
-                        }
+			if (g_last_skip_type == AVDISCARD_BIDIR) {
+				g_alternate_skip_change= !g_alternate_skip_change;
+				if (g_alternate_skip_change) {
+					is->video_st->codec->skip_frame = AVDISCARD_BIDIR;
+				} else {
+					is->video_st->codec->skip_frame = AVDISCARD_DEFAULT;
+				}
+			}
 
 			if (frameFinished) {
 
@@ -2521,12 +2452,12 @@ static int video_thread(void *arg)
 				qt = current_time();
 				get_average_of_N( (qt-st), BROOV_FRAME_YUV_2_RGB_RATE);
 				if (get_frames_to_skip()) {
-                                    is->video_st->codec->skip_frame = AVDISCARD_DEFAULT;
-                                    g_last_skip_type = AVDISCARD_DEFAULT;
-                                } else {
-                                    is->video_st->codec->skip_frame = AVDISCARD_BIDIR;
-                                    g_last_skip_type = AVDISCARD_BIDIR;
-                                }
+					is->video_st->codec->skip_frame = AVDISCARD_DEFAULT;
+					g_last_skip_type = AVDISCARD_DEFAULT;
+				} else {
+					is->video_st->codec->skip_frame = AVDISCARD_BIDIR;
+					g_last_skip_type = AVDISCARD_BIDIR;
+				}
 #endif
 			}
 		}
@@ -2662,27 +2593,27 @@ static int decode_thread(void *arg)
 #ifdef BROOV_VIDEO_THREAD
 		if (in_sync) {
 			if (is->videoq.size > BROOV_VIDEO_MAX_BUFFER_SIZE)
-			        //if (is->videoq.size > 3048576)
+				//if (is->videoq.size > 3048576)
 				//if (is->videoq.size > 1MB)
 			{
 				in_sync = false;
-				SDL_Delay(10);
+				usleep(10000);
 				continue;	
 				//return 1; 
 			}
 		} else {
 			// __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "OUT_OF_SYNC videoq.nb_packets:%d", is->videoq.nb_packets);  
 			if (is->videoq.size < BROOV_VIDEO_MIN_BUFFER_SIZE)
-			        //if (is->videoq.size < 256000)
+				//if (is->videoq.size < 256000)
 				//if (is->videoq.size < 100KB)
 			{
 				in_sync=true;
-				SDL_Delay(10);
+				usleep(10000);
 				continue;
 				//return 2;
 			}
 			else{
-				SDL_Delay(10);
+				usleep(10000);
 				continue;
 				//return 3;
 			}
@@ -2694,7 +2625,7 @@ static int decode_thread(void *arg)
 		if ((is->audioq.size + is->videoq.size) > BROOV_TOTAL_MAX_BUFFER_SIZE)
 		{
 			/* wait 10 ms */
-			SDL_Delay(10);
+			usleep(10000);
 			continue;
 			//return 4;
 		}
@@ -2711,7 +2642,6 @@ static int decode_thread(void *arg)
 			}
 #endif
 			usleep(10000); //Sleep for 10ms
-			//SDL_Delay(10); 
 
 #ifdef BROOV_VIDEO_THREAD
 			if ((is->audioq.size + is->videoq.size) ==0)
@@ -2747,11 +2677,10 @@ static int decode_thread(void *arg)
 #else
 			if (pFormatCtx->pb && pFormatCtx->pb->error) {
 				goto decode_after_read;
-                        }
+			}
 #endif
 			usleep(10000); //Sleep for 100ms
 
-			//SDL_Delay(100); /* no error; wait for user input */
 			continue;
 			//return 6;
 		}
@@ -2898,23 +2827,13 @@ decode_module_fail:
 
 }
 
-int player_main(int argc, char *argv[], 
-		int loop_after_play, int audio_file_type, int skip_frames, int rgb565, int yuv_rgb_asm,
-                int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, int audio_queue_size)
-
+static void broov_init_global_values(int loop_after_play, int audio_file_type, int skip_frames, 
+		int rgb565, int yuv_rgb_asm, int skip_bidir_frames, 
+		int vqueue_size_min, int vqueue_size_max, int total_queue_size, 
+		int audio_queue_size, int fast_mode, int debug_mode, int sync_type, int seek_duration,
+		int ffmpeg_flags)
 {
-	VideoState      *is;
-	int ret_value = 0;
-	int ui_scheduler = 0;
-	int decode_scheduler = 0;
-
 	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Loop:%d FileType:%d SkipFrames:%d RGB565:%d YUV_RGB_ASM:%d", loop_after_play, audio_file_type, skip_frames, rgb565, yuv_rgb_asm);
-
-#ifdef BROOV_PLAYER_PROFILING
-	//monstartup("application.so");
-	monstartup("ffmpeg.so");
-	//monstartup("sdl.so");
-#endif
 
 	if (loop_after_play == 0) {
 		g_autoexit = 1;
@@ -2927,26 +2846,24 @@ int player_main(int argc, char *argv[],
 	g_aspect_ratio_type = 0;
 	g_skip_frames = skip_frames;
 
-        if (rgb565 == 1) { 
+	if (rgb565 == 1) { 
 		g_video_output_rgb_type = VIDEO_OUTPUT_RGB565; 
 		dst_pix_fmt = PIX_FMT_RGB565;
 	} 
-        else { 
+	else { 
 		g_video_output_rgb_type = VIDEO_OUTPUT_RGB8888; 
-#ifdef BROOV_PIXEL_FORMAT_888
-                dst_pix_fmt = PIX_FMT_RGB24;
-#else
-                dst_pix_fmt = PIX_FMT_RGBA;
-#endif
+		dst_pix_fmt = PIX_FMT_RGBA;
 	}
 
-        if (yuv_rgb_asm == 1) { g_video_yuv_rgb_asm = 1; } else { g_video_yuv_rgb_asm = 0; }
+	if (yuv_rgb_asm == 1) { g_video_yuv_rgb_asm = 1; } else { g_video_yuv_rgb_asm = 0; }
 
-        if (skip_bidir_frames) { g_last_skip_type = AVDISCARD_BIDIR; }
-        if (vqueue_size_min) { BROOV_VIDEO_MIN_BUFFER_SIZE = vqueue_size_min; }
-        if (vqueue_size_max) { BROOV_VIDEO_MAX_BUFFER_SIZE = vqueue_size_max; }
-        if (total_queue_size) { BROOV_TOTAL_MAX_BUFFER_SIZE= total_queue_size; }
-        if (audio_queue_size) { MAX_AUDIOQ_SIZE = audio_queue_size; }
+	if (skip_bidir_frames) { g_last_skip_type = AVDISCARD_BIDIR; } 
+	else { g_last_skip_type = AVDISCARD_DEFAULT; }
+
+	if (vqueue_size_min) { BROOV_VIDEO_MIN_BUFFER_SIZE = vqueue_size_min; }
+	if (vqueue_size_max) { BROOV_VIDEO_MAX_BUFFER_SIZE = vqueue_size_max; }
+	if (total_queue_size) { BROOV_TOTAL_MAX_BUFFER_SIZE= total_queue_size; }
+	if (audio_queue_size) { MAX_AUDIOQ_SIZE = audio_queue_size; }
 
 	g_eof=0;
 	g_total_duration=0;
@@ -2968,16 +2885,50 @@ int player_main(int argc, char *argv[],
 		broov_gui_show_video_image(screen);
 #endif
 	}
-
 	broov_gui_init_ds();
 
 	seek_by_bytes = -1;
 	start_time = AV_NOPTS_VALUE;
 	duration   = AV_NOPTS_VALUE;
 
-	is = (VideoState *)av_mallocz(sizeof(VideoState));
+        if (fast_mode == 1) { fast = 1;	} else { fast = 0; }
+	if (debug_mode == 1) { g_debug_mode = 1; } else { g_debug_mode = 0; }
+        if (sync_type == 0) {av_sync_type = AV_SYNC_AUDIO_MASTER; }
+        if (sync_type == 1) {av_sync_type = AV_SYNC_VIDEO_MASTER; }
+        if (sync_type == 2) {av_sync_type = AV_SYNC_EXTERNAL_CLOCK; }
+        if (seek_duration) { start_time = seek_duration; }
 
-	strncpy(is->filename, argv[1], FILE_NAME_SIZE);
+        if (ffmpeg_flags == 0) { sws_flags = SWS_BICUBIC; }
+        if (ffmpeg_flags == 1) { sws_flags = SWS_BILINEAR; }
+        if (ffmpeg_flags == 2) { sws_flags = SWS_FAST_BILINEAR; }
+
+	return;
+} //broov_init_global_values()
+
+int player_main(int argc, char *argv[], 
+		int loop_after_play, int audio_file_type, int skip_frames, int rgb565, int yuv_rgb_asm,
+		int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, 
+		int audio_queue_size, int fast_mode, int debug_mode, int sync_type, int seek_duration,
+		int ffmpeg_flags)
+
+{
+	VideoState      *is;
+	int ret_value = 0;
+	int ui_scheduler = 0;
+	int decode_scheduler = 0;
+
+	broov_init_global_values(loop_after_play, audio_file_type, skip_frames, rgb565, yuv_rgb_asm,
+			skip_bidir_frames, vqueue_size_min, vqueue_size_max, total_queue_size, audio_queue_size, fast_mode, debug_mode, sync_type, seek_duration, ffmpeg_flags);
+
+#ifdef BROOV_PLAYER_PROFILING
+	//monstartup("application.so");
+	monstartup("ffmpeg.so");
+	//monstartup("sdl.so");
+#endif
+	is = (VideoState *)av_mallocz(sizeof(VideoState));
+	if (!is) { return ret_value; }
+
+	strncpy(is->filename, argv[0], FILE_NAME_SIZE);
 
 	/* start video display */
 	is->pictq_mutex = SDL_CreateMutex();
@@ -3048,13 +2999,13 @@ int player_main(int argc, char *argv[],
 		}
 		//ui_scheduler++;
 
-		if (is->paused) { SDL_Delay(10); continue; }
+		if (is->paused) { usleep(10000); continue; }
 
 		if (is->video_st && is->pictq_size && audio_file_type==0) {
 			video_refresh_rgb_timer(is);
 		}
 		else if (is->video_st && audio_file_type==0) {
-			SDL_Delay(10); //Sleep for 10 ms
+			usleep(10000); //Sleep for 10 ms
 		}
 		else { 
 			//Update the audio stream duration
@@ -3066,7 +3017,7 @@ int player_main(int argc, char *argv[],
 			}
 
 			//This is an audio stream without video
-			SDL_Delay(100); //Sleep for 100 ms 
+			usleep(100000); //Sleep for 100 ms 
 		}
 
 	} // video/audio file processing loop
@@ -3423,11 +3374,11 @@ int get_frames_to_skip()
 	float display_fps = fps_avg[BROOV_FRAME_DISPLAY_RATE];
 	float yuv2rgb_fps = fps_avg[BROOV_FRAME_YUV_2_RGB_RATE];
 
-        double diff = get_master_clock(cur_stream) - cur_stream->video_clock;
+	double diff = get_master_clock(cur_stream) - cur_stream->video_clock;
 	//__android_log_print(ANDROID_LOG_INFO, "AV Skip", "Decode:%2.2f YUV2RGB:%2.2f Display:%2.2f Delay:%f", decode_fps, yuv2rgb_fps, display_fps, diff);
 
-        //if (diff < 0.15) return 1;
-        //if (diff < MIN_TIME_TO_WAIT_FOR_SKIP) return 1;
+	//if (diff < 0.15) return 1;
+	//if (diff < MIN_TIME_TO_WAIT_FOR_SKIP) return 1;
 	//return 0; 
 
 	return 1; 

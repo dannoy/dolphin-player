@@ -18,6 +18,12 @@ typedef signed   int   signed int;
 typedef unsigned short uint16_t;
 typedef unsigned char  unsigned char;*/
 
+/* Define these to something appropriate in your build */
+typedef unsigned int   uint32_t;
+typedef signed   int   int32_t;
+typedef unsigned short uint16_t;
+typedef unsigned char  uint8_t;
+
 extern const unsigned int yuv2rgb565_table[];
 extern const unsigned int yuv2bgr565_table[];
 

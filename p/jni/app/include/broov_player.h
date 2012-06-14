@@ -146,7 +146,6 @@ typedef struct VideoState
 
   unsigned int     audio_buf_size;
   unsigned int     audio_buf_index;
-  AVPacket         audio_pkt;
   uint8_t         *audio_pkt_data;
   int              audio_pkt_size;
   int              audio_hw_buf_size;  
@@ -182,12 +181,28 @@ typedef struct VideoState
 
   int              refresh;
 
-  AVPacket audio_pkt_temp;
+  AVPacket         audio_pkt;
+  AVPacket         audio_pkt_temp;
 
   int use_sub;
 
   struct SwsContext *img_convert_ctx;
 
+  double audio_current_pts;
+  double audio_current_pts_drift;
+  struct SwrContext *swr_ctx;
+  int audio_src_freq;
+  int audio_tgt_freq;
+  int64_t audio_src_channel_layout;
+  int64_t audio_tgt_channel_layout;
+  int audio_src_channels;
+  int audio_tgt_channels;
+  enum AVSampleFormat audio_src_fmt;
+  enum AVSampleFormat audio_tgt_fmt;
+  DECLARE_ALIGNED(16,uint8_t,audio_buf2)[AVCODEC_MAX_AUDIO_FRAME_SIZE * 4];
+  uint8_t silence_buf[SDL_AUDIO_BUFFER_SIZE];
+  int audio_write_buf_size;
+  AVFrame *frame;
 } VideoState;
 
 
@@ -203,7 +218,10 @@ int player_init(char *font_fname, int subtitle_show, int subtitle_font_size, int
 
 int player_main(int argc, char *argv[], 
 		int loop_after_play, int audio_file_type, int skip_frames, int rgb565, int yuv_rgb_asm,
-                int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, int audio_queue_size);
+                int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, 
+		int audio_queue_size, int fast_mode, int debug_mode, int sync_type, int seek_duration,
+		int ffmpeg_flags);
+
 int player_exit();
 
 //Player status and control methods
@@ -269,7 +287,7 @@ int player_set_aspect_ratio(int aspect_ratio_type);
 //#define BROOV_TOTAL_MAX_BUFFER_SIZE  3048576
 #define MIN_TIME_TO_WAIT_FOR_SKIP    0.25
 
-//512 KB (512 * 1024)
-//#define MAX_AUDIOQ_SIZE (524288)
+#define VIDEO_OUTPUT_RGB565  0
+#define VIDEO_OUTPUT_RGB8888 1
 
 #endif /* #ifndef BROOV_PLAYER_H */
