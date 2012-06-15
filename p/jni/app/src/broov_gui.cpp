@@ -74,7 +74,8 @@ void broov_gui_init_audio_image(int audio_image_idx)
 	}
 
 	if (rw4) {
-		SDL_Surface *backgroundImage = IMG_LoadTyped_RW(rw4, 1, "JPG");
+                char image[] = "JPG";
+		SDL_Surface *backgroundImage = IMG_LoadTyped_RW(rw4, 1, image);
 		if (backgroundImage) {
 			backgroundTexture = SDL_CreateTextureFromSurface(0, backgroundImage);
 		}

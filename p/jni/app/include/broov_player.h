@@ -33,6 +33,7 @@ extern "C" {
 #include "libavformat/avformat.h"
 #include "libavcodec/audioconvert.h"
 #include "libavcodec/avfft.h"
+#include "libswresample/swresample.h"
 
 #include "libswscale/swscale.h"
 

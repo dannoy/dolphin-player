@@ -11,7 +11,7 @@
 // Author: AA
 // Skip Frames Logic: Nareshprasad
 
-#define BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
+//#define BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
 #define BROOV_VIDEO_SKIP
 #define BROOV_VIDEO_THREAD
 
@@ -343,86 +343,6 @@ static double compute_target_time(double frame_current_pts, VideoState *is)
 	return is->frame_timer;
 }
 
-
-/* return the new audio buffer size (samples can be added or deleted
-   to get better sync if video or external master clock) */
-static int synchronize_audio(VideoState *is, short *samples,
-		int samples_size1, double pts) 
-{
-	int n;
-	int samples_size;
-	double ref_clock;
-
-	n = 2 * is->audio_st->codec->channels;
-	samples_size = samples_size1;
-
-	/* if not master, then we try to remove or add samples to correct the clock */
-	if (((is->av_sync_type == AV_SYNC_VIDEO_MASTER) && 
-				(is->video_st)) ||
-			(is->av_sync_type == AV_SYNC_EXTERNAL_CLOCK)) {
-		double diff, avg_diff;
-		int wanted_size, min_size, max_size, nb_samples;
-
-		ref_clock = get_master_clock(is);
-		diff = get_audio_clock(is) - ref_clock;
-
-		if(diff < AV_NOSYNC_THRESHOLD) {
-			// accumulate the diffs
-			is->audio_diff_cum = diff + is->audio_diff_avg_coef
-				* is->audio_diff_cum;
-			if(is->audio_diff_avg_count < AUDIO_DIFF_AVG_NB) {
-				/* not enough measures to have a correct estimate */
-				is->audio_diff_avg_count++;
-			} else {
-				/* estimate the A-V difference */
-				avg_diff = is->audio_diff_cum * (1.0 - is->audio_diff_avg_coef);
-
-				if (fabs(avg_diff) >= is->audio_diff_threshold) {
-					wanted_size = samples_size + ((int)(diff * is->audio_st->codec->sample_rate) * n);
-					nb_samples = samples_size / n;
-
-					min_size = ((nb_samples * (100 - SAMPLE_CORRECTION_PERCENT_MAX)) / 100) * n;
-					max_size = ((nb_samples * (100 + SAMPLE_CORRECTION_PERCENT_MAX)) / 100) * n;
-					if(wanted_size < min_size) {
-						wanted_size = min_size;
-					} else if (wanted_size > max_size) {
-						wanted_size = max_size;
-					}
-
-					/* add or remove samples to correction the synchro */
-
-					if (wanted_size < samples_size) {
-						/* remove samples */
-						samples_size = wanted_size;
-					} else if(wanted_size > samples_size) {
-						uint8_t *samples_end, *q;
-						int nb;
-
-						/* add samples by copying final sample*/
-						nb = (samples_size - wanted_size);
-						samples_end = (uint8_t *)samples + samples_size - n;
-						q = samples_end + n;
-						while(nb > 0) {
-							memcpy(q, samples_end, n);
-							q += n;
-							nb -= n;
-						}
-
-						samples_size = wanted_size;
-					}
-				}
-			}
-		} else {
-
-			/* too big difference : may be initial PTS errors, so
-			   reset A-V filter */
-			is->audio_diff_avg_count = 0;
-			is->audio_diff_cum = 0;
-		}
-	}
-
-	return samples_size;
-}
 
 static inline int compute_mod(int a, int b)
 {
@@ -838,7 +758,7 @@ static void rgb_video_image_display(VideoState *is)
 	if (!vp->pFrameRGB) return;
 
 	if ((vp->dst_width != g_aspect_ratio_w) ||
-			(vp->dst_height != g_aspect_ratio_h)) {
+	    (vp->dst_height != g_aspect_ratio_h)) {
 		//aspect ratio got changed
 		//do not print until the correct aspect ratio frame
 		//received

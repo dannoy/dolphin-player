@@ -39,7 +39,8 @@ LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wil
 #LOCAL_SHARED_LIBRARIES := ffmpeg sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
 LOCAL_SHARED_LIBRARIES := sdl sdl_ttf sdl_image iconv universalchardet yuv2rgb
 
-LOCAL_STATIC_LIBRARIES := freetype bz2
+#LOCAL_STATIC_LIBRARIES := freetype bz2
+LOCAL_STATIC_LIBRARIES := freetype 
 
 LIBS_WITH_LONG_SYMBOLS := $(strip $(shell \
 	for f in $(LOCAL_PATH)/../../libs/armeabi/*.so ; do \

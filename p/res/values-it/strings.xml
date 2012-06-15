@@ -19,7 +19,6 @@
     <string name="cantreadfolderduetopermissions">E \'possibile leggere cartella a causa di autorizzazioni</string>
     <string name="searching">Ricerca</string>
     <string name="searchingcurrentfilesystem">Ricerca di file system corrente..</string>
-    <string name ="aboutcontent"> "This is AV player alpha 0.6. Developed by Broov information services private limited.\nCourtesy:\n FFmpeg, SDL, OPENGL \n Credits:\n Developers:\n   Aatral Arasu \n   Nareshprasad \nReviewers: \n   Balaji \n   Prabhu \nTranslations: \n   Elankathir \n   Ragupathy \n   Ramsamy \n http://broov.in/ \n Copyrights Broov information services private limited" </string>
     <string name ="helpcontent"> "Avoirdupois alfa Giocatore 0.6 è un lettore audio e video per la versione 2.1 di Android e superiori."\n"  </string>
     <string name ="changeto">Cambia per</string>
     <string name ="changetextcolor">Cambia il colore del testo</string>

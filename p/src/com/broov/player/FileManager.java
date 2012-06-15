@@ -582,18 +582,18 @@ public class FileManager {
 		return listOfFiles;
 	}
 
-	public static int getImageIndex(){
-		int imageIndex = 0;
-		int min = 0;
-
-		try{
-			int max = Globals.numberofImages ;
-
-			imageIndex = (int) (Math.random() * (max - min + 1) ) + min;
-			//	System.out.println("Random Image index number : " + imageIndex);
-		}catch(Exception e){}
-		return imageIndex;
-	}
+//	public static int getImageIndex(){
+//		int imageIndex = 0;
+//		int min = 0;
+//
+//		try{
+//			int max = Globals.numberofImages ;
+//
+//			imageIndex = (int) (Math.random() * (max - min + 1) ) + min;
+//			//	System.out.println("Random Image index number : " + imageIndex);
+//		}catch(Exception e){}
+//		return imageIndex;
+//	}
 
 	/** (non-Javadoc)
 	 * this function will take the string from the top of the directory stack

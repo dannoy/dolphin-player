@@ -7,6 +7,12 @@ import android.app.Activity;
 
 class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 
+	//private static int queueSizeMinTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048 }; //0-12
+	//private static int queueSizeMaxTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000, 8000, 10000, 12000, 14000, 15000, 20000 }; //0-21
+	//private static int audioQueueSizeMaxTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000 };//0-15
+	private static int queueSizeTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000, 8000, 10000, 12000, 14000, 15000, 20000 }; //0-21
+	
+	
 	private static final int AV_SYNC_TYPE_AUDIO=0;
 	private static final int AV_SYNC_TYPE_VIDEO=1;
 	private static final int AV_SYNC_TYPE_EXTERNAL=2;
@@ -22,18 +28,23 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	private int    loopselected              = 0;
 
 	private static int    skipFrames                = 0;
+	private static int    skipBidirFrames           = 0;
 	private static int    rgb565                    = 1;
 	private static int    yuvRgbAsm                 = 0;  
-	private static int    skipBidirFrames           = 0;
 	
 	private	static int    queueSizeMin              = (50 * 1024);
 	private static int    queueSizeMax              = (3000 * 1024);
-	private static int    queueSizeTotal            = (5000 * 1024);
+	private static int    queueSizeTotal            = (25000 * 1024);
 	private static int    queueSizeAudio            = (512 * 1024);
+
+	private	static int    streamqueueSizeMin              = (50 * 1024);
+	private static int    streamqueueSizeMax              = (3000 * 1024);
+	private static int    streamqueueSizeTotal            = (25000 * 1024);
+	private static int    streamqueueSizeAudio            = (512 * 1024);
 
 	public static int    fastMode = 0;
 	public static int    debugMode= 1;
-	public static int    debugVideoMode = 1;
+	public static int    debugVideoMode = 1; //If set to 1, NativeVideoPlayer.java is called for viewing video files
 	public static int    syncType = AV_SYNC_TYPE_AUDIO;
 	public static int    seekDuration = 0;
 	public static int    ffmpegFlags = AV_FFMPEG_SWS_FAST_BILINEAR;
@@ -54,6 +65,40 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		System.out.println("OnSurfaceChanged");
 		nativeResize(w, h);
 	}
+	
+	public void setValuesFromSettings()
+	{	
+		if (Globals.dbadvancedskip) { skipFrames = 1; } else { skipFrames = 0; }
+		if (Globals.dbadvancedbidirectional) { skipBidirFrames = 1; } else { skipBidirFrames = 0; }
+		if (Globals.dbadvanceddebug) { debugMode = 1; } else { debugMode = 0; }
+		if (Globals.dbadvancedffmpeg) { fastMode = 1; }  else { fastMode = 0; }
+		if (Globals.dbadvancedavsyncmode >=0 && Globals.dbadvancedavsyncmode <= 2) { syncType = Globals.dbadvancedavsyncmode;}
+		if (Globals.dbadvancedyuv ==0) { yuvRgbAsm=1;} else { yuvRgbAsm = 0; }
+		if (Globals.dbadvancedpixelformat ==0) { rgb565 = 1; } else { rgb565=0; }
+		if (Globals.dbadvancedswsscaler >=0 && Globals.dbadvancedswsscaler <=2) { ffmpegFlags = Globals.dbadvancedswsscaler; }
+		
+		if (Globals.dbadvancedminvideoq >=0 && Globals.dbadvancedminvideoq <=12) { queueSizeMin = queueSizeTable[Globals.dbadvancedminvideoq]*1024; }
+		if (queueSizeMin < (50 *1024)) { queueSizeMin = (50*1024); }
+		
+		if (Globals.dbadvancedmaxvideoq >=0 && Globals.dbadvancedmaxvideoq <=21) { queueSizeMax = queueSizeTable[Globals.dbadvancedmaxvideoq]*1024; }
+		if (queueSizeMax < (50 *1024)) { queueSizeMax = (1000*1024); }
+		
+		if (Globals.dbadvancedmaxaudioq >=0 && Globals.dbadvancedmaxaudioq <=15) { queueSizeAudio = queueSizeTable[Globals.dbadvancedmaxaudioq]*1024; }
+		if (queueSizeAudio < (50 *1024)) { queueSizeAudio = (256*1024); }
+
+		queueSizeTotal = (queueSizeMin + queueSizeMax + queueSizeAudio);
+				
+		if (Globals.dbadvancedstreamminvideoq >=0 && Globals.dbadvancedstreamminvideoq <=12){streamqueueSizeMin = queueSizeTable[Globals.dbadvancedstreamminvideoq]*1024;}
+		if (streamqueueSizeMin < (50 *1024)) { streamqueueSizeMin = (50*1024); }
+
+		if (Globals.dbadvancedstreammaxvideoq >=0 && Globals.dbadvancedstreammaxvideoq <=21){streamqueueSizeMax = queueSizeTable[Globals.dbadvancedstreammaxvideoq]*1024;}
+		if (streamqueueSizeMax < (50 *1024)) { streamqueueSizeMax = (1000*1024); }
+		
+		if (Globals.dbadvancedstreammaxaudioq >=0 && Globals.dbadvancedstreammaxaudioq <=15) { streamqueueSizeAudio = queueSizeTable[Globals.dbadvancedstreammaxaudioq]*1024; }
+		if (streamqueueSizeAudio < (50 *1024)) { streamqueueSizeAudio = (256*1024); }
+		
+		streamqueueSizeTotal = (streamqueueSizeMin + streamqueueSizeMax + streamqueueSizeAudio);		
+	}
 
 	public void onDrawFrame(GL10 gl) 
 	{
@@ -66,9 +111,12 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		//Thread.currentThread().setPriority(Thread.MAX_PRIORITY-2);
 
 		//System.out.println("Calling playerInit");
-		System.out.println("Show subtitle:"+FileManager.getshow_subtitle());
-		System.out.println("Subtitle size:"+FileManager.getSubTitleSize());
+		//System.out.println("Show subtitle:"+FileManager.getshow_subtitle());
+		//System.out.println("Subtitle size:"+FileManager.getSubTitleSize());
 
+		//Get the values to be passed to native
+		setValuesFromSettings();
+		
 		if (Globals.getNativeVideoPlayer()) {
 			nativeVideoPlayerInit(Globals.dbSubtitleFont, FileManager.getshow_subtitle(), FileManager.getSubTitleSize(), Globals.dbSubtitleEncoding, rgb565);
 
@@ -106,23 +154,17 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		System.out.println("nativePlayerMain(NewPlayer.fileName:"+Globals.fileName+", loopselected:"+loopselected+", audioFileType: "+audioFileType+");");
 		////101 - Next button  100 - Previous button  0 - Song played finished
 
-		if (Globals.dbSkipframes) {
-			skipFrames = 1;
-		} else {
-			skipFrames = 0;
-		}
-
 		int retValue;
 		if (Globals.getNativeVideoPlayer()) {
 			if ((audioFileType == 1) && FileManager.isAudioStream(Globals.fileName)){
 				String stream = FileManager.ReadFirstLine(Globals.fileName);
 				retValue = nativeVideoPlayerMain(stream, loopselected, audioFileType, 
-						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 			} else if((audioFileType==0) && FileManager.isVideoStream(Globals.fileName)) {
 				String stream = FileManager.ReadFirstLine(Globals.fileName);			
 				retValue = nativeVideoPlayerMain(stream, loopselected, audioFileType, 
-						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 			} else {
 				retValue = nativeVideoPlayerMain(Globals.fileName, loopselected, audioFileType, 
@@ -134,14 +176,14 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			if ((audioFileType == 1) && FileManager.isAudioStream(Globals.fileName)){
 				String stream = FileManager.ReadFirstLine(Globals.fileName);
 				retValue = nativePlayerMain(stream, loopselected, audioFileType, 
-						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 
 			} else if((audioFileType==0) && FileManager.isVideoStream(Globals.fileName)) {
 
 				String stream = FileManager.ReadFirstLine(Globals.fileName);			
 				retValue = nativePlayerMain(stream, loopselected, audioFileType, 
-						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 			} else {
 
@@ -176,31 +218,22 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			System.out.println("nextFile before:"+nextFile);
 			if (FileManager.isAudioFile(nextFile)) {
 				audioFileType = 1; 
-				skipFrames = 0;
-				rgb565 = 0;
-				yuvRgbAsm = 0;  
-				skipBidirFrames = 0;
 			} else {
 				audioFileType = 0;
 			}
 			System.out.println("nativePlayerMain(fileName:"+nextFile+", loopselected:"+loopselected+", audioFileType: "+audioFileType+");");
-			if (Globals.dbSkipframes) {
-				skipFrames = 1;
-			} else {
-				skipFrames = 0;
-			}
 
 			if (Globals.getNativeVideoPlayer()){
 				if ((audioFileType == 1) && FileManager.isAudioStream(nextFile)){
 					String stream = FileManager.ReadFirstLine(nextFile);
 					retValue = nativeVideoPlayerMain(stream, loopselected, audioFileType, 
-							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 							fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 
 				} else if((audioFileType==0) && FileManager.isVideoStream(nextFile)) {
 					String stream = FileManager.ReadFirstLine(nextFile);			
 					retValue = nativeVideoPlayerMain(stream, loopselected, audioFileType, 
-							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 							fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 				} else {
 					retValue = nativeVideoPlayerMain(nextFile, loopselected, audioFileType, 
@@ -212,13 +245,13 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 				if ((audioFileType == 1) && FileManager.isAudioStream(nextFile)){
 					String stream = FileManager.ReadFirstLine(nextFile);
 					retValue = nativePlayerMain(stream, loopselected, audioFileType, 
-							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 							fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 
 				} else if((audioFileType==0) && FileManager.isVideoStream(nextFile)) {
 					String stream = FileManager.ReadFirstLine(nextFile);			
 					retValue = nativePlayerMain(stream, loopselected, audioFileType, 
-							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
+							skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, streamqueueSizeMin, streamqueueSizeMax, streamqueueSizeTotal, streamqueueSizeAudio,
 							fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 				} else {
 					retValue = nativePlayerMain(nextFile, loopselected, audioFileType, 
