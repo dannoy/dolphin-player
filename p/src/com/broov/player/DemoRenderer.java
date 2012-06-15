@@ -150,6 +150,8 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		int audioFileType;
 		if (FileManager.isAudioFile(Globals.fileName)) { audioFileType = 1; } 
 		else {audioFileType = 0; }
+		
+		if (audioFileType == 1) { syncType = AV_SYNC_TYPE_AUDIO; }
 
 		System.out.println("nativePlayerMain(NewPlayer.fileName:"+Globals.fileName+", loopselected:"+loopselected+", audioFileType: "+audioFileType+");");
 		////101 - Next button  100 - Previous button  0 - Song played finished
@@ -221,6 +223,9 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 			} else {
 				audioFileType = 0;
 			}
+			if (audioFileType == 1) { syncType = AV_SYNC_TYPE_AUDIO; }
+
+			
 			System.out.println("nativePlayerMain(fileName:"+nextFile+", loopselected:"+loopselected+", audioFileType: "+audioFileType+");");
 
 			if (Globals.getNativeVideoPlayer()){

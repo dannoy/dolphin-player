@@ -18,7 +18,7 @@ class Globals {
 	
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player ";
-	public static String VersionName     	 = "2.0 Build 14June2012";
+	public static String VersionName     	 = "2.0 Build 15June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -380,7 +380,7 @@ class Globals {
 	//advanced
 	public static boolean dbadvancedskip=false;
 	public static boolean dbadvancedbidirectional=false;
-	public static boolean dbadvancedffmpeg=false; //faset decoding is disabled by default
+	public static boolean dbadvancedffmpeg=true; //faset decoding is disabled by default
 	public static int dbadvancedyuv=Globals.ARM_ASM; //sws_scaler - 1, arm asm - 0
 	public static int dbadvancedminvideoq=Globals.min_videokb100;
 	public static int dbadvancedmaxvideoq=Globals.max_videomb2;

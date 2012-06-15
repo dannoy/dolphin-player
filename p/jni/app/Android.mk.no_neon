@@ -23,9 +23,6 @@ LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
 
 LOCAL_CFLAGS += $(CC_OPTIMIZE_FLAG) 
 
-ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-   LOCAL_CFLAGS += -DHAVE_NEON=1
-endif
 #Change C++ file extension as appropriate
 LOCAL_CPP_EXTENSION := .cpp
 
