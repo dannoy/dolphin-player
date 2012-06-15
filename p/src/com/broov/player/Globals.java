@@ -378,18 +378,18 @@ class Globals {
 		"</p>";
 
 	//advanced
-	public static boolean dbadvancedskip=true;
+	public static boolean dbadvancedskip=false;
 	public static boolean dbadvancedbidirectional=false;
 	public static boolean dbadvancedffmpeg=false; //faset decoding is disabled by default
-	public static int dbadvancedyuv=1; //sws_scaler - 1, arm asm - 0
-	public static int dbadvancedminvideoq=Globals.min_videokb50;
+	public static int dbadvancedyuv=Globals.ARM_ASM; //sws_scaler - 1, arm asm - 0
+	public static int dbadvancedminvideoq=Globals.min_videokb100;
 	public static int dbadvancedmaxvideoq=Globals.max_videomb2;
 	public static int dbadvancedmaxaudioq=Globals.max_audiokb256;
-	public static int dbadvancedstreamminvideoq=Globals.streammin_videokb50;
-	public static int dbadvancedstreammaxvideoq=Globals.streammax_videomb2;
+	public static int dbadvancedstreamminvideoq=Globals.streammin_videokb100;
+	public static int dbadvancedstreammaxvideoq=Globals.streammax_videomb3;
 	public static int dbadvancedstreammaxaudioq=Globals.streammax_audiokb256;
 	public static int dbadvancedpixelformat=Globals.pixelformat_RGB565;
-	public static int dbadvancedavsyncmode=Globals.avsync_audioclock;
+	public static int dbadvancedavsyncmode=Globals.avsync_videoclock;
 	public static int dbadvancedswsscaler=Globals.advswsscaler_swsbicubic;
 	public static boolean dbadvanceddebug=false;
 

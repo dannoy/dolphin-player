@@ -26,10 +26,6 @@ LOCAL_CFLAGS := -I$(AVPLAYER_PATH)"/jni/sdl/include" \
 	$(SDL_ADDITIONAL_CFLAGS)
 LOCAL_CFLAGS += $(CC_OPTIMIZE_FLAG)
 
-ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-   LOCAL_CFLAGS += -DHAVE_NEON=1
-endif
-
 SDL_SRCS := \
 	src/*.c \
 	src/audio/*.c \
