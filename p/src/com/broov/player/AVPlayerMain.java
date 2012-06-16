@@ -225,7 +225,6 @@ public final class AVPlayerMain extends ListActivity  {
 //			System.out.println("Debug Mode:"+advdebug);
 //			System.out.println("A/V Sync Type:"+advavsyncmode);
 //			System.out.println("SWS Scaler Type:"+advswsscaler);
-
 	
 			handler.setTextColor(Globals.dbColor);
 
@@ -560,6 +559,8 @@ public final class AVPlayerMain extends ListActivity  {
 		Globals.setadvavsyncmode(Globals.dbadvancedavsyncmode);
 		Globals.setadvdebug(Globals.dbadvanceddebug);
 		Globals.setadvswsscaler(Globals.dbadvancedswsscaler);
+		
+		DemoRenderer.UpdateValuesFromSettings();
 
 		//	log("Main audioloop:"+audioloop);
 		//	log("Main videoloop:"+videoloop);
@@ -643,6 +644,8 @@ public final class AVPlayerMain extends ListActivity  {
 		Globals.setadvdebug(advdebug);
 		Globals.setadvswsscaler(advswsscaler);
 		Globals.setColor(color);
+		
+		DemoRenderer.UpdateValuesFromSettings();
 
 	}
 

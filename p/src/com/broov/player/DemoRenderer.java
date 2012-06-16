@@ -66,7 +66,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		nativeResize(w, h);
 	}
 	
-	public void setValuesFromSettings()
+	public static void UpdateValuesFromSettings()
 	{	
 		if (Globals.dbadvancedskip) { skipFrames = 1; } else { skipFrames = 0; }
 		if (Globals.dbadvancedbidirectional) { skipBidirFrames = 1; } else { skipBidirFrames = 0; }
@@ -113,9 +113,6 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		//System.out.println("Calling playerInit");
 		//System.out.println("Show subtitle:"+FileManager.getshow_subtitle());
 		//System.out.println("Subtitle size:"+FileManager.getSubTitleSize());
-
-		//Get the values to be passed to native
-		setValuesFromSettings();
 		
 		if (Globals.getNativeVideoPlayer()) {
 			nativeVideoPlayerInit(Globals.dbSubtitleFont, FileManager.getshow_subtitle(), FileManager.getSubTitleSize(), Globals.dbSubtitleEncoding, rgb565);
@@ -189,7 +186,6 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);
 			} else {
 
-				//int retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, skipFrames);
 				retValue = nativePlayerMain(Globals.fileName, loopselected, audioFileType, 
 						skipFrames, rgb565, yuvRgbAsm, skipBidirFrames, queueSizeMin, queueSizeMax, queueSizeTotal, queueSizeAudio,
 						fastMode, debugMode, syncType, seekDuration, ffmpegFlags);

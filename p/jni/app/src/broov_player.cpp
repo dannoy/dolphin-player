@@ -237,7 +237,7 @@ static int audio_write_get_buf_size(VideoState *is)
 {
 	return is->audio_buf_size - is->audio_buf_index;
 }
-
+#ifdef BROOV_NEW_AUDIO_CLOCK
 static double get_audio_clock(VideoState *is) 
 {
 	if (is->paused) {
@@ -247,6 +247,28 @@ static double get_audio_clock(VideoState *is)
 	}
 
 }
+#else
+static double get_audio_clock(VideoState *is) 
+{
+	double pts = 0;
+	int hw_buf_size, bytes_per_sec;
+
+	pts = is->audio_clock + audio_clock_delta; /* maintained in the audio thread */
+	hw_buf_size = audio_write_get_buf_size(is);
+	bytes_per_sec = 0;
+
+	if (is->audio_st) {
+		bytes_per_sec = is->audio_st->codec->sample_rate * 2 * is->audio_st->codec->channels;
+	}
+
+	if (bytes_per_sec) {
+		pts -= (double)hw_buf_size / bytes_per_sec;
+	}
+
+	return pts;
+}
+
+#endif
 
 /* get the current video clock value */
 static double get_video_clock(VideoState *is)
@@ -411,9 +433,9 @@ static int synchronize_audio(VideoState *is, int nb_samples)
 					max_nb_samples = ((nb_samples * (100 + SAMPLE_CORRECTION_PERCENT_MAX) / 100));
 					wanted_nb_samples = FFMIN(FFMAX(wanted_nb_samples, min_nb_samples), max_nb_samples);
 				}
-				av_dlog(NULL, "diff=%f adiff=%f sample_diff=%d apts=%0.3f vpts=%0.3f %f\n",
-						diff, avg_diff, wanted_nb_samples - nb_samples,
-						is->audio_clock, is->video_clock, is->audio_diff_threshold);
+				//av_dlog(NULL, "diff=%f adiff=%f sample_diff=%d apts=%0.3f vpts=%0.3f %f\n",
+				//		diff, avg_diff, wanted_nb_samples - nb_samples,
+				//		is->audio_clock, is->video_clock, is->audio_diff_threshold);
 			}
 		} else {
 			/* too big difference : may be initial PTS errors, so
@@ -486,7 +508,8 @@ static int audio_decode_frame(VideoState *is, double *pts_ptr)
 						dec_channel_layout,           dec->sample_fmt,   dec->sample_rate,
 						0, NULL);
 				if (!is->swr_ctx || swr_init(is->swr_ctx) < 0) {
-					fprintf(stderr, "Cannot create sample rate converter for conversion of %d Hz %s %d channels to %d Hz %s %d channels!\n",
+					__android_log_print(ANDROID_LOG_INFO, "Broov Player", 
+							"Cannot create sample rate converter for conversion of %d Hz %s %d channels to %d Hz %s %d channels!\n",
 							dec->sample_rate,
 							av_get_sample_fmt_name(dec->sample_fmt),
 							dec->channels,
@@ -508,18 +531,18 @@ static int audio_decode_frame(VideoState *is, double *pts_ptr)
 				if (wanted_nb_samples != is->frame->nb_samples) {
 					if (swr_set_compensation(is->swr_ctx, (wanted_nb_samples - is->frame->nb_samples) * is->audio_tgt_freq / dec->sample_rate,
 								wanted_nb_samples * is->audio_tgt_freq / dec->sample_rate) < 0) {
-						fprintf(stderr, "swr_set_compensation() failed\n");
+						__android_log_print(ANDROID_LOG_INFO, "Broov Player", "swr_set_compensation() failed\n");
 						break;
 					}
 				}
 				len2 = swr_convert(is->swr_ctx, out, sizeof(is->audio_buf2) / is->audio_tgt_channels / av_get_bytes_per_sample(is->audio_tgt_fmt),
 						in, is->frame->nb_samples);
 				if (len2 < 0) {
-					fprintf(stderr, "audio_resample() failed\n");
+					__android_log_print(ANDROID_LOG_INFO, "Broov Player", "audio_resample() failed\n");
 					break;
 				}
 				if (len2 == sizeof(is->audio_buf2) / is->audio_tgt_channels / av_get_bytes_per_sample(is->audio_tgt_fmt)) {
-					fprintf(stderr, "warning: audio buffer is probably too small\n");
+					__android_log_print(ANDROID_LOG_INFO, "Broov Player", "warning: audio buffer is probably too small\n");
 					swr_init(is->swr_ctx);
 				}
 				is->audio_buf = is->audio_buf2;
@@ -1367,10 +1390,11 @@ static int stream_component_open(VideoState *is, int stream_index)
 
 	if (avctx->codec_type == AVMEDIA_TYPE_AUDIO) {
 		memset(&is->audio_pkt_temp, 0, sizeof(is->audio_pkt_temp));
-		env = SDL_getenv("SDL_AUDIO_CHANNELS");
-		if (env) {
-			wanted_channel_layout = av_get_default_channel_layout(SDL_atoi(env));
-		}
+		//env = SDL_getenv("SDL_AUDIO_CHANNELS");
+		//if (env) {
+		//	wanted_channel_layout = av_get_default_channel_layout(SDL_atoi(env));
+		//}
+		wanted_channel_layout = av_get_default_channel_layout(2);
 		if (!wanted_channel_layout) {
 			wanted_channel_layout = (avctx->channel_layout && avctx->channels == av_get_channel_layout_nb_channels(avctx->channel_layout)) ? avctx->channel_layout : av_get_default_channel_layout(avctx->channels);
 			wanted_channel_layout &= ~AV_CH_LAYOUT_STEREO_DOWNMIX;
@@ -1692,18 +1716,21 @@ static int decode_module_init(void *arg)
 	// Find the first video stream
 	for (i=0; i<pFormatCtx->nb_streams; i++) {
 
-		if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO &&
-				video_index < 0)
-		{
-			video_index=i;
+                //take video stream only for video file types
+		if (g_audio_file_type == 0)  {
+			if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO &&
+					video_index < 0)
+			{
+				video_index=i;
 
-			/* init subtitle here to avoid latency */
-			if (g_show_subtitle) {
-				is->use_sub = !subInit(is->filename, 
-						1/av_q2d(pFormatCtx->streams[i]->time_base));
-			} else {
-				is->use_sub = 0;
-			}
+				/* init subtitle here to avoid latency */
+				if (g_show_subtitle) {
+					is->use_sub = !subInit(is->filename, 
+							1/av_q2d(pFormatCtx->streams[i]->time_base));
+				} else {
+					is->use_sub = 0;
+				}
+			} 
 		}
 
 		if(pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_AUDIO &&
@@ -3055,7 +3082,7 @@ int player_main(int argc, char *argv[],
 			}
 
 			//This is an audio stream without video
-			usleep(100000); //Sleep for 100 ms 
+			usleep(10000); //Sleep for 100 ms 
 		}
 
 	} // video/audio file processing loop

@@ -8,17 +8,17 @@ import android.os.Environment;
 class Globals {
 
 	public static String fileName; 
-	
+
 	// Set this value to true if you're planning to render 3D using OpenGL - it eats some GFX resources, so disabled for 2D
 	//public static boolean NeedDepthBuffer = false;
 	//public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
 	//Used in AudioThread
 	public static int AudioBufferConfig   = 2;
-	
+
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player ";
-	public static String VersionName     	 = "2.0 Build 15June2012";
+	public static String VersionName     	 = "2.1 Build 16June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -50,15 +50,14 @@ class Globals {
 
 	public static String supportedAudioFileFormats[] = 
 		{   "mp3","wma","ogg","mp2","flac",
-		"aac","ac3","amr","pcm","wav",
-		"au","aiff","3g2","m4a", "astream",
+			"aac","ac3","amr","pcm","wav",
+			"au","aiff","3g2","m4a", "astream",
 		//to verify below file formats - reference vlc
-		"a52", "adt", "adts", "aif", "aifc",
-		"aob", "ape", "awb", "dts", "cda", "it", "m4p",
-		"mid", "mka", "mlp", "mod", "mp1", "mp2", "mpc",
-		"oga", "oma", "rmi", "s3m", "spx", "tta",
-		"voc", "vqf", "w64", "wv", "xa", "xm"
-
+			"a52", "adt", "adts", "aif", "aifc",
+			"aob", "ape", "awb", "dts", "cda", "it", "m4p",
+			"mid", "mka", "mlp", "mod", "mp1", "mp2", "mpc",
+			"oga", "oma", "rmi", "s3m", "spx", "tta",
+			"voc", "vqf", "w64", "wv", "xa", "xm"
 		};		
 
 	public static String supportedFontFileType[] = 
@@ -563,7 +562,7 @@ class Globals {
 		}
 	}
 
-	private static boolean nativeVideoPlayer=true;
+	private static boolean nativeVideoPlayer=false;
 	private static boolean nativeVideoPlayerFeature=true;
 
 	public static boolean isNativeVideoPlayerFeatureEnabled()
@@ -582,7 +581,7 @@ class Globals {
 	}
 
 	//	static {
-		//		System.loadLibrary("ffmpeg");
+	//		System.loadLibrary("ffmpeg");
 	//		
 	//		System.loadLibrary("andprof");
 	//		System.loadLibrary("sdl");
