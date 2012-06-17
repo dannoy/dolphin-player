@@ -86,7 +86,6 @@ function build_one
     --disable-indevs \
     --disable-debug \
     --disable-doc \
-    --disable-parser=dca \
     --disable-demuxer=srt \
     --disable-demuxer=microdvd \
     --disable-demuxer=jacosub \
@@ -95,7 +94,6 @@ function build_one
     --disable-decoder=srt \
     --disable-decoder=microdvd \
     --disable-decoder=jacosub \
-    --disable-decoder=dca \
     --enable-bzlib \
     --enable-zlib \
     --enable-pic \
@@ -147,7 +145,7 @@ function build_arm_v7_vfp
 {
         #arm v7vfp
 	CPU=armv7-a
-	OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU -D__thumb__ -mthumb"
+	OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
 	PREFIX=./android/$CPU-vfp
 	ADDITIONAL_CONFIGURE_FLAG="--arch=armv7-a --enable-armv5te --enable-armv6 --enable-armvfp --enable-memalign-hack"
 	build_one
@@ -179,31 +177,37 @@ function main
   BZLIB_LDPATH=$BZLIB_LDPATHARM
 #  build_arm_v5
 #  cp config.h broov/v5/.
+#  cp config.log broov/v5/.
 
 #  build_arm_v6
 #  cp config.h broov/v6/.
+#  cp config.log broov/v6/.
 
 #  build_arm_v6_vfp
 #  cp config.h broov/v6vfp/.
+#  cp config.log broov/v6vfp/.
 
   build_arm_v7_vfp
   cp config.h broov/v7vfp/.
+  cp config.log broov/v7vfp/.
 
-  build_arm_v7_vfpv3
-  cp config.h broov/v7vfpv3/.
+#  build_arm_v7_vfpv3
+#  cp config.h broov/v7vfpv3/.
+#  cp config.log broov/v7vfpv3/.
 
 #  BZLIB_LDPATH=$BZLIB_LDPATHARMV7
 #  build_arm_v7_neon
 #  cp config.h broov/v7neon/.
+#  cp config.log broov/v7neon/.
 
 #  //Strip the debug symbols after compilation using strip command
 #  $PREBUILT/bin/arm-linux-androideabi-strip android/armv5te/libffmpeg.so
-#  $PREBUILT/bin/arm-linux-androideabi-strip android/armv7-a/libffmpeg.so
 #  $PREBUILT/bin/arm-linux-androideabi-strip android/armv6/libffmpeg.so
 #  $PREBUILT/bin/arm-linux-androideabi-strip android/armv6_vfp/libffmpeg.so
 
   $PREBUILT/bin/arm-linux-androideabi-strip android/armv7-a-vfp/libffmpeg.so
-  $PREBUILT/bin/arm-linux-androideabi-strip android/armv7-a-vfpv3/libffmpeg.so
+#  $PREBUILT/bin/arm-linux-androideabi-strip android/armv7-a-vfpv3/libffmpeg.so
+#  $PREBUILT/bin/arm-linux-androideabi-strip android/armv7-a/libffmpeg.so
 }
 
 

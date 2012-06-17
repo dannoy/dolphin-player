@@ -21,9 +21,12 @@
 // Performance Hit is observed when destination w, h is 
 // modified from source
 
-//#define BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
 #define BROOV_VIDEO_SKIP
 #define BROOV_VIDEO_THREAD
+#define BROOV_SEEK_DURATION_FIX
+//#define BROOV_USE_DESTINATION_WIDTH
+
+//#define BROOV_VERSION_1_2_AUDIO
 
 //#define BROOV_FFMPEG_OLD
 //#define BROOV_WITHOUT_AUDIO
@@ -405,6 +408,222 @@ static inline int compute_mod(int a, int b)
 	return a < 0 ? a%b + b : a%b;
 }
 
+#ifdef BROOV_VERSION_1_2_AUDIO
+/* return the new audio buffer size (samples can be added or deleted
+   to get better sync if video or external master clock) */
+static int synchronize_audio(VideoState *is, short *samples,
+		int samples_size1, double pts) 
+{
+	int n;
+	int samples_size;
+	double ref_clock;
+
+	n = 2 * is->audio_st->codec->channels;
+	samples_size = samples_size1;
+
+	/* if not master, then we try to remove or add samples to correct the clock */
+	if (((is->av_sync_type == AV_SYNC_VIDEO_MASTER) && 
+				(is->video_st)) ||
+			(is->av_sync_type == AV_SYNC_EXTERNAL_CLOCK)) {
+		double diff, avg_diff;
+		int wanted_size, min_size, max_size, nb_samples;
+
+		ref_clock = get_master_clock(is);
+		diff = get_audio_clock(is) - ref_clock;
+
+		if(diff < AV_NOSYNC_THRESHOLD) {
+			// accumulate the diffs
+			is->audio_diff_cum = diff + is->audio_diff_avg_coef
+				* is->audio_diff_cum;
+			if(is->audio_diff_avg_count < AUDIO_DIFF_AVG_NB) {
+				/* not enough measures to have a correct estimate */
+				is->audio_diff_avg_count++;
+			} else {
+				/* estimate the A-V difference */
+				avg_diff = is->audio_diff_cum * (1.0 - is->audio_diff_avg_coef);
+
+				if (fabs(avg_diff) >= is->audio_diff_threshold) {
+					wanted_size = samples_size + ((int)(diff * is->audio_st->codec->sample_rate) * n);
+					nb_samples = samples_size / n;
+
+					min_size = ((nb_samples * (100 - SAMPLE_CORRECTION_PERCENT_MAX)) / 100) * n;
+					max_size = ((nb_samples * (100 + SAMPLE_CORRECTION_PERCENT_MAX)) / 100) * n;
+					if(wanted_size < min_size) {
+						wanted_size = min_size;
+					} else if (wanted_size > max_size) {
+						wanted_size = max_size;
+					}
+
+					/* add or remove samples to correction the synchro */
+
+					if (wanted_size < samples_size) {
+						/* remove samples */
+						samples_size = wanted_size;
+					} else if(wanted_size > samples_size) {
+						uint8_t *samples_end, *q;
+						int nb;
+
+						/* add samples by copying final sample*/
+						nb = (samples_size - wanted_size);
+						samples_end = (uint8_t *)samples + samples_size - n;
+						q = samples_end + n;
+						while(nb > 0) {
+							memcpy(q, samples_end, n);
+							q += n;
+							nb -= n;
+						}
+
+						samples_size = wanted_size;
+					}
+				}
+			}
+		} else {
+
+			/* too big difference : may be initial PTS errors, so
+			   reset A-V filter */
+			is->audio_diff_avg_count = 0;
+			is->audio_diff_cum = 0;
+		}
+	}
+
+	return samples_size;
+}
+
+/* decode one audio frame and returns its uncompressed size */
+static int audio_decode_frame(VideoState *is, double *pts_ptr) 
+{
+	AVPacket *pkt_temp = &is->audio_pkt_temp;
+	AVPacket *pkt = &is->audio_pkt;
+	AVCodecContext *dec= is->audio_st->codec;
+	int n, len1, data_size;
+	double pts;
+
+	for(;;) {
+		/* NOTE: the audio packet can contain several frames */
+		while (pkt_temp->size > 0) {
+			data_size = sizeof(is->audio_buf1);
+			len1 = avcodec_decode_audio3(dec,
+					(int16_t *)is->audio_buf1, &data_size,
+					pkt_temp);
+			if (len1 < 0) {
+				/* if error, we skip the frame */
+				pkt_temp->size = 0;
+				break;
+			}
+
+			pkt_temp->data += len1;
+			pkt_temp->size -= len1;
+			if (data_size <= 0)
+				continue;
+
+			is->audio_buf= is->audio_buf1;
+
+			/* if no pts, then compute it */
+			pts = is->audio_clock;
+			*pts_ptr = pts;
+			n = 2 * dec->channels;
+			is->audio_clock += (double)data_size /
+				(double)(n * dec->sample_rate);
+
+#ifdef DEBUG_PLAYER
+			{
+				static double last_clock;
+				printf("audio: delay=%0.3f clock=%0.3f pts=%0.3f\n",
+						is->audio_clock - last_clock,
+						is->audio_clock, pts);
+				last_clock = is->audio_clock;
+			}
+#endif
+			return data_size;
+		}
+
+		/* free the current packet */
+		if (pkt->data)
+			av_free_packet(pkt);
+
+		if (is->paused || is->audioq.abort_request) {
+			return -1;
+		}
+
+		/* read next packet */
+		if (packet_queue_get(&is->audioq, pkt, 1) < 0)
+			return -1;
+		if(pkt->data == flush_pkt.data){
+			avcodec_flush_buffers(dec);
+			continue;
+		}
+
+		pkt_temp->data = pkt->data;
+		pkt_temp->size = pkt->size;
+
+		/* if update the audio clock with the pts */
+		if (pkt->pts != AV_NOPTS_VALUE) {
+			is->audio_clock = av_q2d(is->audio_st->time_base)*pkt->pts;
+		}
+	}
+}
+
+static void sdl_audio_callback(void *userdata, Uint8 *stream, int len) 
+{
+
+	VideoState *is = (VideoState *)userdata;
+	int len1, audio_size;
+	double pts;
+
+	audio_callback_time = av_gettime();
+
+	//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "version_1_2_callback::udio_callback::len::%d", len);
+
+	while (len > 0) {
+
+		if (is->audio_buf_index >= is->audio_buf_size) {
+			/* We have already sent all our data; get more */
+			audio_size = audio_decode_frame(is, &pts);
+
+#ifdef BROOV_VIDEO_THREAD
+			while (audio_size < 0) {
+				if (is->abort_request) break;
+				SDL_Delay(10);  
+				audio_size = audio_decode_frame(is, &pts);
+			}
+
+#else
+			while (audio_size < 0) {
+				if (is->abort_request) break;
+				SDL_Delay(10);  
+				audio_size = audio_decode_frame(is, &pts);
+			}
+#endif
+
+			if (audio_size < 0) {
+				/* If error, output silence */
+				is->audio_buf = is->audio_buf1;
+				is->audio_buf_size = 1024;
+#ifdef BROOV_VIDEO_THREAD
+				//memset(is->audio_buf, 0x80, is->audio_buf_size);
+				memset(is->audio_buf, 0, is->audio_buf_size);
+#else
+				memset(is->audio_buf, 0, is->audio_buf_size);
+#endif
+			} else {
+
+				audio_size = synchronize_audio(is, (int16_t *)is->audio_buf,
+						audio_size, pts);
+				is->audio_buf_size = audio_size;
+			}
+			is->audio_buf_index = 0;
+		}
+		len1 = is->audio_buf_size - is->audio_buf_index;
+		if(len1 > len)
+			len1 = len;
+		memcpy(stream, (uint8_t *)is->audio_buf + is->audio_buf_index, len1);
+		len -= len1;
+		stream += len1;
+		is->audio_buf_index += len1;
+	}
+}
+
+#else
 /* return the wanted number of samples to get better sync if sync_type is video
  * or external master clock */
 static int synchronize_audio(VideoState *is, int nb_samples)
@@ -605,6 +824,8 @@ static void sdl_audio_callback(void *opaque, Uint8 *stream, int len)
 	int frame_size = av_samples_get_buffer_size(NULL, is->audio_tgt_channels, 1, is->audio_tgt_fmt, 1);
 	double pts;
 
+	//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "version_2_3_callback::udio_callback::len::%d", len);
+
 	audio_callback_time = av_gettime();
 
 	while (len > 0) {
@@ -633,6 +854,7 @@ static void sdl_audio_callback(void *opaque, Uint8 *stream, int len)
 	is->audio_current_pts = is->audio_clock - (double)(2 * is->audio_hw_buf_size + is->audio_write_buf_size) / bytes_per_sec;
 	is->audio_current_pts_drift = is->audio_current_pts - audio_callback_time / 1000000.0;
 }
+#endif
 
 /* return current time (in seconds) */
 double current_time(void)
@@ -1273,30 +1495,61 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 			} else {
 				if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB565)  {
 
-					yuv420_2_rgb565(vp->pFrameRGB->data[0], 
-							pFrame->data[0], 
-							pFrame->data[1], 
-							pFrame->data[2],
-							is->video_st->codec->width, 
-							is->video_st->codec->height, 
-							pFrame->linesize[0],  // Y span
-							pFrame->linesize[1],  // UV span Width / 2 
-							(is->video_st->codec->width<<1),  //Dest width* bpp (width *2bytes)
-							yuv2rgb565_table, 
-							dither++);
+					if (g_source_width_height) {
+						yuv420_2_rgb565(vp->pFrameRGB->data[0], 
+								pFrame->data[0], 
+								pFrame->data[1], 
+								pFrame->data[2],
+								is->video_st->codec->width, 
+								is->video_st->codec->height, 
+								pFrame->linesize[0],  // Y span
+								pFrame->linesize[1],  // UV span Width / 2 
+								(is->video_st->codec->width<<1),  //Dest width* bpp (width *2bytes)
+								yuv2rgb565_table, 
+								dither++);
+					} else {
+						yuv420_2_rgb565(vp->pFrameRGB->data[0], 
+								pFrame->data[0], 
+								pFrame->data[1], 
+								pFrame->data[2],
+								vp->dst_width,
+								vp->dst_height,
+								pFrame->linesize[0],  // Y span
+								pFrame->linesize[1],  // UV span Width / 2 
+								(vp->pFrameRGB->linesize[0]<<1),  //Dest width* bpp (width *2bytes)
+								yuv2rgb565_table, 
+								dither++);
+
+					}
 				} else {
 
-					yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
-							pFrame->data[0], 
-							pFrame->data[2], 
-							pFrame->data[1],
-							is->video_st->codec->width, 
-							is->video_st->codec->height, 
-							pFrame->linesize[0],  // Y span
-							pFrame->linesize[1],  // UV span Width / 2 
-							(is->video_st->codec->width * 4),  //Dest width* bpp (width *4bytes)
-							yuv2rgb565_table, 
-							dither++);
+					if (g_source_width_height) {
+						yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
+								pFrame->data[0], 
+								pFrame->data[2], 
+								pFrame->data[1],
+								is->video_st->codec->width, 
+								is->video_st->codec->height, 
+								pFrame->linesize[0],  // Y span
+								pFrame->linesize[1],  // UV span Width / 2 
+								(is->video_st->codec->width * 4),  //Dest width* bpp (width *4bytes)
+								yuv2rgb565_table, 
+								dither++);
+					} else {
+
+						yuv420_2_rgb8888(vp->pFrameRGB->data[0], 
+								pFrame->data[0], 
+								pFrame->data[2], 
+								pFrame->data[1],
+								is->video_st->codec->width, 
+								is->video_st->codec->height, 
+								pFrame->linesize[0],  // Y span
+								pFrame->linesize[1],  // UV span Width / 2 
+								(vp->dst_width * 4),  //Dest width* bpp (width *4bytes)
+								yuv2rgb565_table, 
+								dither++);
+
+					}
 
 				}
 			} // g_video_yuv_rgb_asm is true
@@ -1388,8 +1641,10 @@ static int stream_component_open(VideoState *is, int stream_index)
 #endif
 
 	codec = avcodec_find_decoder(avctx->codec_id);
-	if (!codec)
+	if (!codec) {
+		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "avcodec_find_decoder failed %d Name:%s\n", avctx->codec_id, avctx->codec_name);
 		return -1;
+        }
 
 #if 1
 	//avctx->debug_mv = debug_mv;
@@ -1414,6 +1669,8 @@ static int stream_component_open(VideoState *is, int stream_index)
 		avctx->flags |= CODEC_FLAG_EMU_EDGE;
 	}
 
+#ifdef BROOV_VERSION_1_2_AUDIO
+#else
 	if (avctx->codec_type == AVMEDIA_TYPE_AUDIO) {
 		memset(&is->audio_pkt_temp, 0, sizeof(is->audio_pkt_temp));
 		//env = SDL_getenv("SDL_AUDIO_CHANNELS");
@@ -1438,10 +1695,12 @@ static int stream_component_open(VideoState *is, int stream_index)
 			return -1;
 		}
 	}
+#endif
 
 	//avcodec_thread_init(codecCtx, thread_count);
 	//set_context_opts(codecCtx, avcodec_opts[codecCtx->codec_type], 0, codec);
 #endif
+
 	if(!codec || (avcodec_open2(avctx, codec, NULL) < 0)) {
 		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Unsupported codec");
 		return -1;
@@ -1450,6 +1709,10 @@ static int stream_component_open(VideoState *is, int stream_index)
 	/* prepare audio output */
 	if(avctx->codec_type == AVMEDIA_TYPE_AUDIO)
 	{
+#ifdef BROOV_VERSION_1_2_AUDIO
+		wanted_spec.channels = avctx->channels;
+		wanted_spec.freq = avctx->sample_rate;
+#endif
 		// Set audio settings from codec info
 		wanted_spec.format = AUDIO_S16SYS;
 		wanted_spec.silence = 0;
@@ -1462,19 +1725,24 @@ static int stream_component_open(VideoState *is, int stream_index)
 			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "SDL_OpenAudio: %s\n", SDL_GetError());
 			return -1;
 		}
+		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "SDL_OpenAudio Successful:");
 #endif
 		is->audio_hw_buf_size = spec.size;
+#ifdef BROOV_VERSION_1_2_AUDIO
+#else
 		if (spec.format != AUDIO_S16SYS) {
 			__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "SDL advised audio format %d is not supported!\n", spec.format);
 			return -1;
 		}
 		if (spec.channels != wanted_spec.channels) {
 			wanted_channel_layout = av_get_default_channel_layout(spec.channels);
+
 			if (!wanted_channel_layout) {
 				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "SDL advised channel count %d is not supported!\n", spec.channels);
 				return -1;
 			}
 		}
+#endif
 		is->audio_src_fmt = is->audio_tgt_fmt = AV_SAMPLE_FMT_S16;
 		is->audio_src_freq = is->audio_tgt_freq = spec.freq;
 		is->audio_src_channel_layout = is->audio_tgt_channel_layout = wanted_channel_layout;
@@ -1770,7 +2038,23 @@ static int decode_module_init(void *arg)
 	if (audio_index >= 0) {
 #ifdef BROOV_PLAYER_DEBUG
 #else
-		stream_component_open(is, audio_index);
+	     __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d", audio_index);
+            if (stream_component_open(is, audio_index) < 0) {
+		
+	        __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d failed, finding next stream", audio_index);
+		for (i=0; i<pFormatCtx->nb_streams; i++) {
+			if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_AUDIO)
+			{
+				audio_index=i;
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d", audio_index);
+		                if (stream_component_open(is, audio_index) == 0) {
+				        __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d Successful", audio_index);
+					break;
+                                }
+			}
+
+                }
+	    }
 #endif
 	} else {
 		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio not found");
@@ -1798,7 +2082,7 @@ static int decode_module_init(void *arg)
 		//only audio stream and no valid video stream is available
 
 	} else {
-		//calcutlate file framerate once for calculating frame rate lag.
+		//calculate file framerate once for calculating frame rate lag.
 		file_fps = calculate_file_fps(is);
 		initialize_video_skip_variables();
 
@@ -2299,7 +2583,31 @@ do_seek:
 do_seek_special:
 				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Do Seek Special");
 				if (cur_stream) {
+#ifdef BROOV_SEEK_DURATION_FIX
+					if (seek_by_bytes) {
+						if (cur_stream->video_st >= 0 && cur_stream->video_current_pos>=0){
+							pos= cur_stream->video_current_pos;
+						}else if(cur_stream->audio_st >= 0 && cur_stream->audio_pkt.pos>=0){
+							pos= cur_stream->audio_pkt.pos;
+						}else {
+							pos = avio_tell(cur_stream->pFormatCtx->pb);
+						}
+                                                incr = (player_duration() - incr);
+						if (cur_stream->pFormatCtx->bit_rate)
+							incr *= cur_stream->pFormatCtx->bit_rate / 8.0;
+						else
+							incr *= 180000.0;
+						pos += incr;
+						stream_seek_special(cur_stream, pos, incr, 1);
+					} else {
+						//pos = get_master_clock(cur_stream);
+						//pos += incr;
+						stream_seek_special(cur_stream, (int64_t)(incr * AV_TIME_BASE), (int64_t)(incr * AV_TIME_BASE), 0);
+					}
+
+#else
 					stream_seek_special(cur_stream, (int64_t)(incr * AV_TIME_BASE), (int64_t)(incr * AV_TIME_BASE), 0);
+#endif
 				}
 
 				break;
@@ -2622,10 +2930,20 @@ static int decode_thread(void *arg)
 		// seek stuff goes here
 		if (is->seek_req) {
 			if (is->seek_req_special) {
+#ifdef BROOV_SEEK_DURATION_FIX
+
+				int64_t seek_target = is->seek_pos;
+				int64_t seek_min= is->seek_rel > 0 ? seek_target - is->seek_rel + 2: INT64_MIN;
+				int64_t seek_max= is->seek_rel < 0 ? seek_target - is->seek_rel - 2: INT64_MAX;
+				//FIXME the +-2 is due to rounding being not done in the correct direction in generation
+				//of the seek_pos/seek_rel variables
+				ret = avformat_seek_file(is->pFormatCtx, -1, seek_min, seek_target, seek_max, is->seek_flags);
+#else
 				/* add the stream start time */
 				if (is->pFormatCtx->start_time != AV_NOPTS_VALUE)
 					is->seek_pos+= pFormatCtx->start_time;
 				ret = avformat_seek_file(is->pFormatCtx, -1, INT64_MIN, is->seek_pos, INT64_MAX, 0);
+#endif
 				if (!(ret<0)) {
 					g_current_duration = g_seek_duration;
 					g_seek_success = 1;
@@ -2948,7 +3266,11 @@ static void broov_init_global_values(int loop_after_play, int audio_file_type, i
 		dst_pix_fmt = PIX_FMT_RGBA;
 	}
 
+#ifdef BROOV_USE_DESTINATION_WIDTH
+	if (yuv_rgb_asm == 1) { g_source_width_height = 0; g_video_yuv_rgb_asm = 1; } else { g_source_width_height = 0; g_video_yuv_rgb_asm = 0; }
+#else
 	if (yuv_rgb_asm == 1) { g_source_width_height = 1; g_video_yuv_rgb_asm = 1; } else { g_source_width_height = 0; g_video_yuv_rgb_asm = 0; }
+#endif
 
 	if (skip_bidir_frames) { g_last_skip_type = AVDISCARD_BIDIR; } 
 	else { g_last_skip_type = AVDISCARD_DEFAULT; }

@@ -18,7 +18,7 @@ class Globals {
 
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player ";
-	public static String VersionName     	 = "2.2 Build 17June2012";
+	public static String VersionName     	 = "2.3 Build 17June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -560,7 +560,7 @@ class Globals {
 	}
 
 	private static boolean nativeVideoPlayer=false;
-	private static boolean nativeVideoPlayerFeature=true;
+	private static boolean nativeVideoPlayerFeature=false;
 
 	public static boolean isNativeVideoPlayerFeatureEnabled()
 	{

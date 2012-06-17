@@ -85,10 +85,10 @@
 	<string name="skipframesstatement">Default value is Enabled. Enable this when Video Lag is Observed or when Video is playing slowly</string>
 	
 	<string name="skipbidirectionalframes">Skip Bidirectional Frames</string>
-	<string name="skipbidirectionalframesstatement">Default value is Disabled. Enable this when video is playing very slowly or when heavy video lag is observed</string>
+	<string name="skipbidirectionalframesstatement">Default value is Disabled. Do not enable this, used only for testing. This is used when video is playing very slowly or when heavy video lag is observed. This will make most frames to be skipped and most times videos are not viewable</string>
 	
 	<string name="yuv2rgbconversiontype">YUV2RGB Conversion Type</string>
-	<string name="yuv2rgbconversiontypestatement">Default value is Disabled. Use ARM ASM for fast conversion of YUV frame to RGB frame before display</string>
+	<string name="yuv2rgbconversiontypestatement">Default value is sws_scaler. Use ARM ASM for fast conversion of YUV frame to RGB frame and faster display. Enabling ARM ASM will not show videos for large width and height videos</string>
 	
 	<string name="displaypixelformat">Display Pixel Format</string>
 	<string name="displaypixelformatstatement">Default value is RGB565. For more video clarity, Use RGB8888</string>
@@ -97,13 +97,13 @@
 	<string name="useffmpegfastdecodingstatement">Default value is Disabled. For faster decoding, enable this</string>
 
 	<string name="minimumvideoqsize">Minimum Video Q Size</string>
-	<string name="minimumvideoqsizestatement">Default value is 50KB. For buffering the video for a larger time duration and to prevent audio stuttering, use increased minimum queue size</string>
+	<string name="minimumvideoqsizestatement">Default value is 256KB. For buffering the video for a larger time duration and to prevent audio stuttering, use increased minimum queue size</string>
 
 	<string name="maximumvideoqsize">Maximum Video Q Size</string>
 	<string name="maximumvideoqsizestatement">Default value is 2MB. Maximum Video Q Size should be always greater than Minimum Video Q Size</string>
 
 	<string name="maximumaudioqsize">Maximum Audio Q Size</string>
-	<string name="maximumaudioqsizestatement">Default value is 256KB. Please increase this to a relevant value, when Maximum Video Q Size is increased</string>
+	<string name="maximumaudioqsizestatement">Default value is 500KB. Please increase this to a relevant value, when Maximum Video Q Size is increased</string>
 
 	<string name="streamminvideoqsize">Network Stream\nMin. Video Q Size</string>
 	<string name="streamminvideoqsizestatement">Default value is 50KB. For buffering the video for a larger time duration and to prevent audio stuttering, use increased minimum queue size</string>
@@ -118,7 +118,7 @@
 	<string name="debugmodestatement">Disabled by default. Should be enabled only during development. Prints debug logs while playing audio and video files</string>
 
 	<string name="avsyncmode">A/V Sync mode</string>
-	<string name="avsyncmodestatement">Default value is Audio Clock. Should be enabled only during development. Used as the clock reference while playing the file</string>
+	<string name="avsyncmodestatement">Default value is Video Clock. Should be enabled only during development. Used as the clock reference while playing the file</string>
 
 	<string name="advyuv2rgb">YUV 2 RGB</string>
 	<string name="advdisplaypixelformat">Display Pixel Format</string>

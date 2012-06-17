@@ -62,7 +62,6 @@ BZLIB_LDPATH=$BZLIB_LDPATHX86
     --disable-indevs \
     --disable-doc \
     --disable-bsfs \
-    --disable-parser=dca \
     --disable-demuxer=srt \
     --disable-demuxer=microdvd \
     --disable-demuxer=jacosub \
@@ -71,7 +70,6 @@ BZLIB_LDPATH=$BZLIB_LDPATHX86
     --disable-decoder=srt \
     --disable-decoder=microdvd \
     --disable-decoder=jacosub \
-    --disable-decoder=dca \
     --enable-bzlib \
     --enable-optimizations \
     --enable-pic \

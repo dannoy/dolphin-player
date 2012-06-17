@@ -70,7 +70,8 @@ LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog
 ifeq ($(TARGET_ARCH_ABI),x86)
    LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/x86/libffmpeg.so"
 else
-   LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/armv5te/libffmpeg.so"
+   #LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/armv5te/libffmpeg.so"
+   LOCAL_LDLIBS += $(AVPLAYER_PATH)/"native/ffmpeg/ffmpeg-0.11.1/android/armv6_vfp/libffmpeg.so"
 endif
 
 include $(BUILD_SHARED_LIBRARY)
