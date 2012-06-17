@@ -60,19 +60,22 @@ public class VideoPlayer extends Activity  {
 			if (state == TelephonyManager.CALL_STATE_RINGING) {
 				//Incoming call: Pause music
 				//System.out.println("call state idle");
-				demoRenderer.nativePlayerPlay();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPlay();
 
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
 				//Not in call: Play music
-				demoRenderer.nativePlayerPause();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPause();
 				//System.out.println("call sate ringing");
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
 				//System.out.println("call state offhook");
-				demoRenderer.nativePlayerPlay();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPlay();
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			}

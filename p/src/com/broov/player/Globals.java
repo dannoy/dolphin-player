@@ -18,7 +18,7 @@ class Globals {
 
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player ";
-	public static String VersionName     	 = "2.1 Build 16June2012";
+	public static String VersionName     	 = "2.2 Build 17June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -377,13 +377,13 @@ class Globals {
 		"</p>";
 
 	//advanced
-	public static boolean dbadvancedskip=false;
+	public static boolean dbadvancedskip=true;
 	public static boolean dbadvancedbidirectional=false;
-	public static boolean dbadvancedffmpeg=true; //faset decoding is disabled by default
+	public static boolean dbadvancedffmpeg=false; //fast decoding is disabled by default
 	public static int dbadvancedyuv=Globals.ARM_ASM; //sws_scaler - 1, arm asm - 0
-	public static int dbadvancedminvideoq=Globals.min_videokb100;
+	public static int dbadvancedminvideoq=Globals.min_videokb256;
 	public static int dbadvancedmaxvideoq=Globals.max_videomb2;
-	public static int dbadvancedmaxaudioq=Globals.max_audiokb256;
+	public static int dbadvancedmaxaudioq=Globals.max_audiokb500;
 	public static int dbadvancedstreamminvideoq=Globals.streammin_videokb100;
 	public static int dbadvancedstreammaxvideoq=Globals.streammax_videomb3;
 	public static int dbadvancedstreammaxaudioq=Globals.streammax_audiokb256;
@@ -543,9 +543,6 @@ class Globals {
 		if (!isNativeLibrariesLoaded) {
 
 			System.loadLibrary("ffmpeg");
-			//System.loadLibrary("ffmpeg_7n");
-
-			//System.loadLibrary("andprof");
 
 			System.loadLibrary("sdl");
 			System.loadLibrary("sdl_ttf");

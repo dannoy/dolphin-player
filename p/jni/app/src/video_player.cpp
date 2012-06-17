@@ -1581,17 +1581,20 @@ static int decode_module_init(void *arg)
 	// Find the first video stream
 	for (i=0; i<pFormatCtx->nb_streams; i++) {
 
-		if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO &&
-				video_index < 0)
-		{
-			video_index=i;
+		//take video stream only for video file types
+		if (g_audio_file_type == 0)  {
+			if (pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO &&
+					video_index < 0)
+			{
+				video_index=i;
 
-			/* init subtitle here to avoid latency */
-			if (g_show_subtitle) {
-				is->use_sub = !subInit(is->filename, 
-						1/av_q2d(pFormatCtx->streams[i]->time_base));
-			} else {
-				is->use_sub = 0;
+				/* init subtitle here to avoid latency */
+				if (g_show_subtitle) {
+					is->use_sub = !subInit(is->filename, 
+							1/av_q2d(pFormatCtx->streams[i]->time_base));
+				} else {
+					is->use_sub = 0;
+				}
 			}
 		}
 

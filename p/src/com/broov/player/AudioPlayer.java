@@ -441,18 +441,19 @@ public class AudioPlayer extends Activity  {
 		mHandler.postDelayed(seekBarUpdater, 100);
 	}
 
-	public boolean isServiceRunning() { 
-
-		ActivityManager activityManager = (ActivityManager)AudioPlayer.this.getSystemService (Context.ACTIVITY_SERVICE); 
-		List<RunningTaskInfo> services = activityManager.getRunningTasks(Integer.MAX_VALUE); 
-
-		for (int i = 0; i < services.size(); i++) { 
-			if (services.get(i).topActivity.toString().equalsIgnoreCase("ComponentInfo{com.broov.player/com.broov.player.AudioPlayer}")) {
-				return true;
-			}
-		} 
-		return false; 
-	} 
+	
+//	public boolean isServiceRunning() { 
+//
+//		ActivityManager activityManager = (ActivityManager)AudioPlayer.this.getSystemService (Context.ACTIVITY_SERVICE); 
+//		List<RunningTaskInfo> services = activityManager.getRunningTasks(Integer.MAX_VALUE); 
+//
+//		for (int i = 0; i < services.size(); i++) { 
+//			if (services.get(i).topActivity.toString().equalsIgnoreCase("ComponentInfo{com.broov.player/com.broov.player.AudioPlayer}")) {
+//				return true;
+//			}
+//		} 
+//		return false; 
+//	} 
 	//@Override
 	//protected void onPause() {
 	//	this.
@@ -499,19 +500,22 @@ public class AudioPlayer extends Activity  {
 			if (state == TelephonyManager.CALL_STATE_RINGING) {
 				//Incoming call: Pause music
 				System.out.println("call state idle");
-				demoRenderer.nativePlayerPlay();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPlay();
 
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
 				//Not in call: Play music
-				demoRenderer.nativePlayerPause();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPause();
 				System.out.println("call sate ringing");
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
 				System.out.println("call state offhook");
-				demoRenderer.nativePlayerPlay();
+				if (demoRenderer != null)
+					demoRenderer.nativePlayerPlay();
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			}
