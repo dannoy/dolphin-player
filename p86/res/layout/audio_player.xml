@@ -9,7 +9,7 @@
     <!-- Here is where we put the SurfaceView, in a frame so that we can
          stack other views on top of it. -->
     <FrameLayout
-            android:layout_width="fill_parent"
+            android:layout_width="0dip"
             android:layout_height="fill_parent"            
             android:layout_weight="1"            
             >
@@ -215,8 +215,7 @@
             		<ImageView android:src="@drawable/backward" 
             			android:layout_height="wrap_content" 
             			android:id="@+id/img_backward" 
-            			android:layout_width="wrap_content"
-            			 
+            			android:layout_width="wrap_content"            			 
             			>
             </ImageView>
             <ImageView android:src="@drawable/pause_shadow" 

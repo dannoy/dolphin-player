@@ -18,9 +18,10 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := sdl
 
+#	-DSDL_VIDEO_RENDER_RESIZE=1 \
+
 LOCAL_CFLAGS := -I$(AVPLAYER_PATH)"/jni/sdl/include" \
 	-DSDL_JAVA_PACKAGE_PATH="com_broov_playerx86" \
-	-DSDL_VIDEO_RENDER_RESIZE=1 \
 	-DBROOV_PLAYER_NO_DEBUG_LOG \
 	$(SDL_ADDITIONAL_CFLAGS)
 LOCAL_CFLAGS += $(CC_OPTIMIZE_FLAG)
@@ -65,6 +66,9 @@ LOCAL_CPP_EXTENSION := .cpp
 
 # Note this "simple" makefile var substitution, you can find even more complex examples in different Android projects
 LOCAL_SRC_FILES := $(foreach F, $(SDL_SRCS), $(addprefix $(dir $(F)),$(notdir $(wildcard $(LOCAL_PATH)/$(F)))))
+
+#LOCAL_SHARED_LIBRARIES := andprof
+#LOCAL_STATIC_LIBRARIES := andprof
 
 LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog
 

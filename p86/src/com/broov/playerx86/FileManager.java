@@ -3,8 +3,16 @@ package com.broov.playerx86;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Stack;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 public class FileManager {
 	private static final int SORT_NONE = 	0;
@@ -16,7 +24,7 @@ public class FileManager {
 	private static final int GB = MB * KB;
 
 	public static int subtitleFontSize = Globals.SUBTITLE_FONT_MEDIUM ;
-    
+
 	private double dir_size = 0;
 	public Stack<String> path_stack;
 	private ArrayList<String> dir_content;
@@ -42,7 +50,10 @@ public class FileManager {
 	 * @return the current directory
 	 */
 	public String getCurrentDir() {
-		System.out.println("FILE MANAGER getCurrentDir=" + path_stack.peek());
+		
+		//TODO: Why is this method called so many times. Why so many times, this is getting
+		// printed
+		//System.out.println("FILE MANAGER getCurrentDir=" + path_stack.peek());
 		return path_stack.peek();
 	}
 
@@ -67,14 +78,14 @@ public class FileManager {
 		//This will eventually be placed as a settings item
 		path_stack.clear();
 		path_stack.push("/");
-		
+
 		System.out.println("getLastOpenedDir lastopendir:"+Globals.dbLastOpenDir);
-		
+
 		//path_stack.push(path_stack.peek() + "/");
-		
+
 		try{
 			ArrayList<String> subpathsForStack =PathtoSubPaths(Globals.dbLastOpenDir);
-		//	System.out.println("getLastOpenedDir() subpathsForStack:"+subpathsForStack);
+			//	System.out.println("getLastOpenedDir() subpathsForStack:"+subpathsForStack);
 			int subPathsStackSize = subpathsForStack.size();
 			for(int i=1;i< subPathsStackSize;i++){
 				path_stack.push(subpathsForStack.get(i));
@@ -293,7 +304,7 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isSubtitleFontFile(String file){
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
@@ -326,7 +337,7 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
 	public static Boolean isImageFile(String file){
 		String ext = file.toString();
 		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
@@ -335,7 +346,53 @@ public class FileManager {
 		}
 		return false;
 	}
-	
+
+	public static Boolean isAudioStream(String file){
+		if (file==null) return false;
+		String ext = file.toString();
+		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
+		if (Arrays.asList(Globals.supportedAudioStreamFileFormats).contains(sub_ext.toLowerCase())){
+			return true; 
+		}
+		return false;
+	}
+
+	public static Boolean isVideoStream(String file){
+		if (file ==null) return false;
+		String ext = file.toString();
+		String sub_ext = ext.substring(ext.lastIndexOf(".") + 1);
+		if (Arrays.asList(Globals.supportedVideoStreamFileFormats).contains(sub_ext.toLowerCase())){
+			return true; 
+		}
+
+		return false;
+	}
+
+	public static String ReadFirstLine(String file) {
+		if (file==null) return file;
+
+		InputStream fis;
+		BufferedReader br;
+		String line = null;
+
+		try {
+			fis = new FileInputStream(file);
+			br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
+			line = br.readLine();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		if (line==null) {
+			line = file;
+		}
+		return line;
+	}
+
 
 	public static String getPrevFileInDirectory(String filename){
 		String prevFile="";
@@ -380,7 +437,7 @@ public class FileManager {
 				}
 			}
 		}
-		
+
 		//alreadyPlayed.clear();
 		return "";
 	}
@@ -405,7 +462,7 @@ public class FileManager {
 				nextFile = listOfAudioFiles.get(i);
 				if (!(alreadyPlayed.contains(nextFile))){
 					if (alreadyPlayed.size() ==(audioFilesSize-1) && 
-						Globals.dbAudioLoop==Globals.REPEAT_ALL){
+							Globals.dbAudioLoop==Globals.REPEAT_ALL){
 						alreadyPlayed.clear();
 						System.out.println("Already played items are cleared");
 					}
@@ -420,7 +477,7 @@ public class FileManager {
 				nextFile = listOfVideoFiles.get(i);
 				if (!(alreadyPlayed.contains(nextFile))) {
 					if (alreadyPlayed.size() ==(videoFilesSize -1) && 
-					    Globals.dbVideoLoop==Globals.REPEAT_ALL) {
+							Globals.dbVideoLoop==Globals.REPEAT_ALL) {
 						alreadyPlayed.clear();
 						System.out.println("Already played items are cleared");
 					}
@@ -435,7 +492,7 @@ public class FileManager {
 	public ArrayList<String> getFilesAlone(String file){
 		File inFile = new File(file);
 		ArrayList<String> listOfFiles = new ArrayList<String>();
-		
+
 		for (File files : inFile.listFiles()) {
 			String absolutePath = files.getAbsolutePath();
 			if (files.isFile() && supportedFile(absolutePath)){
@@ -445,30 +502,74 @@ public class FileManager {
 		return listOfFiles;
 	}
 
-	public static ArrayList<String> listofAudioFiles(String file){
+	public static ArrayList<String> listofAudioFiles(String file)
+	{
 		File inFile = new File(file);
+		String first_play_file=Globals.getFileName();
+		boolean list_true=false;
 		ArrayList<String> listOfFiles = new ArrayList<String>();
+		ArrayList<String> second_listOfFiles = new ArrayList<String>();
 		for (File files : inFile.listFiles()) {
 			String absolutePath = files.getAbsolutePath();
-			if (files.isFile() && isAudioFile(absolutePath)){
-				listOfFiles.add(absolutePath);
+			if(first_play_file.equalsIgnoreCase(absolutePath))
+			{
+				list_true=true;
 			}
+			if (files.isFile() && isAudioFile(absolutePath)){
+				if(list_true==true)
+				{
+					listOfFiles.add(absolutePath);
+				}
+				else
+				{
+					second_listOfFiles.add(absolutePath);	
+				}
+			}
+		}
+		String [] order_array = second_listOfFiles.toArray(new String[second_listOfFiles.size()]);
+		for(int i=0;i<order_array.length;i++)
+		{
+			String add_items=order_array[i];
+			listOfFiles.add(add_items);
+		}
+
+		return listOfFiles;
+	}
+
+	public static ArrayList<String> listofVideoFiles(String file)
+	{
+		File inFile = new File(file);
+		String first_play_file=Globals.getFileName();
+		boolean list_true=false;
+		ArrayList<String> listOfFiles = new ArrayList<String>();
+		ArrayList<String> second_listOfFiles = new ArrayList<String>();
+		for (File files : inFile.listFiles()) {
+			String absolutePath = files.getAbsolutePath();
+			if(first_play_file.equalsIgnoreCase(absolutePath))
+			{
+				list_true=true;
+			}
+			if (files.isFile() && isVideoFile(absolutePath)){
+				if(list_true==true)
+				{
+					listOfFiles.add(absolutePath);
+				}
+				else
+				{
+					second_listOfFiles.add(absolutePath);	
+				}
+			}
+
+		}
+		String [] order_array = second_listOfFiles.toArray(new String[second_listOfFiles.size()]);
+		for(int i=0;i<order_array.length;i++)
+		{
+			String add_items=order_array[i];
+			listOfFiles.add(add_items);
 		}
 		return listOfFiles;
 	}
 
-	public static ArrayList<String> listofVideoFiles(String file){
-		File inFile = new File(file);
-		ArrayList<String> listOfFiles = new ArrayList<String>();
-		for (File files : inFile.listFiles()) {
-			String absolutePath = files.getAbsolutePath();
-			if (files.isFile() && isVideoFile(absolutePath)){
-				listOfFiles.add(absolutePath);
-			}
-		}
-		return listOfFiles;
-	}
-	
 	public static ArrayList<String> listofImageFiles(String file){
 		File inFile = new File(file);
 		ArrayList<String> listOfFiles = new ArrayList<String>();
@@ -481,18 +582,18 @@ public class FileManager {
 		return listOfFiles;
 	}
 
-	public static int getImageIndex(){
-		int imageIndex = 0;
-		int min = 0;
-
-		try{
-			int max = Globals.numberofImages ;
-
-			imageIndex = (int) (Math.random() * (max - min + 1) ) + min;
-			//	System.out.println("Random Image index number : " + imageIndex);
-		}catch(Exception e){}
-		return imageIndex;
-	}
+//	public static int getImageIndex(){
+//		int imageIndex = 0;
+//		int min = 0;
+//
+//		try{
+//			int max = Globals.numberofImages ;
+//
+//			imageIndex = (int) (Math.random() * (max - min + 1) ) + min;
+//			//	System.out.println("Random Image index number : " + imageIndex);
+//		}catch(Exception e){}
+//		return imageIndex;
+//	}
 
 	/** (non-Javadoc)
 	 * this function will take the string from the top of the directory stack
@@ -528,19 +629,19 @@ public class FileManager {
 
 			/* sort the arraylist that was made from above for loop */
 			switch(Globals.dbSort) {
-				case SORT_NONE:
-					//no sorting needed
-					break;
+			case SORT_NONE:
+				//no sorting needed
+				break;
 
-				case SORT_ALPHA:
-					Object[] tt = dir_content.toArray();
-					dir_content.clear();
+			case SORT_ALPHA:
+				Object[] tt = dir_content.toArray();
+				dir_content.clear();
 
-					Arrays.sort(tt, alph);
+				Arrays.sort(tt, alph);
 
-					for (Object a : tt){
-						dir_content.add((String)a);
-					}
+				for (Object a : tt){
+					dir_content.add((String)a);
+				}
 				break;
 
 			case SORT_TYPE:
