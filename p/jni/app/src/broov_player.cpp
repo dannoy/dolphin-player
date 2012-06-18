@@ -24,11 +24,12 @@
 #define BROOV_VIDEO_SKIP
 #define BROOV_VIDEO_THREAD
 #define BROOV_SEEK_DURATION_FIX
-//#define BROOV_USE_DESTINATION_WIDTH
+#define BROOV_LOCK_MGR
+#define BROOV_LATEST_FFMPEG
 
+//#define BROOV_USE_DESTINATION_WIDTH
 //#define BROOV_VERSION_1_2_AUDIO
 
-//#define BROOV_FFMPEG_OLD
 //#define BROOV_WITHOUT_AUDIO
 //#define BROOV_ONLY_AUDIO
 //#define BROOV_PLAYER_PROFILING 
@@ -195,9 +196,6 @@ static enum AVDiscard skip_loop_filter= AVDISCARD_DEFAULT;
 //static enum AVDiscard skip_idct= AVDISCARD_BIDIR;
 //static enum AVDiscard skip_loop_filter= AVDISCARD_BIDIR;
 
-#ifdef BROOV_FFMPEG_OLD
-static int error_recognition = FF_ER_CAREFUL;
-#endif
 static int error_concealment = 3;
 
 static int seek_by_bytes=-1;
@@ -983,14 +981,11 @@ static int try_to_set_best_video_mode(int w, int h, int rgb565)
 		g_aspect_ratio_h = fs_screen_height;
 	}
 
-	//int flags = SDL_SWSURFACE;
-	//int flags = SDL_SWSURFACE|SDL_FULLSCREEN;
-
 	//int flags = SDL_HWSURFACE | SDL_ASYNCBLIT | SDL_HWACCEL | 
-	//                SDL_FULLSCREEN;
+	//               SDL_FULLSCREEN;
 
 	int flags = SDL_HWSURFACE | SDL_ASYNCBLIT | SDL_HWACCEL | 
-		SDL_RESIZABLE | SDL_FULLSCREEN;
+			SDL_RESIZABLE | SDL_FULLSCREEN;
 	int bpp;
 
 	if (rgb565) { bpp = 16; } else { bpp=32; }
@@ -1117,7 +1112,7 @@ static void rgb_video_image_display(VideoState *is)
 	if (!vp->pFrameRGB) return;
 
 	if ((vp->dst_width != g_aspect_ratio_w) ||
-			(vp->dst_height != g_aspect_ratio_h)) {
+	    (vp->dst_height != g_aspect_ratio_h)) {
 		//aspect ratio got changed
 		//do not print until the correct aspect ratio frame
 		//received
@@ -1138,15 +1133,6 @@ static void rgb_video_image_display(VideoState *is)
 			subFindNext(ulRefClock);
 		}
 	}
-
-#ifdef BROOV_TESTING_CODE
-	if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
-		if (g_asm_yuv2rgb == 1) {
-			//ConvertDataToReverse(vp->buffer, vp->width, vp->height);
-			//ConvertDataFromRGBAToARGB(vp->buffer, vp->width, vp->height);
-		}
-	}
-#endif
 
 	if (!vp->display_rgb_text) {
 		if (g_video_output_rgb_type == VIDEO_OUTPUT_RGB8888) {
@@ -1410,14 +1396,13 @@ static int rgb_queue_picture(VideoState *is, AVFrame *pFrame, double pts, int64_
 
 	if (g_source_width_height) {
 		if (vp->dst_width  != g_aspect_ratio_w ||
-				vp->dst_height != g_aspect_ratio_h) {
+		    vp->dst_height != g_aspect_ratio_h) {
 			vp->x = g_aspect_ratio_x;
 			vp->y = g_aspect_ratio_y;
 			vp->dst_width  = g_aspect_ratio_w;
 			vp->dst_height = g_aspect_ratio_h;
 		}
 	} 
-
 
 	if ((g_source_width_height) && (!vp->pFrameRGB) ) 
 	{
@@ -1913,19 +1898,10 @@ static void broov_update_aspect_ratio()
 	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Updated Aspect Ratio X:%d Y:%d W:%d H:%d", g_aspect_ratio_x, g_aspect_ratio_y, g_aspect_ratio_w, g_aspect_ratio_h);
 }
 
-#ifdef BROOV_FFMPEG_OLD
-static int decode_interrupt_cb(void) 
-{
-	return (global_video_state && global_video_state->abort_request);
-}
-#else
 static int decode_interrupt_cb(void *ctx) 
 {
-	//VideoState *is = ctx;
-	//return is->abort_request;
 	return (global_video_state && global_video_state->abort_request);
 }
-#endif
 
 /* this thread gets the stream from the disk or the network */
 static int decode_module_init(void *arg) 
@@ -2038,7 +2014,7 @@ static int decode_module_init(void *arg)
 	if (audio_index >= 0) {
 #ifdef BROOV_PLAYER_DEBUG
 #else
-	     __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d", audio_index);
+	    //__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d", audio_index);
             if (stream_component_open(is, audio_index) < 0) {
 		
 	        __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Audio index:%d failed, finding next stream", audio_index);
@@ -2344,6 +2320,11 @@ int player_exit()
 
 	broov_gui_clean();
 
+#ifdef BROOV_LOCK_MGR
+    	av_lockmgr_register(NULL);
+    	avformat_network_deinit();
+#endif
+
 	SDL_Quit();
 
 	SDL_ANDROID_CallJavaExitFromNativePlayerView();
@@ -2401,11 +2382,7 @@ do_seek:
 								}else if(cur_stream->audio_st >= 0 && cur_stream->audio_pkt.pos>=0){
 									pos= cur_stream->audio_pkt.pos;
 								}else {
-#ifdef BROOV_FFMPEG_OLD
-									pos = url_ftell(cur_stream->pFormatCtx->pb);
-#else
 									pos = avio_tell(cur_stream->pFormatCtx->pb);
-#endif
 								}
 								if (cur_stream->pFormatCtx->bit_rate)
 									incr *= cur_stream->pFormatCtx->bit_rate / 8.0;
@@ -2671,9 +2648,6 @@ int decode_module_clean_up(void *arg)
         	avformat_close_input(&is->pFormatCtx);
 		is->pFormatCtx = NULL; /* safety */
 	}
-#ifdef BROOV_FFMPEG_OLD
-	url_set_interrupt_cb(NULL);
-#endif
 
 	__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "DecodeModule CleanUp End");
 
@@ -2701,13 +2675,10 @@ static int video_thread(void *arg)
 			continue;
 		}
 
-
 		if (is->pictq_size >= VIDEO_PICTURE_QUEUE_SIZE) {
 			//Wait for processing of pictq before writing
 			//further frames
-			//usleep(5000); //Sleep for 10ms
 			usleep(10000); //Sleep for 10ms
-			//SDL_Delay(10); 
 			continue;
 		}
 		AVPacket pkt;
@@ -2937,7 +2908,9 @@ static int decode_thread(void *arg)
 				int64_t seek_max= is->seek_rel < 0 ? seek_target - is->seek_rel - 2: INT64_MAX;
 				//FIXME the +-2 is due to rounding being not done in the correct direction in generation
 				//of the seek_pos/seek_rel variables
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to pos triggered");
 				ret = avformat_seek_file(is->pFormatCtx, -1, seek_min, seek_target, seek_max, is->seek_flags);
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek call avformat_seek_file over");
 #else
 				/* add the stream start time */
 				if (is->pFormatCtx->start_time != AV_NOPTS_VALUE)
@@ -3030,9 +3003,6 @@ static int decode_thread(void *arg)
 			}
 		}
 
-		//if ((is->audioq.size + is->videoq.size)> (1024*1024))
-		//if ((is->audioq.size + is->videoq.size) > (4048576))
-
 		if ((is->audioq.size + is->videoq.size) > BROOV_TOTAL_MAX_BUFFER_SIZE)
 		{
 			/* wait 10 ms */
@@ -3052,6 +3022,18 @@ static int decode_thread(void *arg)
 				packet_queue_put(&is->videoq, packet);
 			}
 #endif
+
+#ifdef BROOV_LATEST_FFMPEG
+			if (is->audioStream >= 0 &&
+			    is->audio_st->codec->codec->capabilities & CODEC_CAP_DELAY) {
+				av_init_packet(packet);
+				packet->data = NULL;
+				packet->size = 0;
+				packet->stream_index = is->audioStream;
+				packet_queue_put(&is->audioq, packet);
+			}
+#endif
+
 			usleep(10000); //Sleep for 10ms
 
 #ifdef BROOV_VIDEO_THREAD
@@ -3078,19 +3060,13 @@ static int decode_thread(void *arg)
 		ret = av_read_frame(pFormatCtx, packet);
 
 		if (ret < 0)  {
-
 			if (ret == AVERROR_EOF || url_feof(pFormatCtx->pb))
 				g_eof=1;
-#ifdef BROOV_FFMPEG_OLD
-			if (url_ferror(pFormatCtx->pb)) {
-				goto decode_after_read;
-			}
-#else
 			if (pFormatCtx->pb && pFormatCtx->pb->error) {
 				goto decode_after_read;
 			}
-#endif
-			usleep(10000); //Sleep for 100ms
+
+			usleep(100000); //Sleep for 100ms
 
 			continue;
 			//return 6;
@@ -3320,6 +3296,27 @@ static void broov_init_global_values(int loop_after_play, int audio_file_type, i
 	return;
 } //broov_init_global_values()
 
+#ifdef BROOV_LOCK_MGR
+static int lockmgr(void **mtx, enum AVLockOp op)
+{
+   switch(op) {
+      case AV_LOCK_CREATE:
+          *mtx = SDL_CreateMutex();
+          if(!*mtx)
+              return 1;
+          return 0;
+      case AV_LOCK_OBTAIN:
+          return !!SDL_LockMutex((SDL_mutex*) *mtx);
+      case AV_LOCK_RELEASE:
+          return !!SDL_UnlockMutex((SDL_mutex*) *mtx);
+      case AV_LOCK_DESTROY:
+          SDL_DestroyMutex((SDL_mutex *) *mtx);
+          return 0;
+   }
+   return 1;
+}
+#endif
+
 int player_main(int argc, char *argv[], 
 		int loop_after_play, int audio_file_type, int skip_frames, int rgb565, int yuv_rgb_asm,
 		int skip_bidir_frames, int vqueue_size_min, int vqueue_size_max, int total_queue_size, 
@@ -3359,6 +3356,13 @@ int player_main(int argc, char *argv[],
 	}
 
 	//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Decode Thread Creation Successful");
+
+#ifdef BROOV_LOCK_MGR
+    	if (av_lockmgr_register(lockmgr)) {
+	        __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Could not initialize lock manager!\n");
+		goto main_module_clean_up;
+    	}
+#endif
 
 	av_init_packet(&flush_pkt);
 	flush_pkt.data = (uint8_t *)"FLUSH";

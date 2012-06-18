@@ -17,8 +17,8 @@ class Globals {
 	public static int AudioBufferConfig   = 2;
 
 	//public static String ApplicationName = "Dolphin Player Universal";
-	public static String ApplicationName 	 = "Dolphin Player ";
-	public static String VersionName     	 = "2.3 Build 17June2012";
+	public static String ApplicationName 	 = "Dolphin Player";
+	public static String VersionName     	 = "2.4 Build 18June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -34,7 +34,7 @@ class Globals {
 	}
 
 
-	public static String supportedVideoFileFormats[] = 
+	public static final String supportedVideoFileFormats[] = 
 		{   "mp4","wmv","avi","mkv","dv",
 		"rm","mpg","mpeg","flv","divx",
 		"swf","dat","h264","h263","h261",
@@ -48,7 +48,7 @@ class Globals {
 		//"ttf"
 		};
 
-	public static String supportedAudioFileFormats[] = 
+	public static final String supportedAudioFileFormats[] = 
 		{   "mp3","wma","ogg","mp2","flac",
 			"aac","ac3","amr","pcm","wav",
 			"au","aiff","3g2","m4a", "astream",
@@ -60,21 +60,21 @@ class Globals {
 			"voc", "vqf", "w64", "wv", "xa", "xm"
 		};		
 
-	public static String supportedFontFileType[] = 
+	public static final String supportedFontFileType[] = 
 		{   "ttf"
 		};
 
-	public static String supportedImageFileFormats[] = 
+	public static final String supportedImageFileFormats[] = 
 		{
 		"gif","bmp","png","jpg"
 		};
 
-	public static String supportedAudioStreamFileFormats[] = 
+	public static final String supportedAudioStreamFileFormats[] = 
 		{
 		"astream"
 		};
 
-	public static String supportedVideoStreamFileFormats[] = 
+	public static final String supportedVideoStreamFileFormats[] = 
 		{
 		"vstream"
 		};
@@ -377,7 +377,17 @@ class Globals {
 		"</p>";
 
 	//advanced
+	
+
+	//Neon values
+	//public static boolean dbadvancedskip=false;
+	//public static int dbadvancedpixelformat=Globals.pixelformat_RGB8888;
+	
+	
+	//Normal V5, V6, V6+VFP values
 	public static boolean dbadvancedskip=true;
+	public static int dbadvancedpixelformat=Globals.pixelformat_RGB565;
+	
 	public static boolean dbadvancedbidirectional=false;
 	public static boolean dbadvancedffmpeg=false; //fast decoding is disabled by default
 	public static int dbadvancedyuv=Globals.ARM_ASM; //sws_scaler - 1, arm asm - 0
@@ -387,7 +397,6 @@ class Globals {
 	public static int dbadvancedstreamminvideoq=Globals.streammin_videokb100;
 	public static int dbadvancedstreammaxvideoq=Globals.streammax_videomb3;
 	public static int dbadvancedstreammaxaudioq=Globals.streammax_audiokb256;
-	public static int dbadvancedpixelformat=Globals.pixelformat_RGB565;
 	public static int dbadvancedavsyncmode=Globals.avsync_videoclock;
 	public static int dbadvancedswsscaler=Globals.advswsscaler_swsbicubic;
 	public static boolean dbadvanceddebug=false;

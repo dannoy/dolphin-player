@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.broov.player" android:versionCode="6" android:versionName="2.3"  
+	package="com.broov.player" android:versionCode="6" android:versionName="2.4"  
 	android:installLocation="auto" >
 	<application android:icon="@drawable/icon" 
 	
@@ -101,6 +101,7 @@
         <data android:mimeType="application/mp4*" />
         <data android:mimeType="application/mpeg*" />
         <data android:mimeType="application/sdp" />
+        <data android:mimeType="application/vnd.wap.mms-message" />
 
         <data android:pathPattern=".*mkv" />
         <data android:pathPattern=".*MKV" />
