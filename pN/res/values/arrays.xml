@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>General Feedback</item>
+		<item>Suggest an Application</item>
+		<item>Suggest a Feature</item>
+		<item>Report a Problem</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>White</item>
+		<item>Gray</item>
+		<item>Green</item>
+		<item>Red</item>
+		<item>Blue</item>
+		<item>Yellow</item>
+		<item>Magenta</item>
+		<item>Cyan</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>Play once</item>
+		<item>Play all</item>
+		<item>Repeat one</item>
+		<item>Repeat all</item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>None</item>
+		<item>Alphabetical</item>
+		<item>Type</item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>Small</item>
+		<item>Medium</item>
+		<item>Large</item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>English</item>
+		<item>Chinese</item>
+		<item>French</item>
+		<item>German</item>
+		<item>Italian</item>
+		<item>Japanese</item>
+	</string-array>
+
+	<string-array name="SubtitleEncoding">
+		<item>"Auto Detect"</item>
+		<item>"ISO-2022-JP"</item>
+		<item>"ISO-2022-CN"</item>
+		<item>"ISO-2022-KR"</item>
+		<item>"ISO-8859-5"</item>
+		<item>"ISO-8859-7"</item>
+		<item>"ISO-8859-8"</item>
+		<item>"BIG5"</item>
+		<item>"GB18030"</item>
+		<item>"EUC-JP"</item>
+		<item>"EUC-KR"</item>
+		<item>"EUC-TW"</item>
+		<item>"SHIFT_JIS"</item>
+		<item>"IBM855"</item>
+		<item>"IBM866"</item>
+		<item>"KOI8-R"</item>
+		<item>"MACCYRILLIC"</item>
+		<item>"WINDOWS-1251"</item>
+		<item>"WINDOWS-1252"</item>
+		<item>"WINDOWS-1253"</item>
+		<item>"WINDOWS-1255"</item>
+		<item>"UTF-8"</item>
+		<item>"UTF-16BE"</item>
+		<item>"UTF-16LE"</item>
+		<item>"UTF-32BE"</item>
+		<item>"UTF-32LE"</item>
+		<item>"HZ-GB-2312"</item>
+	</string-array>
+	<string-array name="advyuv2rgb">
+		<item>ARM ASM</item>
+		<item>FFmpeg sws_scaler</item>
+		</string-array>
+		<string-array name="advpixelformat">
+		<item>RGB565</item>
+		<item>RGB8888</item>
+		</string-array>
+		<string-array name="advminvideoq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+	</string-array>
+	
+		<string-array name="advmaxvideoq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+		<item>3 MB</item>
+		<item>4 MB</item>
+		<item>5 MB</item>
+		<item>8 MB</item>
+		<item>10 MB</item>
+		<item>12 MB</item>
+		<item>14 MB</item>
+		<item>15 MB</item>
+		<item>20 MB</item>
+	</string-array>
+	
+		<string-array name="advmaxaudioq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+		<item>3 MB</item>
+		<item>4 MB</item>
+		<item>5 MB</item>
+	</string-array>
+	
+		<string-array name="advstreamminvideoq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+	</string-array>
+	
+		<string-array name="advstreammaxvideoq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+		<item>3 MB</item>
+		<item>4 MB</item>
+		<item>5 MB</item>
+		<item>8 MB</item>
+		<item>10 MB</item>
+		<item>12 MB</item>
+		<item>14 MB</item>
+		<item>15 MB</item>
+		<item>20 MB</item>
+	</string-array>
+	
+		<string-array name="advstreammaxaudioq">
+		<item>50 KB</item>
+		<item>100 KB</item>
+		<item>150 KB</item>
+		<item>200 KB</item>
+		<item>256 KB</item>
+		<item>380 KB</item>
+		<item>500 KB</item>
+		<item>620 KB</item>
+		<item>750 KB</item>
+		<item>870 KB</item>
+		<item>1 MB</item>
+		<item>1.5 MB</item>
+		<item>2 MB</item>
+		<item>3 MB</item>
+		<item>4 MB</item>
+		<item>5 MB</item>
+		
+	</string-array>
+	<string-array name="advavsyncmode">
+	    <item>Audio Clock</item>
+	    <item>Video Clock</item>
+	    <item>External Clock</item>
+	</string-array>
+
+<string-array name="advswsscaler">
+    <item>SWS_BICUBIC</item> 
+    <item>SWS_BILINEAR</item> 
+    <item>SWS_FAST_BILINEAR</item>
+ 
+</string-array>
+
+</resources>

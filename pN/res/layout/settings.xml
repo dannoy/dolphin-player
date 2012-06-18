@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/black">
+	<TableLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:stretchColumns="*" android:shrinkColumns="*">
+
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@color/offWhite"
+			android:text="@string/display" android:textStyle="bold"
+			 android:paddingLeft="4dip"
+			android:background="@color/darkGray" />
+
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+
+		<TableRow android:id="@+id/tblrowtextcolor"
+			android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:paddingLeft="8dip" android:layout_width="fill_parent"
+				android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/textcolor" />
+
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/changethetextcolorpreference" />
+				<TextView android:id="@+id/colorSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_color_button"
+				android:src="@drawable/more" android:background="@color/transparent"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:paddingRight="7dp" android:padding="3dp" />
+		</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+
+		<TableRow android:id="@+id/tblrowshowhiddenfiles"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/showhiddenfilesfolders" />
+					
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/displayhiddenfilesandfolders" />
+
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_hidden_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+		<!--  
+		<TableRow android:id="@+id/tblrowdefaulthome"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+
+				android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/home" />
+
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/setyourdefaulthomepath" />
+				<TextView android:id="@+id/defaulthomeselected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_defaulthome_button"
+				android:src="@drawable/more" android:background="@color/transparent"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:paddingRight="7dp" android:padding="3dp" />
+		</TableRow>
+		-->
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+		
+		<TableRow android:id="@+id/tblrowsortingtype"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_height="wrap_content" android:paddingLeft="8dip"
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/sortingtype" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/choosehowtosortfilesandfolders" />
+				<TextView android:id="@+id/sortoptionSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_sort_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000"
+				android:paddingRight="7dp" android:padding="3dp"
+				android:src="@drawable/more" />
+		</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@color/offWhite"
+			android:textStyle="bold" android:text="@string/subtitle"
+			 android:paddingLeft="4dip"
+			android:background="@color/darkGray" />
+		
+		<TableRow android:id="@+id/tblrowshowsubtitles" 
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_height="wrap_content" android:paddingLeft="8dip"
+			
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/showsubtitles" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/showsubtitlesifexists" />
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_subtitlehide_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:paddingRight="7dp" android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+
+		<TableRow android:id="@+id/tblrowsubtitlesize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_height="wrap_content" android:paddingLeft="8dip"
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/subtitlesize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/displaysizeofsubtitle" />
+				<TextView android:id="@+id/subtitleSizeSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_subtitlesize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right"
+			 android:paddingRight="7dp"
+			 android:padding="3dp"
+			  android:background="#ff000000"
+				android:src="@drawable/more" />
+		</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+		<TableRow android:id="@+id/tblrowsubtitlefontfileselected"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+
+				android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/fontfile" />
+
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/setyourfontfileforsubtitle" />
+				<TextView android:id="@+id/subtitlefontfileselected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_subtitlefontfile_button"
+				android:src="@drawable/more" android:background="@color/transparent"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:paddingRight="7dp" android:padding="3dp" />
+		</TableRow>
+
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+
+		<TableRow android:id="@+id/tblrowsubtitleencodingtype"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_height="wrap_content" android:paddingLeft="8dip"
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/subtitleencodingtype" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/selectyourencodingtypeofsubtitle" />
+				<TextView android:id="@+id/subtitleEncodingTypeSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_subtitleencoding_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000"
+				android:paddingRight="7dp" android:padding="3dp"
+				android:src="@drawable/more" />
+		</TableRow>
+
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@color/offWhite"
+			android:textStyle="bold" android:text="@string/audio"
+			android:paddingLeft="4dip"
+			android:background="@color/darkGray" />
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+
+		<TableRow android:id="@+id/tblrowloopaudio"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_height="wrap_content" android:paddingLeft="8dip"
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/loopaudio" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/choosehowtoloopplayaudiofiles" />
+				<TextView android:id="@+id/audioloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_audioloop_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000"
+				android:paddingRight="7dp" android:padding="3dp"
+				android:src="@drawable/more" />
+		</TableRow>
+
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@color/offWhite"
+			android:textStyle="bold" android:text="@string/video"
+			android:paddingLeft="4dip"
+			android:background="@color/darkGray" />
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+
+		<TableRow android:id="@+id/tblrowloopvideo"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/loopvideo" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/choosehowtoloopplayvideofiles" />
+				<TextView android:id="@+id/videoloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_videoloop_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+		</TableRow>
+		<!-- advanced -->
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@color/offWhite"
+			android:textStyle="bold" android:text="@string/advanced"
+			android:paddingLeft="4dip"
+			android:background="@color/darkGray" />
+		<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/black" />
+		<!-- skip frames algorithm -->
+		<TableRow android:id="@+id/tblrowadvancedskipframes"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+			
+					
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/skipframesalgorithm" />
+                <TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/skipframesstatement" />
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_skipframes_hidden_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:padding="3dp"
+				android:checked="false" />
+			</TableRow>
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+		
+		<!-- skip bidirectional frames -->
+			<TableRow android:id="@+id/tblrowadvancedskipbidirectionalframes"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+				
+					
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/skipbidirectionalframes" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/skipbidirectionalframesstatement" />
+			  </LinearLayout>
+			<CheckBox android:id="@+id/setting_skipbidirectionalframes_hidden_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:padding="3dp"
+				android:checked="false" />
+			</TableRow>
+			
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- yuv2rgb conversion type -->
+		<TableRow android:id="@+id/tblrowadvancedyuv2rgb"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/yuv2rgbconversiontype" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/yuv2rgbconversiontypestatement" />
+				<TextView android:id="@+id/yuv2rgbloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_yuv2rgb_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- Display Pixel format -->
+			
+			<TableRow android:id="@+id/tblrowadvanceddisplaypixelformat"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/displaypixelformat" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/displaypixelformatstatement" />
+				<TextView android:id="@+id/displaypixelformatloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_displaypixelformat_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- ffmpeg fast decoding -->
+			<TableRow android:id="@+id/tblrowadvancedffmpegfastdecoding"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+			
+					
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/useffmpegfastdecoding" />
+                <TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/useffmpegfastdecodingstatement" />
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_ffmpegfastdecoding_hidden_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:padding="3dp"
+				android:checked="false" />
+			</TableRow>
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- Minimum Video Q Size -->
+			<TableRow android:id="@+id/tblrowadvancedminvideoqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/minimumvideoqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/minimumvideoqsizestatement" />
+				<TextView android:id="@+id/minvideoqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_minvideoqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- maximumvideoqsize -->
+			<TableRow android:id="@+id/tblrowadvancedmaxvideoqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/maximumvideoqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/maximumvideoqsizestatement" />
+				<TextView android:id="@+id/maxvideoqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_maxvideoqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<!-- maximum audio qsize -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- maximumvideoqsize -->
+			<TableRow android:id="@+id/tblrowadvancedmaxaudioqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/maximumaudioqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/maximumaudioqsizestatement" />
+				<TextView android:id="@+id/maxaudioqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_maxaudioqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			
+			<!-- stream minimum video q size -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			 
+			<TableRow android:id="@+id/tblrowadvancedstreamminvideoqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/streamminvideoqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/streamminvideoqsizestatement" />
+				<TextView android:id="@+id/streamminvideooqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_streamminvideoqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			
+			<!-- stream maximum video q size -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			 
+			<TableRow android:id="@+id/tblrowadvancedstreammaxvideoqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/streammaxvideoqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/streammaxvideoqsizestatement" />
+				<TextView android:id="@+id/streammaxvideoqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_streammaxvideoqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			
+			<!-- stream maximum audio q size -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			 
+			<TableRow android:id="@+id/tblrowadvancedstreammaxaudioqsize"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/streammaxaudioqsize" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/streammaxaudioqsizestatement" />
+				<TextView android:id="@+id/streammaxaudioqsizeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_streammaxaudioqsize_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<!-- ffmpegsws_scalertype -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<TableRow android:id="@+id/tblrowadvancedswsscaler"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/swsscaler" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/swsscalerstatement" />
+				<TextView android:id="@+id/swsscalerloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_swsscaler_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			<!-- debugging mode-->
+			<TableRow android:id="@+id/tblrowadvanceddebugmode"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+			
+					
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/debugmode" />
+                <TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/debugmodestatement" />
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_debugmode_hidden_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:padding="3dp"
+				android:checked="false" />
+			</TableRow>
+			<!-- avsyncmode -->
+			<View android:layout_width="fill_parent" android:layout_height="5dip"
+			android:background="@color/darkGray" />
+			 
+			<TableRow android:id="@+id/tblrowadvancedavsyncmode"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+			android:paddingLeft="8dip"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/avsyncmode" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/avsyncmodestatement" />
+				<TextView android:id="@+id/avsyncmodeloopSelected"
+					android:textStyle="italic" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/lightGray" />
+				  
+			</LinearLayout>
+			<ImageButton android:id="@+id/setting_avsyncmode_button"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_gravity="right" android:background="#ff000000" 
+				android:paddingRight="7dp" android:padding="3dp"  
+				android:src="@drawable/more" />
+			</TableRow>
+
+		 <!--
+		<View android:layout_width="fill_parent" android:layout_height="3dip"
+			android:background="@color/darkGray" />
+         
+		<TableRow android:id="@+id/tblrowskipframes"
+		android:padding="4dip">
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:paddingLeft="8dip"
+				android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="18sp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:text="@string/skipvideoframes" />
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:singleLine="false"
+					android:paddingTop="3dip" android:textColor="@color/offWhite"
+					android:text="@string/skipvideoframesforseamlessviewing" />
+
+			</LinearLayout>
+			<CheckBox android:id="@+id/setting_skipframes_box"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:paddingRight="7dp" android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+		-->
+
+	</TableLayout>
+</ScrollView>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>一般意见</item>  
+		<item>推荐一个应用程序</item>
+		<item>推荐功能</item>
+		<item>报告问题</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>白</item>
+		<item>灰色</item>
+		<item>绿</item>
+		<item>红</item>
+		<item>蓝</item>
+		<item>黄河</item>
+		<item>品红</item>
+		<item>青色</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>打一次</item>
+		<item>播放所有</item>
+		<item>重复一</item>
+		<item>重复所有</item>
+	</string-array>
+	
+	<string-array name="Sort">
+		<item>无</item>
+		<item>按字母顺序排列</item>
+		<item>类型</item>
+	</string-array>
+	
+	<string-array name="SubtitleSize">
+		<item>小</item>
+		<item>中</item>
+		<item>大</item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>英语</item>
+		<item>中文</item>
+		<item>法国</item>
+		<item>德国</item>
+		<item>意大利</item>
+		<item>日本</item>
+	</string-array>
+
+</resources>

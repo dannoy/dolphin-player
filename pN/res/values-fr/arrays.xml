@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>Commentaires généraux</item>  
+		<item>Suggérer une application</item>
+		<item>Proposer une nouvelle fonctionnalité</item>
+		<item>Signaler un problème</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>Blanc</item>
+		<item>Gris</item>
+		<item>Vert</item>
+		<item>Rouge</item>
+		<item>Bleu</item>
+		<item>Jaune</item>
+		<item>Magenta</item>
+		<item>Cyan</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>Lire une fois</item>
+		<item>Tout lire une fois</item>
+		<item>Lire en boucle</item>
+		<item>Tout lire en boucle</item>
+	</string-array>
+	
+	<string-array name="Sort">
+		<item>Aucun</item>
+		<item>Alphabétique</item>
+		<item>Par type</item>
+	</string-array>
+	
+	<string-array name="SubtitleSize">
+	  	<item>Petit</item>
+  		<item>Moyen</item>
+  		<item>Grand</item>
+	</string-array>
+	
+	<string-array name="Languages">
+		<item>Anglais</item>
+  		<item>Chinois</item>
+  		<item>Français</item>
+  		<item>Allemand</item>
+  		<item>Italien</item>
+  		<item>Japonais</item>
+	</string-array>
+</resources>

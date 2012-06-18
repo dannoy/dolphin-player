@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Dolphin プレイヤー</string>
+    <string name="feedback">フィードバック</string>
+
+    <string name="mailid">電子メールのID（オプション）</string>
+    <string name="submit">送信</string>
+    <string name="description">概要</string>
+    <string name="category">カテゴリー</string>
+    <string name="cancel">キャンセル</string>
+    <string name="ok">[OK]を</string>
+    <string name="about">について</string>
+    <string name="search">検索</string>
+    <string name="quit">終了</string>
+    <string name="display">ディスプレイ</string>
+    <string name="setting">設定</string>
+    <string name="searchforafile">ファイルを検索</string>
+    <string name="pressbackagaintoquit">再び押して、終了する.</string>
+    <string name="cantreadfolderduetopermissions">することができます\'を読んでフォルダにアクセス許可のためにトン</string>
+    <string name="searching">検索</string>
+    <string name="searchingcurrentfilesystem">検索現在のファイルシステム...</string>
+    <string name ="changeto">に変更します。</string>
+    <string name ="changetextcolor">テキスト色を変更する</string>
+    <string name ="sortby">並べ替え...</string>
+    <string name ="loop">ループ...</string>
+    <string name ="pleaseenteryourthoughtsindescription">説明で自分の考えを入力してください</string>
+    <string name="unabletoconnecttoserverpleasetryaftersometime">サーバーに接続できませんでした。後いつか試してみてください</string>
+    <string name="calculatinginformation">情報を計算...</string>
+    <string name="pathis">パスは</string>
+    <string name="textcolor">テキストの色</string>
+    <string name="changethetextcolorpreference">テキストの色設定を変更する</string>
+    <string name="showhiddenfilesfolders">隠しファイル/フォルダ</string>
+    <string name="displayhiddenfilesandfolders">表示隠しファイルとフォルダ</string>
+    <string name="subtitle">サブタイトル</string>
+    <string name="hidesubtitles">を隠すサブタイトル</string>
+    <string name="donotshowsubtitlesevenifexists">字幕ファイルが存在する場合でも、字幕を表示しない</string>
+    <string name="audio">オーディオ</string>
+    <string name="loopaudio">ループオーディオ</string>
+    <string name="video">ビデオ</string>
+    <string name="loopvideo">ループ動画</string>
+    <string name="choosehowtoloopplayaudiofiles">どのようにループのオーディオファイル、フォルダ内の選択します。</string>
+    <string name="choosehowtoloopplayvideofiles">フォルダのループする方法のビデオファイルに選択してください</string>
+    <string name="sortingtype">タイプを並べ替え</string>
+    <string name="choosehowtosortfilesandfolders">ファイルとフォルダを並べ替える方法を選択します</string>
+    <string name ="language">言語</string>
+    <string name ="chooselanguageforapplication">アプリケーションの言語を選択してください</string>
+    <string name="help">ヘルプ</string>
+    <string name="subtitlesize">サブタイトルサイズ</string>
+    <string name="displaysizeofsubtitle">字幕の表示サイズ</string>
+    <string name="showsubtitles">地図を表示するサブタイトル</string>
+	<string name="showsubtitlesifexists">表示する字幕字幕ファイルが使用可能な場合</string>
+	<string name="found">見つかりません</string>
+	<string name="files">（の）ファイル</string>
+	
+</resources>

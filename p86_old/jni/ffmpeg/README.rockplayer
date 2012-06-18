@@ -1,0 +1,13 @@
+1. This is full repo snapshot, you may use git to sync with master repo. You may get date of the snapshot created by git log.
+
+2. Changes are in patches dir.  
+ac3dsp_armv6_load_const.patch is already submitted to FFmpeg-devel.
+android_bigfile.patch is to be submitted.
+build_android script is to be submitted as well.
+
+
+3. Invoke build_android script to build, it is on top of configure/make system of FFmpeg and only LGPL allowed parts are enabled. The script is well documented, have a look for details.
+
+4. This is exactly same as in RockPlayer source tree, but it is on your own risk to use it. RockPlayer team are open to discuss any issue, but we do not provides any mean of consultant/after-sale service because of limit manpower, LGPL doesn't require it as well. 
+
+5. We use only Mac OS X Snow Leopard based environment so far, NDK r4 works, NDK r5 should work but we haven't upgraded yet.

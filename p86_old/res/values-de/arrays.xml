@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>Allgemeines Feedback</item>  
+		<item>Schlagen Sie eine Anwendung</item>
+		<item>Eine Funktion vorschlagen</item>
+		<item>Ein Problem melden</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>Weiß</item>
+		<item>Grau</item>
+		<item>Grüne</item>
+		<item>Rote</item>
+		<item>Blau</item>
+		<item>Gelb</item>
+		<item>Magenta</item>
+		<item>Zyan</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>Spielen einmal</item>
+		<item>Spielen Sie alle</item>
+		<item>Wiederholen Ein</item>
+		<item>Wiederholen Sie alle</item>
+	</string-array>
+	
+	<string-array name="Sort">
+		<item>Keine</item>
+		<item>Alphabetisch</item>
+		<item>Typ</item>
+	</string-array>
+	
+	<string-array name="SubtitleSize">
+		<item>Kleine</item>
+  		<item>Mittlere</item>
+  		<item>Große</item>
+  	</string-array>
+  	
+  	<string-array name="Languages">
+		<item>Englisch</item>
+  		<item>Chinesisch</item>
+  		<item>Französisch</item>
+  		<item>Deutsch</item>
+  		<item>Italienisch</item>
+  		<item>Japanisch</item>
+	</string-array>	
+
+</resources>

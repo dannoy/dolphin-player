@@ -1,0 +1,69 @@
+
+If compilation produces errors, or a large number of warnings,
+please read README.COMPILATION.PROBLEMS -- you might be able to
+adjust the flags in this Makefile to improve matters.
+
+Also in README.COMPILATION.PROBLEMS are some hints that may help
+if your build produces an executable which is unable to correctly
+handle so-called 'large files' -- files of size 2GB or more.
+
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c blocksort.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c huffman.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c crctable.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c randtable.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c compress.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c decompress.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c bzlib.c
+rm -f libbz2.a
+ar cq libbz2.a blocksort.o huffman.o crctable.o randtable.o compress.o decompress.o bzlib.o
+ranlib libbz2.a
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c bzip2.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64  -o bzip2 bzip2.o -L. -lbz2
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64 -c bzip2recover.c
+gcc -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64  -o bzip2recover bzip2recover.o
+
+Doing 6 tests (3 compress, 3 uncompress) ...
+If there's a problem, things might stop at this point.
+ 
+./bzip2 -1  < sample1.ref > sample1.rb2
+./bzip2 -2  < sample2.ref > sample2.rb2
+./bzip2 -3  < sample3.ref > sample3.rb2
+./bzip2 -d  < sample1.bz2 > sample1.tst
+./bzip2 -d  < sample2.bz2 > sample2.tst
+./bzip2 -ds < sample3.bz2 > sample3.tst
+cmp sample1.bz2 sample1.rb2 
+cmp sample2.bz2 sample2.rb2
+cmp sample3.bz2 sample3.rb2
+cmp sample1.tst sample1.ref
+cmp sample2.tst sample2.ref
+cmp sample3.tst sample3.ref
+
+If you got this far and the 'cmp's didn't complain, it looks
+like you're in business.  
+
+To install in /usr/local/bin, /usr/local/lib, /usr/local/man and 
+/usr/local/include, type
+
+   make install
+
+To install somewhere else, eg, /xxx/yyy/{bin,lib,man,include}, type 
+
+   make install PREFIX=/xxx/yyy
+
+If you are (justifiably) paranoid and want to see what 'make install'
+is going to do, you can first do
+
+   make -n install                      or
+   make -n install PREFIX=/xxx/yyy      respectively.
+
+The -n instructs make to show the commands it would execute, but
+not actually execute them.
+
+Instructions for use are in the preformatted manual page, in the file
+bzip2.txt.  For more detailed documentation, read the full manual.  
+It is available in Postscript form (manual.ps), PDF form (manual.pdf),
+and HTML form (manual.html).
+
+You can also do "bzip2 --help" to see some helpful information. 
+"bzip2 -L" displays the software license.
+
