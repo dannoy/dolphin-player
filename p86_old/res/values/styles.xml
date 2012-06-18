@@ -1,5 +1,0 @@
-<resources>
- <style name="row" parent="@android:style/Widget.Button">
-     <item name="android:background">@drawable/rows</item>
-</style>
-</resources>
