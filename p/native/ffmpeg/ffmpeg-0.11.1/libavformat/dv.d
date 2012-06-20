@@ -10,6 +10,7 @@ libavformat/dv.o: libavformat/dv.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavcodec/dv_profile.h \
  libavcodec/avcodec.h libavcodec/dvdata.h libavcodec/dsputil.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/get_bits.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/dv_profile.h \
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/get_bits.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/dv_profile.h \
  libavutil/mathematics.h libavutil/timecode.h libavformat/dv.h

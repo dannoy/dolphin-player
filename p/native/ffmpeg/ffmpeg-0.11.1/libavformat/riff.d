@@ -11,4 +11,4 @@ libavformat/riff.o: libavformat/riff.c libavutil/mathematics.h \
  libavutil/common.h libavformat/version.h libavformat/avio_internal.h \
  libavformat/url.h libavformat/riff.h libavformat/internal.h \
  libavformat/metadata.h libavcodec/bytestream.h libavutil/intreadwrite.h \
- libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h

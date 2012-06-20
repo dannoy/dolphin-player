@@ -12,4 +12,5 @@ libavformat/rtpdec_qt.o: libavformat/rtpdec_qt.c libavformat/avformat.h \
  libavformat/url.h libavformat/rtp.h libavformat/avformat.h \
  libavformat/rtpdec.h libavformat/isom.h libavformat/dv.h \
  libavcodec/get_bits.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h

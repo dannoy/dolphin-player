@@ -6,4 +6,4 @@ libavcodec/fft_fixed.o: libavcodec/fft_fixed.c libavcodec/fft.c \
  libavutil/timer.h libavutil/cpu.h libavutil/dict.h libavutil/libm.h \
  libavutil/mathematics.h libavutil/intfloat_readwrite.h libavutil/log.h \
  libavutil/pixfmt.h libavcodec/fft-internal.h libavutil/intmath.h \
- libavcodec/mathops.h libavutil/common.h
+ libavcodec/mathops.h libavutil/common.h libavcodec/mips/mathops.h

@@ -9,5 +9,6 @@ libavcodec/dnxhddec.o: libavcodec/dnxhddec.c libavutil/imgutils.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/get_bits.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/dnxhddata.h \
- libavcodec/dsputil.h libavcodec/thread.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/dnxhddata.h libavcodec/dsputil.h \
+ libavcodec/thread.h

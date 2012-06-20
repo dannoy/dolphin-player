@@ -9,4 +9,4 @@ libavcodec/xwddec.o: libavcodec/xwddec.c libavutil/imgutils.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/bytestream.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/xwd.h
+ libavutil/mips/intreadwrite.h libavcodec/xwd.h

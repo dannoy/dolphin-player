@@ -12,5 +12,5 @@ libavformat/rdt.o: libavformat/rdt.c libavformat/avformat.h \
  libavformat/rtp.h libavformat/avformat.h libavformat/url.h \
  libavformat/rdt.h libavutil/base64.h libavutil/md5.h libavformat/rm.h \
  libavformat/internal.h libavformat/avio_internal.h libavcodec/get_bits.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h

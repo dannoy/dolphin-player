@@ -9,5 +9,6 @@ libavformat/bit.o: libavformat/bit.c libavformat/avformat.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavcodec/get_bits.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/put_bits.h libavutil/bswap.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/put_bits.h libavutil/bswap.h

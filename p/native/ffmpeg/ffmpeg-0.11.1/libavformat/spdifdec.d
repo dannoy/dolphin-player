@@ -11,5 +11,5 @@ libavformat/spdifdec.o: libavformat/spdifdec.c libavformat/avformat.h \
  libavformat/version.h libavformat/spdif.h libavcodec/ac3.h \
  libavutil/opt.h libavcodec/avcodec.h libavcodec/ac3tab.h \
  libavcodec/ac3.h libavcodec/aacadtsdec.h libavcodec/get_bits.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h

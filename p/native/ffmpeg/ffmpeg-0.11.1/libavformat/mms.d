@@ -10,4 +10,5 @@ libavformat/mms.o: libavformat/mms.c libavformat/mms.h libavformat/url.h \
  libavcodec/avcodec.h libavutil/samplefmt.h libavutil/cpu.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/metadata.h libavformat/riff.h \
- libavformat/internal.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavformat/internal.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

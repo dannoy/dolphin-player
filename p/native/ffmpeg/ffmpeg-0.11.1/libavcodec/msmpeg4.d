@@ -8,10 +8,11 @@ libavcodec/msmpeg4.o: libavcodec/msmpeg4.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/mpegvideo.h libavcodec/get_bits.h \
- libavutil/common.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/put_bits.h libavutil/bswap.h libavcodec/ratecontrol.h \
- libavutil/eval.h libavcodec/parser.h libavcodec/mpeg12data.h \
- libavcodec/rl.h libavutil/timecode.h libavutil/opt.h \
- libavcodec/msmpeg4.h libavcodec/msmpeg4data.h libavutil/x86_cpu.h \
- libavcodec/h263.h libavcodec/mpeg4video.h libavcodec/vc1data.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/mpegvideo.h \
+ libavcodec/get_bits.h libavutil/common.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/put_bits.h \
+ libavutil/bswap.h libavcodec/ratecontrol.h libavutil/eval.h \
+ libavcodec/parser.h libavcodec/mpeg12data.h libavcodec/rl.h \
+ libavutil/timecode.h libavutil/opt.h libavcodec/msmpeg4.h \
+ libavcodec/msmpeg4data.h libavutil/x86_cpu.h libavcodec/h263.h \
+ libavcodec/mpeg4video.h libavcodec/vc1data.h

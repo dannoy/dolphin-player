@@ -13,7 +13,7 @@ libavformat/matroskadec.o: libavformat/matroskadec.c \
  libavformat/metadata.h libavformat/isom.h libavformat/dv.h \
  libavformat/rm.h libavformat/matroska.h libavcodec/mpeg4audio.h \
  libavcodec/get_bits.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/put_bits.h \
- libavutil/bswap.h libavutil/intfloat.h libavutil/avstring.h \
- libavutil/lzo.h \
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/put_bits.h libavutil/bswap.h \
+ libavutil/intfloat.h libavutil/avstring.h libavutil/lzo.h \
  /Users/apple/Downloads/dolphin_player/dolphin-player/p/jni/bzip2/bzlib.h

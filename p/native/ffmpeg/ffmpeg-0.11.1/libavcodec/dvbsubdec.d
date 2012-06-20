@@ -8,6 +8,6 @@ libavcodec/dvbsubdec.o: libavcodec/dvbsubdec.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/get_bits.h libavutil/common.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/bytestream.h \
- libavutil/colorspace.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/get_bits.h \
+ libavutil/common.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/bytestream.h libavutil/colorspace.h

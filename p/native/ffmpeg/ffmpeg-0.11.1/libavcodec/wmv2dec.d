@@ -8,10 +8,11 @@ libavcodec/wmv2dec.o: libavcodec/wmv2dec.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/mpegvideo.h libavcodec/get_bits.h \
- libavutil/common.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/put_bits.h libavutil/bswap.h libavcodec/ratecontrol.h \
- libavutil/eval.h libavcodec/parser.h libavcodec/mpeg12data.h \
- libavcodec/rl.h libavutil/timecode.h libavutil/opt.h libavcodec/h263.h \
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/mpegvideo.h \
+ libavcodec/get_bits.h libavutil/common.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/put_bits.h \
+ libavutil/bswap.h libavcodec/ratecontrol.h libavutil/eval.h \
+ libavcodec/parser.h libavcodec/mpeg12data.h libavcodec/rl.h \
+ libavutil/timecode.h libavutil/opt.h libavcodec/h263.h \
  libavcodec/msmpeg4.h libavcodec/msmpeg4data.h libavcodec/intrax8.h \
  libavcodec/wmv2.h

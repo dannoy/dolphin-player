@@ -9,6 +9,6 @@ libavformat/sapdec.o: libavformat/sapdec.c libavformat/avformat.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavutil/avstring.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavformat/network.h libavutil/error.h \
- libavformat/os_support.h libavformat/internal.h \
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavformat/network.h \
+ libavutil/error.h libavformat/os_support.h libavformat/internal.h \
  libavformat/avio_internal.h libavformat/url.h

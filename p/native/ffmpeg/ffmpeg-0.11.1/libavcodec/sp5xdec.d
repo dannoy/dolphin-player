@@ -9,6 +9,6 @@ libavcodec/sp5xdec.o: libavcodec/sp5xdec.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/mjpeg.h libavcodec/put_bits.h \
  libavutil/bswap.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/mjpegdec.h libavcodec/get_bits.h libavcodec/dsputil.h \
- libavcodec/sp5x.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/mjpegdec.h \
+ libavcodec/get_bits.h libavcodec/dsputil.h libavcodec/sp5x.h

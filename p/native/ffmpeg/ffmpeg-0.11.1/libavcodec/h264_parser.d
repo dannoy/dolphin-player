@@ -9,9 +9,10 @@ libavcodec/h264_parser.o: libavcodec/h264_parser.c libavcodec/parser.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/h264data.h libavcodec/mpegvideo.h \
  libavcodec/dsputil.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/get_bits.h libavutil/common.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/put_bits.h libavutil/bswap.h \
- libavcodec/ratecontrol.h libavutil/eval.h libavcodec/mpeg12data.h \
- libavcodec/rl.h libavutil/timecode.h libavutil/opt.h libavcodec/h264.h \
+ libavutil/mips/intreadwrite.h libavcodec/get_bits.h libavutil/common.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/put_bits.h libavutil/bswap.h libavcodec/ratecontrol.h \
+ libavutil/eval.h libavcodec/mpeg12data.h libavcodec/rl.h \
+ libavutil/timecode.h libavutil/opt.h libavcodec/h264.h \
  libavcodec/cabac.h libavcodec/h264dsp.h libavcodec/h264pred.h \
  libavcodec/rectangle.h libavcodec/golomb.h

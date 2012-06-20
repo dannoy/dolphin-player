@@ -12,4 +12,5 @@ libavformat/rtpdec_latm.o: libavformat/rtpdec_latm.c \
  libavutil/common.h libavformat/version.h libavformat/rtp.h \
  libavformat/avformat.h libavformat/url.h libavformat/internal.h \
  libavutil/avstring.h libavcodec/get_bits.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h

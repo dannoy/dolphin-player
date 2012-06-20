@@ -9,6 +9,7 @@ libavcodec/vp3.o: libavcodec/vp3.c libavutil/imgutils.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/internal.h \
  libavutil/mathematics.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/get_bits.h libavutil/common.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/vp3data.h \
- libavcodec/xiph.h libavcodec/thread.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/get_bits.h \
+ libavutil/common.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/vp3data.h libavcodec/xiph.h \
+ libavcodec/thread.h

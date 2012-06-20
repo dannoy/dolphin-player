@@ -10,4 +10,4 @@ libavformat/vorbiscomment.o: libavformat/vorbiscomment.c \
  libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
  libavutil/common.h libavformat/version.h libavformat/metadata.h \
  libavformat/vorbiscomment.h libavcodec/bytestream.h \
- libavutil/intreadwrite.h libavutil/bswap.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h

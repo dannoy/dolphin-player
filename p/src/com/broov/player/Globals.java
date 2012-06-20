@@ -18,7 +18,7 @@ class Globals {
 
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player";
-	public static String VersionName     	 = "2.4 Build 18June2012";
+	public static String VersionName     	 = "2.4 Build 20June2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 

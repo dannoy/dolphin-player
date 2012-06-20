@@ -10,6 +10,6 @@ libavformat/ac3dec.o: libavformat/ac3dec.c libavutil/crc.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/ac3tab.h libavutil/common.h \
  libavcodec/get_bits.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavformat/avformat.h \
- libavcodec/avcodec.h libavformat/avio.h libavformat/version.h \
- libavformat/rawdec.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavformat/avformat.h libavcodec/avcodec.h \
+ libavformat/avio.h libavformat/version.h libavformat/rawdec.h

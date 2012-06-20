@@ -9,5 +9,6 @@ libavcodec/g726.o: libavcodec/g726.c libavutil/avassert.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/internal.h \
  libavutil/mathematics.h libavcodec/get_bits.h libavutil/common.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/mathops.h \
- libavcodec/put_bits.h libavutil/bswap.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/put_bits.h \
+ libavutil/bswap.h

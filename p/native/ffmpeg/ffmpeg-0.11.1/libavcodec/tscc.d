@@ -8,4 +8,5 @@ libavcodec/tscc.o: libavcodec/tscc.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/msrledec.h libavcodec/bytestream.h \
- libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

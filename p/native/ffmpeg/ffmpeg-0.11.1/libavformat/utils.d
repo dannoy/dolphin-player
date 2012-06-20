@@ -11,9 +11,9 @@ libavformat/utils.o: libavformat/utils.c libavformat/avformat.h \
  libavformat/version.h libavformat/avio_internal.h libavformat/url.h \
  libavformat/internal.h libavcodec/internal.h libavutil/mathematics.h \
  libavcodec/avcodec.h libavcodec/raw.h libavcodec/bytestream.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavutil/opt.h libavutil/pixdesc.h libavformat/metadata.h \
- libavformat/id3v2.h libavutil/avstring.h libavutil/parseutils.h \
- libavutil/timestamp.h libavformat/riff.h libavformat/audiointerleave.h \
- libavutil/fifo.h libavformat/network.h libavutil/error.h \
- libavformat/os_support.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavutil/opt.h libavutil/pixdesc.h \
+ libavformat/metadata.h libavformat/id3v2.h libavutil/avstring.h \
+ libavutil/parseutils.h libavutil/timestamp.h libavformat/riff.h \
+ libavformat/audiointerleave.h libavutil/fifo.h libavformat/network.h \
+ libavutil/error.h libavformat/os_support.h

@@ -10,4 +10,5 @@ libavformat/rtpdec_h263.o: libavformat/rtpdec_h263.c \
  libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
  libavutil/common.h libavformat/version.h libavformat/rtpdec_formats.h \
  libavformat/rtpdec.h libavformat/rtp.h libavformat/avformat.h \
- libavformat/url.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavformat/url.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

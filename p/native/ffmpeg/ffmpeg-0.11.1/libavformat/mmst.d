@@ -10,5 +10,6 @@ libavformat/mmst.o: libavformat/mmst.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/mms.h libavformat/url.h \
  libavformat/internal.h libavformat/avio_internal.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/bytestream.h \
- libavformat/network.h libavutil/error.h libavformat/os_support.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/bytestream.h libavformat/network.h libavutil/error.h \
+ libavformat/os_support.h

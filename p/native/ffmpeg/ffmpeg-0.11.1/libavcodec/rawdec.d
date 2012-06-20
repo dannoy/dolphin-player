@@ -8,5 +8,5 @@ libavcodec/rawdec.o: libavcodec/rawdec.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/imgconvert.h libavcodec/raw.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/imgutils.h \
- libavutil/pixdesc.h libavutil/opt.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/imgutils.h libavutil/pixdesc.h libavutil/opt.h

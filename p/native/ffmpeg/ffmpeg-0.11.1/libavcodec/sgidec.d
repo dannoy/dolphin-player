@@ -9,4 +9,4 @@ libavcodec/sgidec.o: libavcodec/sgidec.c libavutil/imgutils.h \
  libavutil/cpu.h libavutil/dict.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/rational.h libavutil/audioconvert.h libavcodec/version.h \
  libavcodec/bytestream.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/sgi.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/sgi.h

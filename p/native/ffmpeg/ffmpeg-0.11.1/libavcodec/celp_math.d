@@ -8,4 +8,4 @@ libavcodec/celp_math.o: libavcodec/celp_math.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/mathops.h libavutil/common.h \
- libavcodec/celp_math.h
+ libavcodec/mips/mathops.h libavcodec/celp_math.h

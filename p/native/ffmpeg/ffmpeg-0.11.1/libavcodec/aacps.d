@@ -8,7 +8,7 @@ libavcodec/aacps.o: libavcodec/aacps.c libavutil/common.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/get_bits.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/aacps.h libavcodec/aacpsdsp.h \
- libavcodec/aacps_tablegen.h libavutil/mem.h libavcodec/aacpsdata.c \
- libavcodec/dsputil.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/aacps.h libavcodec/aacpsdsp.h libavcodec/aacps_tablegen.h \
+ libavutil/mem.h libavcodec/aacpsdata.c libavcodec/dsputil.h

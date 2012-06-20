@@ -9,5 +9,6 @@ libavcodec/flac.o: libavcodec/flac.c libavutil/crc.h \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/get_bits.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/flacdata.h \
- libavcodec/internal.h libavutil/mathematics.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/flacdata.h libavcodec/internal.h \
+ libavutil/mathematics.h

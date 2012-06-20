@@ -9,4 +9,4 @@ libavcodec/pictordec.o: libavcodec/pictordec.c libavutil/imgutils.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/bytestream.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/cga_data.h
+ libavutil/mips/intreadwrite.h libavcodec/cga_data.h

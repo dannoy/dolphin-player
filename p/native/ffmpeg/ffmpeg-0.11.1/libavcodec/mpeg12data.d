@@ -6,4 +6,5 @@ libavcodec/mpeg12data.o: libavcodec/mpeg12data.c libavcodec/mpeg12data.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/log.h libavutil/avassert.h libavcodec/mathops.h
+ libavutil/mips/intreadwrite.h libavutil/log.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h

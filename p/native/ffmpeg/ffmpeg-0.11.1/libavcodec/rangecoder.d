@@ -8,4 +8,5 @@ libavcodec/rangecoder.o: libavcodec/rangecoder.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/rangecoder.h libavutil/common.h \
- libavcodec/bytestream.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavcodec/bytestream.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

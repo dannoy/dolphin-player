@@ -9,6 +9,7 @@ libavcodec/asv1.o: libavcodec/asv1.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/internal.h libavutil/mathematics.h \
  libavutil/common.h libavcodec/put_bits.h libavutil/bswap.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/dsputil.h libavcodec/mpeg12data.h \
- libavcodec/rl.h libavcodec/get_bits.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/dsputil.h libavcodec/mpeg12data.h libavcodec/rl.h \
+ libavcodec/get_bits.h

@@ -10,5 +10,5 @@ libavcodec/dca_parser.o: libavcodec/dca_parser.c libavcodec/parser.h \
  libavcodec/version.h libavcodec/dca.h libavcodec/dcadata.h \
  libavutil/mem.h libavcodec/dca_parser.h libavcodec/get_bits.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/put_bits.h \
- libavutil/bswap.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/put_bits.h libavutil/bswap.h

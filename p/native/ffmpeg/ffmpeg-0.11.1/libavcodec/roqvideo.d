@@ -9,4 +9,4 @@ libavcodec/roqvideo.o: libavcodec/roqvideo.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/roqvideo.h libavutil/lfg.h \
  libavcodec/bytestream.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/dsputil.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/dsputil.h

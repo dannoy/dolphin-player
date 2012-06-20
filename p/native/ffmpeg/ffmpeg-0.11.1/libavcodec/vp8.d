@@ -10,7 +10,8 @@ libavcodec/vp8.o: libavcodec/vp8.c libavutil/imgutils.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/internal.h \
  libavutil/mathematics.h libavcodec/vp8.h libavcodec/vp56.h \
  libavcodec/vp56data.h libavutil/common.h libavcodec/dsputil.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/get_bits.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/bytestream.h \
- libavcodec/vp56dsp.h libavcodec/vp8dsp.h libavcodec/h264pred.h \
- libavcodec/vp8data.h libavcodec/rectangle.h libavcodec/thread.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/get_bits.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/bytestream.h libavcodec/vp56dsp.h \
+ libavcodec/vp8dsp.h libavcodec/h264pred.h libavcodec/vp8data.h \
+ libavcodec/rectangle.h libavcodec/thread.h

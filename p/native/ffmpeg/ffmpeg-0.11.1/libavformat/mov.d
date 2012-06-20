@@ -1,6 +1,7 @@
 libavformat/mov.o: libavformat/mov.c libavutil/attributes.h \
  libavutil/audioconvert.h libavutil/intreadwrite.h libavutil/avconfig.h \
- libavutil/attributes.h libavutil/bswap.h config.h libavutil/intfloat.h \
+ libavutil/attributes.h libavutil/bswap.h config.h \
+ libavutil/mips/intreadwrite.h libavutil/intfloat.h \
  libavutil/mathematics.h libavutil/rational.h libavutil/avstring.h \
  libavutil/dict.h libavutil/opt.h libavutil/avutil.h libavutil/common.h \
  libavutil/intmath.h libavutil/mem.h libavutil/error.h \
@@ -15,5 +16,5 @@ libavformat/mov.o: libavformat/mov.c libavutil/attributes.h \
  libavformat/internal.h libavformat/avio_internal.h libavformat/url.h \
  libavformat/riff.h libavformat/metadata.h libavformat/isom.h \
  libavformat/dv.h libavcodec/get_bits.h libavutil/avassert.h \
- libavcodec/mathops.h libavformat/id3v1.h libavformat/mov_chan.h \
- libavformat/qtpalette.h
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavformat/id3v1.h \
+ libavformat/mov_chan.h libavformat/qtpalette.h

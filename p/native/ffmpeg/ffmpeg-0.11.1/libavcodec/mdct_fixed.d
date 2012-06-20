@@ -6,4 +6,4 @@ libavcodec/mdct_fixed.o: libavcodec/mdct_fixed.c libavcodec/mdct.c \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/mathematics.h libavcodec/fft.h \
  libavutil/mem.h libavcodec/fft-internal.h libavutil/intmath.h \
- libavcodec/mathops.h
+ libavcodec/mathops.h libavcodec/mips/mathops.h

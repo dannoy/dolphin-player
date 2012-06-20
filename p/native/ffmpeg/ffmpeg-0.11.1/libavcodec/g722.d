@@ -4,7 +4,7 @@ libavcodec/g722.o: libavcodec/g722.c libavcodec/mathops.h \
  libavutil/avutil.h libavutil/mathematics.h libavutil/rational.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
- libavutil/libm.h libavcodec/g722.h libavcodec/avcodec.h \
- libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
- libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
- libavutil/audioconvert.h libavcodec/version.h
+ libavutil/libm.h libavcodec/mips/mathops.h libavcodec/g722.h \
+ libavcodec/avcodec.h libavutil/samplefmt.h libavutil/avutil.h \
+ libavutil/cpu.h libavutil/dict.h libavutil/log.h libavutil/pixfmt.h \
+ libavutil/rational.h libavutil/audioconvert.h libavcodec/version.h

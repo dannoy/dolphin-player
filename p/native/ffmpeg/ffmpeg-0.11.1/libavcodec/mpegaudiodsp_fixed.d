@@ -6,5 +6,5 @@ libavcodec/mpegaudiodsp_fixed.o: libavcodec/mpegaudiodsp_fixed.c \
  libavutil/dict.h libavutil/libm.h libavutil/mathematics.h \
  libavutil/rational.h libavutil/intfloat_readwrite.h libavutil/log.h \
  libavutil/pixfmt.h libavcodec/dct32.h libavcodec/mathops.h \
- libavutil/common.h libavcodec/mpegaudiodsp.h libavcodec/mpegaudio.h \
- libavcodec/mpegaudiodata.h
+ libavutil/common.h libavcodec/mips/mathops.h libavcodec/mpegaudiodsp.h \
+ libavcodec/mpegaudio.h libavcodec/mpegaudiodata.h

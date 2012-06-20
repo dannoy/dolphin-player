@@ -9,6 +9,7 @@ libavcodec/qcelpdec.o: libavcodec/qcelpdec.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/internal.h libavutil/mathematics.h \
  libavcodec/get_bits.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/qcelpdata.h libavcodec/celp_math.h libavcodec/celp_filters.h \
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/qcelpdata.h \
+ libavcodec/celp_math.h libavcodec/celp_filters.h \
  libavcodec/acelp_filters.h libavcodec/acelp_vectors.h libavcodec/lsp.h

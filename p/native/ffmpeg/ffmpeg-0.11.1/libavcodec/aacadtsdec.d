@@ -9,6 +9,6 @@ libavcodec/aacadtsdec.o: libavcodec/aacadtsdec.c \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/parser.h \
  libavcodec/aacadtsdec.h libavcodec/get_bits.h libavutil/common.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/mpeg4audio.h libavcodec/put_bits.h \
- libavutil/bswap.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/mpeg4audio.h libavcodec/put_bits.h libavutil/bswap.h

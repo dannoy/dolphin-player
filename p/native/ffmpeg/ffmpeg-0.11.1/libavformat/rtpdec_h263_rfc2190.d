@@ -11,4 +11,5 @@ libavformat/rtpdec_h263_rfc2190.o: libavformat/rtpdec_h263_rfc2190.c \
  libavutil/common.h libavformat/version.h libavformat/rtpdec_formats.h \
  libavformat/rtpdec.h libavformat/rtp.h libavformat/avformat.h \
  libavformat/url.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/get_bits.h libavutil/avassert.h libavcodec/mathops.h
+ libavutil/mips/intreadwrite.h libavcodec/get_bits.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h

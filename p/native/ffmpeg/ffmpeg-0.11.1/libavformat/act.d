@@ -10,4 +10,5 @@ libavformat/act.o: libavformat/act.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/riff.h libavformat/internal.h \
  libavformat/metadata.h libavcodec/get_bits.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h

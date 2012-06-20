@@ -9,4 +9,5 @@ libavcodec/tiff.o: libavcodec/tiff.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/lzw.h libavcodec/tiff.h \
  libavcodec/faxcompr.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/imgutils.h libavutil/pixdesc.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/imgutils.h \
+ libavutil/pixdesc.h

@@ -9,5 +9,6 @@ libavformat/omadec.o: libavformat/omadec.c libavformat/avformat.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/des.h libavformat/oma.h libavformat/pcm.h \
- libavformat/riff.h libavformat/metadata.h libavformat/id3v2.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/des.h \
+ libavformat/oma.h libavformat/pcm.h libavformat/riff.h \
+ libavformat/metadata.h libavformat/id3v2.h

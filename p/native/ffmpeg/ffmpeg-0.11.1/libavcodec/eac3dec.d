@@ -11,7 +11,8 @@ libavcodec/eac3dec.o: libavcodec/eac3dec.c libavcodec/avcodec.h \
  libavcodec/aac_ac3_parser.h libavcodec/parser.h libavcodec/ac3.h \
  libavutil/opt.h libavcodec/ac3tab.h libavutil/common.h \
  libavcodec/ac3_parser.h libavcodec/get_bits.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/ac3dec.h libavutil/lfg.h libavcodec/ac3dsp.h \
- libavcodec/dsputil.h libavcodec/fft.h libavutil/mem.h libavcodec/avfft.h \
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/ac3dec.h \
+ libavutil/lfg.h libavcodec/ac3dsp.h libavcodec/dsputil.h \
+ libavcodec/fft.h libavutil/mem.h libavcodec/avfft.h \
  libavcodec/fmtconvert.h libavcodec/ac3dec_data.h libavcodec/eac3_data.h

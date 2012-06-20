@@ -9,5 +9,5 @@ libavformat/vqf.o: libavformat/vqf.c libavformat/avformat.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/mathematics.h libavformat/riff.h \
- libavformat/metadata.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/mathematics.h \
+ libavformat/riff.h libavformat/metadata.h

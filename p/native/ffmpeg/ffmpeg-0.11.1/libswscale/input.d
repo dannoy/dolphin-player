@@ -5,6 +5,7 @@ libswscale/input.o: libswscale/input.c libavutil/avutil.h \
  libavutil/libm.h libavutil/mathematics.h libavutil/rational.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/bswap.h libavutil/cpu.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/mathematics.h libavutil/pixdesc.h \
- libswscale/rgb2rgb.h libswscale/swscale.h libavutil/log.h \
- libavutil/pixfmt.h libswscale/swscale.h libswscale/swscale_internal.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/mathematics.h \
+ libavutil/pixdesc.h libswscale/rgb2rgb.h libswscale/swscale.h \
+ libavutil/log.h libavutil/pixfmt.h libswscale/swscale.h \
+ libswscale/swscale_internal.h

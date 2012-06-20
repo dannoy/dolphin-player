@@ -10,5 +10,5 @@ libavformat/cafdec.o: libavformat/cafdec.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavformat/riff.h \
  libavformat/metadata.h libavformat/isom.h libavformat/dv.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/intfloat.h \
- libavformat/caf.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/intfloat.h libavformat/caf.h

@@ -4,4 +4,5 @@ libavutil/adler32.o: libavutil/adler32.c config.h libavutil/adler32.h \
  libavutil/mathematics.h libavutil/rational.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
- libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

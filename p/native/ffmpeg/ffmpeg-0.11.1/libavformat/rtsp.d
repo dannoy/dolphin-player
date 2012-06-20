@@ -1,6 +1,7 @@
 libavformat/rtsp.o: libavformat/rtsp.c libavutil/base64.h \
  libavutil/avstring.h libavutil/attributes.h libavutil/intreadwrite.h \
- libavutil/avconfig.h libavutil/bswap.h config.h libavutil/mathematics.h \
+ libavutil/avconfig.h libavutil/bswap.h config.h \
+ libavutil/mips/intreadwrite.h libavutil/mathematics.h \
  libavutil/rational.h libavutil/parseutils.h libavutil/random_seed.h \
  libavutil/dict.h libavutil/opt.h libavutil/avutil.h libavutil/common.h \
  libavutil/intmath.h libavutil/mem.h libavutil/error.h \

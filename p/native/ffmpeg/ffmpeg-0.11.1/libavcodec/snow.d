@@ -8,10 +8,11 @@ libavcodec/snow.o: libavcodec/snow.c libavutil/intmath.h config.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
  libavutil/dict.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/dsputil.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/dwt.h \
- libavcodec/snow.h libavcodec/rangecoder.h libavutil/common.h \
- libavcodec/mathops.h libavcodec/mpegvideo.h libavcodec/get_bits.h \
- libavutil/avassert.h libavcodec/put_bits.h libavutil/bswap.h \
- libavcodec/ratecontrol.h libavutil/eval.h libavcodec/parser.h \
- libavcodec/mpeg12data.h libavcodec/rl.h libavutil/timecode.h \
- libavcodec/snowdata.h libavcodec/h263.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/dwt.h libavcodec/snow.h libavcodec/rangecoder.h \
+ libavutil/common.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/mpegvideo.h libavcodec/get_bits.h libavutil/avassert.h \
+ libavcodec/put_bits.h libavutil/bswap.h libavcodec/ratecontrol.h \
+ libavutil/eval.h libavcodec/parser.h libavcodec/mpeg12data.h \
+ libavcodec/rl.h libavutil/timecode.h libavcodec/snowdata.h \
+ libavcodec/h263.h

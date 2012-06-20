@@ -4,4 +4,5 @@ libavutil/des.o: libavutil/des.c libavutil/avutil.h libavutil/common.h \
  libavutil/cpu.h libavutil/dict.h libavutil/libm.h \
  libavutil/mathematics.h libavutil/rational.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/des.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/des.h

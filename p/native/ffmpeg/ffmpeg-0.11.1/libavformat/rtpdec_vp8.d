@@ -6,9 +6,10 @@ libavformat/rtpdec_vp8.o: libavformat/rtpdec_vp8.c \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavformat/rtpdec_formats.h libavformat/rtpdec.h libavcodec/avcodec.h \
- libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
- libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
- libavutil/audioconvert.h libavcodec/version.h libavformat/avformat.h \
- libavformat/avio.h libavformat/version.h libavformat/rtp.h \
- libavformat/avformat.h libavformat/url.h
+ libavutil/mips/intreadwrite.h libavformat/rtpdec_formats.h \
+ libavformat/rtpdec.h libavcodec/avcodec.h libavutil/samplefmt.h \
+ libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
+ libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
+ libavcodec/version.h libavformat/avformat.h libavformat/avio.h \
+ libavformat/version.h libavformat/rtp.h libavformat/avformat.h \
+ libavformat/url.h

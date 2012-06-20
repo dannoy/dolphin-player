@@ -9,4 +9,5 @@ libavcodec/ra144.o: libavcodec/ra144.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/celp_filters.h libavcodec/ra144.h \
  libavcodec/lpc.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/audio_frame_queue.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/audio_frame_queue.h

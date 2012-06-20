@@ -9,4 +9,5 @@ libavformat/ivfdec.o: libavformat/ivfdec.c libavformat/avformat.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavformat/riff.h \
- libavformat/metadata.h libavutil/intreadwrite.h libavutil/bswap.h
+ libavformat/metadata.h libavutil/intreadwrite.h libavutil/bswap.h \
+ libavutil/mips/intreadwrite.h

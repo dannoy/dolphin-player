@@ -8,4 +8,4 @@ libavcodec/pcm-mpeg.o: libavcodec/pcm-mpeg.c libavutil/audioconvert.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavcodec/version.h \
  libavcodec/bytestream.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h

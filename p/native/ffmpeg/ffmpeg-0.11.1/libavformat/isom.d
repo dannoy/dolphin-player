@@ -11,5 +11,6 @@ libavformat/isom.o: libavformat/isom.c libavformat/avformat.h \
  libavformat/version.h libavformat/internal.h libavformat/isom.h \
  libavformat/dv.h libavformat/riff.h libavformat/metadata.h \
  libavcodec/mpeg4audio.h libavcodec/get_bits.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/put_bits.h libavutil/bswap.h libavcodec/mpegaudiodata.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/put_bits.h \
+ libavutil/bswap.h libavcodec/mpegaudiodata.h

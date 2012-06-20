@@ -9,4 +9,5 @@ libavcodec/pnmdec.o: libavcodec/pnmdec.c libavcodec/avcodec.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/put_bits.h libavutil/bswap.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/pnm.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/pnm.h

@@ -9,4 +9,4 @@ libavcodec/nuv.o: libavcodec/nuv.c libavutil/bswap.h libavutil/avconfig.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/rtjpeg.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/rtjpeg.h

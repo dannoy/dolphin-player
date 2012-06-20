@@ -5,4 +5,4 @@ libavutil/aes.o: libavutil/aes.c libavutil/common.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/aes.h libavutil/intreadwrite.h \
- libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h

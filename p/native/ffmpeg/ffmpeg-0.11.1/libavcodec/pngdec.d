@@ -9,4 +9,4 @@ libavcodec/pngdec.o: libavcodec/pngdec.c libavutil/imgutils.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/bytestream.h \
  libavutil/common.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/png.h libavcodec/pngdsp.h
+ libavutil/mips/intreadwrite.h libavcodec/png.h libavcodec/pngdsp.h

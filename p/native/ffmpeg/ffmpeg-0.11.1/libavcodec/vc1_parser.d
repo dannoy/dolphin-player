@@ -9,8 +9,9 @@ libavcodec/vc1_parser.o: libavcodec/vc1_parser.c libavcodec/parser.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/vc1.h libavcodec/mpegvideo.h \
  libavcodec/dsputil.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/get_bits.h libavutil/common.h libavutil/avassert.h \
- libavcodec/mathops.h libavcodec/put_bits.h libavutil/bswap.h \
- libavcodec/ratecontrol.h libavutil/eval.h libavcodec/mpeg12data.h \
- libavcodec/rl.h libavutil/timecode.h libavutil/opt.h \
- libavcodec/intrax8.h libavcodec/vc1dsp.h
+ libavutil/mips/intreadwrite.h libavcodec/get_bits.h libavutil/common.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h \
+ libavcodec/put_bits.h libavutil/bswap.h libavcodec/ratecontrol.h \
+ libavutil/eval.h libavcodec/mpeg12data.h libavcodec/rl.h \
+ libavutil/timecode.h libavutil/opt.h libavcodec/intrax8.h \
+ libavcodec/vc1dsp.h

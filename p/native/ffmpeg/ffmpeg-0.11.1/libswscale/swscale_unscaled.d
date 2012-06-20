@@ -7,5 +7,5 @@ libswscale/swscale_unscaled.o: libswscale/swscale_unscaled.c config.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/log.h libavutil/pixfmt.h libswscale/swscale_internal.h \
  libavutil/pixdesc.h libswscale/rgb2rgb.h libswscale/swscale.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavutil/cpu.h \
- libavutil/mathematics.h libavutil/bswap.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavutil/cpu.h libavutil/mathematics.h libavutil/bswap.h

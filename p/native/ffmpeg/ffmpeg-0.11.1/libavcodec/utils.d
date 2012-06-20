@@ -10,6 +10,7 @@ libavcodec/utils.o: libavcodec/utils.c libavutil/avassert.h \
  libavutil/dict.h libavcodec/avcodec.h libavutil/avutil.h libavutil/cpu.h \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/opt.h libavcodec/imgconvert.h \
- libavcodec/thread.h libavcodec/audioconvert.h libavcodec/internal.h \
- libavcodec/bytestream.h libavutil/common.h libavcodec/codec_names.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/opt.h \
+ libavcodec/imgconvert.h libavcodec/thread.h libavcodec/audioconvert.h \
+ libavcodec/internal.h libavcodec/bytestream.h libavutil/common.h \
+ libavcodec/codec_names.h

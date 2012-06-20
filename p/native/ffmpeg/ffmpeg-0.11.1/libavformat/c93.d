@@ -10,4 +10,4 @@ libavformat/c93.o: libavformat/c93.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/internal.h libavformat/voc.h \
  libavformat/riff.h libavformat/metadata.h libavutil/intreadwrite.h \
- libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h

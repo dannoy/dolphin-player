@@ -8,4 +8,4 @@ libavcodec/rv30dsp.o: libavcodec/rv30dsp.c libavcodec/avcodec.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/rv34dsp.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/rv34dsp.h

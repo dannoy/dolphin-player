@@ -15,6 +15,10 @@ ifeq ($(TARGET_ARCH_ABI),x86)
    LOCAL_SRC_FILES := src/yuv2rgb16tab.c src/yuv420rgb8888c.c src/yuv420rgb565c.c
 endif
 
+ifeq ($(TARGET_ARCH_ABI),mips)
+   LOCAL_SRC_FILES := src/yuv2rgb16tab.c src/yuv420rgb8888c.c src/yuv420rgb565c.c
+endif
+
 LOCAL_SHARED_LIBRARIES := 
 LOCAL_STATIC_LIBRARIES := 
 LOCAL_LDLIBS := -ldl -llog 

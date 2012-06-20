@@ -8,9 +8,10 @@ libavcodec/flvdec.o: libavcodec/flvdec.c libavcodec/mpegvideo.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/get_bits.h libavutil/common.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/put_bits.h \
- libavutil/bswap.h libavcodec/ratecontrol.h libavutil/eval.h \
- libavcodec/parser.h libavcodec/mpeg12data.h libavcodec/rl.h \
- libavutil/timecode.h libavutil/opt.h libavcodec/h263.h libavcodec/flv.h \
- libavutil/imgutils.h libavutil/pixdesc.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/get_bits.h \
+ libavutil/common.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/put_bits.h libavutil/bswap.h \
+ libavcodec/ratecontrol.h libavutil/eval.h libavcodec/parser.h \
+ libavcodec/mpeg12data.h libavcodec/rl.h libavutil/timecode.h \
+ libavutil/opt.h libavcodec/h263.h libavcodec/flv.h libavutil/imgutils.h \
+ libavutil/pixdesc.h

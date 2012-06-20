@@ -10,4 +10,4 @@ libavformat/nsvdec.o: libavformat/nsvdec.c libavutil/attributes.h \
  libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
  libavutil/common.h libavformat/version.h libavformat/internal.h \
  libavformat/riff.h libavformat/metadata.h libavutil/intreadwrite.h \
- libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h

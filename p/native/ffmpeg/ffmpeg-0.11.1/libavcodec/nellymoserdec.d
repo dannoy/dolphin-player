@@ -9,6 +9,7 @@ libavcodec/nellymoserdec.o: libavcodec/nellymoserdec.c \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavutil/lfg.h \
  libavutil/random_seed.h libavcodec/dsputil.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/fft.h libavutil/mem.h libavcodec/avfft.h \
- libavcodec/fmtconvert.h libavcodec/sinewin.h libavcodec/get_bits.h \
- libavutil/common.h libavutil/avassert.h libavcodec/mathops.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/fft.h \
+ libavutil/mem.h libavcodec/avfft.h libavcodec/fmtconvert.h \
+ libavcodec/sinewin.h libavcodec/get_bits.h libavutil/common.h \
+ libavutil/avassert.h libavcodec/mathops.h libavcodec/mips/mathops.h

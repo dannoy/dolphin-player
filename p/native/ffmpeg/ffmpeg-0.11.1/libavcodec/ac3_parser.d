@@ -10,4 +10,5 @@ libavcodec/ac3_parser.o: libavcodec/ac3_parser.c libavcodec/parser.h \
  libavcodec/version.h libavcodec/ac3_parser.h libavcodec/ac3.h \
  libavutil/opt.h libavcodec/ac3tab.h libavutil/common.h \
  libavcodec/get_bits.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/avassert.h libavcodec/mathops.h libavcodec/aac_ac3_parser.h
+ libavutil/mips/intreadwrite.h libavutil/avassert.h libavcodec/mathops.h \
+ libavcodec/mips/mathops.h libavcodec/aac_ac3_parser.h

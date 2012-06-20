@@ -9,5 +9,6 @@ libavcodec/aac_parser.o: libavcodec/aac_parser.c libavcodec/parser.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/aac_ac3_parser.h libavcodec/aacadtsdec.h \
  libavcodec/get_bits.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/mpeg4audio.h libavcodec/put_bits.h libavutil/bswap.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/mpeg4audio.h \
+ libavcodec/put_bits.h libavutil/bswap.h

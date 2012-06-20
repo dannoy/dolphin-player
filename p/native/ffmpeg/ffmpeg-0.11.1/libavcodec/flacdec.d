@@ -9,6 +9,7 @@ libavcodec/flacdec.o: libavcodec/flacdec.c libavutil/audioconvert.h \
  libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavcodec/version.h libavcodec/internal.h libavutil/mathematics.h \
  libavcodec/get_bits.h libavutil/common.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avassert.h libavcodec/mathops.h \
- libavcodec/bytestream.h libavcodec/golomb.h libavcodec/put_bits.h \
- libavutil/bswap.h libavcodec/flac.h libavcodec/flacdata.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavcodec/bytestream.h \
+ libavcodec/golomb.h libavcodec/put_bits.h libavutil/bswap.h \
+ libavcodec/flac.h libavcodec/flacdata.h

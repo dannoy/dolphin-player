@@ -8,6 +8,7 @@ libavcodec/bink.o: libavcodec/bink.c libavutil/imgutils.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
  libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
  libavutil/audioconvert.h libavcodec/version.h libavcodec/dsputil.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavcodec/binkdata.h \
- libavcodec/binkdsp.h libavcodec/mathops.h libavutil/common.h \
- libavcodec/get_bits.h libavutil/avassert.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavcodec/binkdata.h libavcodec/binkdsp.h libavcodec/mathops.h \
+ libavutil/common.h libavcodec/mips/mathops.h libavcodec/get_bits.h \
+ libavutil/avassert.h

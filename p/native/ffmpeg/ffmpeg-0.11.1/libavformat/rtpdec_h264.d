@@ -6,11 +6,12 @@ libavformat/rtpdec_h264.o: libavformat/rtpdec_h264.c libavutil/base64.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/log.h libavutil/avassert.h libavcodec/mathops.h \
- libavformat/avformat.h libavcodec/avcodec.h libavutil/samplefmt.h \
- libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/pixfmt.h \
- libavutil/rational.h libavutil/audioconvert.h libavcodec/version.h \
- libavformat/avio.h libavformat/version.h libavformat/mpegts.h \
- libavformat/network.h libavutil/error.h libavformat/os_support.h \
- libavformat/rtpdec.h libavformat/rtp.h libavformat/avformat.h \
- libavformat/url.h libavformat/rtpdec_formats.h
+ libavutil/mips/intreadwrite.h libavutil/log.h libavutil/avassert.h \
+ libavcodec/mathops.h libavcodec/mips/mathops.h libavformat/avformat.h \
+ libavcodec/avcodec.h libavutil/samplefmt.h libavutil/avutil.h \
+ libavutil/cpu.h libavutil/dict.h libavutil/pixfmt.h libavutil/rational.h \
+ libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
+ libavformat/version.h libavformat/mpegts.h libavformat/network.h \
+ libavutil/error.h libavformat/os_support.h libavformat/rtpdec.h \
+ libavformat/rtp.h libavformat/avformat.h libavformat/url.h \
+ libavformat/rtpdec_formats.h

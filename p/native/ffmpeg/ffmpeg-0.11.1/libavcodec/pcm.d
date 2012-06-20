@@ -8,5 +8,5 @@ libavcodec/pcm.o: libavcodec/pcm.c libavutil/common.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/bytestream.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavcodec/internal.h libavutil/mathematics.h \
- libavcodec/pcm_tablegen.h libavutil/attributes.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavcodec/internal.h \
+ libavutil/mathematics.h libavcodec/pcm_tablegen.h libavutil/attributes.h

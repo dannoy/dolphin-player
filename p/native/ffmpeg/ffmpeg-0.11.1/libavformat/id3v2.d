@@ -10,5 +10,5 @@ libavformat/id3v2.o: libavformat/id3v2.c config.h libavformat/id3v2.h \
  libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
  libavutil/common.h libavformat/version.h libavformat/internal.h \
  libavformat/metadata.h libavformat/id3v1.h libavutil/avstring.h \
- libavutil/intreadwrite.h libavutil/bswap.h libavformat/avio_internal.h \
- libavformat/url.h
+ libavutil/intreadwrite.h libavutil/bswap.h libavutil/mips/intreadwrite.h \
+ libavformat/avio_internal.h libavformat/url.h

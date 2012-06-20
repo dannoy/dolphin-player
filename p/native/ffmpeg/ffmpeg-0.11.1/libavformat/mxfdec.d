@@ -6,8 +6,9 @@ libavformat/mxfdec.o: libavformat/mxfdec.c libavutil/aes.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
  libavutil/libm.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/timecode.h libavformat/avformat.h libavcodec/avcodec.h \
- libavutil/samplefmt.h libavutil/avutil.h libavutil/cpu.h \
- libavutil/dict.h libavutil/log.h libavutil/pixfmt.h libavutil/rational.h \
- libavutil/audioconvert.h libavcodec/version.h libavformat/avio.h \
- libavformat/version.h libavformat/internal.h libavformat/mxf.h
+ libavutil/mips/intreadwrite.h libavutil/timecode.h \
+ libavformat/avformat.h libavcodec/avcodec.h libavutil/samplefmt.h \
+ libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
+ libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
+ libavcodec/version.h libavformat/avio.h libavformat/version.h \
+ libavformat/internal.h libavformat/mxf.h

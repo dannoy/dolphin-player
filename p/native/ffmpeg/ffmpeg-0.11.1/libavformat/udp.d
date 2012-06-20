@@ -10,5 +10,6 @@ libavformat/udp.o: libavformat/udp.c libavformat/avformat.h \
  libavcodec/version.h libavformat/avio.h libavutil/common.h \
  libavformat/version.h libavformat/avio_internal.h libavformat/url.h \
  libavutil/parseutils.h libavutil/fifo.h libavutil/intreadwrite.h \
- libavutil/bswap.h libavutil/avstring.h libavformat/internal.h \
- libavformat/network.h libavutil/error.h libavformat/os_support.h
+ libavutil/bswap.h libavutil/mips/intreadwrite.h libavutil/avstring.h \
+ libavformat/internal.h libavformat/network.h libavutil/error.h \
+ libavformat/os_support.h

@@ -11,4 +11,5 @@ libavcodec/amrnbdec.o: libavcodec/amrnbdec.c libavcodec/avcodec.h \
  libavcodec/celp_filters.h libavcodec/acelp_filters.h \
  libavcodec/acelp_vectors.h libavcodec/acelp_pitch_delay.h \
  libavcodec/dsputil.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavcodec/lsp.h libavcodec/amr.h libavcodec/amrnbdata.h
+ libavutil/mips/intreadwrite.h libavcodec/lsp.h libavcodec/amr.h \
+ libavcodec/amrnbdata.h

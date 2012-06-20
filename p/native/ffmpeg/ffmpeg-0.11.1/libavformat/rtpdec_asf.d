@@ -1,11 +1,11 @@
 libavformat/rtpdec_asf.o: libavformat/rtpdec_asf.c libavutil/base64.h \
  libavutil/avstring.h libavutil/attributes.h libavutil/intreadwrite.h \
- libavutil/avconfig.h libavutil/bswap.h config.h libavformat/rtp.h \
- libavformat/avformat.h libavcodec/avcodec.h libavutil/samplefmt.h \
- libavutil/avutil.h libavutil/common.h libavutil/intmath.h \
- libavutil/mem.h libavutil/error.h libavutil/internal.h libavutil/timer.h \
- libavutil/cpu.h libavutil/dict.h libavutil/libm.h \
- libavutil/mathematics.h libavutil/rational.h \
+ libavutil/avconfig.h libavutil/bswap.h config.h \
+ libavutil/mips/intreadwrite.h libavformat/rtp.h libavformat/avformat.h \
+ libavcodec/avcodec.h libavutil/samplefmt.h libavutil/avutil.h \
+ libavutil/common.h libavutil/intmath.h libavutil/mem.h libavutil/error.h \
+ libavutil/internal.h libavutil/timer.h libavutil/cpu.h libavutil/dict.h \
+ libavutil/libm.h libavutil/mathematics.h libavutil/rational.h \
  libavutil/intfloat_readwrite.h libavutil/log.h libavutil/pixfmt.h \
  libavutil/avutil.h libavutil/cpu.h libavutil/dict.h libavutil/log.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \

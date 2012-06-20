@@ -9,4 +9,4 @@ libavcodec/ac3dsp.o: libavcodec/ac3dsp.c libavutil/avassert.h \
  libavutil/pixfmt.h libavutil/rational.h libavutil/audioconvert.h \
  libavcodec/version.h libavcodec/ac3.h libavutil/opt.h \
  libavcodec/ac3tab.h libavutil/common.h libavcodec/ac3dsp.h \
- libavcodec/mathops.h
+ libavcodec/mathops.h libavcodec/mips/mathops.h
