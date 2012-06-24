@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>jenderal pengaruh arus-balik</item>
+		<item>sarankan aplikasi</item>
+		<item>Sarankan Fitur sebuah</item>
+<item>Laporkan Masalah</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>putih</item>
+<item>abu-abu</item>
+<item>hijau</item>
+<item>merah</item>
+<item>biru</item>
+<item>kuning</item>
+<item>magenta</item>
+<item>cyan     </item>
+	</string-array>
+	<string-array name="Loop">
+		<item>Putar sekali saja</item>
+<item>Mainkan semua</item>
+<item>Ulangi satu</item>
+<item>Ulangi semua      </item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>Tidak ada</item>
+<item>alfabetis</item>
+<item>jenis       </item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>kecil</item>
+<item>medium</item>
+<item>besar      </item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>Inggris</item>
+
+<item>Cina</item>
+<item>Perancis</item>
+<item>Jerman</item>
+
+<item>Italia</item>
+<item>Jepang</item>
+
+<item>Arab</item>
+<item>Rusia</item>
+<item>Korea
+</item>
+<item>Portugis</item>
+
+<item>Spanyol</item>
+
+<item>Hindi
+</item>
+<item>Indonesia</item>
+
+<item>Thai</item>
+
+<item>Vietnam</item>
+		
+	</string-array>
+	</resources>

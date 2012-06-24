@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>일반 사용자 의견</item>
+		<item>Suggest an Application</item>
+		<item>기능 제안</item>
+		<item>문제 신고</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>화이트</item>
+		<item>회색</item>
+		<item>녹색</item>
+		<item>빨강</item>
+		<item>푸른</item>
+		<item>황색</item>
+		<item>마젠타</item>
+		<item>청록색</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>한 번 재생</item>
+		<item>모두 재생</item>
+		<item>한 번 반복</item>
+		<item>모두를 반복</item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>선택하지</item>
+		<item>가나다순</item>
+		<item>유형
+</item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>작은</item>
+		<item>매질</item>
+		<item>큰</item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>영어</item>
+
+<item>중국어</item>
+<item>프랑스의</item>
+<item>독일의</item>
+
+<item>이탈리아의</item>
+<item>일본어</item>
+
+
+
+
+
+
+
+
+<item>아랍어</item>
+<item>러시아의</item>
+<item>한국의</item>
+
+<item>포르투갈어</item>
+
+<item>스페인의</item>
+
+<item>힌디어</item>
+
+<item>인도네시아의</item>
+
+<item>thai</item>
+
+<item>베트남 사람</item>
+
+		
+	</string-array>
+	</resources>

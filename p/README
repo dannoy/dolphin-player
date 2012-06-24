@@ -2,6 +2,9 @@ Steps to compile the source code:
 
 1. Clone the project from git
 2. Edit the AVPLAYER_PATH variable in jni/Android.mk
+3. Edit the LOCAL_LDLIBS variable in jni/app/Android.mk
+4. While compiling in windows, Change the directory convention from "/" to "\", if required
+5. For compiling in windows, Use a shorter path name like "C:\p" or "D:\p". Longer path will cause problems in compilation as the command line length limitation will be reached during compilation.
 
 NDK Compilation (r8 or similar)
 3. Goto project directory (p directory)

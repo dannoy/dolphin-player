@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">دلفين لاعب</string>
+
+	<string name="feedback">ردود الفعل</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">تقدم</string>
+	<string name="description">وصف</string>
+	<string name="category">فئة</string>
+	<string name="cancel">إلغاء</string>
+	<string name="ok">موافق</string>
+
+	<string name="about">حول</string>
+	<string name="search">البحث</string>
+	<string name="quit">استقال</string>
+	<string name="display">عرض</string>
+	<string name="setting">إعدادات</string>
+	<string name="searchforafile">البحث عن ملف</string>
+	<string name="pressbackagaintoquit">اضغط على العودة مرة أخرى لتقلع.</string>
+	<string name="cantreadfolderduetopermissions">لا يمكن قراءة المجلد بسبب أذونات
+	</string>
+	<string name="setasdefaultsubtitlefont">بنجاح، على النحو الخط الفرعي الافتراضي</string>
+	<string name="setasdefaulthomepath">بنجاح، على النحو الخط الفرعي الافتراضي</string>
+	<string name="searching">البحث</string>
+	<string name="searchingcurrentfilesystem">...البحث الحالي نظام الملفات</string>
+	<string name="changeto">تغيير إلى </string>
+	<string name="changetextcolor">تغيير لون النص</string>
+	<string name="sortby">...نوع من قبل</string>
+	<string name="loop">...أنشوطة</string>
+	<string name="pleaseenteryourthoughtsindescription">من فضلك أدخل أفكارك في الوصف
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">غير قادر على الاتصال بالخادم. يرجى المحاولة في وقت ما بعد</string>
+	<string name="calculatinginformation">...</string>
+	<string name="pathis">المسار</string>
+	<string name="textcolor">لون النص</string>
+	<string name="changethetextcolorpreference">تغيير تفضيل لون النص</string>
+	<string name="showhiddenfilesfolders">إظهار الملفات المخفية / المجلدات</string>
+	<string name="displayhiddenfilesandfolders">عرض الملفات والمجلدات المخفية</string>
+	<string name="subtitle">عنوان فرعي</string>
+	<string name="hidesubtitles">اخفاء عنوان فرعي</string>
+<string name="audio">الصوت</string>
+	<string name="loopaudio">تشغيل الصوت</string>
+	<string name="video">فيديو</string>
+	<string name="loopvideo">لعب الفيديو</string>
+	<string name="choosehowtoloopplayaudiofiles">اختيار كيفية تشغيل الملفات الصوتية في مجلد
+	</string>
+<string name="sortingtype">فرز نوع</string>
+	<string name="choosehowtosortfilesandfolders">اختيار كيفية فرز الملفات والمجلدات</string>
+	<string name="language">لغة</string>
+	<string name="chooselanguageforapplication">اختيار اللغة للتطبيق</string>
+	<string name="help">مساعدة</string>
+	<string name="subtitlesize">العنوان الفرعي حجم</string>
+	<string name="displaysizeofsubtitle">العنوان الفرعي حجم العرض</string>
+	<string name="showsubtitles">عنوان فرعي إظهار</string>
+	<string name="showsubtitlesifexists">وتظهر ترجمات إذا ملف الترجمة متاح</string>
+	<string name="found">وجدت</string>
+	<string name="files">ملف</string>
+	</resources>

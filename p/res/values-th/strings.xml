@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">ปลาโลมา นักกีฬา</string>
+
+	<string name="feedback">คำติชม</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">ส่ง</string>
+	<string name="description">คำอธิบาย</string>
+	<string name="category">หมวดหมู่</string>
+	<string name="cancel">ยกเลิก</string>
+	<string name="ok">อนุมัติ</string>
+
+	<string name="about">เกี่ยวกับ</string>
+	<string name="search">ค้นหา</string>
+	<string name="quit">เลิก</string>
+	<string name="display">แสดง</string>
+	<string name="setting">การตั้งค่า</string>
+	<string name="searchforafile">ค้นหาแฟ้ม</string>
+	<string name="pressbackagaintoquit">กดกลับมาอีกครั้งเพื่อออกจาก.</string>
+	<string name="cantreadfolderduetopermissions">โฟลเดอร์เข้าถึงลาดเท
+	</string>
+	<string name="setasdefaultsubtitlefont">เรียบร้อยแล้วตั้งค่าให้เป็นตัวอักษรคำบรรยายเริ่มต้น</string>
+	<string name="setasdefaulthomepath">เส้นทางบ้านตั้งค่าเรียบร้อยแล้ว</string>
+	<string name="searching">ค้นหา</string>
+	<string name="searchingcurrentfilesystem">ค้นหาไฟล์ระบบในปัจจุบัน...</string>
+	<string name="changeto">เปลี่ยนไป </string>
+	<string name="changetextcolor">เปลี่ยนสีข้อความ</string>
+	<string name="sortby">เรียงตาม...</string>
+	<string name="loop">ห่วง ...</string>
+	<string name="pleaseenteryourthoughtsindescription">กรุณาใส่ความคิดของคุณในคำอธิบาย
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">ไม่สามารถเชื่อมต่อไปยังเซิร์ฟเวอร์ โปรดลองหลังจากที่
+บางครั้ง</string>
+	<string name="calculatinginformation">วิเคราะห์ ข้อมูล...</string>
+	<string name="pathis">เส้นทางคือ</string>
+	<string name="textcolor">สีตัวอักษร</string>
+	<string name="changethetextcolorpreference">เปลี่ยนการตั้งค่าสีของตัวอักษร</string>
+	<string name="showhiddenfilesfolders">แสดงแฟ้มและโฟลเดอร์ที่ซ่อน</string>
+	<string name="displayhiddenfilesandfolders">แสดงแฟ้มและโฟลเดอร์ที่ซ่อน</string>
+	<string name="subtitle">คำบรรยาย</string>
+	<string name="hidesubtitles">ซ่อนคำบรรยาย</string>
+<string name="audio">เสียง</string>
+	<string name="loopaudio">เสียงจะเล่น</string>
+	<string name="video">วีดีโอ
+</string>
+	<string name="loopvideo">เล่นวิดีโอ</string>
+	<string name="choosehowtoloopplayaudiofiles">เลือกวิธีการเล่นไฟล์เสียงในโฟลเดอร์
+	</string>
+<string name="sortingtype">การเรียงลำดับประเภท</string>
+	<string name="choosehowtosortfilesandfolders">เลือกวิธีการจัดเรียงไฟล์และโฟลเดอร์</string>
+	<string name="language">ภาษา</string>
+	<string name="chooselanguageforapplication">เลือกภาษาสำหรับโปรแกรมประยุกต์
+</string>
+	<string name="help">ช่วย
+</string>
+	<string name="subtitlesize">ขนาดของคำบรรยาย</string>
+	<string name="displaysizeofsubtitle">แสดงขนาดของคำบรรยาย</string>
+	<string name="showsubtitles">แสดงคำบรรยาย</string>
+	<string name="showsubtitlesifexists">แสดงคำบรรยายหากไฟล์คำบรรยายใช้ได้</string>
+	<string name="found">พบ</string>
+	<string name="files">ไฟล์</string>
+	</resources>
+
+
+	

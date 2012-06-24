@@ -174,6 +174,10 @@ public class VideoPlayer extends Activity  {
 		//trScrolledTime.setVisibility(View.GONE);
 		mHideContainer = findViewById(R.id.hidecontainer);
 		mHideContainer.setOnClickListener(mVisibleListener);
+		
+		mControlPanelContainer = findViewById(R.id.controlPanel);
+		mControlPanelContainer.setOnClickListener(mControlPanelListener);
+
 		imgAspectRatio.setOnTouchListener(imgAspectRatioTouchListener);
 		imgPlay.setOnTouchListener(imgPlayTouchListener);
 		imgForward.setOnTouchListener(imgForwardTouchListener);
@@ -309,6 +313,15 @@ public class VideoPlayer extends Activity  {
 				mHideContainer.setVisibility(View.INVISIBLE);
 				seekBarUpdater.stopIt();
 			}
+		}
+	};
+	
+	OnClickListener mControlPanelListener = new OnClickListener() 
+	{
+		public void onClick(View v) 
+		{
+			//Do not hide the control panel par, when clicked
+			//System.out.println("CONTROL PANEL  LISTENER ONCLICK ");
 		}
 	};
 
@@ -447,6 +460,7 @@ public class VideoPlayer extends Activity  {
 	};
 
 	View mHideContainer;
+	View mControlPanelContainer;
 
 	View imgPlay; 
 	View imgBackward; View imgForward;

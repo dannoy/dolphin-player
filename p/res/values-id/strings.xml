@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Dolphin pemain</string>
+
+	<string name="feedback">Saran atau masukan</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">menyerahkan
+</string>
+	<string name="description">deskripsi</string>
+	<string name="category">kategori</string>
+	<string name="cancel">membatalkan</string>
+	<string name="ok">oke</string>
+
+	<string name="about">tentang</string>
+	<string name="search">Cari</string>
+	<string name="quit">berhenti</string>
+	<string name="display">Tampilan</string>
+	<string name="setting">menyesuaikan</string>
+	<string name="searchforafile">Pencarian file
+</string>
+	<string name="pressbackagaintoquit">Tekan kembali lagi untuk berhenti.</string>
+	<string name="cantreadfolderduetopermissions">Tidak bisa membaca folder karena izin
+	</string>
+	<string name="setasdefaultsubtitlefont">Berhasil, ditetapkan sebagai default font subtitle</string>
+	<string name="setasdefaulthomepath">Berhasil, ditetapkan sebagai standar homepath</string>
+	<string name="searching">Pencarian</string>
+	<string name="searchingcurrentfilesystem">Mencari sistem file saat ini...</string>
+	<string name="changeto">Ubah ke </string>
+	<string name="changetextcolor">Mengubah warna teks</string>
+	<string name="sortby">Urut berdasarkan...</string>
+	<string name="loop">ikalan ...</string>
+	<string name="pleaseenteryourthoughtsindescription">Silahkan Masukkan pengalaman anda dalam Deskripsi
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">Tidak dapat terhubung ke server. Silakan coba setelah
+kadang</string>
+	<string name="calculatinginformation">menghitung informasi...</string>
+	<string name="pathis">jalan adalah</string>
+	<string name="textcolor">warna teks
+</string>
+	<string name="changethetextcolorpreference">Mengubah preferensi warna teks</string>
+	<string name="showhiddenfilesfolders">Tampilkan berkas dan folder tersembunyi
+</string>
+	<string name="displayhiddenfilesandfolders">Tampilkan berkas dan folder tersembunyi
+</string>
+	<string name="subtitle">teks bawah di film</string>
+	<string name="hidesubtitles">Sembunyikan sub judul</string>
+<string name="audio">Audio</string>
+	<string name="loopaudio">Putar Audio</string>
+	<string name="video">bermain Video</string>
+	<string name="loopvideo">Play Video</string>
+	<string name="choosehowtoloopplayaudiofiles">Pilih cara untuk memutar file audio dalam folder
+	</string>
+<string name="sortingtype">Sortasi jenis</string>
+	<string name="choosehowtosortfilesandfolders">Pilih cara untuk menyortir file dan folder</string>
+	<string name="language">bahasa</string>
+	<string name="chooselanguageforapplication">Pilih bahasa untuk aplikasi</string>
+	<string name="help">membantu</string>
+	<string name="subtitlesize">subtitle ukuran</string>
+	<string name="displaysizeofsubtitle">Menampilkan ukuran subjudul</string>
+	<string name="showsubtitles">Tampilkan sub judul</string>
+	<string name="showsubtitlesifexists">Tampilkan teks subjudul jika tersedia berkas</string>
+	<string name="found">ditemukan</string>
+	<string name="files">file(s)</string>
+	</resources>
+
+
+	

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>Tổng Phản hồi</item>
+<item>Đề xuất một ứng dụng</item>
+<item>Đề nghị một tính năng</item>
+<item>Báo cáo một vấn đề</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>trắng</item>
+<item>màu xám</item>
+<item>xanh</item>
+<item>Red</item>
+<item>màu xanh</item>
+<item>màu vàng</item>
+<item>Magenta</item>
+<item>Cyan    </item>
+	</string-array>
+	<string-array name="Loop">
+		<item>chơi một lần mỗi lần   </item>
+		<item>chơi tất cả</item>
+<item>Lặp lại một lần</item>
+<item>Lặp lại tất cả     </item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>không ai</item>
+<item>Theo thứ tự chữ cái</item>
+<item>loại      </item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>nhỏ</item>
+<item>trung bình</item>
+<item>lớn     </item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>Anh</item>
+
+<item>Trung Quốc</item>
+<item>Pháp</item>
+<item>Đức</item>
+
+<item>Ý</item>
+<item>Nhật Bản</item>
+<item>Tiếng Ả Rập</item>
+<item>Nga</item>
+<item>Hàn Quốc</item>
+
+<item>Bồ Đào Nha</item>
+
+<item>Tây Ban Nha</item>
+
+<item>Tiếng Hin-ddi
+</item>
+<item>Indonesia</item>
+
+<item>Thái</item>
+
+<item>Việt</item>
+		
+	</string-array>
+	</resources>

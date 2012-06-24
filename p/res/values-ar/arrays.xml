@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!-- Used in View/Feedback options.java -->
+	<string-array name="Category">
+		<item>ملاحظات عامة</item>  
+		<item>اقترح تطبيق</item>
+		<item>اقتراح ميزة</item>
+		<item>الإبلاغ عن مشكلة</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>أبيض</item>
+		<item>اللون الرمادي</item>
+		<item>أخضر</item>
+		<item>أحمر</item>
+		<item>أزرق</item>
+		<item>أصفر</item>
+		<item>أرجواني</item>
+		<item>السماوي</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>لعب مرة واحدة</item>
+		<item>تلعب جميع</item>
+		<item>كرر 1</item>
+		<item>كرر جميع</item>
+	</string-array>
+	
+	<string-array name="Sort">
+		<item>لا شيء</item>
+		<item>أبجدي</item>
+		<item>نوع</item>
+	</string-array>
+	
+	<string-array name="SubtitleSize">
+		<item>صغير</item>
+  		<item>متوسط</item>
+  		<item>كبير</item>
+  	</string-array>
+  	
+  	<string-array name="Languages">
+		<item>الإنجليزية</item>
+  		<item>الصينية</item>
+  		<item>فرنسي</item>
+  		<item>ألماني</item>
+  		<item>الإيطالي</item>
+  		<item>اليابانية</item>
+  		<item >العربية</item>
+  		<item >الروسية</item>
+  		<item>كوري</item>
+  		<item>البرتغالية</item>
+  		<item>الأسبانية</item>
+  		<item>هندي</item>
+  		<item>الأندونيسية</item>
+  		<item>التايلاندية</item>
+  		<item>الفيتنامية</item>
+  		
+  		
+	</string-array>	
+
+</resources>
