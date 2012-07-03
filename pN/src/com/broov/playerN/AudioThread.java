@@ -52,14 +52,16 @@ class AudioThread {
 													AudioFormat.ENCODING_PCM_8BIT;
 
 					//System.out.println("Channels:"+channels+" Encoding:"+encoding);
-					
-					if (AudioTrack.getMinBufferSize(rate, channels, encoding ) > bufSize)
-						bufSize = AudioTrack.getMinBufferSize(rate, channels, encoding);
+					int minBufferSize = AudioTrack.getMinBufferSize(rate, channels, encoding) ;
+					if (minBufferSize > bufSize)
+						bufSize = minBufferSize;					
+					System.out.println("Minimum Buffer Size:"+minBufferSize);
 
 					System.out.println("AudioTrack BufferSize:"+bufSize);
 					//bufSize = (int)((float)bufSize * (((float)Globals.AudioBufferConfig * 2.5f) + 1.0f));
 					bufSize = (int)((float)bufSize * (((float)Globals.AudioBufferConfig) + 1.0f));
 
+					System.out.println("Allocated Audio Buffer Size:"+bufSize);
 					mAudioBuffer = new byte[bufSize];
 
 					mAudio = new AudioTrack(AudioManager.STREAM_MUSIC, 

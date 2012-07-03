@@ -118,7 +118,7 @@
 	<string name="debugmodestatement">Disabled by default. Should be enabled only during development. Prints debug logs while playing audio and video files</string>
 
 	<string name="avsyncmode">A/V Sync mode</string>
-	<string name="avsyncmodestatement">Default value is Audio Clock. Should be enabled only during development. Used as the clock reference while playing the file</string>
+	<string name="avsyncmodestatement">Default value is Audio Clock. Should be modified only during development. Used as the clock reference while playing the file</string>
 
 	<string name="advyuv2rgb">YUV 2 RGB</string>
 	<string name="advdisplaypixelformat">Display Pixel Format</string>

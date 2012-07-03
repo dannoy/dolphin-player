@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Dolphin jogador</string>
+
+	<string name="feedback">parecer</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">submeter</string>
+	<string name="description">descrição</string>
+	<string name="category">categoria</string>
+	<string name="cancel">cancelar</string>
+	<string name="ok">OK</string>
+
+	<string name="about">cerca de</string>
+	<string name="search">buscar</string>
+	<string name="quit">deixar</string>
+	<string name="display">exibir</string>
+	<string name="setting">configurações</string>
+	<string name="searchforafile">Procurar um arquivo</string>
+	<string name="pressbackagaintoquit">Pressione novamente para sair.</string>
+	<string name="cantreadfolderduetopermissions">Não é possível ler pasta devido a permissões
+	</string>
+	<string name="setasdefaultsubtitlefont">subtítulo font carregado com êxito</string>
+	<string name="setasdefaulthomepath">com sucesso, definido como padrão homepath</string>
+	<string name="searching">Busca</string>
+	<string name="searchingcurrentfilesystem">Busca sistema de arquivos atual...</string>
+	<string name="changeto">mude para </string>
+	<string name="changetextcolor">Alterar a cor do textor</string>
+	<string name="sortby">Classificar por...</string>
+	<string name="loop">laço ...</string>
+	<string name="pleaseenteryourthoughtsindescription">Por favor digite seus pensamentos em Descrição
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">Não foi possível conectar ao servidor. Por favor, tente depois
+algum dia</string>
+	<string name="calculatinginformation">Calculando informações...</string>
+	<string name="pathis">O caminho é</string>
+	<string name="textcolor">cor do texto</string>
+	<string name="changethetextcolorpreference">Alterar a preferência de cor do texto</string>
+	<string name="showhiddenfilesfolders">Mostrar arquivos ocultos e pastas</string>
+	<string name="displayhiddenfilesandfolders">Exibindo pastas e arquivos ocultos</string>
+	<string name="subtitle">subtítulo</string>
+	<string name="hidesubtitles">Ocultar legendas</string>
+<string name="audio">áudio</string>
+	<string name="loopaudio">Reproduzir áudio</string>
+	<string name="video">vídeo</string>
+	<string name="loopvideo">Jogue vídeo</string>
+	<string name="choosehowtoloopplayaudiofiles">Escolha como reproduzir arquivos de áudio em uma pasta
+	</string>
+<string name="sortingtype">classificando tipo</string>
+	<string name="choosehowtosortfilesandfolders">Escolha como classificar arquivos e pastas</string>
+	<string name="language">linguagem</string>
+	<string name="chooselanguageforapplication">Escolha o idioma para a aplicação</string>
+	<string name="help">ajudar</string>
+	<string name="subtitlesize">tamanho das legendas</string>
+	<string name="displaysizeofsubtitle">Exibir tamanho da subtítulo</string>
+	<string name="showsubtitles">Mostrar legendas</string>
+	<string name="showsubtitlesifexists">Mostrar legendas se o arquivo de legenda disponível</string>
+	<string name="found">encontrado</string>
+	<string name="files">arquivo (s)</string>
+	</resources>
+
+

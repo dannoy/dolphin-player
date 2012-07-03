@@ -23,9 +23,15 @@
 
 #define BROOV_VIDEO_SKIP
 #define BROOV_VIDEO_THREAD
-#define BROOV_SEEK_DURATION_FIX
+
 #define BROOV_LOCK_MGR
 #define BROOV_LATEST_FFMPEG
+
+#define BROOV_SEEK_DURATION_FIX
+#define BROOV_SEEK_DURATION_SECOND_FIX
+
+//#define BROOV_FRAME_SEEK
+//#define BROOV_BACKWARD_FRAME_SEEK
 
 //#define BROOV_USE_DESTINATION_WIDTH
 //#define BROOV_VERSION_1_2_AUDIO
@@ -352,8 +358,17 @@ static void stream_seek_special(VideoState *is, int64_t pos, int64_t rel, int se
 		is->seek_rel = rel;
 		is->seek_flags &= ~AVSEEK_FLAG_BYTE;
 
+#ifdef BROOV_FRAME_SEEK
+		is->seek_flags &= ~AVSEEK_FLAG_FRAME;
+		if (seek_by_bytes == 2) {
+			is->seek_flags |= AVSEEK_FLAG_FRAME;
+                } else if (seek_by_bytes) {
+			is->seek_flags |= AVSEEK_FLAG_BYTE;
+		}	
+#else
 		if (seek_by_bytes)
 			is->seek_flags |= AVSEEK_FLAG_BYTE;
+#endif
 		is->seek_req_special = 1;
 		is->seek_req = 1;
 		__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek Requested:%d", g_seek_duration);
@@ -1795,8 +1810,10 @@ static void stream_component_close(VideoState *is, int stream_index)
 
 			packet_queue_end(&is->audioq);
 			av_free_packet(&is->audio_pkt);
+#ifndef BROOV_VERSION_1_2_AUDIO
 			if (is->swr_ctx)
 				swr_free(&is->swr_ctx);
+#endif
 			is->audio_buf = NULL;
 			av_freep(&is->frame);
 			break;
@@ -2393,6 +2410,7 @@ do_seek:
 							} else {
 								pos = get_master_clock(cur_stream);
 								pos += incr;
+				                		//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "StreamSeek pos:%lf increment:%lf", pos, incr);
 								stream_seek(cur_stream, (int64_t)(pos * AV_TIME_BASE), (int64_t)(incr * AV_TIME_BASE), 0);
 							}
 						}
@@ -2569,17 +2587,59 @@ do_seek_special:
 						}else {
 							pos = avio_tell(cur_stream->pFormatCtx->pb);
 						}
+
+#ifdef BROOV_FRAME_SEEK
+						if (cur_stream->video_st >= 0 && cur_stream->video_current_pos>=0){
+							int64_t desiredFrameNumber = av_rescale(incr*1000,
+								cur_stream->pFormatCtx->streams[cur_stream->videoStream]->time_base.den,
+								cur_stream->pFormatCtx->streams[cur_stream->videoStream]->time_base.num);
+   							desiredFrameNumber/=1000;
+				                        __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Frame number:%ld", desiredFrameNumber);
+							stream_seek_special(cur_stream, 0, desiredFrameNumber, 2);
+						} else {
+#ifdef BROOV_SEEK_DURATION_SECOND_FIX
+							incr = (incr - player_duration());
+#else
+							incr = (player_duration() - incr);
+#endif
+							if (cur_stream->pFormatCtx->bit_rate)
+								incr *= cur_stream->pFormatCtx->bit_rate / 8.0;
+							else
+								incr *= 180000.0;
+							pos += incr;
+							stream_seek_special(cur_stream, pos, incr, 1);
+
+						}
+#else
+#ifdef BROOV_SEEK_DURATION_SECOND_FIX
+                                                incr = (incr - player_duration());
+#else
+                                                //Get the relative increment or decrement in secs value
                                                 incr = (player_duration() - incr);
+#endif
+				                __android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "ByteSeek increment:%lf", incr);
+
 						if (cur_stream->pFormatCtx->bit_rate)
 							incr *= cur_stream->pFormatCtx->bit_rate / 8.0;
 						else
 							incr *= 180000.0;
 						pos += incr;
 						stream_seek_special(cur_stream, pos, incr, 1);
+#endif
 					} else {
+#ifdef BROOV_SEEK_DURATION_SECOND_FIX
+                                                //Get the relative increment or decrement in secs value
+                                                incr = (double)(int)((int)incr - player_duration());
+				                //__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "NormalSeek increment:%lf", incr);
+						pos = get_master_clock(cur_stream);
+						pos += incr;
+				                //__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "NormalSeek pos:%lf increment:%lf", pos, incr);
+						stream_seek_special(cur_stream, (int64_t)(pos* AV_TIME_BASE), (int64_t)(incr * AV_TIME_BASE), 0);
+#else
 						//pos = get_master_clock(cur_stream);
 						//pos += incr;
 						stream_seek_special(cur_stream, (int64_t)(incr * AV_TIME_BASE), (int64_t)(incr * AV_TIME_BASE), 0);
+#endif
 					}
 
 #else
@@ -2903,19 +2963,58 @@ static int decode_thread(void *arg)
 			if (is->seek_req_special) {
 #ifdef BROOV_SEEK_DURATION_FIX
 
+#ifdef BROOV_FRAME_SEEK
+                                if (is->seek_flags & AVSEEK_FLAG_FRAME) {
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to frame triggered");
+					ret = avformat_seek_file(is->pFormatCtx, is->videoStream, 0, is->seek_rel, is->seek_rel, AVSEEK_FLAG_FRAME);
+					if (ret < 0) {
+						__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "could not seek to position %0.3f\n",	(double)is->seek_rel/ AV_TIME_BASE);
+					}
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek call avformat_seek_file over");
+					is->seek_flags &= ~AVSEEK_FLAG_FRAME;
+				} else {
+					int64_t seek_target = is->seek_pos;
+					int64_t seek_min= is->seek_rel > 0 ? seek_target - is->seek_rel + 2: INT64_MIN;
+					int64_t seek_max= is->seek_rel < 0 ? seek_target - is->seek_rel - 2: INT64_MAX;
+					//FIXME the +-2 is due to rounding being not done in the correct direction in generation
+					//of the seek_pos/seek_rel variables
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to pos triggered");
+					ret = avformat_seek_file(is->pFormatCtx, -1, seek_min, seek_target, seek_max, is->seek_flags);
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek call avformat_seek_file over");
+
+				}
+#else
 				int64_t seek_target = is->seek_pos;
 				int64_t seek_min= is->seek_rel > 0 ? seek_target - is->seek_rel + 2: INT64_MIN;
 				int64_t seek_max= is->seek_rel < 0 ? seek_target - is->seek_rel - 2: INT64_MAX;
 				//FIXME the +-2 is due to rounding being not done in the correct direction in generation
 				//of the seek_pos/seek_rel variables
-				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to pos triggered");
+				//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to pos byte or normal triggered");
 				ret = avformat_seek_file(is->pFormatCtx, -1, seek_min, seek_target, seek_max, is->seek_flags);
+				if (ret < 0) {
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "could not seek to position %0.3f\n",	(double)seek_target);
+				}
+
+				//__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek call avformat_seek_file over");
+#endif
+#else
+#ifdef BROOV_BACKWARD_FRAME_SEEK
+				/* add the stream start time */
+				if (is->pFormatCtx->start_time != AV_NOPTS_VALUE)
+					is->seek_pos+= pFormatCtx->start_time;
+				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek to pos triggered backward");
+				ret = av_seek_frame(is->pFormatCtx, -1, is->seek_pos, AVSEEK_FLAG_BACKWARD);
+				if (ret < 0) {
+					__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "could not seek to position %0.3f\n",	(double)is->seek_pos/ AV_TIME_BASE);
+				}
 				__android_log_print(ANDROID_LOG_INFO, "BroovPlayer", "Seek call avformat_seek_file over");
+
 #else
 				/* add the stream start time */
 				if (is->pFormatCtx->start_time != AV_NOPTS_VALUE)
 					is->seek_pos+= pFormatCtx->start_time;
 				ret = avformat_seek_file(is->pFormatCtx, -1, INT64_MIN, is->seek_pos, INT64_MAX, 0);
+#endif
 #endif
 				if (!(ret<0)) {
 					g_current_duration = g_seek_duration;
@@ -3804,3 +3903,47 @@ int get_frames_to_skip()
 }
 
 #endif /* #ifdef BROOV_FRAME_RATE */
+
+#ifdef BROOV_FRAME_SEEK
+#if 0
+bool seekMs(int tsms)
+{
+   //printf("**** SEEK TO ms %d. LLT: %d. LT: %d. LLF: %d. LF: %d. LastFrameOk: %d\n",tsms,LastLastFrameTime,LastFrameTime,LastLastFrameNumber,LastFrameNumber,(int)LastFrameOk);
+
+   // Convert time into frame number
+   DesiredFrameNumber = ffmpeg::av_rescale(tsms,pFormatCtx->streams[videoStream]->time_base.den,pFormatCtx->streams[videoStream]->time_base.num);
+   DesiredFrameNumber/=1000;
+
+   return seekFrame(DesiredFrameNumber);
+}
+
+bool seekFrame(ffmpeg::int64_t frame)
+{
+
+   //printf("**** seekFrame to %d. LLT: %d. LT: %d. LLF: %d. LF: %d. LastFrameOk: %d\n",(int)frame,LastLastFrameTime,LastFrameTime,LastLastFrameNumber,LastFrameNumber,(int)LastFrameOk);
+
+   // Seek if:
+   // - we don't know where we are (Ok=false)
+   // - we know where we are but:
+   //    - the desired frame is after the last decoded frame (this could be optimized: if the distance is small, calling decodeSeekFrame may be faster than seeking from the last key frame)
+   //    - the desired frame is smaller or equal than the previous to the last decoded frame. Equal because if frame==LastLastFrameNumber we don't want the LastFrame, but the one before->we need to seek there
+   if( (LastFrameOk==false) || ((LastFrameOk==true) && (frame<=LastLastFrameNumber || frame>LastFrameNumber) ) )
+   {
+      //printf("\t avformat_seek_file\n");
+      if(ffmpeg::avformat_seek_file(pFormatCtx,videoStream,0,frame,frame,AVSEEK_FLAG_FRAME)<0)
+         return false;
+
+      avcodec_flush_buffers(pCodecCtx);
+
+      DesiredFrameNumber = frame;
+      LastFrameOk=false;
+   }
+   //printf("\t decodeSeekFrame\n");
+
+   return decodeSeekFrame(frame);
+
+   return true;
+}
+#endif
+#endif
+

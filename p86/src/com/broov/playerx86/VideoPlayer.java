@@ -38,6 +38,7 @@ public class VideoPlayer extends Activity  {
 
 	@Override
 	public void onBackPressed() {
+		mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
 		seekBarUpdater.stopIt();
 		demoRenderer.exitApp();
 	}
@@ -59,23 +60,32 @@ public class VideoPlayer extends Activity  {
 		public void onCallStateChanged(int state, String incomingNumber) {
 			if (state == TelephonyManager.CALL_STATE_RINGING) {
 				//Incoming call: Pause music
-				//System.out.println("call state idle");
-				if (demoRenderer != null)
+				System.out.println("Video call state ringing");
+				//Pause the video, only if video is playing 
+				if ((demoRenderer != null) && (!paused)) { 
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
 				//Not in call: Play music
-				if (demoRenderer != null)
+				System.out.println("Video call state idle");
+				//do not resume, if already paused by User  
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPause();
-				//System.out.println("call sate ringing");
+				}
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
-				//System.out.println("call state offhook");
-				if (demoRenderer != null)
+				System.out.println("Video call state offhook");
+				
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			}
@@ -89,7 +99,7 @@ public class VideoPlayer extends Activity  {
 		super.onCreate(savedInstanceState);
 
         Globals.setNativeVideoPlayer(false);
-		System.out.println("Inside VideoPlayer onCreate");
+		System.out.println("VideoPlayer onCreate");
 		paused = false;
 
 		// fullscreen mode
@@ -147,7 +157,7 @@ public class VideoPlayer extends Activity  {
 
 		System.out.println("=======================Playing filename:" + Globals.fileName);
 
-		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		System.out.println("TelephoneManager : "+mgr);
 		if(mgr != null) {
 			System.out.println("telephonemanager start");
@@ -174,6 +184,9 @@ public class VideoPlayer extends Activity  {
 		//trScrolledTime.setVisibility(View.GONE);
 		mHideContainer = findViewById(R.id.hidecontainer);
 		mHideContainer.setOnClickListener(mVisibleListener);
+
+		mControlPanelContainer = findViewById(R.id.controlPanel);
+		mControlPanelContainer.setOnClickListener(mControlPanelListener);
 		imgAspectRatio.setOnTouchListener(imgAspectRatioTouchListener);
 		imgPlay.setOnTouchListener(imgPlayTouchListener);
 		imgForward.setOnTouchListener(imgForwardTouchListener);
@@ -190,7 +203,8 @@ public class VideoPlayer extends Activity  {
 		//Wake lock code
 		try {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+			//wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+			wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, Globals.ApplicationName);
 			wakeLock.acquire();
 		} catch (Exception e) {
 			System.out.println("Inside wake lock exception"+e.toString());
@@ -256,7 +270,7 @@ public class VideoPlayer extends Activity  {
 					mSeekBar.setProgress(progress);							
 					totalTime.setText(Utils.formatTime(totalDuration));
 				}						
-				if(demoRenderer.fileInfoUpdated) {
+				if (demoRenderer.fileInfoUpdated) {
 					//if (Globals.fileName != null) {
 					//	videoInfo.setText(FileManager.getFileName(Globals.fileName));
 					//}
@@ -311,6 +325,16 @@ public class VideoPlayer extends Activity  {
 			}
 		}
 	};
+
+	OnClickListener mControlPanelListener = new OnClickListener() 
+	{
+		public void onClick(View v) 
+		{
+			//Do not hide the control panel par, when clicked
+			//System.out.println("CONTROL PANEL  LISTENER ONCLICK ");
+		}
+	};
+
 
 	OnTouchListener imgAspectRatioTouchListener = new OnTouchListener() {			
 		@Override
@@ -447,6 +471,7 @@ public class VideoPlayer extends Activity  {
 	};
 
 	View mHideContainer;
+	View mControlPanelContainer;
 
 	View imgPlay; 
 	View imgBackward; View imgForward;
@@ -468,5 +493,7 @@ public class VideoPlayer extends Activity  {
 	private static boolean paused;
 	String openfileFromBrowser = "";
 	Intent i = getIntent();
+
+	TelephonyManager mgr;
 
 }

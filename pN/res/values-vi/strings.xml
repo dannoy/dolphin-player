@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Dolphin Thủ</string>
+
+	<string name="feedback">thông tin phản hồi</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">Gửi</string>
+	<string name="description">Mô tả</string>
+	<string name="category">Thể loại</string>
+	<string name="cancel">giấy bỏ</string>
+	<string name="ok">được rồi</string>
+
+	<string name="about">Giới</string>
+	<string name="search">Tìm kiếm</string>
+	<string name="quit">bỏ thuốc lá</string>
+	<string name="display">Hiển thị</string>
+	<string name="setting">tùy chỉnh</string>
+	<string name="searchforafile">Tìm kiếm một tập tin</string>
+	<string name="pressbackagaintoquit">Nhấn lại một lần nữa để bỏ thuốc lá.</string>
+	<string name="cantreadfolderduetopermissions">cho phép từ chối không thể đọc thư mục
+	</string>
+	<string name="setasdefaultsubtitlefont">Thành công, thiết lập như là mặc định phông chữ phụ đề</string>
+	<string name="setasdefaulthomepath">Thành công, thiết lập như là con đường chủ mặc định</string>
+	<string name="searching">Tìm kiếm</string>
+	<string name="searchingcurrentfilesystem">Tìm kiếm hệ thống tập tin hiện tại...</string>
+	<string name="changeto">Thay đổi để </string>
+	<string name="changetextcolor">Thay đổi màu sắc văn bản</string>
+	<string name="sortby">Sắp xếp theo...</string>
+	<string name="loop">vòng lặp ...</string>
+	<string name="pleaseenteryourthoughtsindescription">Nhập suy nghĩ của bạn trong Mô tả
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">Không thể kết nối đến máy chủ. Hãy cố gắng sau khi
+đôi khi</string>
+	<string name="calculatinginformation">tính toán thông tin...</string>
+	<string name="pathis">đường dẫn là</string>
+	<string name="textcolor">màu chữ</string>
+	<string name="changethetextcolorpreference">Thay đổi sở thích màu sắc văn bản</string>
+	<string name="showhiddenfilesfolders">Hiển thị các tập tin / thư mục ẩn</string>
+	<string name="displayhiddenfilesandfolders">Hiển thị các tập tin và thư mục ẩn</string>
+	<string name="subtitle">phụ đề</string>
+	<string name="hidesubtitles">Hide phụ đề</string>
+<string name="audio">âm thanh</string>
+	<string name="loopaudio">chơi âm thanh</string>
+	<string name="video">chiếu phim</string>
+	<string name="loopvideo">chơi video</string>
+	<string name="choosehowtoloopplayaudiofiles">Chọn làm thế nào để chơi các file âm thanh trong một thư mục
+	</string>
+<string name="sortingtype">Sắp xếp loại</string>
+	<string name="choosehowtosortfilesandfolders">Chọn làm thế nào để sắp xếp các tập tin và thư mục</string>
+	<string name="language">Ngôn ngữ</string>
+	<string name="chooselanguageforapplication">Chọn ngôn ngữ cho ứng dụng</string>
+	<string name="help">Trợ giúp</string>
+	<string name="subtitlesize">phụ đề kích thước</string>
+	<string name="displaysizeofsubtitle">Hiển thị kích thước của phụ đề</string>
+	<string name="showsubtitles">Hiển thị phụ đề</string>
+	<string name="showsubtitlesifexists">Hiển thị phụ đề nếu file phụ đề có sẵn</string>
+	<string name="found">tìm thấy</string>
+	<string name="files">các tập tin</string>
+	</resources>
+
+
+	

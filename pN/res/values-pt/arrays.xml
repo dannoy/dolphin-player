@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>Opinião geral</item>
+		<item>Sugerir um aplicativo</item>
+		<item>Sugira um recurso</item>
+		<item>Reportar um problema</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>branco</item>
+<item>cinza</item>
+<item>verde</item>
+<item>vermelho</item>
+<item>azul</item>
+<item>amarelo</item>
+<item>magenta</item>
+<item>ciano</item>
+	</string-array>
+	<string-array name="Loop">
+		<item>Jogue uma vez</item>
+<item>Jogue tudo</item>
+<item>repetir uma</item>
+<item>repetir tudo</item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>no</item>
+<item>alphabetic</item>
+<item>type</item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>pequeno</item>
+		<item>médio</item>
+		<item>grande</item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>Inglês</item>
+
+<item>chinês</item>
+<item>francês</item>
+<item>alemão</item>
+
+<item>italiano</item>
+<item>japonês</item>
+
+
+
+
+
+
+
+
+<item>Árabe </item>
+<item>russo</item>
+<item>coreano</item>
+
+<item>Português</item>
+
+<item>espanhol</item>
+
+<item>hindi</item>
+
+<item>indonésio</item>
+
+<item>tailandês</item>
+
+<item>vietnamita</item>
+		
+	</string-array>
+	</resources>

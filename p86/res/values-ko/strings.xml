@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">돌고래 플레이어</string>
+
+	<string name="feedback">피드백</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">제출</string>
+	<string name="description">설명</string>
+	<string name="category">범주</string>
+	<string name="cancel">취소</string>
+	<string name="ok">확인</string>
+
+	<string name="about">약</string>
+	<string name="search">수색</string>
+	<string name="quit">종료</string>
+	<string name="display">디스플레이</string>
+	<string name="setting">설정을 변경</string>
+	<string name="searchforafile">파일 검색</string>
+	<string name="pressbackagaintoquit">종료하려면 BACK 버튼을 누르면.</string>
+	<string name="cantreadfolderduetopermissions">권한에 따라 폴더를 읽을 수 없습니다
+	</string>
+	<string name="setasdefaultsubtitlefont">성공적으로, 기본 자막 폰트로 설정한</string>
+	<string name="setasdefaulthomepath">홈 경로는 다음과 같이 설정됩니다</string>
+	<string name="searching">진행중인 검색</string>
+	<string name="searchingcurrentfilesystem">현재 파일 시스템을 검색...</string>
+	<string name="changeto">로 변경 </string>
+	<string name="changetextcolor">텍스트 색상을 변경합니다r</string>
+	<string name="sortby">정렬...</string>
+	<string name="loop"> 폐회로 ...</string>
+	<string name="pleaseenteryourthoughtsindescription">설명에 의견을 입력하십시오
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">서버에 연결할 수 없습니다. 후에 시도해보십시오
+언젠가</string>
+	<string name="calculatinginformation">Calculating information...</string>
+	<string name="pathis">경로는</string>
+	<string name="textcolor">텍스트 색상</string>
+	<string name="changethetextcolorpreference">텍스트 색상 환경 설정을 변경</string>
+	<string name="showhiddenfilesfolders">숨김 파일 및 폴더 표시</string>
+	<string name="displayhiddenfilesandfolders">디스플레이숨겨진 파일 및 폴더 표시</string>
+	<string name="subtitle">부제</string>
+	<string name="hidesubtitles">숨기기부제 </string>
+<string name="audio">오디오</string>
+	<string name="loopaudio">놀이 오디오</string>
+	<string name="video">비디오</string>
+	<string name="loopvideo">놀이비디오 </string>
+	<string name="choosehowtoloopplayaudiofiles">폴더에 오디오 파일을 재생하는 방법을 선택
+	</string>
+<string name="sortingtype">Sorting type</string>
+	<string name="choosehowtosortfilesandfolders">파일과 폴더를 정렬하는 방법을 선택</string>
+	<string name="language">언어</string>
+	<string name="chooselanguageforapplication">응용 프로그램의 언어를 선택하세요</string>
+	<string name="help">도와주세요</string>
+	<string name="subtitlesize">자막 크기</string>
+	<string name="displaysizeofsubtitle">자막의 크기를 표시합니다</string>
+	<string name="showsubtitles">자막보기</string>
+	<string name="showsubtitlesifexists">Show subtitles if subtitle file available</string>
+	<string name="found">Found</string>
+	<string name="files">파일 (들)</string>
+	</resources>
+
+
+	

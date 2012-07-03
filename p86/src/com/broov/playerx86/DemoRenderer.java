@@ -10,7 +10,8 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	//private static int queueSizeMinTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048 }; //0-12
 	//private static int queueSizeMaxTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000, 8000, 10000, 12000, 14000, 15000, 20000 }; //0-21
 	//private static int audioQueueSizeMaxTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000 };//0-15
-	private static int queueSizeTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 1024, 1500, 2048, 3000, 4000, 5000, 8000, 10000, 12000, 14000, 15000, 20000 }; //0-21
+	private static int queueSizeTable[] = { 50, 100, 150, 200, 256, 380, 500, 620, 750, 870, 
+											1024, 1500, 2048, 3000, 4000, 5000, 8000, 10000, 12000, 14000, 15000, 20000 }; //0-21
 	
 	
 	private static final int AV_SYNC_TYPE_AUDIO=0;
@@ -21,12 +22,6 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	private static final int AV_FFMPEG_SWS_BILINEAR=1;
 	private static final int AV_FFMPEG_SWS_FAST_BILINEAR=2;
 	
-	public Boolean usergeneratedexitApp 	 = false;
-	public Boolean playnextfileFromDirectory = true;
-	String         nextFile 				 = Globals.fileName;
-	public boolean fileInfoUpdated			 = false;
-	private int    loopselected              = 0;
-
 	private static int    skipFrames                = 0;
 	private static int    skipBidirFrames           = 0;
 	private static int    rgb565                    = 1;
@@ -48,7 +43,14 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	public static int    syncType = AV_SYNC_TYPE_AUDIO;
 	public static int    seekDuration = 0;
 	public static int    ffmpegFlags = AV_FFMPEG_SWS_FAST_BILINEAR;
-	
+
+	public Boolean usergeneratedexitApp 	 = false;
+	public Boolean playnextfileFromDirectory = true;
+	String         nextFile 				 = Globals.fileName;
+	public boolean fileInfoUpdated			 = false;
+	private int    loopselected              = 0;
+
+
 	DemoRenderer(Activity _context)
 	{
 		System.out.println("DemoRenderer instance created:");

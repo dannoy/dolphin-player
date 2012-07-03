@@ -1,0 +1,52 @@
+Files ./.project and ../p/./.project differ
+Files ./README and ../p/./README differ
+Files ./compile.sh and ../p/./compile.sh differ
+Only in .: files_to_change.txt
+Only in ../p/./jni: Android.mk.neon
+Files ./jni/Application.mk and ../p/./jni/Application.mk differ
+Only in ../p/./jni/app: Android.mk.neon
+Only in ./jni/app: Android.mk.no_neon
+Only in ../p/./jni/app: Android.mk.org
+Files ./jni/app/src/b_sdl.c and ../p/./jni/app/src/b_sdl.c differ
+Only in ../p/./jni/app/src: optimization.c
+Only in ../p/./jni/bzip2: mips
+Only in ../p/./jni/sdl/src/audio: .SDL_audio.c.swn
+Only in ../p/./jni/sdl/src/audio/android: .SDL_androidaudio.c.swo
+Only in ../p/./gen/com/broov: player
+Only in ./gen/com/broov: playerN
+Only in ../p/./jni/sdl: Android.mk.neon
+Files ./jni/sdl/src/audio/android/.SDL_androidaudio.c.swp and ../p/./jni/sdl/src/audio/android/.SDL_androidaudio.c.swp differ
+Only in ./libs: x86
+Only in ../p/.: native
+Files ./project.properties and ../p/./project.properties differ
+Files ./jni/sdl/src/audio/android/SDL_androidaudio.c and ../p/./jni/sdl/src/audio/android/SDL_androidaudio.c differ
+Files ./res/layout/audio_player.xml and ../p/./res/layout/audio_player.xml differ
+Files ./res/layout/video_player.xml and ../p/./res/layout/video_player.xml differ
+Files ./jni/app/src/native_main.cpp and ../p/./jni/app/src/native_main.cpp differ
+Files ./jni/app/src/video_player.cpp and ../p/./jni/app/src/video_player.cpp differ
+##Files ./jni/app/Android.mk and ../p/./jni/app/Android.mk differ
+##Files ./jni/Android.mk and ../p/./jni/Android.mk differ
+##Files ./AndroidManifest.xml and ../p/./AndroidManifest.xml differ
+##Files ./jni/sdl/Android.mk and ../p/./jni/sdl/Android.mk differ
+##Only in ../p/./res/drawable-hdpi: icon.png
+##Files ./res/values/strings.xml and ../p/./res/values/strings.xml differ
+##Files ./jni/app/src/broov_player.cpp and ../p/./jni/app/src/broov_player.cpp differ
+
+##Files ./jni/yuv2rgb/Android.mk and ../p/./jni/yuv2rgb/Android.mk differ
+##Only in ../p/./jni/yuv2rgb/src: yuv420rgb565.S
+##Only in ./jni/yuv2rgb/src: yuv420rgb565.s
+##Only in ../p/./jni/yuv2rgb/src: yuv420rgb8888.S
+##Only in ./jni/yuv2rgb/src: yuv420rgb8888.s
+
+##Only in ../p/./res: values-ar
+##Only in ../p/./res: values-es
+##Only in ../p/./res: values-hi
+##Only in ../p/./res: values-id
+##Only in ../p/./res: values-ko
+##Only in ../p/./res: values-pt
+##Only in ../p/./res: values-ru
+##Only in ../p/./res: values-th
+##Only in ../p/./res: values-vi
+
+Only in ../p/./src/com/broov: player
+Only in ./src/com/broov: playerN

@@ -1,0 +1,15 @@
+Files ./AVPlayerMain.java and ../../../../../p/src/com/broov/player/./AVPlayerMain.java differ
+Files ./AudioPlayer.java and ../../../../../p/src/com/broov/player/./AudioPlayer.java differ
+Files ./AudioThread.java and ../../../../../p/src/com/broov/player/./AudioThread.java differ
+Only in .: DemoGLSurfaceView.java
+Files ./DemoRenderer.java and ../../../../../p/src/com/broov/player/./DemoRenderer.java differ
+Files ./DirectoryInfo.java and ../../../../../p/src/com/broov/player/./DirectoryInfo.java differ
+Files ./EventHandler.java and ../../../../../p/src/com/broov/player/./EventHandler.java differ
+Files ./Feedback.java and ../../../../../p/src/com/broov/player/./Feedback.java differ
+Files ./FileManager.java and ../../../../../p/src/com/broov/player/./FileManager.java differ
+Files ./GLSurfaceView_SDL.java and ../../../../../p/src/com/broov/player/./GLSurfaceView_SDL.java differ
+Files ./Globals.java and ../../../../../p/src/com/broov/player/./Globals.java differ
+Files ./NativeVideoPlayer.java and ../../../../../p/src/com/broov/player/./NativeVideoPlayer.java differ
+Files ./Settings.java and ../../../../../p/src/com/broov/player/./Settings.java differ
+Files ./Utils.java and ../../../../../p/src/com/broov/player/./Utils.java differ
+Files ./VideoPlayer.java and ../../../../../p/src/com/broov/player/./VideoPlayer.java differ

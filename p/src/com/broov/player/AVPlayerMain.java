@@ -2,9 +2,6 @@ package com.broov.player;
 
 import java.io.File;
 
-//import com.google.ads.AdRequest;
-//import com.google.ads.AdSize;
-//import com.google.ads.AdView;
 
 import android.app.Dialog;
 import android.app.AlertDialog;

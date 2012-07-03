@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">डॉल्फिन प्लेयर</string>
+
+	<string name="feedback">वापसी ताल्लुक़</string>
+	<string name="mailid">E-mail ID (optional)</string>
+	<string name="submit">सबमिट</string>
+	<string name="description">विवरण</string>
+	<string name="category">वर्ग</string>
+	<string name="cancel">व्यर्थ कर देना</string>
+	<string name="ok">ठीक है</string>
+
+	<string name="about">के बारे में</string>
+	<string name="search">सर्च</string>
+	<string name="quit">छोड़ना</string>
+	<string name="display">प्रदर्शन</string>
+	<string name="setting">सेटिंग्स</string>
+	<string name="searchforafile">एक फ़ाइल के लिए खोज
+</string>
+	<string name="pressbackagaintoquit">वापस फिर से पद छोड़ने की प्रेस.</string>
+	<string name="cantreadfolderduetopermissions">अनुमतियाँ के लिए कारण फ़ोल्डर नहीं पढ़ सकता
+	</string>
+	<string name="setasdefaultsubtitlefont">सफलतापूर्वक डिफ़ॉल्ट उपशीर्षक फ़ॉन्ट के रूप में स्थापित है</string>
+	<string name="setasdefaulthomepath">सफलतापूर्वक, डिफ़ॉल्ट घर पथ के रूप में सेट</string>
+	<string name="searching">खोज</string>
+	<string name="searchingcurrentfilesystem">मौजूदा फाइल सिस्टम खोज...</string>
+	<string name="changeto">में बदलें </string>
+	<string name="changetextcolor">पाठ का रंग बदलें</string>
+	<string name="sortby">द्वारा क्रमबद्ध करें...</string>
+	<string name="loop">पाश ...</string>
+	<string name="pleaseenteryourthoughtsindescription">विवरण में अपने विचारों को दर्ज करें
+	</string>
+	<string name="unabletoconnecttoserverpleasetryaftersometime">Unable to connect to server. Please try after
+		sometime</string>
+	<string name="calculatinginformation">जानकारी गिना जा रहा है...</string>
+	<string name="pathis">पथ है</string>
+	<string name="textcolor">पाठ का रंग</string>
+	<string name="changethetextcolorpreference">पाठ रंग वरीयता बदलें</string>
+	<string name="showhiddenfilesfolders">छिपे हुए फ़ाइलें / फ़ोल्डर दिखाएँ</string>
+	<string name="displayhiddenfilesandfolders">छुपी हुई फ़ाइलें और फ़ोल्डर्स प्रदर्शित</string>
+	<string name="subtitle">उपशीर्षक</string>
+	<string name="hidesubtitles">छुपाएँ उपशीर्षक </string>
+<string name="audio">ऑडियो</string>
+	<string name="loopaudio">चलायें ऑडियो </string>
+	<string name="video">वीडियो</string>
+	<string name="loopvideo">चलायें वीडियो</string>
+	<string name="choosehowtoloopplayaudiofiles">चुनें कि कैसे एक फ़ोल्डर में ऑडियो फ़ाइलें खेलने के लिए
+	</string>
+<string name="sortingtype">प्रकार की व्यवस्था
+</string>
+	<string name="choosehowtosortfilesandfolders">कैसे फ़ाइलों और फ़ोल्डरों को सॉर्ट करने के लिए चुनें</string>
+	<string name="language">भाषा</string>
+	<string name="chooselanguageforapplication">आवेदन के लिए भाषा चुनें</string>
+	<string name="help">मदद</string>
+	<string name="subtitlesize">उपशीर्षक आकार</string>
+	<string name="displaysizeofsubtitle">उपशीर्षक के आकार प्रदर्शित</string>
+	<string name="showsubtitles">उपशीर्षक दिखाएँ</string>
+	<string name="showsubtitlesifexists">उपशीर्षक दिखाएँ अगर उपशीर्षक उपलब्ध फ़ाइल</string>
+	<string name="found">मिला</string>
+	<string name="files">फ़ाइल (ओं)</string>
+	</resources>
+
+
+	

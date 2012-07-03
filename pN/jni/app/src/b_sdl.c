@@ -1,3 +1,4 @@
+#if 0
 #include <pthread.h>
 
 pthread_mutex_t* b_CreateMutex(void)
@@ -164,3 +165,4 @@ void b_WaitThread(pthread_t *handle)
 {
 	pthread_join(*handle, 0);
 }
+#endif

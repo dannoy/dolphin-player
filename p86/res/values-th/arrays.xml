@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>นายพล ผลสะท้อนกลับ</item>
+		<item>ความคิด app ใหม่</item>
+		<item>คุณลักษณะใหม่</item>
+		<item>ปัญหา</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>ขาว</item>
+<item>สีเทา</item>
+<item>สีเขียว</item>
+<item>สีแดง</item>
+<item>สีน้ำเงิน</item>
+<item>สีเหลือง</item>
+<item>สีม่วงแดงเข้ม</item>
+<item>Cyan     </item>
+	</string-array>
+	<string-array name="Loop">
+		<item>เล่นหนึ่ง  </item>
+		<item>เล่นทั้งหมด</item>
+<item>ทำซ้ำอย่างใดอย่างหนึ่ง</item>
+<item>ซ้ำทั้งหมด      </item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>ไม่มีอะไร</item>
+<item>ตามตัวอักษร</item>
+<item>ชนิด       </item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>เล็ก</item>
+<item>กลาง</item>
+<item>ใหญ่     </item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>ภาษาอังกฤษ</item>
+
+<item>จีน</item>
+<item>ภาษาฝรั่งเศส</item>
+<item>ภาษาเยอรมัน</item>
+
+<item>อิตาเลียน</item>
+<item>ภาษาญี่ปุ่น</item>
+
+<item>ภาษาอาหรับ</item>
+<item>ภาษารัสเซีย</item>
+<item>เกาหลี</item>
+
+<item>โปรตุเกส</item>
+
+<item>ภาษาสเปน</item>
+
+<item>ภาษาฮินดี</item>
+
+<item>ชาวอินโดนีเซีย</item>
+
+<item>ภาษาไทย</item>
+
+<item>เวียตนาม</item>
+		
+	</string-array>
+	</resources>

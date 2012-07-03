@@ -11,6 +11,7 @@ APP_SUBDIRS += $(patsubst $(LOCAL_PATH)/%, %, $(shell find $(LOCAL_PATH)/resourc
 
 LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
 				-D__STDC_CONSTANT_MACROS \
+				-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE \
 				-I$(AVPLAYER_PATH_BASE)"/native/ffmpeg/ffmpeg-0.11.1" \
 				-I$(AVPLAYER_PATH)"/jni/sdl/include" \
 				-I$(AVPLAYER_PATH)"/jni/sdl_ttf" \

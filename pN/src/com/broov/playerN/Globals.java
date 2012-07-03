@@ -13,12 +13,13 @@ class Globals {
 	//public static boolean NeedDepthBuffer = false;
 	//public static int numberofImages      = 4;  //Random images to be shown for audio file, being played
 
-	//Used in AudioThread
-	public static int AudioBufferConfig   = 2;
+	//Used in AudioThread.
+	//Use the minimum BufferSize of AudioTrack. from version 2.6, this value is 0. previously it was 2.
+	public static int AudioBufferConfig   = 0;
 
 	//public static String ApplicationName = "Dolphin Player Universal";
 	public static String ApplicationName 	 = "Dolphin Player";
-	public static String VersionName     	 = "2.4 Build 18June2012";
+	public static String VersionName     	 = "2.6 Build 03July2012";
 	public static String defaultDir      	 = "/sdcard";
 	public static String defaultSubtitleFont = "/sdcard/broov.ttf";
 
@@ -81,7 +82,7 @@ class Globals {
 
 	public static String supportedFileFormats[] =concat(supportedAudioFileFormats, supportedVideoFileFormats, supportedFontFileType);
 
-	public static final String PREFS_NAME = "BroovPrefsFile";	//user preference file name
+	public static final String PREFS_NAME = "BroovPrefsFileTypeTwo";	//user preference file name
 	public static final String PREFS_HIDDEN = "hidden";
 	public static final String PREFS_COLOR = "color";
 	public static final String PREFS_SUBTITLE = "subtitle";
@@ -380,22 +381,20 @@ class Globals {
 	
 
 	//Neon values
-	public static boolean dbadvancedskip=false;
-	public static int dbadvancedpixelformat=Globals.pixelformat_RGB8888;
+	//public static boolean dbadvancedskip=false;
+	//public static int dbadvancedpixelformat=Globals.pixelformat_RGB8888;
 	public static int dbadvancedavsyncmode=Globals.avsync_audioclock;
 	
-	
 	//Normal V5, V6, V6+VFP values
-	//public static boolean dbadvancedskip=true;
-	//public static int dbadvancedpixelformat=Globals.pixelformat_RGB565;
-	//public static int dbadvancedavsyncmode=Globals.avsync_videoclock;
+	public static boolean dbadvancedskip=true;
+	public static int dbadvancedpixelformat=Globals.pixelformat_RGB565;
 	
 	public static boolean dbadvancedbidirectional=false;
 	public static boolean dbadvancedffmpeg=false; //fast decoding is disabled by default
 	public static int dbadvancedyuv=Globals.ARM_ASM; //sws_scaler - 1, arm asm - 0
 	public static int dbadvancedminvideoq=Globals.min_videokb256;
 	public static int dbadvancedmaxvideoq=Globals.max_videomb2;
-	public static int dbadvancedmaxaudioq=Globals.max_audiokb500;
+	public static int dbadvancedmaxaudioq=Globals.max_audiokb380;
 	public static int dbadvancedstreamminvideoq=Globals.streammin_videokb100;
 	public static int dbadvancedstreammaxvideoq=Globals.streammax_videomb3;
 	public static int dbadvancedstreammaxaudioq=Globals.streammax_audiokb256;

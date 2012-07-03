@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Category">
+		<item>सामान्य प्रतिक्रिया</item>
+		<item>सुझाव है कि एक आवेदन</item>
+		<item>एक सुविधा सुझाएँ</item>
+		<item>रिपोर्ट एक समस्या</item>
+	</string-array>
+	<string-array name="Colors">
+		<item>सफ़ेद</item>
+<item>ग्रे</item>
+<item>ग्रीन</item>
+<item>लाल</item>
+<item>नीला</item>
+<item>पीला</item>
+<item>मैजंटा</item>
+<item>सियान   </item>
+	</string-array>
+	<string-array name="Loop">
+		<item>एक बार चलायें</item>
+<item>सभी खेल</item>
+<item>एक दोहराएँ</item>
+<item>सभी दोहराएँ     </item>
+	</string-array>
+
+	<string-array name="Sort">
+		<item>कोई नहीं</item>
+<item>वर्णमाला</item>
+<item>टाइप       </item>
+	</string-array>
+
+	<string-array name="SubtitleSize">
+		<item>छोटा</item>
+<item>मध्यम</item>
+<item>बड़ा      </item>
+	</string-array>
+
+	<string-array name="Languages">
+		<item>अंग्रेज़ी</item>
+
+<item>चीनी</item>
+<item>फ्रेंच</item>
+<item>जर्मन</item>
+
+<item>इतालवी</item>
+<item>जापानी</item>
+
+
+
+
+
+
+
+
+<item>अरबी भाषा</item>
+<item>रूसी</item>
+<item>कोरियाई</item>
+
+<item>पुर्तगाली</item>
+
+<item>स्पेनिश</item>
+
+<item>हिंदी</item>
+
+<item>इंडोनेशिया का या उससे संबद्ध</item>
+
+<item>थाई</item>
+
+<item>वियतनामी</item>
+		
+	</string-array>
+	</resources>

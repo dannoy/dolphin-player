@@ -78,7 +78,6 @@ public class VideoPlayer extends Activity  {
 					System.out.println("Triggered");
 					demoRenderer.nativePlayerPause();
 				}
-				//System.out.println("call sate ringing");
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
