@@ -28,8 +28,8 @@ SDL_VIDEO_RENDER_RESIZE := 1
 #TARGET_CFLAGS := $(filter-out -ffunction-sections,$(TARGET_CFLAGS))
 #TARGET_CFLAGS := $(filter-out -mthumb,$(TARGET_CFLAGS))
 
-ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-   LOCAL_CFLAGS += -DHAVE_NEON=1
-endif
+#ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
+#   LOCAL_CFLAGS += -DHAVE_NEON=1
+#endif
 
 include $(call all-subdir-makefiles)

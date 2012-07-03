@@ -1,3 +1,4 @@
+#ifdef BROOV_NATIVE_VIDEO_PLAYER
 // Android Media Player - Based on FFPlay, KMP2, and dranger.com tutorials
 //  
 // Description:
@@ -11,7 +12,6 @@
 // Author: AA
 // Skip Frames Logic: Nareshprasad
 
-//#define BROOV_PLAYER_SOURCE_WIDTH_HEIGHT
 #define BROOV_VIDEO_SKIP
 #define BROOV_VIDEO_THREAD
 
@@ -3327,3 +3327,4 @@ static int get_frames_to_skip()
 }
 
 #endif /* #ifdef BROOV_FRAME_RATE */
+#endif

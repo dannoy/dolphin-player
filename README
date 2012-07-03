@@ -2,10 +2,18 @@ Steps to compile the source code:
 
 1. Clone the project from git
 2. Edit the AVPLAYER_PATH variable in jni/Android.mk
+3. Edit the LOCAL_LDLIBS variable in jni/app/Android.mk
+4. For compiling in windows, Use a shorter path name like "C:/p" or "D:/p". Longer path will cause problems in compilation as the command line length limitation will be reached during compilation. 
+   (Windows Debugging: 
+     a) Compile and run any ndk example/sample, before compiling this project, to test if ndk is working in windows
+     b) Sometimes cygwin terminal behaves with not responding to (ndk-build clean or ndk-build) or with error 127. Restarting windows, solves the problem
+   )
+
+Note: This project is compiled and tested in Windows, Mac and Linux and works fine:
 
 NDK Compilation (r8 or similar)
 3. Goto project directory (p directory)
-4. Run compile.sh (calls the following in order: ndk-build clean, ndk-build -j2 V=1 and copies the libffmpeg.so file)
+4. Run compile.sh (calls the following in order: ndk-build clean, ndk-build -j2 V=1 and copies the libffmpeg.so file) (Edit the ndk-build path in this script)
 
 APK Compilation Steps
 5. Import the project in Eclipse 3.6 or latest with ADT Plugin support

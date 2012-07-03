@@ -38,6 +38,8 @@ public class VideoPlayer extends Activity  {
 
 	@Override
 	public void onBackPressed() {
+
+		mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
 		seekBarUpdater.stopIt();
 		demoRenderer.exitApp();
 	}
@@ -59,23 +61,33 @@ public class VideoPlayer extends Activity  {
 		public void onCallStateChanged(int state, String incomingNumber) {
 			if (state == TelephonyManager.CALL_STATE_RINGING) {
 				//Incoming call: Pause music
-				//System.out.println("call state idle");
-				if (demoRenderer != null)
+				System.out.println("Video call state ringing");
+				//Pause the video, only if video is playing 
+				if ((demoRenderer != null) && (!paused)) { 
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
 				//Not in call: Play music
-				if (demoRenderer != null)
+				System.out.println("Video call state idle");
+				//do not resume, if already paused by User  
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPause();
+				}
 				//System.out.println("call sate ringing");
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
-				//System.out.println("call state offhook");
-				if (demoRenderer != null)
+				System.out.println("Video call state offhook");
+				
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			}
@@ -89,7 +101,7 @@ public class VideoPlayer extends Activity  {
 		super.onCreate(savedInstanceState);
 
         Globals.setNativeVideoPlayer(false);
-		System.out.println("Inside VideoPlayer onCreate");
+		System.out.println("VideoPlayer onCreate");
 		paused = false;
 
 		// fullscreen mode
@@ -100,7 +112,12 @@ public class VideoPlayer extends Activity  {
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-		setContentView(R.layout.video_player);
+//		 Window win = getWindow();
+//	     WindowManager.LayoutParams winParams = win.getAttributes();
+//	     winParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+//	     win.setAttributes(winParams);
+
+	     setContentView(R.layout.video_player);
 
 		//Utils.hideSystemUi(getWindow().getDecorView());
 		//Utils.hideSystemUi(this.findViewById(R.id.glsurfaceview).getRootView());
@@ -147,11 +164,12 @@ public class VideoPlayer extends Activity  {
 
 		System.out.println("=======================Playing filename:" + Globals.fileName);
 
-		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		System.out.println("TelephoneManager : "+mgr);
 		if(mgr != null) {
 			System.out.println("telephonemanager start");
 			mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+			
 		}
 
 		// Find the views whose visibility will change
@@ -194,7 +212,9 @@ public class VideoPlayer extends Activity  {
 		//Wake lock code
 		try {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+			//wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+			wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, Globals.ApplicationName);
+			
 			wakeLock.acquire();
 		} catch (Exception e) {
 			System.out.println("Inside wake lock exception"+e.toString());
@@ -232,6 +252,18 @@ public class VideoPlayer extends Activity  {
 		totalTime.setText(Utils.formatTime(totalDuration));
 
 		mHandler.postDelayed(seekBarUpdater, 100);
+		
+		//Hide ICS System bar/Navigation bar
+//		Window win = getWindow();
+//	     WindowManager.LayoutParams winParams = win.getAttributes();
+//	     winParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+//	     win.setAttributes(winParams);
+//		
+		//Utils.hideSystemUi(surfaceView);
+		//Utils.hideSystemUi(this.findViewById(R.id.glsurfaceview).getRootView());
+
+		//Utils.hideSystemUi(getWindow().getDecorView());
+		
 	}
 
 	public void restartUpdater() {
@@ -260,7 +292,7 @@ public class VideoPlayer extends Activity  {
 					mSeekBar.setProgress(progress);							
 					totalTime.setText(Utils.formatTime(totalDuration));
 				}						
-				if(demoRenderer.fileInfoUpdated) {
+				if (demoRenderer.fileInfoUpdated) {
 					//if (Globals.fileName != null) {
 					//	videoInfo.setText(FileManager.getFileName(Globals.fileName));
 					//}
@@ -482,5 +514,7 @@ public class VideoPlayer extends Activity  {
 	private static boolean paused;
 	String openfileFromBrowser = "";
 	Intent i = getIntent();
+	
+	TelephonyManager mgr;
 
 }

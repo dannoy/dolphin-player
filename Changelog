@@ -7,3 +7,39 @@ e) Video player controls alignment is improved in this version
 
 13/June/2012
 Please see git commit logs for the various changes done in different versions
+
+26/June/2012
+Globals.AudioConfig changed to 0
+Proguard enabled in project.properties
+Wake lock is not acquired for playing audio files
+
+v2.6
+Supports languages translations now for English, Spanish, Japanese, Korean, Russian, French, Italian, Vietnamese, Chinese, Indonesian, Thai, Portuguese, German, Arabic, Hindi
+Audio Buffer size is fine tuned for better audio and video playback
+Fixed - Automatic resume of audio and video during incoming call
+Fixed - Audio clock is set as default.(same as v1.2). Previous versions has Video Clock set as default which was causing audio to play very slow.
+Seek in large files (> than 2GB) was failing earlier. Is fixed now
+Some mkv files had audio missing and is fixed now.
+Screen dim while playing video is fixed and screen dims for audio now.
+
+v2.2
+Please uninstall the previous version, before installing this version
+Settings from Version 1.2 is preserved now. 
+Skip frames algorithm is enabled now. Video lag was observed, when disabling this feature. This is configurable in settings now. 
+Fast decoding of FFmpeg is disabled by default(this was causing time sync issue while playing video files)
+Audio and Video files will play now, as like Version 1.2
+New configurable options are added in Settings.
+
+v2.1
+Audio file not playing and duration issue is fixed now
+
+v2.0
+Pause audio and video on incoming call fix
+Various configurations can be fine tuned in settings(RGB 565, RGB8888, fast decoding, asm yuv2rgb,)
+3gp file noise issue fix
+Video lagging is not observed for AVI files in medium & high end devices.
+Audio & Video Stream support 
+Supports mime & file type intents. 
+MP3 file playing order issue fix
+Audio file description fix, when prev, next button is pressed
+

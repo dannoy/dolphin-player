@@ -48,43 +48,43 @@ public class Utils {
 
     //Code reference: http://code.google.com/p/libgdx
 
-//	private static Method setSystemUiVisibilityMethod;
-//	
-//	static {
-//		initCompatibility();
-//	};
-//	
-//	public static void initCompatibility() {
-//		try {
-//			Class classView = Class.forName("android.view.View");
-//			setSystemUiVisibilityMethod = classView.getDeclaredMethod("setSystemUiVisibility", int.class);
-//		} catch(NoSuchMethodException exception) {
-//			debug("AndroidUtils", "Could not get setSystemUiVisibility method", exception);
-//		} catch (ClassNotFoundException e) {
-//			//e.printStackTrace();
-//		}
-//	}
-//	
-//	public static void hideSystemUi(View view) {
-//		int apiVersion = android.os.Build.VERSION.SDK_INT;
-//		view.getVisibility();
-//		try {
-//			if(apiVersion >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-//				setSystemUiVisibilityMethod.invoke(view, View.SYSTEM_UI_FLAG_LOW_PROFILE);
-//
-//				//setSystemUiVisibilityMethod.invoke(view, View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-//			} else {
-//				setSystemUiVisibilityMethod.invoke(view, View.STATUS_BAR_HIDDEN);
-//			}
-//		} catch(Exception exception) {
-//			debug("AndroidUtils", "Could not invoke setSystemUiVisibility method", exception);
-//		}
-//	}
-//	
-//	public static void debug (String tag, String message, Throwable exception) {
-//			System.out.println(tag + ": " + message);
-//			//exception.printStackTrace(System.out);
-//	}
+	private static Method setSystemUiVisibilityMethod;
+	
+	static {
+		initCompatibility();
+	};
+	
+	public static void initCompatibility() {
+		try {
+			Class classView = Class.forName("android.view.View");
+			setSystemUiVisibilityMethod = classView.getDeclaredMethod("setSystemUiVisibility", int.class);
+		} catch(NoSuchMethodException exception) {
+			debug("AndroidUtils", "Could not get setSystemUiVisibility method", exception);
+		} catch (ClassNotFoundException e) {
+			//e.printStackTrace();
+		}
+	}
+	
+	public static void hideSystemUi(View view) {
+		int apiVersion = android.os.Build.VERSION.SDK_INT;
+		view.getVisibility();
+		try {
+			if(apiVersion >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				setSystemUiVisibilityMethod.invoke(view, View.SYSTEM_UI_FLAG_LOW_PROFILE);
+
+				//setSystemUiVisibilityMethod.invoke(view, View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+			} else {
+				setSystemUiVisibilityMethod.invoke(view, View.STATUS_BAR_HIDDEN);
+			}
+		} catch(Exception exception) {
+			debug("AndroidUtils", "Could not invoke setSystemUiVisibility method", exception);
+		}
+	}
+	
+	public static void debug (String tag, String message, Throwable exception) {
+			System.out.println(tag + ": " + message);
+			//exception.printStackTrace(System.out);
+	}
 	
 //	OnSystemUiVisibilityChangeListener visibilityChangeListener = new OnSystemUiVisibilityChangeListener() {
 //		@Override

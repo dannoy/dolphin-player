@@ -3,7 +3,9 @@
 #include <android/log.h>
 
 #include "broov_player.h"
+#ifdef BROOV_NATIVE_VIDEO_PLAYER
 #include "video_player.h"
+#endif
 
 #ifdef __cplusplus
 #define C_LINKAGE "C"
@@ -223,6 +225,7 @@ Java_com_broov_player_DemoRenderer_nativePlayerSetAspectRatio(JNIEnv* env, jobje
         return player_set_aspect_ratio(my_aspect_ratio);
 };
 
+#ifdef BROOV_NATIVE_VIDEO_PLAYER
 
 //Native Video Player Support Code Begin
 extern C_LINKAGE int
@@ -415,6 +418,7 @@ Java_com_broov_player_DemoRenderer_nativeVideoPlayerSetAspectRatio(JNIEnv* env, 
         int my_aspect_ratio= aspectRatio;
         return video_player_set_aspect_ratio(my_aspect_ratio);
 };
+#endif
 
 #undef C_LINKAGE
 

@@ -49,7 +49,7 @@ public class AudioPlayer extends Activity  {
 		
 		Globals.setNativeVideoPlayer(false);
 		//paused = false;
-		System.out.println("Inside New Player onCreate");
+		System.out.println("AudioPlayer onCreate");
 
 		// fullscreen mode
 		requestWindowFeature(Window.FEATURE_NO_TITLE);		
@@ -61,8 +61,6 @@ public class AudioPlayer extends Activity  {
 
 		setContentView(R.layout.audio_player);
 
-		//Utils.hideSystemUi(getWindow().getDecorView());
-		
 		i = getIntent();
 		if (i!= null) {
 			Uri uri = i.getData();
@@ -95,12 +93,13 @@ public class AudioPlayer extends Activity  {
 				}
 			}
 		}
-		System.out.println("=======================Playing filename:" + Globals.fileName);
-		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		System.out.println("Playing file:" + Globals.fileName);
+		mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		System.out.println("TelephoneManager : "+mgr);
 		if(mgr != null) {
 			System.out.println("telephonemanager start");
 			mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+		
 		}
 		// Find the views whose visibility will change
 		mSeekBar = (SeekBar) findViewById(R.id.progressbar);
@@ -189,8 +188,6 @@ public class AudioPlayer extends Activity  {
 					{
 						demoRenderer.nativePlayerPlay();
 					}
-
-
 				}
 				demoRenderer.fileInfoUpdated = false;				
 				return true;
@@ -296,14 +293,15 @@ public class AudioPlayer extends Activity  {
 	public void initSDL()
 	{
 		//Wake lock code
-		try {
-			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
-			wakeLock.acquire();
-		} catch (Exception e) {
-			System.out.println("Inside wake lock exception"+e.toString());
-		}
-		System.out.println("Acquired wakeup lock");
+		//Donot acquire wake lock for Audio Player v2.6 onwards - AA
+//		try {
+//			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+//			wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+//			wakeLock.acquire();
+//		} catch (Exception e) {
+//			System.out.println("Inside wake lock exception"+e.toString());
+//		}
+//		System.out.println("Acquired wakeup lock");
 
 		//Native libraries loading code
 		Globals.LoadNativeLibraries();
@@ -346,6 +344,8 @@ public class AudioPlayer extends Activity  {
 
 	@Override
 	public void onBackPressed() {
+		mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
+		
 		seekBarUpdater.stopIt();
 		demoRenderer.exitApp();
 	}
@@ -499,23 +499,31 @@ public class AudioPlayer extends Activity  {
 		public void onCallStateChanged(int state, String incomingNumber) {
 			if (state == TelephonyManager.CALL_STATE_RINGING) {
 				//Incoming call: Pause music
-				System.out.println("call state idle");
-				if (demoRenderer != null)
+				System.out.println("Audio call state ringing");
+				if ((demoRenderer != null) &&(!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			} else if(state == TelephonyManager.CALL_STATE_IDLE) {
-				//Not in call: Play music
-				if (demoRenderer != null)
-					demoRenderer.nativePlayerPause();
-				System.out.println("call sate ringing");
+				//Not in call: Play music				
+				//Do not resume, if already paused by user
+				System.out.println("Audio call state idle");				
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
+					demoRenderer.nativePlayerPause();					
+				}
 				//seekBarUpdater.stopIt();
 			} else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
 				//A call is dialing, active or on hold
-				System.out.println("call state offhook");
-				if (demoRenderer != null)
+				
+				System.out.println("Audio call state offhook");
+				if ((demoRenderer != null) && (!paused)) {
+					System.out.println("Triggered");
 					demoRenderer.nativePlayerPlay();
+				}
 				//seekBarUpdater = new Updater();
 				//mHandler.postDelayed(seekBarUpdater, 500);
 			}
@@ -556,6 +564,8 @@ public class AudioPlayer extends Activity  {
 			mTarget.setVisibility(View.INVISIBLE);
 		}
 	}
+	
+	TelephonyManager mgr;
 
 	View mAudioPanel;
 	SeekBar mSeekBar;
