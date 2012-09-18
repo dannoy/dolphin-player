@@ -1,6 +1,7 @@
 #BASE PATH FOR JNI
 #AVPLAYER_PATH := "c:/p"
-AVPLAYER_PATH := "/Users/apple/Downloads/dolphin_player/dolphin-player/p"
+#AVPLAYER_PATH := "/Users/apple/Downloads/dolphin_player/dolphin-player/p"
+AVPLAYER_PATH := "/home/dannoy/workspace/routon/media/dolphin-player/p"
 
 # The namespace in Java file, with dots replaced with underscores
 SDL_JAVA_PACKAGE_PATH := com_broov_player

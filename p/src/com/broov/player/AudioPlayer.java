@@ -311,22 +311,22 @@ public class AudioPlayer extends Activity  {
 		mAudioThread = new AudioThread(this);
 		System.out.println("Audio thread initialized");
 
-		GLSurfaceView_SDL surfaceView = (GLSurfaceView_SDL) findViewById(R.id.glsurfaceview);
+		//GLSurfaceView_SDL surfaceView = (GLSurfaceView_SDL) findViewById(R.id.glsurfaceview);
 		System.out.println("got the surface view:");
 
 		DemoRenderer demoRenderer = new DemoRenderer(this);
 		this.demoRenderer = demoRenderer;
-		surfaceView.setRenderer(demoRenderer); 
+		//surfaceView.setRenderer(demoRenderer); 
 		System.out.println("Set the surface view renderer");
 
-		SurfaceHolder holder = surfaceView.getHolder();
-		holder.addCallback(surfaceView);
+		//SurfaceHolder holder = surfaceView.getHolder();
+		//holder.addCallback(surfaceView);
 		System.out.println("Added the holder callback");
-		holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
+		//holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
 		System.out.println("Hold type set");
 
-		surfaceView.setFocusable(true);
-		surfaceView.requestFocus();
+		//surfaceView.setFocusable(true);
+		//surfaceView.requestFocus();
 
 		totalDuration = demoRenderer.nativePlayerTotalDuration();
 		totalTime.setText(Utils.formatTime(totalDuration));

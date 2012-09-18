@@ -32,8 +32,14 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLSurfaceView;
 
 import android.content.Context;
+import android.graphics.PixelFormat;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 /**
  * An implementation of SurfaceView that uses the dedicated surface for
@@ -172,6 +178,14 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
      * @see #setDebugFlags
      */
     public final static int DEBUG_CHECK_GL_ERROR = 1;
+    
+    private float mTouchStartX;
+    private float mTouchStartY;
+    private float x;
+    private float y;
+    public String TAG = "GLSurfaceView_SDL";
+    private WindowManager.LayoutParams wmParams = null;
+    private WindowManager wm=(WindowManager)getContext().getApplicationContext().getSystemService("window");
 
     /**
      * Log GL calls to the system log at "verbose" level with tag "GLSurfaceView".
@@ -188,6 +202,7 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
     public GLSurfaceView_SDL(Context context) {
         super(context);
         System.out.println("Inside GLSurfaceView_SDL");
+        //wmParams = ((MyApp)getContext().getApplicationContext()).getMywmParams();
         init();
     }
 
@@ -197,6 +212,7 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
      */
     public GLSurfaceView_SDL(Context context, AttributeSet attrs) {
         super(context, attrs);
+        //wmParams = ((MyApp)getContext().getApplicationContext()).getMywmParams();
         init();
     }
 
@@ -480,6 +496,63 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
         	mGLThread.requestExitAndWait();
         }
     }
+    
+	public boolean onTrackballEvent (MotionEvent event)
+	{
+        Log.w(TAG, "#####onTrackballEvent ");
+        x = event.getRawX();
+        y = event.getRawY()-25;   //25是系统状态栏的高度
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:    //捕获手指触摸按下动作
+			//获取相对View的坐标，即以此View左上角为原点
+			mTouchStartX =  event.getX();
+			mTouchStartY =  event.getY();
+			break;
+
+		case MotionEvent.ACTION_MOVE:   
+			updateViewPosition();
+			break;
+
+		case MotionEvent.ACTION_UP:   
+			updateViewPosition();
+			mTouchStartX=mTouchStartY=0;
+			break;
+		}
+		return true;
+	}
+
+	public boolean onTouchEvent(MotionEvent event) {
+        Log.w(TAG, "#####onTouchEvent ");
+        x = event.getRawX();
+        y = event.getRawY()-25;   //25是系统状态栏的高度
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:    //捕获手指触摸按下动作
+                //获取相对View的坐标，即以此View左上角为原点
+                mTouchStartX =  event.getX();
+                mTouchStartY =  event.getY();
+                break;
+
+            case MotionEvent.ACTION_MOVE:   //捕获手指触摸移动动作
+                updateViewPosition();
+                break;
+
+            case MotionEvent.ACTION_UP:    //捕获手指触摸离开动作
+                updateViewPosition();
+                mTouchStartX=mTouchStartY=0;
+                break;
+        }
+		return true;
+	}
+
+	private void updateViewPosition(){
+	   
+        //WindowManager.LayoutParams wmParams = new WindowManager.LayoutParams();
+        //wmParams = ((MyApp)getApplication()).getMywmParams();
+        wmParams = ((MyApp)getContext().getApplicationContext()).getMywmParams();
+		wmParams.x=(int)( x-mTouchStartX);
+		wmParams.y=(int) (y-mTouchStartY);
+		wm.updateViewLayout(this, wmParams);  //刷新显示
+	}
 
     // ----------------------------------------------------------------------
 

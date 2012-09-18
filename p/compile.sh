@@ -1,5 +1,5 @@
-/Users/apple/Downloads/android-ndk-r8/ndk-build clean
-/Users/apple/Downloads/android-ndk-r8/ndk-build 
+#/opt/routon/android-developer/android-ndk-r8b/ndk-build clean
+/opt/routon/android-developer/android-ndk-r8b/ndk-build 
 
 #cp native/ffmpeg/ffmpeg-0.11.1/android/armv6_vfp/libffmpeg.so libs/armeabi/.
 #cp native/ffmpeg/ffmpeg-0.11.1/android/armv7-a/libffmpeg.so libs/armeabi-v7a/.

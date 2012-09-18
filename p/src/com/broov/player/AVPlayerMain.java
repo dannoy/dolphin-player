@@ -11,7 +11,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.SubMenu;
@@ -21,8 +23,11 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.webkit.WebView;
 //import android.widget.LinearLayout;
+import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,6 +36,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public final class AVPlayerMain extends ListActivity  {
+	public String TAG = "AVPlayerMain";
 
 	private static final int MENU_SETTING   = 0x01;	    //option menu id
 	private static final int MENU_SEARCH    = 0x02;		//option menu id
@@ -56,6 +62,8 @@ public final class AVPlayerMain extends ListActivity  {
 	private TextView  	path_label;
 	private TextView  	detail_label;
 	static Context 		mContext;
+	ImageFloatView myFV;
+	WindowManager wm=null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -98,6 +106,7 @@ public final class AVPlayerMain extends ListActivity  {
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
+		wm.removeView(myFV);
 	}
 
 	/**
@@ -134,24 +143,64 @@ public final class AVPlayerMain extends ListActivity  {
 		}else if (FileManager.supportedFile(file.getPath())) {
 
 			if(file.exists()){
-				if (FileManager.isAudioFile(file.getPath())) {
-					String filename =   file.getPath();
-					Intent intent = new Intent(AVPlayerMain.this, AudioPlayer.class);
-					intent.putExtra("audiofilename", filename);
-					startActivity(intent);
+                if (FileManager.isAudioFile(file.getPath())) {
+                    String filename =   file.getPath();
+                    Intent intent = new Intent(AVPlayerMain.this, AudioPlayer.class);
+                    intent.putExtra("audiofilename", filename);
+                    startActivity(intent);
 
-				} else {
-					String filename =   file.getPath();
-					Intent intent;
-					if (Globals.isNativeVideoPlayerFeatureEnabled()) {
-						intent = new Intent(AVPlayerMain.this, NativeVideoPlayer.class);
-					} else {
-						intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
-					}
-					intent.putExtra("videofilename", filename);
-					startActivity(intent);
-				}
+                } else {
+                    String filename =   file.getPath();
+                    Intent intent;
+                    if (Globals.isNativeVideoPlayerFeatureEnabled()) {
+                        intent = new Intent(AVPlayerMain.this, NativeVideoPlayer.class);
+                    } else {
+                        intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
+                    }
+                    intent.putExtra("videofilename", filename);
+                    startActivity(intent);
+                }
+			//LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+           // View layout = inflater.inflate(R.layout.video_player, null);
+			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content));
+			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)findViewById(android.R.id.content));
+			//setViewFloating(layout);
+                createView();
 			}		
+		}
+	}
+	
+	private void createView(){
+		
+		myFV=new ImageFloatView(getApplicationContext());
+		myFV.setImageResource(R.drawable.icon);  //这里简单的用自带的Icom来做演示
+		setViewFloating(myFV);		
+	}
+
+    private void setViewFloating(View view) 	{
+		WindowManager.LayoutParams wmParams=null;
+		
+		//wm=(WindowManager)mContext.getSystemService("window");
+		wm=(WindowManager)getApplicationContext().getSystemService("window");
+		//wm=(WindowManager)this.getSystemService("window");
+		//wmParams = new WindowManager.LayoutParams();
+		wmParams = ((MyApp)getApplication()).getMywmParams2();
+		wmParams.format=PixelFormat.RGBA_8888;
+		wmParams.type=LayoutParams.TYPE_PHONE;
+		wmParams.flags=WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+				| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+		wmParams.gravity=Gravity.LEFT|Gravity.TOP;
+		wmParams.x=0;
+		wmParams.y=0;
+		wmParams.width=320;
+		wmParams.height=240;
+
+		try{
+			wm.addView(view, wmParams);
+		}
+		catch(Exception e)
+		{
+			Log.e(TAG, e.toString())  ;
 		}
 	}
 

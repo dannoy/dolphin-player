@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.PixelFormat;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.os.Handler;
 
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -22,6 +25,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TableLayout;
@@ -30,6 +34,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.os.PowerManager;
 
 public class VideoPlayer extends Activity  {
+	
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -94,7 +99,30 @@ public class VideoPlayer extends Activity  {
 		}
 	};
 
-
+    private void setViewFloating(View view) 	{
+		WindowManager.LayoutParams wmParams=null;
+		WindowManager wm=null;
+		//wm=(WindowManager)mContext.getSystemService("window");
+        wm=(WindowManager)getApplicationContext().getSystemService("window");
+        //wm=(WindowManager)this.getSystemService("window");
+		wmParams = ((MyApp)getApplication()).getMywmParams();
+		wmParams.format=PixelFormat.RGBA_8888;
+		wmParams.type=LayoutParams.TYPE_PHONE;
+		wmParams.flags=WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+				| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+		wmParams.gravity=Gravity.LEFT|Gravity.TOP;
+		wmParams.x=0;
+		wmParams.y=0;
+		wmParams.width=320;
+		wmParams.height=240;
+		try{
+			wm.addView(view, wmParams);
+		}
+		catch(Exception e)
+		{
+			Log.e(TAG, e.toString())  ;
+		}
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,8 +134,8 @@ public class VideoPlayer extends Activity  {
 		// fullscreen mode
 		requestWindowFeature(Window.FEATURE_NO_TITLE);		
 
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				//WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -206,64 +234,116 @@ public class VideoPlayer extends Activity  {
 		initSDL();
 	}
 
-	public void initSDL()
-	{
-		//Wake lock code
-		try {
-			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			//wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
-			wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, Globals.ApplicationName);
-			
-			wakeLock.acquire();
-		} catch (Exception e) {
-			System.out.println("Inside wake lock exception"+e.toString());
-		}
-		System.out.println("Acquired wakeup lock");
+    public void initSDL()
+    {
+        //Wake lock code
+        try {
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            //wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+            wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, Globals.ApplicationName);
 
-		//Native libraries loading code
-		Globals.LoadNativeLibraries();
-		System.out.println("native libraries loaded");
+            wakeLock.acquire();
+        } catch (Exception e) {
+            System.out.println("Inside wake lock exception"+e.toString());
+        }
+        System.out.println("Acquired wakeup lock");
 
-		//Audio thread initializer
-		mAudioThread = new AudioThread(this);
-		System.out.println("Audio thread initialized");
+        //Native libraries loading code
+        Globals.LoadNativeLibraries();
+        System.out.println("native libraries loaded");
 
-		GLSurfaceView_SDL surfaceView = (GLSurfaceView_SDL) findViewById(R.id.glsurfaceview);
-		System.out.println("got the surface view:");
+        //Audio thread initializer
+        mAudioThread = new AudioThread(this);
+        System.out.println("Audio thread initialized");
 
-		surfaceView.setOnClickListener(mGoneListener);
+        //GLSurfaceView_SDL surfaceView = (GLSurfaceView_SDL) findViewById(R.id.glsurfaceview);
+        GLSurfaceView_SDL surfaceView2 = new GLSurfaceView_SDL(getApplicationContext());
+        setViewFloating(surfaceView2);
+        System.out.println("got the surface view:");
 
-		DemoRenderer demoRenderer = new DemoRenderer(this);
-		this.demoRenderer = demoRenderer;
-		surfaceView.setRenderer(demoRenderer); 
-		System.out.println("Set the surface view renderer");
+        //surfaceView.setOnClickListener(mGoneListener);
 
-		SurfaceHolder holder = surfaceView.getHolder();
-		holder.addCallback(surfaceView);
-		System.out.println("Added the holder callback");
-		holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
-		System.out.println("Hold type set");
+        DemoRenderer demoRenderer = new DemoRenderer(this);
+        this.demoRenderer = demoRenderer;
+        surfaceView2.setRenderer(demoRenderer); 
+        System.out.println("Set the surface view renderer");
 
-		surfaceView.setFocusable(true);
-		surfaceView.requestFocus();
+        SurfaceHolder holder = surfaceView2.getHolder();
+        holder.addCallback(surfaceView2);
+        System.out.println("Added the holder callback");
+        holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
+        System.out.println("Hold type set");
 
-		totalDuration = demoRenderer.nativePlayerTotalDuration();
-		totalTime.setText(Utils.formatTime(totalDuration));
+        //surfaceView.setFocusable(true);
+        //surfaceView.requestFocus();
 
-		mHandler.postDelayed(seekBarUpdater, 100);
-		
-		//Hide ICS System bar/Navigation bar
-//		Window win = getWindow();
-//	     WindowManager.LayoutParams winParams = win.getAttributes();
-//	     winParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-//	     win.setAttributes(winParams);
-//		
-		//Utils.hideSystemUi(surfaceView);
-		//Utils.hideSystemUi(this.findViewById(R.id.glsurfaceview).getRootView());
+        totalDuration = demoRenderer.nativePlayerTotalDuration();
+        totalTime.setText(Utils.formatTime(totalDuration));
 
-		//Utils.hideSystemUi(getWindow().getDecorView());
-		
-	}
+        mHandler.postDelayed(seekBarUpdater, 100);
+
+
+
+    }
+
+    //public void initSDL()
+    //{
+        ////Wake lock code
+        //try {
+            //PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            ////wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, Globals.ApplicationName);
+            //wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, Globals.ApplicationName);
+
+            //wakeLock.acquire();
+        //} catch (Exception e) {
+            //System.out.println("Inside wake lock exception"+e.toString());
+        //}
+        //System.out.println("Acquired wakeup lock");
+
+        ////Native libraries loading code
+        //Globals.LoadNativeLibraries();
+        //System.out.println("native libraries loaded");
+
+        ////Audio thread initializer
+        //mAudioThread = new AudioThread(this);
+        //System.out.println("Audio thread initialized");
+
+        ////GLSurfaceView_SDL surfaceView = (GLSurfaceView_SDL) findViewById(R.id.glsurfaceview);
+        //System.out.println("got the surface view:");
+
+        ////surfaceView.setOnClickListener(mGoneListener);
+
+        //DemoRenderer demoRenderer = new DemoRenderer(this);
+        //this.demoRenderer = demoRenderer;
+       //// surfaceView.setRenderer(demoRenderer); 
+        //System.out.println("Set the surface view renderer");
+
+       //// SurfaceHolder holder = surfaceView.getHolder();
+       //// holder.addCallback(surfaceView);
+        //System.out.println("Added the holder callback");
+       //// holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
+        //System.out.println("Hold type set");
+
+       //// surfaceView.setFocusable(true);
+       //// surfaceView.requestFocus();
+
+        //totalDuration = demoRenderer.nativePlayerTotalDuration();
+        //totalTime.setText(Utils.formatTime(totalDuration));
+
+        //mHandler.postDelayed(seekBarUpdater, 100);
+
+        ////Hide ICS System bar/Navigation bar
+        ////		Window win = getWindow();
+        ////	     WindowManager.LayoutParams winParams = win.getAttributes();
+        ////	     winParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        ////	     win.setAttributes(winParams);
+        ////		
+        ////Utils.hideSystemUi(surfaceView);
+        ////Utils.hideSystemUi(this.findViewById(R.id.glsurfaceview).getRootView());
+
+        ////Utils.hideSystemUi(getWindow().getDecorView());
+
+    //}
 
 	public void restartUpdater() {
 		seekBarUpdater.stopIt();
@@ -515,5 +595,6 @@ public class VideoPlayer extends Activity  {
 	Intent i = getIntent();
 	
 	TelephonyManager mgr;
+	static String TAG = "VideoPlayer";
 
 }

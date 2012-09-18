@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
- <merge xmlns:android="http://schemas.android.com/apk/res/android" >
-    <com.broov.player.GLSurfaceView_SDL android:id="@+id/glsurfaceview" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"></com.broov.player.GLSurfaceView_SDL>
+<!--<merge xmlns:android="http://schemas.android.com/apk/res/android" >-->
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent" 
+    android:layout_width="fill_parent" 
+    android:id="@+id/mainframe">
+    <!--<com.broov.player.GLSurfaceView_SDL android:id="@+id/glsurfaceview" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"></com.broov.player.GLSurfaceView_SDL>-->
             <FrameLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="@color/transparent" android:id="@+id/hidecontainer">
     	
     	    <TableLayout android:background="@color/transparent" android:layout_gravity="bottom" android:stretchColumns="1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" android:id="@+id/controlPanel" >                				
@@ -30,5 +35,6 @@
                 </TableRow>
             </TableLayout>
             </FrameLayout>
+</FrameLayout>
      	
- </merge>
+            <!--</merge>-->

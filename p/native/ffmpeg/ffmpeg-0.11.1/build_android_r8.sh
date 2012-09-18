@@ -18,9 +18,10 @@
 # call build_one
 ######################################################
 
-NDK=/Users/apple/Downloads/android-ndk-r8/
+#NDK=/Users/apple/Downloads/android-ndk-r8/
+NDK=/opt/routon/android-developer/android-ndk-r8b/
 PLATFORM=$NDK/platforms/android-8/arch-arm/
-PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.4.3/prebuilt/darwin-x86
+PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86
 
 #PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86
 #lseek to lseek64 -Change this to libavformat/file.c for large file support
@@ -37,9 +38,9 @@ PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.4.3/prebuilt/darwin-x86
 #    --enable-indevs \
 #    --enable-runtime-cpudetect \
 
-BZLIBPATH="/Users/apple/Downloads/dolphin_player/dolphin-player/p/jni/bzip2/"
-BZLIB_LDPATHARM="/Users/apple/Downloads/dolphin_player/dolphin-player/p/jni/bzip2"
-BZLIB_LDPATHARMV7="/Users/apple/Downloads/dolphin_player/dolphin-player/p/jni/bzip2"
+BZLIBPATH="/home/dannoy/workspace/routon/media/dolphin-player/p/jni/bzip2/"
+BZLIB_LDPATHARM="/home/dannoy/workspace/routon/media/dolphin-player/p/jni/bzip2"
+BZLIB_LDPATHARMV7="/home/dannoy/workspace/routon/media/dolphin-player/p/jni/bzip2"
 
 function build_one
 {
