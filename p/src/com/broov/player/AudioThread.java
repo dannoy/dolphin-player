@@ -13,6 +13,14 @@ class AudioThread {
 	private AudioTrack mAudio;
 	private byte[] mAudioBuffer;
 
+	public AudioThread()
+	{
+		System.out.println("Inside AudioThread");
+		mAudio       = null;
+		mAudioBuffer = null;
+		nativeAudioInitJavaCallbacks();
+	}
+
 	public AudioThread(Activity parent)
 	{
 		System.out.println("Inside AudioThread");

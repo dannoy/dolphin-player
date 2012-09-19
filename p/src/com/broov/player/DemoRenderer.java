@@ -50,10 +50,15 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 	public boolean fileInfoUpdated			 = false;
 	private int    loopselected              = 0;
 
+	DemoRenderer()
+	{
+		System.out.println("DemoRenderer instance created:");
+	}
+
 	DemoRenderer(Activity _context)
 	{
 		System.out.println("DemoRenderer instance created:");
-		context = _context;
+        context = _context;
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) 
@@ -274,7 +279,7 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 		}
 		System.out.println("Exited after nativePlayerExit");
 
-		context.finish();
+        //context.finish();
 	}
 
 	public int swapBuffers() // Called from native code, returns 1 on success, 0 when GL context lost (user put app to background)

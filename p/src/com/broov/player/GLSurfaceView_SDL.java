@@ -38,6 +38,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
@@ -186,6 +187,7 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
     public String TAG = "GLSurfaceView_SDL";
     private WindowManager.LayoutParams wmParams = null;
     private WindowManager wm=(WindowManager)getContext().getApplicationContext().getSystemService("window");
+    private View layout_view = null;
 
     /**
      * Log GL calls to the system log at "verbose" level with tag "GLSurfaceView".
@@ -497,6 +499,11 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
         }
     }
     
+    public void setLayoutView(View _view) {
+        layout_view = _view;
+    }
+    
+    /*
 	public boolean onTrackballEvent (MotionEvent event)
 	{
         Log.w(TAG, "#####onTrackballEvent ");
@@ -548,11 +555,15 @@ public class GLSurfaceView_SDL extends GLSurfaceView {
 	   
         //WindowManager.LayoutParams wmParams = new WindowManager.LayoutParams();
         //wmParams = ((MyApp)getApplication()).getMywmParams();
-        wmParams = ((MyApp)getContext().getApplicationContext()).getMywmParams();
+        wmParams = ((MyApp)getContext().getApplicationContext()).getMywmParams2();
 		wmParams.x=(int)( x-mTouchStartX);
 		wmParams.y=(int) (y-mTouchStartY);
-		wm.updateViewLayout(this, wmParams);  //刷新显示
+        //wm.updateViewLayout(this, wmParams);  //刷新显示
+        if(null != layout_view)
+            wm.updateViewLayout(layout_view, wmParams);  //刷新显示
 	}
+    */
+   
 
     // ----------------------------------------------------------------------
 

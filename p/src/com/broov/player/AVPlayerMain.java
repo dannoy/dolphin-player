@@ -106,7 +106,7 @@ public final class AVPlayerMain extends ListActivity  {
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
-		wm.removeView(myFV);
+        //wm.removeView(myFV);
 	}
 
 	/**
@@ -143,29 +143,30 @@ public final class AVPlayerMain extends ListActivity  {
 		}else if (FileManager.supportedFile(file.getPath())) {
 
 			if(file.exists()){
-                if (FileManager.isAudioFile(file.getPath())) {
-                    String filename =   file.getPath();
-                    Intent intent = new Intent(AVPlayerMain.this, AudioPlayer.class);
-                    intent.putExtra("audiofilename", filename);
-                    startActivity(intent);
+                //if (FileManager.isAudioFile(file.getPath())) {
+                    //String filename =   file.getPath();
+                    //Intent intent = new Intent(AVPlayerMain.this, AudioPlayer.class);
+                    //intent.putExtra("audiofilename", filename);
+                    //startActivity(intent);
 
-                } else {
-                    String filename =   file.getPath();
-                    Intent intent;
-                    if (Globals.isNativeVideoPlayerFeatureEnabled()) {
-                        intent = new Intent(AVPlayerMain.this, NativeVideoPlayer.class);
-                    } else {
-                        intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
-                    }
-                    intent.putExtra("videofilename", filename);
-                    startActivity(intent);
-                }
-			//LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-           // View layout = inflater.inflate(R.layout.video_player, null);
+                //} else {
+                    //String filename =   file.getPath();
+                    //Intent intent;
+                    //if (Globals.isNativeVideoPlayerFeatureEnabled()) {
+                        //intent = new Intent(AVPlayerMain.this, NativeVideoPlayer.class);
+                    //} else {
+                        //intent = new Intent(AVPlayerMain.this, VideoPlayer.class);
+                    //}
+                    //intent.putExtra("videofilename", filename);
+                    //startActivity(intent);
+                //}
+                //LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+                //View layout = inflater.inflate(R.layout.video_player, null);
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content));
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)findViewById(android.R.id.content));
-			//setViewFloating(layout);
-                createView();
+                View ctlplayer = new CtlPlayerView(mContext);
+                setViewFloating(ctlplayer);
+            //createView();
 			}		
 		}
 	}
