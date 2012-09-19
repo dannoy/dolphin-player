@@ -165,6 +165,8 @@ public final class AVPlayerMain extends ListActivity  {
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content));
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)findViewById(android.R.id.content));
                 View ctlplayer = new CtlPlayerView(mContext);
+                System.out.println("################:"+file.getPath());
+                Globals.setFileName(file.getPath());
                 setViewFloating(ctlplayer);
             //createView();
 			}		
