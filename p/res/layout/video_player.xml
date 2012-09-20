@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="fill_parent" 
     android:layout_width="fill_parent" 
-    
+    android:background="@drawable/vp_background"
     android:id="@+id/mainframe">
     <com.broov.player.GLSurfaceView_SDL 
         android:id="@+id/glsurfaceview" 
@@ -13,10 +13,18 @@
         android:layout_height="fill_parent">
         
     </com.broov.player.GLSurfaceView_SDL>
+    <ImageView 
+        android:src="@drawable/vp_background" 
+        android:id="@+id/vpimg_frame" 
+        android:layout_height="fill_parent" 
+        android:layout_width="fill_parent" > 
+        </ImageView>
+    
     <FrameLayout 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent" 
-        android:background="@drawable/vp_background"
+        android:background="@color/transparent"
+        
          android:id="@+id/hidecontainer">
     	
     	    <TableLayout android:background="@color/transparent" android:layout_gravity="bottom" android:stretchColumns="1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" android:id="@+id/controlPanel" >                				

@@ -63,7 +63,8 @@ public final class AVPlayerMain extends ListActivity  {
 	private TextView  	detail_label;
 	static Context 		mContext;
 	ImageFloatView myFV;
-	WindowManager wm=null;
+	WindowManager wm = null;
+    View ctlplayer = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,9 @@ public final class AVPlayerMain extends ListActivity  {
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
-        //wm.removeView(myFV);
+        if(null != wm && null != ctlplayer) {
+            //wm.removeView(ctlplayer);
+        }
 	}
 
 	/**
@@ -164,7 +167,7 @@ public final class AVPlayerMain extends ListActivity  {
                 //View layout = inflater.inflate(R.layout.video_player, null);
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content));
 			//View layout = inflater.inflate(R.layout.video_player, (ViewGroup)findViewById(android.R.id.content));
-                View ctlplayer = new CtlPlayerView(mContext);
+                ctlplayer = new CtlPlayerView(mContext);
                 System.out.println("################:"+file.getPath());
                 Globals.setFileName(file.getPath());
                 setViewFloating(ctlplayer);

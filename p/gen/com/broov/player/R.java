@@ -168,7 +168,7 @@ containing a value of this type.
         public static final int footer=0x7f080019;
         public static final int fourth_title=0x7f080033;
         public static final int free_space=0x7f080036;
-        public static final int fs_shadow=0x7f080084;
+        public static final int fs_shadow=0x7f080085;
         public static final int glsurfaceview=0x7f080082;
         public static final int hidecontainer=0x7f080001;
         public static final int home_PathText=0x7f080027;
@@ -177,9 +177,9 @@ containing a value of this type.
         public static final int img_next=0x7f080015;
         public static final int img_play=0x7f080013;
         public static final int img_prev=0x7f080011;
-        public static final int img_vp_backward=0x7f080085;
-        public static final int img_vp_forward=0x7f080087;
-        public static final int img_vp_play=0x7f080086;
+        public static final int img_vp_backward=0x7f080086;
+        public static final int img_vp_forward=0x7f080088;
+        public static final int img_vp_play=0x7f080087;
         public static final int info_icon=0x7f08002a;
         public static final int input_cancel_b=0x7f080029;
         public static final int input_create_b=0x7f08003a;
@@ -237,7 +237,7 @@ containing a value of this type.
         public static final int subtitleSizeSelected=0x7f080049;
         public static final int subtitlefontfileselected=0x7f08004c;
         public static final int swsscalerloopSelected=0x7f080076;
-        public static final int tableRow2=0x7f080083;
+        public static final int tableRow2=0x7f080084;
         public static final int tblrowadvancedavsyncmode=0x7f08007a;
         public static final int tblrowadvanceddebugmode=0x7f080078;
         public static final int tblrowadvanceddisplaypixelformat=0x7f08005e;
@@ -269,6 +269,7 @@ containing a value of this type.
         public static final int totaltime=0x7f080010;
         public static final int trscrolledtime=0x7f08000b;
         public static final int videoloopSelected=0x7f080055;
+        public static final int vpimg_frame=0x7f080083;
         public static final int webviewcustom=0x7f080017;
         public static final int widget129=0x7f080020;
         public static final int widget132=0x7f080022;
