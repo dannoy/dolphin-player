@@ -195,7 +195,7 @@ public final class AVPlayerMain extends ListActivity  {
 		wmParams.gravity=Gravity.LEFT|Gravity.TOP;
 		wmParams.x=0;
 		wmParams.y=0;
-		wmParams.width=320;
+        wmParams.width=320;
 		wmParams.height=240;
 
 		try{

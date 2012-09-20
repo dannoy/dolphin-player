@@ -127,14 +127,16 @@ containing a value of this type.
         public static final int setting=0x7f02001f;
         public static final int timerbg=0x7f020020;
         public static final int ttf=0x7f020021;
-        public static final int vp_backward=0x7f020022;
-        public static final int vp_backward_glow_80x60=0x7f020023;
-        public static final int vp_forward=0x7f020024;
-        public static final int vp_forward_glow=0x7f020025;
-        public static final int vp_pause=0x7f020026;
-        public static final int vp_pause_shadow=0x7f020027;
-        public static final int vp_play=0x7f020028;
-        public static final int vp_play_shadow=0x7f020029;
+        public static final int vp_background=0x7f020022;
+        public static final int vp_backward=0x7f020023;
+        public static final int vp_backward_glow_80x60=0x7f020024;
+        public static final int vp_forward=0x7f020025;
+        public static final int vp_forward_glow=0x7f020026;
+        public static final int vp_frame=0x7f020027;
+        public static final int vp_pause=0x7f020028;
+        public static final int vp_pause_shadow=0x7f020029;
+        public static final int vp_play=0x7f02002a;
+        public static final int vp_play_shadow=0x7f02002b;
     }
     public static final class id {
         public static final int albumcover=0x7f080003;
